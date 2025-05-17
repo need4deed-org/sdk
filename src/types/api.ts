@@ -11,6 +11,7 @@ export enum EventN4DType {
 }
 
 export interface EventN4D {
+  active: boolean;
   title: string;
   subTitle?: string;
   menuTitle: string; // for the menu
