@@ -13,6 +13,7 @@ export enum EventN4DType {
 export interface EventN4D {
   title: string;
   subTitle?: string;
+  menuTitle: string; // for the menu
   hostName?: string;
   date: Date;
   dateEnd?: Date;
