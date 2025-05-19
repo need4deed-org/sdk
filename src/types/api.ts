@@ -21,7 +21,7 @@ export interface EventN4D {
   type: EventN4DType;
   pic?: string; // or standard one depending on type
   time: string;
-  location: string; // address
+  address: string; // address
   locationLink?: string; // to google maps
   locationComment?: string; // how to spot
   description: string;
