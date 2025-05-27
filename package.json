@@ -1,6 +1,6 @@
 {
   "name": "need4deed-sdk",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Need4Deed.org SDK",
   "main": "src/index.ts",
   "scripts": {
