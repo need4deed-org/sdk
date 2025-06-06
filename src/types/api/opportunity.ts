@@ -35,4 +35,5 @@ export interface Opportunity {
   vo_information?: string;
   category: string;
   category_id: OptionId;
+  last_edited_time_notion?: string;
 }
