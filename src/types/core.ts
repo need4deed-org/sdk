@@ -8,6 +8,14 @@ export enum Lang {
   ES = "es",
 }
 
+export enum LangProficiency {
+  BEGINER = "beginer",
+  INTERMEDIATE = "intermediate",
+  ADVANCED = "advanced",
+  FLUENT = "fluent",
+  NATIVE = "native",
+}
+
 export enum HttpMethod {
   GET = "GET",
   HEAD = "HEAD",
