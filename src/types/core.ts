@@ -1,11 +1,6 @@
 export enum Lang {
   EN = "en",
   DE = "de",
-  RU = "ru",
-  AR = "ar",
-  FA = "fa",
-  TR = "tr",
-  ES = "es",
 }
 
 export enum LangProficiency {
