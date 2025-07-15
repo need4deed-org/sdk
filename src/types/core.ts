@@ -22,3 +22,5 @@ export enum HttpMethod {
   CONNECT = "CONNECT",
   PATCH = "PATCH",
 }
+
+export type SomeType = "some" | "type";
