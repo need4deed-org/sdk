@@ -2,6 +2,7 @@
   "name": "need4deed-sdk",
   "version": "0.0.8",
   "description": "Need4Deed.org SDK",
+  "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
