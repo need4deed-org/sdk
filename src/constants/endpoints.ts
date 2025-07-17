@@ -1,4 +1,6 @@
-export const epOpportunity = "/opportunity";
-export const epEvent = "/event";
-export const epTestimonial = "/testimonial";
-export const epVolunteer = "/volunteer";
+export enum Endpoint {
+  OPPORTUNITY = "/opportunity",
+  EVENT = "/event",
+  TESTIMONIAL = "/testimonial",
+  VOLUNTEER = "/volunteer",
+}

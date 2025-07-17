@@ -1,3 +1,3 @@
-export * from "./constants/index";
-export * from "./core/index";
-export * from "./types/index";
+export * from "./constants";
+export * from "./core";
+export * from "./types";
