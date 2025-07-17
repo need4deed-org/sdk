@@ -1,6 +1,6 @@
 {
   "name": "need4deed-sdk",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Need4Deed.org SDK",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.mjs",
@@ -14,7 +14,9 @@
     "build:types": "tsc --project tsconfig.cjs.json --emitDeclarationOnly --declarationDir dist/types",
     "build": "yarn build:cjs && yarn build:esm && yarn build:types",
     "watch": "tsc --watch --project tsconfig.cjs.json",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "publish": "yarn publish",
+    "publish:npm": "yarn publish --access public"
   },
   "keywords": [
     "sdk",
