@@ -8,8 +8,18 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "require": "./dist/indec.js",
+      "default": "./dist/indec.js"
+    },
+    "./styles/*": "./dist/styles/*",
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "build": "tsc",
+    "build:copy-assets": "mkdir -p dist/styles && cp src/styles/*.css dist/styles/",
+    "build:tsc": "tsc",
+    "build": "yarn build:tsc && yarn build:copy-assets",
     "watch": "tsc --watch --project tsconfig.cjs.json",
     "prepublishOnly": "yarn build",
     "publish": "yarn publish",
