@@ -9,7 +9,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build:ts": "tsc",
+    "build:css": "copyfiles -u 1 \"src/styles/**/*.css\" dist/",
+    "build": "yarn build:ts && yarn build:css",
     "watch": "tsc --watch --project tsconfig.cjs.json",
     "prepublishOnly": "yarn build",
     "publish": "yarn publish",
@@ -32,9 +34,10 @@
     "url": "https://github.com/need4deed-org/sdk.git"
   },
   "devDependencies": {
-    "typescript": "^5.8.3",
     "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0"
+    "@types/react-dom": "^18.0.0",
+    "copyfiles": "^2.4.1",
+    "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
