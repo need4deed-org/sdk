@@ -1,0 +1,18 @@
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --font-size-base: 16px;
+  --spacing-unit: 8px;
+}
+
+/* You can also put general styles here if you want them consumed by default */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--secondary-color);
+}
+
+h1 {
+  color: var(--primary-color);
+}
