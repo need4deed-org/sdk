@@ -1,0 +1,896 @@
+body {
+  font-family: "Figtree", sans-serif;
+  width: 100%;
+  margin: 0;
+}
+
+body * {
+  outline: solid red 1px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.image-filter-gradient-blue {
+  background: linear-gradient(
+    180deg,
+    var(--color-midnight-misty) 11.02%,
+    var(--color-barely-blue) 89.66%
+  );
+}
+
+:root {
+  /* color */
+  --color-midnight: rgba(26, 38, 132, 1);
+  --color-midnight-light: rgba(58, 72, 178, 1);
+  --color-midnight-misty: rgba(44, 47, 153, 0.6);
+  --color-midnight-bright: rgba(75, 91, 212, 1);
+  --color-barely-blue: rgba(73, 79, 255, 0.05);
+  --color-aubergine: rgba(95, 38, 77, 1);
+  --color-aubergine-light: rgba(133, 63, 110, 1);
+  --color-orchid: rgba(247, 205, 255, 1);
+  --color-orchid-dark: rgba(242, 177, 255, 1);
+  --color-orchid-light: rgba(251, 226, 255, 1);
+  --color-orchid-subtle: rgba(254, 244, 255, 1);
+  --color-sand: rgba(242, 226, 211, 1);
+  --color-sand-dark: rgba(184, 172, 137, 1);
+  --color-magnolia: rgba(246, 238, 231, 1);
+  --color-papaya: rgba(255, 125, 104, 1);
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-dimmed-background: rgba(0, 0, 0, 0.4);
+  --color-neutral-900: #fff;
+  --color-neutral-800: #eee;
+  --color-neutral-700: #ddd;
+  --color-neutral-600: #ccc;
+  --color-neutral-500: #bbb;
+  --color-neutral-400: #aaa;
+  --color-neutral-300: #888;
+  --color-neutral-200: #444;
+  --color-neutral-100: #000;
+
+  /* text */
+  --text-h2-font-weight: 600;
+  --text-h2-font-size: 32px;
+  --text-h2-line-height: 38px;
+
+  --text-h3-font-weight: 600;
+  --text-h3-font-size: 24px;
+  --text-h3-line-height: 30px;
+  --text-h3-letter-spacing: 0.1px;
+
+  --text-p-font-weight: 300;
+
+  /* icon */
+  --icon-color: var(--color-papaya);
+
+  /* card */
+  --card-border-radius: 24px;
+
+  /* text-activity-tag */
+  --text-activity-tag-font-weight: 600;
+  --text-activity-tag-font-size: 14px;
+  --text-activity-tag-line-height: 17px;
+  --text-activity-tag-text-align: center;
+
+  /* activities */
+  --activities-container-gap: 8px;
+  --activity-tag-border-radius: 4px;
+  --activity-tag-padding: 6px 8px;
+
+  /*homepage volunteering opportunity */
+  --homepage-volunteering-opportunity-detail-section-gap: 4px;
+  --homepage-volunteering-opportunity-detail-header-gap: 8px;
+
+  /* paginated cards container */
+  --paginated-cards-container-gap: 20px;
+
+  /* testimonials */
+  --homepage-testimonials-profile-width: 60px;
+  --homepage-testimonials-profile-height: 60px;
+  --homepage-testimonials-profile-gap: 16px;
+
+  /* layout-static-page */
+  --layout-static-page-background-default: linear-gradient(
+    180deg,
+    var(--color-magnolia)-5.53%,
+    var(--color-orchid-dark) 100%
+  );
+
+  /* button */
+  --button-gap: 12px;
+
+  /* checkbox */
+  --checkbox-container-gap: 8px;
+  --checkbox-label-font-size: 18px;
+  --checkbox-label-line-height: 32px;
+  --checkbox-label-font-weight-selected: 400;
+  --checkbox-label-font-weight-not-selected: 300;
+}
+
+.with-linebreaks {
+  white-space: pre-wrap;
+}
+
+@media (min-width: 360px) {
+  :root {
+    --max-width-section: 360px;
+
+    --text-p-font-size: 18px;
+    --text-p-line-height: 21px;
+    --text-p-letter-spacing: 0;
+
+    --text-h1-font-weight: 700;
+    --text-h1-font-size: 28px;
+    --text-h1-line-height: 28px;
+
+    --text-h4-font-weight: 500;
+    --text-h4-font-size: 18px;
+    --text-h4-line-height: 18px;
+    --text-h4-letter-spacing: 0.1;
+
+    --icon-size: 40px;
+
+    --text-button-font-size: 18px;
+
+    --homepage-section-container-padding: 48px 20px;
+    --homepage-section-container-gap: 16px;
+    --homepage-section-container-footer-justify-content: center;
+
+    --homepage-volunteering-categories-header-gap: 12px;
+    --homepage-volunteering-category-card-width: 320px;
+    --homepage-volunteering-category-card-height: 328px;
+    --homepage-volunteering-category-card-padding-top: 24px;
+    --homepage-volunteering-category-card-padding-right: 24px;
+    --homepage-volunteering-category-card-padding-bottom: 48px;
+    --homepage-volunteering-category-card-padding-left: 24px;
+    --homepage-volunteering-category-card-gap: 16px;
+
+    --homepage-volunteering-opportunities-grid-template-columns: 1fr;
+    --homepage-volunteering-opportunities-grid-template-rows: repeat(2, auto);
+    --homepage-volunteering-opportunities-grid-gap: 16px;
+    --homepage-volunteering-opportunity-card-width: 320px;
+    --homepage-volunteering-opportunity-card-padding-top: 24px;
+    --homepage-volunteering-opportunity-card-padding-right: 24px;
+    --homepage-volunteering-opportunity-card-padding-bottom: 40px;
+    --homepage-volunteering-opportunity-card-padding-left: 24px;
+    --homepage-volunteering-opportunity-card-gap: 16px;
+    --homepage-volunteering-opportunity-details-gap: 12px;
+    --homepage-volunteering-opportunity-details-languages-gap: 4px;
+    --homepage-volunteering-opportunity-details-languages-detail-gap: 4px;
+
+    --page-opportunity-grid-max-width: 360px;
+    --page-opportunity-grid-template-columns: 1fr;
+    --page-opportunity-card-width: 312px;
+    --page-opportunity-card-height: auto; /*421px;*/
+    --page-opportunity-popup-card-width: 328px;
+    --page-opportunity-popup-card-height: auto;
+    --page-opportunity-popup-card-x-margins: 36px;
+    --page-opportunity-popup-ctas-gap: 24px;
+    --page-opportunity-popup-ctas-margin-top: 24px;
+
+    --homepage-testimonials-header-gap: 16px;
+    --homepage-testimonial-card-width: 320px;
+    --homepage-testimonial-card-padding-top: 24px;
+    --homepage-testimonial-card-padding-right: 24px;
+    --homepage-testimonial-card-padding-bottom: 32px;
+    --homepage-testimonial-card-padding-left: 24px;
+    --homepage-testimonial-card-gap: 14px;
+    --homepage-testimonial-card-text-p-font-size: 16px;
+    --homepage-testimonial-card-text-p-line-height: 22px;
+
+    --homepage-hero-section-container-height: 760px;
+    --homepage-hero-section-container-gap: 80px;
+    --homepage-hero-section-logo-height: 152px;
+    --homepage-hero-section-logo-width: 280px;
+    --homepage-hero-section-header-height: 202px;
+    --homepage-hero-section-header-menu-items-width: 100%;
+    --homepage-hero-section-header-menu-items-gap: 24px;
+    --homepage-hero-section-header-menu-items-flex-direction: column;
+    --homepage-hero-section-header-menu-items-padding-top: 24px;
+    --homepage-hero-section-header-menu-items-padding-bottom: 32px;
+    --homepage-hero-section-header-menu-items-padding-right: 20px;
+    --homepage-hero-section-header-menu-items-padding-left: 20px;
+    --homepage-hero-section-header-menu-items-border-bottom-right-radius: 10px;
+    --homepage-hero-section-header-menu-items-border-bottom-left-radius: 10px;
+    --homepage-hero-section-header-menu-item-fontSize: 16px;
+    --homepage-hero-section-header-menu-item-fontWeight: 600;
+    --homepage-hero-section-header-menu-item-letterSpacing: 0px;
+    --homepage-hero-section-header-menu-item-lineheight: 16px;
+    --homepage-hero-section-language-option-button-radius: 4px;
+    --homepage-hero-section-language-option-button-text-color: var(
+      --color-midnight-light
+    );
+    --homepage-hero-section-content-container-width: 100%;
+    --homepage-hero-section-content-container-height: 440px;
+    --homepage-hero-section-content-hero-text-container-gap: 20px;
+    --homepage-hero-section-content-hero-text-color: var(--color-white);
+    --homepage-hero-section-content-hero-text-fontSize: 32px;
+    --homepage-hero-section-content-hero-text-fontWeight: 600;
+    --homepage-hero-section-content-hero-text-letterSpacing: 0.1px;
+    --homepage-hero-section-content-hero-text-lineheight: 36px;
+    --homepage-hero-section-content-hero-supporting-text-fontSize: 20px;
+    --homepage-hero-section-content-hero-supporting-text-fontWeight: 400;
+    --homepage-hero-section-content-hero-supporting-text-letterSpacing: 0.25px;
+    --homepage-hero-section-content-hero-supporting-text-lineheight: 20px;
+    --homepage-hero-section-content-hero-button-container-gap: 16px;
+    --homepage-hero-section-content-hero-button-container-flex-direction: column;
+
+    --homepage-footer-partners-section-container-height: auto;
+    --homepage-footer-partners-section-container-padding: 32px 20px;
+    --homepage-footer-partners-section-container-gap: 64px;
+    --homepage-footer-partners-section-partners-container-height: 443px;
+    --homepage-footer-partners-section-partners-container-flex-direction: column;
+    --homepage-footer-partners-section-partners-container-justify-content: center;
+    --homepage-footer-partners-section-partners-container-gap: 48px;
+    --homepage-footer-partners-section-partners-frame-container-gap: 75px;
+    --homepage-footer-partners-section-partners-club-dialog-div-gap: 8px;
+    --homepage-footer-partners-section-logo-club-dialog-width: 200px;
+    --homepage-footer-partners-section-logo-club-dialog-height: 36px;
+    --homepage-footer-partners-section-logo-berlin-width: 112;
+    --homepage-footer-partners-section-logo-berlin-height: 120;
+    --homepage-footer-partners-section-logo-eu-width: 130px;
+    --homepage-footer-partners-section-logo-eu-height: 120px;
+    --homepage-footer-partners-section-logo-SchönebergHilft-width: 100px;
+    --homepage-footer-partners-section-logo-SchönebergHilft-height: 100px;
+    --homepage-footer-partners-section-logo-n4d-width: 68px;
+    --homepage-footer-partners-section-logo-n4d-height: 90px;
+    --homepage-footer-partners-section-footer-container-height: 364px;
+    --homepage-footer-partners-section-footer-container-flex-direction: column;
+    --homepage-footer-partners-section-footer-container-justify-content: space-between;
+    --homepage-footer-partners-section-contact-socials-container-flex-direction: column;
+    --homepage-footer-partners-section-contact-socials-container-justify-content: unset;
+    --homepage-footer-partners-section-contact-socials-container-gap: 32px;
+    --homepage-footer-partners-section-contact-container-gap: 10px;
+    --homepage-footer-partners-section-socials-container-gap: 20px;
+    --homepage-footer-partners-section-footer-links-container-width: 310px;
+    --homepage-footer-partners-section-footer-frame-container-gap: 16px;
+    --homepage-footer-partners-section-p-fontWeight-large: 500;
+    --homepage-footer-partners-section-p-fontWeight-small: 400;
+    --homepage-footer-partners-section-p-fontSize: 16px;
+
+    --homepage-rac-section-container-height: 720px;
+    --homepage-rac-section-content-container-gap: 80px;
+    --homepage-rac-section-content-headLine-container-gap: 16px;
+    --homepage-rac-section-content-headLine2-fontWeight: 700;
+    --homepage-rac-section-content-headLine2-fontSize: 40px;
+    --homepage-rac-section-content-headLine2-lineheight: 40px;
+    --homepage-rac-section-content-headLine2-letterSpacing: 0.1px;
+    --homepage-rac-section-content-buttons-container-flex-direction: column;
+    --homepage-rac-section-content-buttons-container-gap: 16px;
+
+    --homepage-process-section-gap: 40px;
+    --homepage-process-section-header-gap: 24px;
+    --homepage-process-section-video-height: 208px;
+    --homepage-process-section-video-width: 360px;
+    --homepage-process-section-video-border-radius: 8px;
+    --homepage-process-section-video-margin-left: -20px;
+    --homepage-process-section-card-flex-direction: column;
+    --homepage-process-section-card-width: 320px;
+    --homepage-process-section-card-height: 330px;
+    --homepage-process-section-card-border-radius: 24px;
+    --homepage-process-section-card-padding: 20px 28px 32px 20px;
+    --homepage-process-section-card-gap: 24px;
+    --homepage-process-section-card-header-flex-direction: row;
+    --homepage-process-section-card-header-gap: 20px;
+    --homepage-process-section-card-week-div-padding: 8px 12px 6px 12px;
+    --homepage-process-section-card-week-div-radius: 4px;
+    --homepage-process-section-card-info-div-gap: 16px;
+    --homepage-process-section-card-info-headline-div-gap: 12px;
+    --homepage-process-section-card-info-bullet-div-padding-left: 8px;
+    --homepage-process-section-card-info-text-div-gap: 24px;
+    --homepage-process-section-card-info-text-fontWeight: 400;
+    --homepage-process-section-card-info-text-fontSize: 16px;
+    --homepage-process-section-card-info-text-lineheight: 20px;
+    --homepage-process-section-card-info-text-letterSpacing: 0px;
+    --homepage-process-section-card-icon-size: 40px;
+    --homepage-process-section-card-last-step-width: 320px;
+
+    --homepage-events-section-container-height: 455px;
+    --homepage-events-section-content-container-gap: 32px;
+    --homepage-events-section-event-container-flex-direction: column;
+    --homepage-events-section-event-container-gap: 32px;
+    --homepage-events-section-event-card-gap: 20px;
+    --homepage-events-section-event-card-headline-gap: 16px;
+    --homepage-events-section-event-card-event-title-tag-padding: 8px 12px;
+    --homepage-events-section-event-card-event-title-tag-border-radius: 8px;
+    --homepage-events-section-button-container-justify-content: center;
+
+    --button-height: 64px;
+    --button-width: auto;
+    --button-padding: 12px 24px;
+    --button-border-radius: 125px;
+    --button-text-font-weight: 500;
+    --button-text-font-size: 18px;
+    --button-text-line-height: 25px;
+    --button-text-letter-spacing: 0.13px;
+    --button-text-text-align: center;
+
+    --numbering-div-width: 32px;
+    --numbering-div-height: 32px;
+    --numbering-div-border-radius: 16.57px;
+
+    --layout-static-page-n4d-logo-width: 144;
+    --layout-static-page-n4d-logo-height: 24;
+    --layout-static-page-header-height: 64px;
+    --layout-static-page-header-content-bottom-padding: 100px;
+    --layout-static-page-header-padding: 10px 18px;
+
+    --opportunities-container-width: fit-content;
+    --opportunities-container-min-height: none;
+    --opportunities-container-gap: 24px;
+    --opportunities-container-padding: 12px;
+    --opportunities-container-padding-inline: 16px;
+    --opportunities-header-title-tabs-gap: 24px;
+    --opportunities-header-tabs-searchbar-gap: 12px;
+    --opportunities-header-tabs-section-width: -webkit-fill-available;
+    --opportunities-header-tabs-gap: 16px;
+    --opportunities-header-tabs-border-bottom: 4px;
+    --opportunities-header-tabs-padding-bottom: 4px;
+    --opportunities-header-result-gap: 10px;
+    --opportunities-header-result-padding: 10px;
+    --opportunities-header-searchbar-flex-direction: column;
+    --opportunities-header-searchbar-width: -webkit-fill-available;
+    --opportunities-map-view-container-height: 200px;
+    --opportunities-cards-container-justify-content: center;
+    --opportunities-filters-button-height: 48px;
+    --opportunities-filters-button-width: 48px;
+    --opportunities-filters-button-icon-size: 32px;
+    --opportunities-filters-container-width: auto;
+    --opportunities-filters-container-border-bottom-radius: 40px;
+    --opportunities-filters-close-filter-height: 64px;
+    --opportunities-filters-close-filter-gap: 12px;
+    --opportunities-filters-close-filter-padding: 16px 0px 16px 32px;
+    --opportunities-filters-content-container-width: auto;
+    --opportunities-filters-content-container-gap: 16px;
+    --opportunities-filters-content-container-padding: 20px 20px 20px 20px;
+    --opportunities-filters-content-filter-container-gap: 16px;
+    --opportunities-filters-content-accordion-options-gap: 6px;
+    --opportunities-filters-content-accordion-options-max-height: 500px;
+    --opportunities-filters-content-accordion-options-checkbox-height: 18px;
+    --opportunities-filters-content-accordion-group-options-checkbox-height: 16px;
+    --opportunities-filters-content-accordion-group-options-checkbox-labelFontSize: 14px;
+    --opportunities-filters-content-accordion-header-border-top: 1px;
+    --opportunities-filters-content-accordion-header-padding-top: 16px;
+    --opportunities-filters-clear-all-button-padding-bottom: 20px;
+    --opportunities-filters-clear-all-button-icon-size: 24px;
+    --opportunities-filters-clear-all-button-height: 64px;
+    --opportunities-filters-clear-all-button-text-font-size: 20px;
+    --opportunities-filters-description-font-size: 14px;
+    --opportunities-filters-description-font-weight: 400;
+
+    --search-container-height: 64px;
+    --search-container-border-radius: 40px;
+    --search-container-padding: 0 32px;
+    --search-input-font-size: 16px;
+
+    --paginated-grid-container-gap: 24px;
+    --paginated-grid-pagination-number-width: 36px;
+    --paginated-grid-pagination-number-height: 44px;
+    --paginated-grid-pagination-number-border-radius: 6px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --max-width-section: 768px;
+
+    --icon-size: 48px;
+
+    --text-p-font-size: 20px;
+    --text-p-line-height: 24px;
+    --text-p-letter-spacing: 0.1px;
+
+    --text-h1-font-weight: 700;
+    --text-h1-font-size: 32px;
+    --text-h1-line-height: 32px;
+    --text-h1-letter-spacing: 0.1px;
+
+    --text-h4-font-weight: 600;
+    --text-h4-font-size: 20px;
+    --text-h4-line-height: 20px;
+    --text-h4-letter-spacing: 0.1;
+
+    --text-button-font-size: 24px;
+
+    --homepage-section-container-padding: 64px 40px;
+    --homepage-section-container-gap: 48px;
+    --homepage-section-container-footer-justify-content: flex-end;
+
+    --homepage-volunteering-categories-grid-template-columns: repeat(2, 1fr);
+    --homepage-volunteering-categories-grid-template-rows: repeat(3, auto);
+    --homepage-volunteering-categories-grid-gap: 24px;
+    --homepage-volunteering-categories-header-gap: 16px;
+    --homepage-volunteering-category-card-width: 332px;
+    --homepage-volunteering-category-card-height: 380px;
+    --homepage-volunteering-category-card-padding-top: 28px;
+    --homepage-volunteering-category-card-padding-right: 28px;
+    --homepage-volunteering-category-card-padding-bottom: 48px;
+    --homepage-volunteering-category-card-padding-left: 28px;
+    --homepage-volunteering-category-card-gap: 20px;
+
+    --homepage-volunteering-opportunities-grid-template-columns: repeat(2, 1fr);
+    --homepage-volunteering-opportunities-grid-template-rows: auto;
+    --homepage-volunteering-opportunities-grid-gap: 24px;
+    --homepage-volunteering-opportunity-card-width: 332px;
+    --homepage-volunteering-opportunity-card-padding-top: 28px;
+    --homepage-volunteering-opportunity-card-padding-right: 28px;
+    --homepage-volunteering-opportunity-card-padding-bottom: 48px;
+    --homepage-volunteering-opportunity-card-padding-left: 28px;
+    --homepage-volunteering-opportunity-card-gap: 20px;
+    --homepage-volunteering-opportunity-details-gap: 16px;
+
+    --page-opportunity-grid-max-width: 768px;
+    --page-opportunity-grid-template-columns: repeat(2, 1fr);
+    --page-opportunity-card-width: 332px;
+    --page-opportunity-card-height: auto; /*472px;*/
+    --page-opportunity-popup-card-width: 688px;
+    --page-opportunity-popup-card-height: auto;
+    --page-opportunity-popup-card-x-margins: 36px;
+    --page-opportunity-popup-ctas-gap: 24px;
+    --page-opportunity-popup-ctas-margin-top: 24px;
+
+    --homepage-testimonials-header-gap: 24px;
+    --homepage-testimonial-card-width: 328px;
+    --homepage-testimonial-card-padding-top: 28px;
+    --homepage-testimonial-card-padding-right: 28px;
+    --homepage-testimonial-card-padding-bottom: 40px;
+    --homepage-testimonial-card-padding-left: 28px;
+    --homepage-testimonial-card-gap: 14px;
+    --homepage-testimonial-card-text-p-font-size: 18px;
+    --homepage-testimonial-card-text-p-line-height: 24px;
+
+    --homepage-hero-section-container-height: 844px;
+    --homepage-hero-section-container-gap: 80px;
+    --homepage-hero-section-logo-height: 200px;
+    --homepage-hero-section-logo-width: 370px;
+    --homepage-hero-section-header-height: 202px;
+    --homepage-hero-section-header-menu-items-width: 200px;
+    --homepage-hero-section-header-menu-items-gap: 24px;
+    --homepage-hero-section-header-menu-items-flex-direction: column;
+    --homepage-hero-section-header-menu-item-fontSize: 16px;
+    --homepage-hero-section-header-menu-item-fontWeight: 600;
+    --homepage-hero-section-header-menu-item-letterSpacing: 0px;
+    --homepage-hero-section-header-menu-item-lineheight: 16px;
+    --homepage-hero-section-language-option-button-radius: 4px;
+    --homepage-hero-section-language-option-button-text-color: var(
+      --color-aubergine-light
+    );
+    --homepage-hero-section-content-container-width: 100%;
+    --homepage-hero-section-content-container-height: 440px;
+    --homepage-hero-section-content-hero-text-container-gap: 20px;
+    --homepage-hero-section-content-hero-text-color: var(--color-white);
+    --homepage-hero-section-content-hero-text-fontSize: 48px;
+    --homepage-hero-section-content-hero-text-fontWeight: 600;
+    --homepage-hero-section-content-hero-text-letterSpacing: 0.1px;
+    --homepage-hero-section-content-hero-text-lineheight: 48px;
+    --homepage-hero-section-content-hero-supporting-text-fontSize: 24px;
+    --homepage-hero-section-content-hero-supporting-text-fontWeight: 500;
+    --homepage-hero-section-content-hero-supporting-text-letterSpacing: 0.25px;
+    --homepage-hero-section-content-hero-supporting-text-lineheight: 24px;
+    --homepage-hero-section-content-hero-button-container-gap: 24px;
+    --homepage-hero-section-content-hero-button-container-flex-direction: row;
+
+    --homepage-footer-partners-section-container-height: 800px;
+    --homepage-footer-partners-section-container-padding: 48px;
+    --homepage-footer-partners-section-container-gap: 96px;
+    --homepage-footer-partners-section-partners-container-height: 504px;
+    --homepage-footer-partners-section-partners-container-flex-direction: column;
+    --homepage-footer-partners-section-partners-container-justify-content: center;
+    --homepage-footer-partners-section-partners-frame-container-height: 180px;
+    --homepage-footer-partners-section-partners-frame-container-gap-1: 160px;
+    --homepage-footer-partners-section-partners-frame-container-gap-2: 120px;
+    --homepage-footer-partners-section-partners-club-dialog-div-gap: 16px;
+    --homepage-footer-partners-section-logo-club-dialog-width: 16px;
+    --homepage-footer-partners-section-logo-club-dialog-height: 16px;
+    --homepage-footer-partners-section-logo-club-dialog-width: 316;
+    --homepage-footer-partners-section-logo-club-dialog-height: 58;
+    --homepage-footer-partners-section-logo-berlin-width: 170;
+    --homepage-footer-partners-section-logo-berlin-height: 180;
+    --homepage-footer-partners-section-logo-eu-width: 194px;
+    --homepage-footer-partners-section-logo-eu-height: 180px;
+    --homepage-footer-partners-section-logo-SchönebergHilft-width: 150px;
+    --homepage-footer-partners-section-logo-SchönebergHilft-height: 150px;
+    --homepage-footer-partners-section-logo-n4d-width: 68px;
+    --homepage-footer-partners-section-logo-n4d-height: 90px;
+    --homepage-footer-partners-section-footer-container-height: 200px;
+    --homepage-footer-partners-section-footer-container-flex-direction: row;
+    --homepage-footer-partners-section-footer-container-justify-content: space-between;
+    --homepage-footer-partners-section-contact-socials-container-flex-direction: row;
+    --homepage-footer-partners-section-contact-socials-container-justify-content: space-between;
+    --homepage-footer-partners-section-contact-socials-container-gap: 110px;
+    --homepage-footer-partners-section-contact-container-gap: 10px;
+    --homepage-footer-partners-section-socials-container-gap: 20px;
+    --homepage-footer-partners-section-footer-links-container-gap: 40px;
+    --homepage-footer-partners-section-footer-links-container-width: 500px;
+    --homepage-footer-partners-section-footer-frame-container-gap: 20px;
+    --homepage-footer-partners-section-p-fontWeight-large: 500;
+    --homepage-footer-partners-section-p-fontWeight-small: 400;
+    --homepage-footer-partners-section-p-fontSize: 18px;
+
+    --homepage-rac-section-container-height: 720px;
+    --homepage-rac-section-content-container-gap: 80px;
+    --homepage-rac-section-content-headLine-container-gap: 24px;
+    --homepage-rac-section-content-headLine2-fontWeight: 700;
+    --homepage-rac-section-content-headLine2-fontSize: 48px;
+    --homepage-rac-section-content-headLine2-lineheight: 48px;
+    --homepage-rac-section-content-headLine2-letterSpacing: 0.1px;
+    --homepage-rac-section-content-buttons-container-flex-direction: row;
+    --homepage-rac-section-content-buttons-container-gap: 16px;
+
+    --homepage-process-section-gap: 80px;
+    --homepage-process-section-header-gap: 40px;
+    --homepage-process-section-video-height: 378px;
+    --homepage-process-section-video-width: 672px;
+    --homepage-process-section-video-border-radius: 8px;
+    --homepage-process-section-video-margin-left: 0;
+    --homepage-process-section-card-flex-direction: column;
+    --homepage-process-section-card-width: 328px;
+    --homepage-process-section-card-height: 330px;
+    --homepage-process-section-card-border-radius: 24px;
+    --homepage-process-section-card-padding: 20px 28px 32px 20px;
+    --homepage-process-section-card-gap: 24px;
+    --homepage-process-section-card-header-flex-direction: row;
+    --homepage-process-section-card-header-gap: 20px;
+    --homepage-process-section-card-week-div-padding: 8px 12px 6px 12px;
+    --homepage-process-section-card-week-div-radius: 4px;
+    --homepage-process-section-card-info-div-gap: 16px;
+    --homepage-process-section-card-info-headline-div-gap: 20px;
+    --homepage-process-section-card-info-bullet-div-padding-left: 8px;
+    --homepage-process-section-card-info-text-div-gap: 28px;
+    --homepage-process-section-card-info-text-fontWeight: 400;
+    --homepage-process-section-card-info-text-fontSize: 16px;
+    --homepage-process-section-card-info-text-lineheight: 20px;
+    --homepage-process-section-card-info-text-letterSpacing: 0px;
+    --homepage-process-section-card-icon-size: 40px;
+    --homepage-process-section-card-last-step-width: 328px;
+
+    --homepage-events-section-container-height: 455px;
+    --homepage-events-section-content-container-gap: 48px;
+    --homepage-events-section-event-container-flex-direction: column;
+    --homepage-events-section-event-container-gap: 48px;
+    --homepage-events-section-event-card-gap: 20px;
+    --homepage-events-section-event-card-headline-gap: 16px;
+    --homepage-events-section-event-card-event-title-tag-padding: 8px 12px;
+    --homepage-events-section-event-card-event-title-tag-border-radius: 8px;
+    --homepage-events-section-button-container-justify-content: end;
+
+    --button-height: 72px;
+    --button-width: fit-content;
+    --button-padding: 16px 36px;
+    --button-border-radius: 125px;
+    --button-text-font-weight: 500;
+    --button-text-font-size: 24px;
+    --button-text-line-height: 25px;
+    --button-text-letter-spacing: 0.13px;
+    --button-text-text-align: center;
+
+    --paginated-cards-visible-cards-container-gap: 20px;
+
+    --numbering-div-width: 32px;
+    --numbering-div-height: 32px;
+    --numbering-div-border-radius: 16.57px;
+
+    --layout-static-page-n4d-logo-width: 230;
+    --layout-static-page-n4d-logo-height: 32;
+    --layout-static-page-header-height: 76px;
+    --layout-static-page-header-padding: 20px 36px;
+    --layout-static-page-header-content-bottom-padding: 100px;
+
+    --opportunities-container-width: 720px;
+    --opportunities-container-min-height: 1700px;
+    --opportunities-container-gap: 40px;
+    --opportunities-container-padding: none;
+    --opportunities-container-padding-inline: 16px;
+    --opportunities-header-title-tabs-gap: 27px;
+    --opportunities-header-tabs-searchbar-gap: 20px;
+    --opportunities-header-tabs-section-width: 688px;
+    --opportunities-header-tabs-gap: 16px;
+    --opportunities-header-tabs-border-bottom: 4px;
+    --opportunities-header-tabs-padding-bottom: 4px;
+    --opportunities-header-result-gap: 10px;
+    --opportunities-header-result-padding: 10px;
+    --opportunities-header-searchbar-width: 466px;
+    --opportunities-header-searchbar-flex-direction: row;
+    --opportunities-map-view-container-height: 300px;
+    --opportunities-cards-container-justify-content: center;
+    --opportunities-filters-button-height: 64px;
+    --opportunities-filters-button-icon-size: 32px;
+    --opportunities-filters-container-width: auto;
+    --opportunities-filters-container-border-bottom-radius: 40px;
+    --opportunities-filters-close-filter-height: 64px;
+    --opportunities-filters-close-filter-gap: 12px;
+    --opportunities-filters-close-filter-padding: 16px 0px 16px 32px;
+    --opportunities-filters-content-container-width: auto;
+    --opportunities-filters-content-container-gap: 16px;
+    --opportunities-filters-content-container-padding: 40px 40px 40px 32px;
+    --opportunities-filters-content-filter-container-gap: 16px;
+    --opportunities-filters-content-accordion-options-gap: 8px;
+    --opportunities-filters-content-accordion-options-max-height: 500px;
+    --opportunities-filters-content-accordion-options-checkbox-height: 18px;
+    --opportunities-filters-content-accordion-group-options-checkbox-height: 16px;
+    --opportunities-filters-content-accordion-group-options-checkbox-labelFontSize: 14px;
+    --opportunities-filters-content-accordion-header-border-top: 1px;
+    --opportunities-filters-content-accordion-header-padding-top: 16px;
+    --opportunities-filters-clear-all-button-padding-bottom: 24px;
+    --opportunities-filters-clear-all-button-icon-size: 24px;
+    --opportunities-filters-clear-all-button-text-font-size: 16px;
+    --opportunities-filters-description-font-size: 14px;
+    --opportunities-filters-description-font-weight: 400;
+
+    --search-container-height: 64px;
+    --search-container-border-radius: 40px;
+    --search-container-padding: 0 32px;
+    --search-input-font-size: 16px;
+
+    --paginated-grid-container-gap: 24px;
+    --paginated-grid-pagination-number-width: 36px;
+    --paginated-grid-pagination-number-height: 44px;
+    --paginated-grid-pagination-number-border-radius: 6px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --max-width-section: 1440px;
+
+    --icon-size: 48px;
+
+    --text-p-font-size: 20px;
+    --text-p-line-height: 24px;
+    --text-p-letter-spacing: 0.1px;
+
+    --text-h1-font-weight: 700;
+    --text-h1-font-size: 32px;
+    --text-h1-line-height: 32px;
+    --text-h1-letter-spacing: 0.1px;
+
+    --text-h4-font-weight: 600;
+    --text-h4-font-size: 20px;
+    --text-h4-line-height: 20px;
+    --text-h4-letter-spacing: 0.1;
+
+    --text-button-font-size: 24px;
+
+    --homepage-section-container-padding: 100px 120px;
+    --homepage-section-container-gap: 56px;
+    --homepage-section-container-footer-justify-content: flex-end;
+
+    --homepage-volunteering-categories-grid-template-columns: repeat(3, 1fr);
+    --homepage-volunteering-categories-grid-template-rows: repeat(2, auto);
+    --homepage-volunteering-categories-grid-gap: 32px;
+    --homepage-volunteering-categories-header-gap: 36px;
+    --homepage-volunteering-category-card-width: 378px;
+    --homepage-volunteering-category-card-height: 350px;
+    --homepage-volunteering-category-card-padding-top: 32px;
+    --homepage-volunteering-category-card-padding-right: 32px;
+    --homepage-volunteering-category-card-padding-bottom: 48px;
+    --homepage-volunteering-category-card-padding-left: 32px;
+    --homepage-volunteering-category-card-gap: 24px;
+
+    --page-opportunity-grid-max-width: 1440px;
+    --page-opportunity-grid-template-columns: 1fr 1fr 1fr 1fr;
+    --page-opportunity-card-width: 310px;
+    --page-opportunity-card-height: auto; /*472px;*/
+    --page-opportunity-popup-card-width: 688px;
+    --page-opportunity-popup-card-height: auto;
+    --page-opportunity-popup-card-x-margins: 36px;
+    --page-opportunity-popup-ctas-gap: 24px;
+    --page-opportunity-popup-ctas-margin-top: 24px;
+
+    --homepage-volunteering-opportunities-grid-template-columns: repeat(3, 1fr);
+    --homepage-volunteering-opportunities-grid-template-rows: auto;
+    --homepage-volunteering-opportunities-grid-gap: 40px;
+    --homepage-volunteering-opportunity-card-width: 372px;
+    --homepage-volunteering-opportunity-card-padding-top: 32px;
+    --homepage-volunteering-opportunity-card-padding-right: 32px;
+    --homepage-volunteering-opportunity-card-padding-bottom: 48px;
+    --homepage-volunteering-opportunity-card-padding-left: 32px;
+    --homepage-volunteering-opportunity-card-gap: 24px;
+    --homepage-volunteering-opportunity-details-gap: 16px;
+
+    --homepage-testimonials-header-gap: 24px;
+    --homepage-testimonial-card-width: 384px;
+    --homepage-testimonial-card-padding-top: 32px;
+    --homepage-testimonial-card-padding-right: 32px;
+    --homepage-testimonial-card-padding-bottom: 48px;
+    --homepage-testimonial-card-padding-left: 32px;
+    --homepage-testimonial-card-gap: 16px;
+    --homepage-testimonial-card-text-p-font-size: 18px;
+    --homepage-testimonial-card-text-p-line-height: 24px;
+
+    --homepage-hero-section-container-height: 790px;
+    --homepage-hero-section-container-gap: 48px;
+    --homepage-hero-section-logo-height: 244;
+    --homepage-hero-section-logo-width: 450;
+    --homepage-hero-section-header-height: 80px;
+    --homepage-hero-section-header-menu-items-flex-direction: row;
+    --homepage-hero-section-header-menu-items-width: 680px;
+    --homepage-hero-section-header-menu-items-gap: 20px;
+    --homepage-hero-section-header-menu-item-fontSize: 16px;
+    --homepage-hero-section-header-menu-item-fontWeight: 600;
+    --homepage-hero-section-header-menu-item-letterSpacing: 0px;
+    --homepage-hero-section-header-menu-item-lineheight: 16px;
+    --homepage-hero-section-language-selection-min-width: 95px;
+    --homepage-hero-section-language-option-button-radius: 4px;
+    --homepage-hero-section-language-option-button-text-color: var(
+      --color-aubergine-light
+    );
+    --homepage-hero-section-content-container-width: 680px;
+    --homepage-hero-section-content-container-height: 485px;
+    --homepage-hero-section-content-hero-text-container-gap: 20px;
+    --homepage-hero-section-content-hero-text-color: var(--color-white);
+    --homepage-hero-section-content-hero-text-fontSize: 48px;
+    --homepage-hero-section-content-hero-text-fontWeight: 600;
+    --homepage-hero-section-content-hero-text-letterSpacing: 0.1px;
+    --homepage-hero-section-content-hero-text-lineheight: 48px;
+    --homepage-hero-section-content-hero-supporting-text-fontSize: 24px;
+    --homepage-hero-section-content-hero-supporting-text-fontWeight: 500;
+    --homepage-hero-section-content-hero-supporting-text-letterSpacing: 0.25px;
+    --homepage-hero-section-content-hero-supporting-text-lineheight: 24px;
+    --homepage-hero-section-content-hero-button-container-gap: 24px;
+    --homepage-hero-section-content-hero-button-container-flex-direction: row;
+
+    --homepage-footer-partners-section-container-height: 570px;
+    --homepage-footer-partners-section-container-padding: 64px 80px;
+    --homepage-footer-partners-section-container-gap: 128px;
+    --homepage-footer-partners-section-partners-container-height: 180px;
+    --homepage-footer-partners-section-partners-container-flex-direction: row;
+    --homepage-footer-partners-section-partners-container-justify-content: space-between;
+    --homepage-footer-partners-section-partners-club-dialog-div-gap: 16px;
+    --homepage-footer-partners-section-logo-club-dialog-width: 316;
+    --homepage-footer-partners-section-logo-club-dialog-height: 58;
+    --homepage-footer-partners-section-logo-berlin-width: 170;
+    --homepage-footer-partners-section-logo-berlin-height: 180;
+    --homepage-footer-partners-section-logo-eu-width: 194px;
+    --homepage-footer-partners-section-logo-eu-height: 180px;
+    --homepage-footer-partners-section-logo-SchönebergHilft-width: 150px;
+    --homepage-footer-partners-section-logo-SchönebergHilft-height: 150px;
+    --homepage-footer-partners-section-logo-n4d-width: 100px;
+    --homepage-footer-partners-section-logo-n4d-height: 132px;
+    --homepage-footer-partners-section-footer-container-height: 260px;
+    --homepage-footer-partners-section-footer-container-flex-direction: row;
+    --homepage-footer-partners-section-footer-container-justify-content: space-between;
+    --homepage-footer-partners-section-contact-socials-container-flex-direction: column;
+    --homepage-footer-partners-section-contact-socials-container-justify-content: unset;
+    --homepage-footer-partners-section-contact-socials-container-gap: 20px;
+    --homepage-footer-partners-section-contact-container-gap: 10px;
+    --homepage-footer-partners-section-socials-container-gap: 20px;
+    --homepage-footer-partners-section-footer-links-container-gap: 100px;
+    --homepage-footer-partners-section-footer-links-container-width: 770px;
+    --homepage-footer-partners-section-footer-frame-container-gap: 20px;
+    --homepage-footer-partners-section-p-fontWeight-large: 500;
+    --homepage-footer-partners-section-p-fontWeight-small: 400;
+    --homepage-footer-partners-section-p-fontSize: 18px;
+
+    --homepage-rac-section-container-height: 720px;
+    --homepage-rac-section-content-container-gap: 80px;
+    --homepage-rac-section-content-headLine-container-gap: 24px;
+    --homepage-rac-section-content-headLine2-fontWeight: 700;
+    --homepage-rac-section-content-headLine2-fontSize: 48px;
+    --homepage-rac-section-content-headLine2-lineheight: 48px;
+    --homepage-rac-section-content-headLine2-letterSpacing: 0.1px;
+    --homepage-rac-section-content-buttons-container-flex-direction: row;
+    --homepage-rac-section-content-buttons-container-gap: 24px;
+
+    --homepage-process-section-gap: 80px;
+    --homepage-process-section-header-gap: 56px;
+    --homepage-process-section-video-height: 562px;
+    --homepage-process-section-video-width: 1000px;
+    --homepage-process-section-video-border-radius: 10px;
+    --homepage-process-section-video-margin-left: 0;
+    --homepage-process-section-card-flex-direction: row;
+    --homepage-process-section-card-width: 880px;
+    --homepage-process-section-card-height: 274px;
+    --homepage-process-section-card-border-radius: 24px;
+    --homepage-process-section-card-padding: 32px 64px 48px 32px;
+    --homepage-process-section-card-gap: 32px;
+    --homepage-process-section-card-header-flex-direction: column;
+    --homepage-process-section-card-header-gap: 20px;
+    --homepage-process-section-card-week-div-padding: 8px 12px 6px 12px;
+    --homepage-process-section-card-week-div-radius: 4px;
+    --homepage-process-section-card-info-div-gap: 20px;
+    --homepage-process-section-card-info-headline-div-gap: 16px;
+    --homepage-process-section-card-info-text-div-gap: 24px;
+    --homepage-process-section-card-info-text-fontWeight: 400;
+    --homepage-process-section-card-info-text-fontSize: 20px;
+    --homepage-process-section-card-info-text-lineheight: 20px;
+    --homepage-process-section-card-info-text-letterSpacing: 0px;
+    --homepage-process-section-card-icon-size: 40px;
+    --homepage-process-section-card-last-step-width: 296px;
+
+    --homepage-events-section-container-height: 400px;
+    --homepage-events-section-content-container-gap: 48px;
+    --homepage-events-section-event-container-flex-direction: row;
+    --homepage-events-section-event-container-gap: 200px;
+    --homepage-events-section-event-card-width: 682px;
+    --homepage-events-section-event-card-gap: 20px;
+    --homepage-events-section-event-card-headline-gap: 16px;
+    --homepage-events-section-event-card-event-title-tag-padding: 8px 12px;
+    --homepage-events-section-event-card-event-title-tag-border-radius: 8px;
+    --homepage-events-section-button-container-justify-content: end;
+
+    --button-height: 72px;
+    --button-width: fit-content;
+    --button-padding: 16px 36px;
+    --button-border-radius: 125px;
+    --button-text-font-weight: 500;
+    --button-text-font-size: 24px;
+    --button-text-line-height: 25px;
+    --button-text-letter-spacing: 0.13px;
+    --button-text-text-align: center;
+
+    --paginated-cards-visible-cards-container-gap: 24px;
+
+    --numbering-div-width: 36px;
+    --numbering-div-height: 36px;
+    --numbering-div-border-radius: 18.64px;
+
+    --layout-static-page-n4d-logo-width: 230;
+    --layout-static-page-n4d-logo-height: 32;
+    --layout-static-page-header-height: 80px;
+    --layout-static-page-header-padding: 20px 36px;
+    --layout-static-page-header-content-bottom-padding: 100px;
+
+    --opportunities-container-width: 1312px;
+    --opportunities-container-min-height: 1800px;
+    --opportunities-container-gap: 40px;
+    --opportunities-container-padding: none;
+    --opportunities-container-padding-inline: 16px;
+    --opportunities-header-title-tabs-gap: 24px;
+    --opportunities-header-tabs-searchbar-gap: 20px;
+    --opportunities-header-tabs-section-width: 980px;
+    --opportunities-header-tabs-gap: 16px;
+    --opportunities-header-tabs-border-bottom: 4px;
+    --opportunities-header-tabs-padding-bottom: 4px;
+    --opportunities-header-result-gap: 10px;
+    --opportunities-header-result-padding: 10px;
+    --opportunities-header-searchbar-width: 980px;
+    --opportunities-header-searchbar-flex-direction: row;
+    --opportunities-map-view-container-height: 300px;
+    --opportunities-cards-container-justify-content: left;
+    --opportunities-filters-button-height: 64px;
+    --opportunities-filters-button-icon-size: 32px;
+    --opportunities-filters-container-width: 320px;
+    --opportunities-filters-container-border-bottom-radius: none;
+    --opportunities-filters-close-filter-height: 64px;
+    --opportunities-filters-close-filter-gap: 12px;
+    --opportunities-filters-close-filter-padding: 16px 0px 16px 32px;
+    --opportunities-filters-content-container-width: 350px;
+    --opportunities-filters-content-container-gap: 16px;
+    --opportunities-filters-content-container-padding: 40px 40px 40px 20px;
+    --opportunities-filters-content-filter-container-gap: 16px;
+    --opportunities-filters-content-accordion-options-gap: 8px;
+    --opportunities-filters-content-accordion-options-max-height: 500px;
+    --opportunities-filters-content-accordion-options-checkbox-height: 18px;
+    --opportunities-filters-content-accordion-group-options-checkbox-height: 16px;
+    --opportunities-filters-content-accordion-group-options-checkbox-labelFontSize: 14px;
+    --opportunities-filters-content-accordion-header-border-top: 1px;
+    --opportunities-filters-content-accordion-header-padding-top: 16px;
+    --opportunities-filters-clear-all-button-padding-bottom: 24px;
+    --opportunities-filters-clear-all-button-icon-size: 24px;
+    --opportunities-filters-clear-all-button-text-font-size: 16px;
+    --opportunities-filters-description-font-size: 14px;
+    --opportunities-filters-description-font-weight: 400;
+
+    --search-container-height: 60px;
+    --search-container-border-radius: 160px;
+    --search-container-padding: 0 32px;
+    --search-input-font-size: 16px;
+
+    --paginated-grid-container-gap: 24px;
+    --paginated-grid-pagination-number-width: 36px;
+    --paginated-grid-pagination-number-height: 44px;
+    --paginated-grid-pagination-number-border-radius: 6px;
+  }
+}
