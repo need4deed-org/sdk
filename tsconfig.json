@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
+
     "target": "es2019",
     "jsx": "react-jsx",
 
     "rootDir": "./src",
+    "outDir": "./dist",
 
     "strict": true,
     "esModuleInterop": true,
@@ -12,6 +15,8 @@
     "forceConsistentCasingInFileNames": true,
 
     "moduleResolution": "node",
+    "declaration": true,
+    "declarationDir": "./dist",
 
     "baseUrl": "./",
     "paths": {
