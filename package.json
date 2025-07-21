@@ -10,8 +10,8 @@
   ],
   "exports": {
     ".": {
-      "require": "./dist/indec.js",
-      "default": "./dist/indec.js"
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./styles/*": "./dist/styles/*",
     "./package.json": "./package.json"
