@@ -4,10 +4,6 @@ body {
   margin: 0;
 }
 
-body * {
-  outline: solid red 1px;
-}
-
 html {
   scroll-behavior: smooth;
 }

@@ -42,9 +42,9 @@
     "url": "https://github.com/need4deed-org/sdk.git"
   },
   "devDependencies": {
-    "typescript": "^5.8.3",
     "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0"
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
