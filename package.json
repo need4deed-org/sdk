@@ -23,7 +23,8 @@
     "watch": "tsc --watch --project tsconfig.cjs.json",
     "prepublishOnly": "yarn build",
     "publish": "yarn publish",
-    "publish:npm": "yarn publish --access public"
+    "publish:npm": "yarn publish --access public",
+    "create-pr": "./create-pr.sh"
   },
   "keywords": [
     "sdk",
