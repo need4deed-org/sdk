@@ -12,45 +12,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          # This token is required to push changes back to the repository (e.g., version bump commit)
-          token: ${{ secrets.GITHUB_TOKEN }} 
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org/'
-
-      - name: Configure Git User
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org/"
 
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Bump patch version
-        run: yarn version --patch --no-git-tag-version --message "Release v%s"
-
-      - name: Get new version from package.json
+      - name: Get version from package.json
         id: get_version
-        run: echo "NEW_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
-
-      - name: Create Git tag
-        run: git tag v${{ steps.get_version.outputs.NEW_VERSION }}
-
-      - name: Commit version bump and push changes
-        run: |
-          git add package.json
-          git commit -m "Bump version to ${{ steps.get_version.outputs.NEW_VERSION }}"
-          git push origin main
-          git push origin v${{ steps.get_version.outputs.NEW_VERSION }}
+        run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Publish to npm
-        run: yarn publish --non-interactive --new-version ${{ steps.get_version.outputs.NEW_VERSION }}
+        run: yarn publish --non-interactive --new-version ${{ steps.get_version.outputs.PACKAGE_VERSION }}
         env:
-          # NPM_TOKEN is a secret that holds your npm authentication token
-          # You need to set this up in your GitHub repository settings under Secrets and variables -> Actions
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
