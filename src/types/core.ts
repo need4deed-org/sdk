@@ -4,7 +4,7 @@ export enum Lang {
 }
 
 export enum LangProficiency {
-  BEGINER = "beginer",
+  BEGINNER = "beginner",
   INTERMEDIATE = "intermediate",
   ADVANCED = "advanced",
   FLUENT = "fluent",
