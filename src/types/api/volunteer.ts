@@ -1,4 +1,7 @@
-import { OptionId } from "./common";
+import { DocumentStatusType } from "../core";
+import { Option, OptionId } from "./common";
+import { Address } from "./location";
+import { Availability, TimedText } from "./time";
 
 export interface Volunteer {
   origin_opportunity: number | undefined;
@@ -17,4 +20,31 @@ export interface Volunteer {
   fluent_languages: OptionId[];
   intermediate_languages: OptionId[];
   comments: string;
+}
+
+export interface ApiVolunteerGetList {
+  name: string;
+  nativeLanguages: string[];
+  fluentLanguages: string[];
+  intermediateLanguages: string[];
+  availability: Availability[];
+  activities: string[];
+  skills: string[];
+  locations: string[];
+}
+
+export interface ApiVolunteerGet extends ApiVolunteerGetList {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  address: Address;
+  goodConductCertificate: DocumentStatusType;
+  measlesVaccination: DocumentStatusType;
+  infoAbout: string;
+  infoExperience: string;
+  timelineLogs: TimedText[];
+  comments: TimedText[];
+  opportunitiesApplied: Option[];
+  opportunitiesMatched: Option[];
 }
