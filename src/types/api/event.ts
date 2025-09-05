@@ -4,6 +4,7 @@ export enum EventN4DType {
 }
 
 export interface EventN4D {
+  id: number | string;
   active: boolean;
   title: string;
   subTitle?: string;
