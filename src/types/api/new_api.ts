@@ -1,4 +1,5 @@
 import { LangProficiency } from "../core";
+import { LocationType } from "./location";
 
 export interface VolunteerAPI {
   id: string;
@@ -74,12 +75,6 @@ export interface LanguageAPI {
 export interface SkillAPI {
   id: string;
   title: string;
-}
-
-export enum LocationType {
-  ADDRESS = "address",
-  DISTRICT = "district",
-  POSTCODE = "postcode",
 }
 
 export interface LocationAPI {
