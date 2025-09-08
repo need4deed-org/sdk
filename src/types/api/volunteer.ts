@@ -1,4 +1,4 @@
-import { DocumentStatusType } from "../core";
+import { DocumentStatusType, Id } from "../core";
 import { Option, OptionId } from "./common";
 import { Address } from "./location";
 import { Availability, TimedText } from "./time";
@@ -19,6 +19,25 @@ export interface Volunteer {
   native_languages: OptionId[];
   fluent_languages: OptionId[];
   intermediate_languages: OptionId[];
+  comments: string;
+}
+
+export interface VolunteerFormData {
+  opportunityId?: Id | undefined;
+  fullName: string;
+  phone: string;
+  email: string;
+  postalCode: number;
+  goodConductCertificate: DocumentStatusType;
+  measlesVaccination: DocumentStatusType;
+  leadFrom: string;
+  schedule: [number, OptionId][];
+  preferredDistricts: OptionId[];
+  activities: OptionId[];
+  skills: OptionId[];
+  nativeLanguages: OptionId[];
+  fluentLanguages: OptionId[];
+  intermediateLanguages: OptionId[];
   comments: string;
 }
 
