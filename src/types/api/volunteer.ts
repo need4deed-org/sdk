@@ -1,5 +1,6 @@
 import { DocumentStatusType, Id } from "../core";
 import { Option, OptionId } from "./common";
+import { ApiLanguage } from "./language";
 import { Address } from "./location";
 import { Availability, TimedText } from "./time";
 
@@ -16,9 +17,9 @@ export interface Volunteer {
   preferred_berlin_locations: OptionId[];
   activities: OptionId[];
   skills: OptionId[];
-  native_languages: OptionId[];
-  fluent_languages: OptionId[];
-  intermediate_languages: OptionId[];
+  nativeLanguages: OptionId[];
+  fluentLanguages: OptionId[];
+  intermediateLanguages: OptionId[];
   comments: string;
 }
 
@@ -27,17 +28,15 @@ export interface VolunteerFormData {
   fullName: string;
   phone: string;
   email: string;
-  postalCode: number;
+  postcode: number;
   goodConductCertificate: DocumentStatusType;
   measlesVaccination: DocumentStatusType;
   leadFrom: string;
   schedule: [number, OptionId][];
-  preferredDistricts: OptionId[];
+  districts: OptionId[];
+  languages: ApiLanguage[];
   activities: OptionId[];
   skills: OptionId[];
-  nativeLanguages: OptionId[];
-  fluentLanguages: OptionId[];
-  intermediateLanguages: OptionId[];
   comments: string;
 }
 
