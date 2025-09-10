@@ -42,9 +42,7 @@ export interface VolunteerFormData {
 
 export interface ApiVolunteerGetList {
   name: string;
-  nativeLanguages: string[];
-  fluentLanguages: string[];
-  intermediateLanguages: string[];
+  languages: ApiLanguage[];
   availability: Availability[];
   activities: string[];
   skills: string[];
