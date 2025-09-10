@@ -31,12 +31,12 @@ export interface VolunteerFormData {
   postcode: number;
   goodConductCertificate: DocumentStatusType;
   measlesVaccination: DocumentStatusType;
-  leadFrom: string;
   schedule: [number, OptionId][];
   districts: OptionId[];
   languages: ApiLanguage[];
   activities: OptionId[];
   skills: OptionId[];
+  leadFrom: OptionId[];
   comments: string;
 }
 
