@@ -1,5 +1,6 @@
 export * from "./common";
 export * from "./event";
+export * from "./language";
 export * from "./location";
 export * from "./new_api";
 export * from "./opportunity";
