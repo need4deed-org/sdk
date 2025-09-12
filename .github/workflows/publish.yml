@@ -1,9 +1,7 @@
 name: Publish on Merge to Main
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch: 
 
 jobs:
   publish:
@@ -22,11 +20,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Get version from package.json
-        id: get_version
-        run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
-
       - name: Publish to npm
-        run: yarn publish --non-interactive --new-version ${{ steps.get_version.outputs.PACKAGE_VERSION }}
+        run: yarn publish --non-interactive
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
