@@ -16,8 +16,14 @@ export enum ByDay {
   SU = "Sunday",
 }
 
-export type Occasionally = "occasionally";
-export type OccasionalDays = "weekends" | "weekdays";
+export enum Occasionally {
+  OCCASIONALLY = "occasionally",
+}
+
+export enum OccasionalType {
+  WEEKENDS = "weekends",
+  WEEKDAYS = "weekdays",
+}
 
 export enum Hour {
   H00 = "0:00",
@@ -47,18 +53,11 @@ export enum Hour {
   H24 = "24:00",
 }
 
-export type Daytime = [Hour, Hour] | OccasionalDays;
+export type Daytime = [Hour, Hour] | [OccasionalType];
 
 export interface Availability {
   day: ByDay | Occasionally;
   daytime: Daytime;
-}
-
-export enum OccasionalType {
-  UNDEFINED = "undefined",
-  WEEKENDS = "weekends",
-  WEEKDAYS = "weekdays",
-  OCCASIONALLY = "occasionally",
 }
 
 export interface TimedText {

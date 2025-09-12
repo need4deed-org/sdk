@@ -24,7 +24,7 @@ export interface Volunteer {
 }
 
 export interface VolunteerFormData {
-  opportunityId?: Id | undefined;
+  opportunityId?: Id;
   fullName: string;
   phone: string;
   email: string;
@@ -41,6 +41,7 @@ export interface VolunteerFormData {
 }
 
 export interface ApiVolunteerGetList {
+  id: number;
   name: string;
   languages: ApiLanguage[];
   availability: Availability[];

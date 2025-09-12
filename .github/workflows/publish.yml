@@ -1,9 +1,7 @@
 name: Publish on Merge to Main
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch: 
 
 jobs:
   publish:
@@ -22,9 +20,12 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+<<<<<<< HEAD
+=======
       - name: Bump version
         run: yarn version --patch --no-git-tag-version
 
+>>>>>>> main
       - name: Publish to npm
         run: yarn publish --non-interactive
         env:
