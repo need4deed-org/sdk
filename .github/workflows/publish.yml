@@ -22,11 +22,10 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Get version from package.json
-        id: get_version
-        run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      - name: Bump version
+        run: yarn version --patch --no-git-tag-version
 
       - name: Publish to npm
-        run: yarn publish --non-interactive --new-version ${{ steps.get_version.outputs.PACKAGE_VERSION }}
+        run: yarn publish --non-interactive
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
