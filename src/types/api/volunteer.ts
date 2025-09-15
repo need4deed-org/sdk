@@ -43,6 +43,7 @@ export interface VolunteerFormData {
 export interface ApiVolunteerGetList {
   id: number;
   name: string;
+  avatarUrl: string;
   languages: ApiLanguage[];
   availability: Availability[];
   activities: string[];
