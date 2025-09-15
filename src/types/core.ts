@@ -32,6 +32,12 @@ export enum DocumentStatusType {
   APPLIED_N4D = "applied_n4d",
 }
 
+export enum TimedTextType {
+  CREATE = "create",
+  UPDATE = "update",
+  REMOVE = "remove",
+}
+
 export type Id = string | number;
 
 export type SomeType = "some" | "type";
