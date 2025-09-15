@@ -1,3 +1,5 @@
+import { TimedTextType } from "../core";
+
 export interface Time {
   id: string;
   description: string;
@@ -62,5 +64,6 @@ export interface Availability {
 
 export interface TimedText {
   date: Date;
+  type: TimedTextType;
   text: string;
 }
