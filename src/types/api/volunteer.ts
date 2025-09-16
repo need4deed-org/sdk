@@ -1,4 +1,4 @@
-import { DocumentStatusType, Id } from "../core";
+import { DocumentStatusType, Id, VolunteerStateType } from "../core";
 import { Option, OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { Address } from "./location";
@@ -42,7 +42,9 @@ export interface VolunteerFormData {
 
 export interface ApiVolunteerGetList {
   id: number;
+  status: VolunteerStateType;
   name: string;
+  avatarUrl: string;
   languages: ApiLanguage[];
   availability: Availability[];
   activities: string[];
