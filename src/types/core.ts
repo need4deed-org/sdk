@@ -47,7 +47,7 @@ export enum VolunteerStateType {
   ACTIVE_REGULAR="Active regular",
   ACTIVE_ACCOMPANY="Active accompany",
   ACTIVE_FEST="Active fest",
-  TO_MATCH="To rematch",
+  TO_REMATCH="To rematch",
   TEMP_INACTIVE="Temp inactive",
   INACTIVE="Inactive",
 }
