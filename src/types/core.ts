@@ -40,7 +40,7 @@ export enum TimedTextType {
 
 export type Id = string | number;
 
-enum VolunteerStateType {
+export enum VolunteerStateType {
   NEW="new",
   MATCHED="matched",
   ACTIVE="active",
