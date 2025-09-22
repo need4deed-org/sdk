@@ -52,4 +52,9 @@ export enum VolunteerStateType {
   INACTIVE="Inactive",
 }
 
+export enum SortOrder {
+  NewToOld = "new-old`",
+  OldToNew = "old-new",
+}
+
 export type SomeType = "some" | "type";
