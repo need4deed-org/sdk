@@ -1,4 +1,5 @@
 import { OptionId } from "./common";
+import { ApiLanguage } from "./language";
 
 export enum OpportunityType {
   GENERAL = "volunteering",
@@ -37,3 +38,14 @@ export interface Opportunity {
   category_id: OptionId;
   last_edited_time_notion?: string;
 }
+
+export interface ApiOpportunityGetList {
+  title: string;
+  type: OpportunityType;
+  languages: ApiLanguage[];
+  activities: string[];
+  skills: string[];
+  location: string[];
+}
+
+export interface AliOpportunityGet extends ApiOpportunityGetList {}
