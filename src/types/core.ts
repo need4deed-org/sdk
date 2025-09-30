@@ -11,6 +11,12 @@ export enum LangProficiency {
   NATIVE = "native",
 }
 
+export enum LangPurpose {
+  GENERAL = "general",
+  TRANSLATION = "translation",
+  RECIPIENT = "recipient",
+}
+
 export enum HttpMethod {
   GET = "GET",
   HEAD = "HEAD",

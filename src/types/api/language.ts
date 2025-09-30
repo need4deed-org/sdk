@@ -1,6 +1,7 @@
-import { LangProficiency } from "../core";
+import { LangProficiency, LangPurpose } from "../core";
 
 export interface ApiLanguage {
   title: string;
-  proficiency: LangProficiency;
+  proficiency?: LangProficiency;
+  purpose?: LangPurpose;
 }
