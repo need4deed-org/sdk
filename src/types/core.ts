@@ -64,3 +64,8 @@ export enum SortOrder {
 }
 
 export type SomeType = "some" | "type";
+
+export enum QueryParams {
+  Language = "language",
+  Search = "search",
+}
