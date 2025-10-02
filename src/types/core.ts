@@ -69,3 +69,14 @@ export enum QueryParams {
   Language = "language",
   Search = "search",
 }
+
+export enum EntityTableName {
+  NONE = "none",
+  ACTIVITY = "activity",
+  SKILL = "skill",
+  CATEGORY = "category",
+  LANGUAGE = "language",
+  LEAD = "lead_from",
+  DISTRICT = "district",
+}
+
