@@ -4,6 +4,7 @@ export * from "./language";
 export * from "./location";
 export * from "./new_api";
 export * from "./opportunity";
+export * from "./option";
 export * from "./testimonial";
 export * from "./time";
 export * from "./volunteer";
