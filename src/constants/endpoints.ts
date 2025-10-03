@@ -3,4 +3,5 @@ export enum Endpoint {
   EVENT = "/event",
   TESTIMONIAL = "/testimonial",
   VOLUNTEER = "/volunteer",
+  OPTION = "/option",
 }
