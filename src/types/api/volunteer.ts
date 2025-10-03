@@ -68,5 +68,5 @@ export interface ApiVolunteerGet extends ApiVolunteerGetList {
   opportunitiesMatched: Option[];
 }
 
-export interface VolunteerPatchBodyData extends ApiVolunteerGet {}
+export interface VolunteerPatchBodyData extends Partial<ApiVolunteerGet> {}
 
