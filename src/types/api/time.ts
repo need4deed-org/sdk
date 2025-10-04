@@ -57,7 +57,7 @@ export enum Hour {
 
 export type Daytime = [Hour, Hour] | [OccasionalType];
 
-export interface Availability {
+export interface Availability extends Time {
   day: ByDay | Occasionally;
   daytime: Daytime;
 }
