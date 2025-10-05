@@ -43,6 +43,8 @@ export enum TimedTextType {
   UPDATE = "update",
   REMOVE = "remove",
   COMMENT = "comment",
+  STATUS = "status",
+  MATCHING = "matching",
 }
 
 export type Id = string | number;
@@ -81,8 +83,3 @@ export enum EntityTableName {
   DISTRICT = "district",
 }
 
-export enum TimedTextType {
-  COMMENT = "comment",
-  STATUS = "status",
-  MATCHING = "matching",
-}
