@@ -64,6 +64,6 @@ export interface Availability extends Time {
 
 export interface TimedText {
   id: number;
-  contentType: TimedTextType;
+  timestamp: Date;
   content: string;
 }
