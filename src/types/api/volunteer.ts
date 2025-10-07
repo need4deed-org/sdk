@@ -57,6 +57,8 @@ export interface ApiVolunteerGet extends ApiVolunteerGetList {
   lastName: string;
   phone: string;
   email: string;
+  createdAt: Date;
+  updatedAt: Date;
   address: Address;
   goodConductCertificate: DocumentStatusType;
   measlesVaccination: DocumentStatusType;
