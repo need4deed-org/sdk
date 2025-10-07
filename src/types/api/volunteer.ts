@@ -1,7 +1,8 @@
 import { DocumentStatusType, Id, VolunteerStateType } from "../core";
-import { Option, OptionId } from "./common";
+import { OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { Address } from "./location";
+import { OptionItem } from "./option";
 import { Availability, TimedText } from "./time";
 
 export interface Volunteer {
@@ -52,7 +53,12 @@ export interface ApiVolunteerGetList {
   locations: string[];
 }
 
-export interface ApiVolunteerGet extends ApiVolunteerGetList {
+export interface ApiVolunteerGet {
+  id: number;
+  status: VolunteerStateType;
+  personId: number;
+  avatarUrl: string;
+  name: string;
   firstName: string;
   lastName: string;
   phone: string;
@@ -66,8 +72,13 @@ export interface ApiVolunteerGet extends ApiVolunteerGetList {
   infoExperience: string;
   timelineLogs: TimedText[];
   comments: TimedText[];
-  opportunitiesApplied: Option[];
-  opportunitiesMatched: Option[];
+  opportunitiesApplied: OptionItem[];
+  opportunitiesMatched: OptionItem[];
+  languages: ApiLanguage[];
+  availability: Availability[];
+  activities: OptionItem[];
+  skills: OptionItem[];
+  locations: OptionItem[];
 }
 
 export interface VolunteerPatchBodyData extends Partial<ApiVolunteerGet> {}
