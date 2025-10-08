@@ -64,7 +64,7 @@ export enum VolunteerStateType {
 export enum VolunteerStateEngagementType {
   NEW = "new",
   ACTIVE = "active",
-  TEMP_INACTIVE = "temp-inactice",
+  TEMP_INACTIVE = "temp-inactive",
   INACTIVE = "inactive",
 }
 
