@@ -1,4 +1,14 @@
-import { DocumentStatusType, Id, VolunteerStateType } from "../core";
+import {
+  DocumentStatusType,
+  Id,
+  VolunteerStateAppreciationType,
+  VolunteerStateCGCType,
+  VolunteerStateCommunicationType,
+  VolunteerStateEngagementType,
+  VolunteerStateMatchType,
+  VolunteerStateType,
+  VolunteerStateTypeType,
+} from "../core";
 import { OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { Address } from "./location";
@@ -56,6 +66,12 @@ export interface ApiVolunteerGetList {
 export interface ApiVolunteerGet {
   id: number;
   status: VolunteerStateType;
+  statusEngagement: VolunteerStateEngagementType;
+  statusCommunication: VolunteerStateCommunicationType;
+  statusAppreciation: VolunteerStateAppreciationType;
+  statusType: VolunteerStateTypeType;
+  statusMatch: VolunteerStateMatchType;
+  statusCgcProcess: VolunteerStateCGCType;
   personId: number;
   avatarUrl: string;
   name: string;
@@ -82,4 +98,3 @@ export interface ApiVolunteerGet {
 }
 
 export interface VolunteerPatchBodyData extends Partial<ApiVolunteerGet> {}
-
