@@ -73,7 +73,7 @@ export enum VolunteerStateCommunicationType {
   EMAIL_SENT = "email-sent",
   BRIEFED = "briefed",
   TRIED_CALL = "tried-call",
-  NOT_RESPONDING = "not-reponding",
+  NOT_RESPONDING = "not-responding",
 }
 
 export enum VolunteerStateAppreciationType {
