@@ -64,8 +64,10 @@ export enum VolunteerStateType {
 export enum VolunteerStateEngagementType {
   NEW = "new",
   ACTIVE = "active",
-  TEMP_INACTIVE = "temp-inactive",
+  AVAILABLE = "available",
+  TEMP_UNAVAILABLE = "temp-unavailable",
   INACTIVE = "inactive",
+  UNRESPONSIVE = "unresponsive",
 }
 
 export enum VolunteerStateCommunicationType {
