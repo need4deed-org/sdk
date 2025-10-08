@@ -86,7 +86,10 @@ export enum VolunteerStateAppreciationType {
 
 export enum VolunteerStateTypeType {
   ACCOMPANYING = "accompanying",
-  OTHER = "other",
+  GENERAL = "general",
+  EVENT = "event",
+  FESTIVAL = "festival",
+  WEEKEND_ONLY = "weekend-only",
 }
 
 export enum VolunteerStateMatchType {
