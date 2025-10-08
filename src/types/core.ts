@@ -61,6 +61,42 @@ export enum VolunteerStateType {
   INACTIVE = "Inactive",
 }
 
+export enum VolunteerStateEngagementType {
+  NEW = "new",
+  ACTIVE = "active",
+  TEMP_INACTIVE = "temp-inactice",
+  INACTIVE = "inactive",
+}
+
+export enum VolunteerStateCommunicationType {
+  CALLED = "called",
+  EMAIL_SENT = "email-sent",
+  BRIEFED = "briefed",
+  TRIED_CALL = "tried-call",
+  NOT_RESPONDING = "not-reponding",
+}
+
+export enum VolunteerStateAppreciationType {
+  T_SHIRT = "t-shirt",
+  BENEFIT_CARD = "benefit-card",
+  TOTE_BAG = "tote-bag",
+}
+
+export enum VolunteerStateTypeType {
+  ACCOMPANYING = "accompanying",
+  OTHER = "other",
+}
+
+export enum VolunteerStateMatchType {
+  MATCHED = "matched",
+  NEEDS_REMATCHING = "needs-rematching",
+}
+
+export enum VolunteerStateCGCType {
+  UPLOADED = "uploaded",
+  MISSING = "missing",
+}
+
 export enum SortOrder {
   NewToOld = "new-old",
   OldToNew = "old-new",
