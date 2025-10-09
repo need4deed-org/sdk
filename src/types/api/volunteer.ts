@@ -77,6 +77,7 @@ export interface ApiVolunteerGet {
   name: string;
   firstName: string;
   lastName: string;
+  middleName: string;
   phone: string;
   email: string;
   createdAt: Date;
