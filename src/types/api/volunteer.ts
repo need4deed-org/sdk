@@ -11,8 +11,8 @@ import {
 } from "../core";
 import { OptionId } from "./common";
 import { ApiLanguage } from "./language";
-import { Address } from "./location";
 import { OptionItem } from "./option";
+import { ApiPersonGet } from "./person";
 import { Availability, TimedText } from "./time";
 
 export interface Volunteer {
@@ -65,6 +65,7 @@ export interface ApiVolunteerGetList {
 
 export interface ApiVolunteerGet {
   id: number;
+  person: ApiPersonGet;
   status: VolunteerStateType;
   statusEngagement: VolunteerStateEngagementType;
   statusCommunication: VolunteerStateCommunicationType;
@@ -72,17 +73,8 @@ export interface ApiVolunteerGet {
   statusType: VolunteerStateTypeType;
   statusMatch: VolunteerStateMatchType;
   statusCgcProcess: VolunteerStateCGCType;
-  personId: number;
-  avatarUrl: string;
-  name: string;
-  firstName: string;
-  lastName: string;
-  middleName: string;
-  phone: string;
-  email: string;
   createdAt: Date;
   updatedAt: Date;
-  address: Address;
   goodConductCertificate: DocumentStatusType;
   measlesVaccination: DocumentStatusType;
   infoAbout: string;
