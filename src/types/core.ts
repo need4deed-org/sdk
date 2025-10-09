@@ -86,15 +86,17 @@ export enum VolunteerStateAppreciationType {
 
 export enum VolunteerStateTypeType {
   ACCOMPANYING = "accompanying",
-  GENERAL = "general",
+  REGULAR = "regular",
   EVENT = "event",
   FESTIVAL = "festival",
   WEEKEND_ONLY = "weekend-only",
 }
 
 export enum VolunteerStateMatchType {
+  NO_MATCHES = "no-matches",
+  PENDING_MATCH = "pending_match",
   MATCHED = "matched",
-  NEEDS_REMATCHING = "needs-rematching",
+  NEEDS_REMATCH = "needs-rematch",
 }
 
 export enum VolunteerStateCGCType {
