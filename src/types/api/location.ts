@@ -1,12 +1,12 @@
 export interface Address {
-  id: string;
+  id: number;
   street: string;
   city: string;
   postcode: Postcode;
 }
 
 export interface Postcode {
-  id: string;
+  id: number;
   code: string;
   latitude: number;
   longitude: number;

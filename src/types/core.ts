@@ -42,6 +42,9 @@ export enum TimedTextType {
   CREATE = "create",
   UPDATE = "update",
   REMOVE = "remove",
+  COMMENT = "comment",
+  STATUS = "status",
+  MATCHING = "matching",
 }
 
 export type Id = string | number;
@@ -56,6 +59,49 @@ export enum VolunteerStateType {
   TO_REMATCH = "To rematch",
   TEMP_INACTIVE = "Temp inactive",
   INACTIVE = "Inactive",
+}
+
+export enum VolunteerStateEngagementType {
+  NEW = "new",
+  ACTIVE = "active",
+  AVAILABLE = "available",
+  TEMP_UNAVAILABLE = "temp-unavailable",
+  INACTIVE = "inactive",
+  UNRESPONSIVE = "unresponsive",
+}
+
+export enum VolunteerStateCommunicationType {
+  CALLED = "called",
+  EMAIL_SENT = "email-sent",
+  BRIEFED = "briefed",
+  TRIED_CALL = "tried-call",
+  NOT_RESPONDING = "not-responding",
+}
+
+export enum VolunteerStateAppreciationType {
+  T_SHIRT = "t-shirt",
+  BENEFIT_CARD = "benefit-card",
+  TOTE_BAG = "tote-bag",
+}
+
+export enum VolunteerStateTypeType {
+  ACCOMPANYING = "accompanying",
+  REGULAR = "regular",
+  EVENT = "event",
+  FESTIVAL = "festival",
+  WEEKEND_ONLY = "weekend-only",
+}
+
+export enum VolunteerStateMatchType {
+  NO_MATCHES = "no-matches",
+  PENDING_MATCH = "pending_match",
+  MATCHED = "matched",
+  NEEDS_REMATCH = "needs-rematch",
+}
+
+export enum VolunteerStateCGCType {
+  UPLOADED = "uploaded",
+  MISSING = "missing",
 }
 
 export enum SortOrder {
@@ -78,5 +124,6 @@ export enum EntityTableName {
   LANGUAGE = "language",
   LEAD = "lead_from",
   DISTRICT = "district",
+  VOLUNTEER = "volunteer",
 }
 

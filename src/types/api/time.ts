@@ -58,12 +58,13 @@ export enum Hour {
 export type Daytime = [Hour, Hour] | [OccasionalType];
 
 export interface Availability extends Time {
+  timeslotId: number;
   day: ByDay | Occasionally;
   daytime: Daytime;
 }
 
 export interface TimedText {
-  date: Date;
-  type: TimedTextType;
-  text: string;
+  id: number;
+  timestamp: Date;
+  content: string;
 }

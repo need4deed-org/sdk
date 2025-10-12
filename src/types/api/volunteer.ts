@@ -1,7 +1,18 @@
-import { DocumentStatusType, Id, VolunteerStateType } from "../core";
-import { Option, OptionId } from "./common";
+import {
+  DocumentStatusType,
+  Id,
+  VolunteerStateAppreciationType,
+  VolunteerStateCGCType,
+  VolunteerStateCommunicationType,
+  VolunteerStateEngagementType,
+  VolunteerStateMatchType,
+  VolunteerStateType,
+  VolunteerStateTypeType,
+} from "../core";
+import { OptionId } from "./common";
 import { ApiLanguage } from "./language";
-import { Address } from "./location";
+import { OptionItem } from "./option";
+import { ApiPersonGet } from "./person";
 import { Availability, TimedText } from "./time";
 
 export interface Volunteer {
@@ -52,21 +63,31 @@ export interface ApiVolunteerGetList {
   locations: string[];
 }
 
-export interface ApiVolunteerGet extends ApiVolunteerGetList {
-  firstName: string;
-  lastName: string;
-  phone: string;
-  email: string;
-  address: Address;
+export interface ApiVolunteerGet {
+  id: number;
+  person: ApiPersonGet;
+  status: VolunteerStateType;
+  statusEngagement: VolunteerStateEngagementType;
+  statusCommunication: VolunteerStateCommunicationType;
+  statusAppreciation: VolunteerStateAppreciationType;
+  statusType: VolunteerStateTypeType;
+  statusMatch: VolunteerStateMatchType;
+  statusCgcProcess: VolunteerStateCGCType;
+  createdAt: Date;
+  updatedAt: Date;
   goodConductCertificate: DocumentStatusType;
   measlesVaccination: DocumentStatusType;
   infoAbout: string;
   infoExperience: string;
   timelineLogs: TimedText[];
   comments: TimedText[];
-  opportunitiesApplied: Option[];
-  opportunitiesMatched: Option[];
+  opportunitiesApplied: OptionItem[];
+  opportunitiesMatched: OptionItem[];
+  languages: ApiLanguage[];
+  availability: Availability[];
+  activities: OptionItem[];
+  skills: OptionItem[];
+  locations: OptionItem[];
 }
 
 export interface VolunteerPatchBodyData extends Partial<ApiVolunteerGet> {}
-
