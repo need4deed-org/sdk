@@ -58,9 +58,9 @@ export interface ApiVolunteerGetList {
   avatarUrl: string;
   languages: ApiLanguage[];
   availability: Availability[];
-  activities: string[];
-  skills: string[];
-  locations: string[];
+  activities: OptionItem[];
+  skills: OptionItem[];
+  locations: OptionItem[];
 }
 
 export interface ApiVolunteerGet {
