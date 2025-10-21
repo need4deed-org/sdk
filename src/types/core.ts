@@ -127,3 +127,17 @@ export enum EntityTableName {
   VOLUNTEER = "volunteer",
 }
 
+export enum QueryParamsKeys {
+  ACCOMPANYING = "accompanying",
+  AVAILABILITY = "availability",
+  DISTRICT = "district",
+  ENGAGEMENT = "engagement",
+  GERMAN = "german",
+  LANGUAGE = "language",
+  LANGUAGES = "languages",
+  LIMIT = "limit",
+  ORDER = "order",
+  PAGE = "page",
+  SEARCH = "search",
+}
+
