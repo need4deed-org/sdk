@@ -68,3 +68,10 @@ export interface TimedText {
   timestamp: Date;
   content: string;
 }
+
+export enum TimeSlot {
+  morning = "08-11",
+  noon = "11-14",
+  afternoon = "14-17",
+  evening = "17-20",
+}
