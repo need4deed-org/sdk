@@ -53,8 +53,8 @@ export interface VolunteerFormData {
 
 export interface ApiVolunteerGetList {
   id: number;
-  stateEngagement: VolunteerStateEngagementType;
-  stateType: VolunteerStateTypeType;
+  statusEngagement: VolunteerStateEngagementType;
+  statusType: VolunteerStateTypeType;
   name: string;
   avatarUrl: string;
   languages: ApiLanguage[];
