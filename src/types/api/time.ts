@@ -67,6 +67,7 @@ export interface TimedText {
   id: number;
   timestamp: Date;
   content: string;
+  authorName: string;
 }
 
 export enum TimeSlot {
