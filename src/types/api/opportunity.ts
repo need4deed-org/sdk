@@ -1,5 +1,6 @@
 import { OptionId } from "./common";
 import { ApiLanguage } from "./language";
+import { VolunteerStateTypeType } from "./volunteer";
 
 export enum OpportunityType {
   GENERAL = "volunteering",
@@ -10,6 +11,25 @@ export enum TranslatedIntoType {
   DEUTSCHE = "deutsche",
   ENGLISH_OK = "englishOk",
   NO_TRANSLATION = "noTranslation",
+}
+
+export enum OpportunityStatusType {
+  NEW = "new",
+  ACTIVE = "active",
+  PAST = "past"
+}
+
+export enum OpportunityMatchStatus {
+  MATCHED = "matched",
+  NEED_REMATCH = "need_rematch",
+  UNMATCHED = "unmatched"
+}
+
+export enum OpportunityVolunteerStatusType{
+  SUGGESTED = "suggested",
+  MATCHED = "matched",
+  ACTIVE = "active",
+  PAST = "past"
 }
 
 export interface Opportunity {
@@ -41,11 +61,14 @@ export interface Opportunity {
 
 export interface ApiOpportunityGetList {
   title: string;
-  type: OpportunityType;
+  volunteerType: VolunteerStateTypeType;
+  statusOpportunity: OpportunityStatusType;
   languages: ApiLanguage[];
   activities: string[];
   skills: string[];
   location: string[];
 }
 
-export interface AliOpportunityGet extends ApiOpportunityGetList {}
+export interface AliOpportunityGet extends ApiOpportunityGetList {
+  statusMatch: OpportunityMatchStatus; 
+}
