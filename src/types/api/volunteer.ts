@@ -81,7 +81,6 @@ export enum VolunteerStateCGCType {
   MISSING = "missing",
 }
 
-
 export enum VolunteerStateType {
   NEW = "New",
   OPPORTUNITY_SENT = "Opportunity sent",
