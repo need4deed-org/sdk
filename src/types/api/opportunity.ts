@@ -1,3 +1,4 @@
+import { Id } from "..";
 import { OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { VolunteerStateTypeType } from "./volunteer";
@@ -60,15 +61,15 @@ export interface Opportunity {
 }
 
 export interface ApiOpportunityGetList {
+  id: Id;
   title: string;
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
+}
+
+export interface ApiOpportunityGet extends ApiOpportunityGetList {
   languages: ApiLanguage[];
   activities: string[];
   skills: string[];
   location: string[];
-}
-
-export interface AliOpportunityGet extends ApiOpportunityGetList {
-  statusMatch: OpportunityMatchStatus; 
 }
