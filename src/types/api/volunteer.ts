@@ -1,9 +1,4 @@
-import {
-  DocumentStatusType,
-  Id,
-  VolunteerStateMatchType,
-  VolunteerStateType,
-} from "../core";
+import { DocumentStatusType, Id } from "../core";
 import { OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { ApiOpportunityGetList } from "./opportunity";
