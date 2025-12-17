@@ -130,6 +130,7 @@ export interface ApiVolunteerGet {
   statusType: VolunteerStateTypeType;
   statusMatch: VolunteerStateMatchType;
   statusCgcProcess: VolunteerStateCGCType;
+  preferredCommunicationType: VolunteerCommunicationType;
   createdAt: Date;
   updatedAt: Date;
   goodConductCertificate: DocumentStatusType;
