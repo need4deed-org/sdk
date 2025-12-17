@@ -68,6 +68,13 @@ export enum VolunteerStateMatchType {
   NEEDS_REMATCH = "needs-rematch",
 }
 
+export enum VolunteerCommunicationType {
+    EMAIL = "email",
+    MOBILE_PHONE = "mobilePhone",
+    WHATSAPP = "whatsapp",
+    TELEGRAM = "telegram"
+}
+
 export enum SortOrder {
   NewToOld = "new-old",
   OldToNew = "old-new",
