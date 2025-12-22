@@ -1,9 +1,4 @@
-import {
-  DocumentStatusType,
-  Id,
-  VolunteerStateMatchType,
-  VolunteerStateType,
-} from "../core";
+import { DocumentStatusType, Id } from "../core";
 import { OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { ApiOpportunityGetList } from "./opportunity";
@@ -130,6 +125,7 @@ export interface ApiVolunteerGet {
   statusType: VolunteerStateTypeType;
   statusMatch: VolunteerStateMatchType;
   statusCgcProcess: VolunteerStateCGCType;
+  preferredCommunicationType: VolunteerCommunicationType[];
   createdAt: Date;
   updatedAt: Date;
   goodConductCertificate: DocumentStatusType;

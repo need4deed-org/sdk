@@ -49,32 +49,6 @@ export enum TimedTextType {
 
 export type Id = string | number;
 
-export enum VolunteerStateType {
-  NEW = "New",
-  OPPORTUNITY_SENT = "Opportunity sent",
-  MATCHED = "Matched",
-  ACTIVE_REGULAR = "Active regular",
-  ACTIVE_ACCOMPANY = "Active accompany",
-  ACTIVE_FEST = "Active fest",
-  TO_REMATCH = "To rematch",
-  TEMP_INACTIVE = "Temp inactive",
-  INACTIVE = "Inactive",
-}
-
-export enum VolunteerStateMatchType {
-  NO_MATCHES = "no-matches",
-  PENDING_MATCH = "pending_match",
-  MATCHED = "matched",
-  NEEDS_REMATCH = "needs-rematch",
-}
-
-export enum VolunteerCommunicationType {
-    EMAIL = "email",
-    MOBILE_PHONE = "mobilePhone",
-    WHATSAPP = "whatsapp",
-    TELEGRAM = "telegram"
-}
-
 export enum SortOrder {
   NewToOld = "new-old",
   OldToNew = "old-new",
@@ -111,4 +85,3 @@ export enum QueryParamsKeys {
   PAGE = "page",
   SEARCH = "search",
 }
-

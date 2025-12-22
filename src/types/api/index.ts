@@ -9,4 +9,5 @@ export * from "./option";
 export * from "./person";
 export * from "./testimonial";
 export * from "./time";
+export * from "./user";
 export * from "./volunteer";
