@@ -85,4 +85,3 @@ export enum QueryParamsKeys {
   PAGE = "page",
   SEARCH = "search",
 }
-
