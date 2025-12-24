@@ -11,7 +11,9 @@ export interface ApiUserGet {
   email: string;
   isActive: boolean;
   role: UserRole;
+  firstName: string;
   fullName: string;
-  createdAt: string;
-  updatedAt: string;
+  avatarUrl: string;
+  isoCode: string;
+  timezone: string;
 }
