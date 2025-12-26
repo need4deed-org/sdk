@@ -76,3 +76,9 @@ export enum TimeSlot {
   afternoon = "14-17",
   evening = "17-20",
 }
+
+export interface ApiAvailability {
+  id?: number;
+  day?: ByDay | Occasionally;
+  daytime?: TimeSlot | OccasionalType;
+}
