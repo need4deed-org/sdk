@@ -4,7 +4,7 @@ import { ApiLanguage } from "./language";
 import { ApiOpportunityGetList } from "./opportunity";
 import { OptionItem } from "./option";
 import { ApiPersonGet } from "./person";
-import { Availability, TimedText } from "./time";
+import { ApiAvailability, TimedText } from "./time";
 
 export interface Volunteer {
   origin_opportunity: number | undefined;
@@ -109,7 +109,7 @@ export interface ApiVolunteerGetList {
   name: string;
   avatarUrl: string;
   languages: ApiLanguage[];
-  availability: Availability[];
+  availability: ApiAvailability[];
   activities: OptionItem[];
   skills: OptionItem[];
   locations: OptionItem[];
@@ -138,7 +138,7 @@ export interface ApiVolunteerGet {
   opportunitiesApplied: OptionItem[];
   opportunitiesMatched: OptionItem[];
   languages: ApiLanguage[];
-  availability: Availability[];
+  availability: ApiAvailability[];
   activities: OptionItem[];
   skills: OptionItem[];
   locations: OptionItem[];
