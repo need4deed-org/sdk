@@ -69,6 +69,7 @@ export enum VolunteerStateTypeType {
   ACCOMPANYING = "accompanying",
   REGULAR = "regular",
   EVENTS = "events",
+  REGULAR_ACCOMPANYING = "regular-accompanying",
 }
 
 export enum VolunteerStateCGCType {
