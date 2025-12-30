@@ -1,6 +1,6 @@
 {
   "name": "need4deed-sdk",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Need4Deed.org SDK",
   "type": "commonjs",
   "main": "dist/index.js",
@@ -28,13 +28,7 @@
   },
   "keywords": [
     "sdk",
-    "react",
-    "typescript",
-    "api-hooks",
-    "ui-components",
-    "layouts",
-    "styling",
-    "utilities"
+    "typescript"
   ],
   "author": "Need4Deed.org",
   "license": "MIT",
@@ -46,9 +40,5 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "typescript": "^5.8.3"
-  },
-  "peerDependencies": {
-    "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0"
   }
 }
