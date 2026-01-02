@@ -1,6 +1,6 @@
 {
   "name": "need4deed-sdk",
-  "version": "0.0.29",
+  "version": "0.0.32",
   "description": "Need4Deed.org SDK",
   "type": "commonjs",
   "main": "dist/index.js",
@@ -22,8 +22,7 @@
     "build": "yarn build:tsc && yarn build:copy-assets",
     "watch": "tsc --watch --project tsconfig.cjs.json",
     "prepublishOnly": "yarn build",
-    "publish": "yarn publish",
-    "publish:npm": "npm publish --non-interactive",
+    "publish": "yarn publish --non-interactive",
     "create-pr": "./create-pr.sh"
   },
   "keywords": [
