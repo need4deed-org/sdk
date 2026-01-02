@@ -1,7 +1,8 @@
 export enum DocumentType {
-  CGC = "CGC",
-  CGC_APPLICATION = "CGC_APPLICATION",
-  PASSPORT_ID = "PASSPORT_ID",
+  MEASLES_VACCINATION = "measles-vacc-cert",
+  CGC = "good-conduct-cert",
+  CGC_APPLICATION = "CGC-application",
+  PASSPORT_ID = "passport-copy",
 }
 
 export interface ApiDocumentGet {
