@@ -8,6 +8,7 @@ export enum DocumentType {
 export interface ApiDocumentGet {
   id: number;
   type: DocumentType;
-  title: string;
+  originalName: string;
   url: string;
+  mimeType: string;
 }
