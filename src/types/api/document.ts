@@ -11,4 +11,5 @@ export interface ApiDocumentGet {
   originalName: string;
   url: string;
   mimeType: string;
+  createdAt: Date;
 }
