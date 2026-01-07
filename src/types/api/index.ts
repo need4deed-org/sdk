@@ -1,5 +1,6 @@
 export * from "./comment";
 export * from "./common";
+export * from "./communication";
 export * from "./document";
 export * from "./event";
 export * from "./language";
