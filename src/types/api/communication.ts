@@ -11,6 +11,8 @@ export enum ContactMethodType {
   TELEGRAM = "telegram",
   WHATSAPP = "whatsapp",
   SIGNAL = "signal",
+  SMS = "sms",
+  VOICENOTE = "voicenote",
 }
 
 export enum CommunicationType {
