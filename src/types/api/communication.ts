@@ -36,3 +36,4 @@ export interface ApiCommunicationGet extends ApiVolunteerCommunicationPost {
   userId: number;
 }
 
+export interface ApiVolunteerCommunicationPatch extends ApiVolunteerCommunicationPost {}; 
