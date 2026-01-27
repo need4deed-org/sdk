@@ -91,16 +91,16 @@ export enum VolunteerStateType {
 
 export enum VolunteerStateMatchType {
   NO_MATCHES = "no-matches",
-  PENDING_MATCH = "pending_match",
+  PENDING_MATCH = "pending-match",
   MATCHED = "matched",
   NEEDS_REMATCH = "needs-rematch",
 }
 
 export enum VolunteerCommunicationType {
-    EMAIL = "email",
-    MOBILE_PHONE = "mobilePhone",
-    WHATSAPP = "whatsapp",
-    TELEGRAM = "telegram"
+  EMAIL = "email",
+  MOBILE_PHONE = "mobilePhone",
+  WHATSAPP = "whatsapp",
+  TELEGRAM = "telegram",
 }
 
 export interface ApiVolunteerGetList {
@@ -119,13 +119,13 @@ export interface ApiVolunteerGetList {
 export interface ApiVolunteerGet {
   id: number;
   person: ApiPersonGet;
-  status: VolunteerStateType;
   statusEngagement: VolunteerStateEngagementType;
   statusCommunication: VolunteerStateCommunicationType;
   statusAppreciation: VolunteerStateAppreciationType;
   statusType: VolunteerStateTypeType;
   statusMatch: VolunteerStateMatchType;
   statusCgcProcess: VolunteerStateCGCType;
+  dateReturn: Date | null;
   preferredCommunicationType: VolunteerCommunicationType[];
   createdAt: Date;
   updatedAt: Date;
