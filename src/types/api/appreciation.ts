@@ -6,8 +6,8 @@ export interface ApiAppreciationGet {
   volunteerId: number;
   opportunityId?: number;
   title: VolunteerStateAppreciationType;
-  dateDue: Date;
-  dateDelivery?: Date;
+  dateDue: Date | null;
+  dateDelivery?: Date | null;
 }
 
 export interface ApiAppreciationPost
