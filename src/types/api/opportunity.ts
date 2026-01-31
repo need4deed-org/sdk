@@ -78,6 +78,7 @@ export interface ApiOpportunityAgent {
 export interface ApiOpportunityGetList {
   id: Id;
   title: string;
+  categoryId: OptionById;
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
 }
