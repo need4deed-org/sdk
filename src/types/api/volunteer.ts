@@ -1,9 +1,12 @@
 import { DocumentStatusType, Id } from "../core";
 import { OptionId } from "./common";
 import { ApiLanguage } from "./language";
-import { ApiOpportunityGetList } from "./opportunity";
+import {
+  ApiOpportunityGetList,
+  OpportunityVolunteerStatusType,
+} from "./opportunity";
 import { OptionItem } from "./option";
-import { ApiPersonGet } from "./person";
+import { ApiPersonGet, PrefferedCommunicationType } from "./person";
 import { ApiAvailability, TimedText } from "./time";
 
 export interface Volunteer {
@@ -89,12 +92,8 @@ export enum VolunteerStateType {
   INACTIVE = "Inactive",
 }
 
-export enum VolunteerStateMatchType {
-  NO_MATCHES = "no-matches",
-  PENDING_MATCH = "pending-match",
-  MATCHED = "matched",
-  NEEDS_REMATCH = "needs-rematch",
-}
+export const VolunteerStateMatchType = PrefferedCommunicationType;
+export type VolunteerStateMatchType = PrefferedCommunicationType;
 
 export enum VolunteerCommunicationType {
   EMAIL = "email",
@@ -146,3 +145,12 @@ export interface ApiVolunteerGet {
 }
 
 export interface VolunteerPatchBodyData extends Partial<ApiVolunteerGet> {}
+
+export interface ApiVolunteerOpportunityGet {
+  id: number;
+  opportunityId: number;
+  volunteerId: number;
+  title: string;
+  status: OpportunityVolunteerStatusType;
+  updatedAt: Date;
+}
