@@ -1,3 +1,4 @@
+export * from "./agent";
 export * from "./appreciation";
 export * from "./comment";
 export * from "./common";
