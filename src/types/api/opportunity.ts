@@ -1,6 +1,8 @@
-import { Id } from "..";
-import { OptionId } from "./common";
+import { ApiAgentGet, Id } from "..";
+import { ApiAddressGet } from "./address";
+import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
+import { PrefferedCommunicationType } from "./person";
 import { VolunteerStateTypeType } from "./volunteer";
 
 export enum OpportunityType {
@@ -17,20 +19,20 @@ export enum TranslatedIntoType {
 export enum OpportunityStatusType {
   NEW = "new",
   ACTIVE = "active",
-  PAST = "past"
+  PAST = "past",
 }
 
 export enum OpportunityMatchStatus {
   MATCHED = "matched",
   NEED_REMATCH = "need_rematch",
-  UNMATCHED = "unmatched"
+  UNMATCHED = "unmatched",
 }
 
-export enum OpportunityVolunteerStatusType{
-  SUGGESTED = "suggested",
+export enum OpportunityVolunteerStatusType {
+  SUGGESTED = "pending",
   MATCHED = "matched",
   ACTIVE = "active",
-  PAST = "past"
+  PAST = "past",
 }
 
 export interface Opportunity {
@@ -60,6 +62,19 @@ export interface Opportunity {
   last_edited_time_notion?: string;
 }
 
+export interface ApiOpportunityAgent {
+  contactPerson: {
+    name: string;
+    phone: string;
+    rmail: string;
+    preferredComm: PrefferedCommunicationType;
+  };
+  operator: {
+    title: string;
+    address: ApiAddressGet;
+  };
+}
+
 export interface ApiOpportunityGetList {
   id: Id;
   title: string;
@@ -69,7 +84,8 @@ export interface ApiOpportunityGetList {
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
   languages: ApiLanguage[];
-  activities: string[];
-  skills: string[];
-  location: string[];
+  activities: OptionById[];
+  skills: OptionById[];
+  location: OptionById[];
+  agent: ApiOpportunityAgent;
 }
