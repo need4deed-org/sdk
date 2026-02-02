@@ -84,7 +84,7 @@ export interface ApiOpportunityAccompanyingDetails {
   appointmentTime?: Date;
   refugeeNumber?: string;
   refugeeName?: string;
-  languageToTranslate?: TranslateIntoType;
+  languageToTranslate?: TranslatedIntoType;
 }
 
 export interface ApiOpportunityGetList {
