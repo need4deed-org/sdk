@@ -27,8 +27,9 @@ export enum OpportunityStatusType {
 }
 
 export enum OpportunityMatchStatus {
+  PENDING_MATCH = "pending-match",
   MATCHED = "matched",
-  NEED_REMATCH = "need_rematch",
+  NEEDS_REMATCH = "needs-rematch",
   UNMATCHED = "unmatched",
 }
 
