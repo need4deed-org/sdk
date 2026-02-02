@@ -1,6 +1,6 @@
 {
   "name": "need4deed-sdk",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "description": "Need4Deed.org SDK",
   "type": "commonjs",
   "main": "dist/index.js",
