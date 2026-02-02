@@ -1,5 +1,6 @@
 import { ApiAgentGet, Id } from "..";
 import { ApiAddressGet } from "./address";
+import { ApiComment } from "./coment";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { PrefferedCommunicationType } from "./person";
@@ -63,16 +64,17 @@ export interface Opportunity {
 }
 
 export interface ApiOpportunityAgent {
-  contactPerson: {
-    name: string;
-    phone: string;
-    rmail: string;
-    preferredComm: PrefferedCommunicationType;
-  };
-  operator: {
-    title: string;
-    address: ApiAddressGet;
-  };
+  type: AgentType;
+  name: string;
+  address: string;
+  district: OptionById;
+}
+
+export interface ApiOpportunityContact {
+  name: string;
+  phone: string;
+  email: string;
+  waysToContact: PrefferedCommunicationType[];
 }
 
 export interface ApiOpportunityGetList {
@@ -83,10 +85,23 @@ export interface ApiOpportunityGetList {
   statusOpportunity: OpportunityStatusType;
 }
 
+export interface ApiOpportunityAccompanyingDetails {
+  appointmentAddress?: string;
+  appointmentDate?: Date;
+  appointmentTime?: Date;
+  refugeeNumber?: string;
+  refugeeName?: string;
+  languageToTranslate?: TranslateIntoType;
+}
+
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
+  createdAt: Date;
   languages: ApiLanguage[];
   activities: OptionById[];
   skills: OptionById[];
   location: OptionById[];
+  comments: ApiComment[];
+  contact: ApiOpportunityContact;
   agent: ApiOpportunityAgent;
+  accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }
