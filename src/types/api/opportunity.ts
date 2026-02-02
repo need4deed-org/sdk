@@ -78,14 +78,6 @@ export interface ApiOpportunityContact {
   waysToContact: PrefferedCommunicationType[];
 }
 
-export interface ApiOpportunityGetList {
-  id: Id;
-  title: string;
-  categoryId: OptionById;
-  volunteerType: VolunteerStateTypeType;
-  statusOpportunity: OpportunityStatusType;
-}
-
 export interface ApiOpportunityAccompanyingDetails {
   appointmentAddress?: string;
   appointmentDate?: Date;
@@ -93,6 +85,14 @@ export interface ApiOpportunityAccompanyingDetails {
   refugeeNumber?: string;
   refugeeName?: string;
   languageToTranslate?: TranslateIntoType;
+}
+
+export interface ApiOpportunityGetList {
+  id: Id;
+  title: string;
+  categoryId: OptionById;
+  volunteerType: VolunteerStateTypeType;
+  statusOpportunity: OpportunityStatusType;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
