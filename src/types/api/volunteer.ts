@@ -92,15 +92,15 @@ export enum VolunteerStateType {
   INACTIVE = "Inactive",
 }
 
-export const VolunteerStateMatchType = PrefferedCommunicationType;
-export type VolunteerStateMatchType = PrefferedCommunicationType;
-
-export enum VolunteerCommunicationType {
-  EMAIL = "email",
-  MOBILE_PHONE = "mobilePhone",
-  WHATSAPP = "whatsapp",
-  TELEGRAM = "telegram",
+export enum VolunteerStateMatchType {
+  NO_MATCHES = "no-matches",
+  PENDING_MATCH = "pending-match",
+  MATCHED = "matched",
+  NEEDS_REMATCH = "needs-rematch",
 }
+
+export const VolunteerCommunicationType = PrefferedCommunicationType;
+export type VolunteerCommunicationType = PrefferedCommunicationType;
 
 export interface ApiVolunteerGetList {
   id: number;
