@@ -1,6 +1,6 @@
 {
   "name": "need4deed-sdk",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "description": "Need4Deed.org SDK",
   "type": "commonjs",
   "main": "dist/index.js",
@@ -17,6 +17,7 @@
     "./package.json": "./package.json"
   },
   "scripts": {
+    "what": "node -e 'console.log(require(\"./package.json\").version)'",
     "build:copy-assets": "mkdir -p dist/styles && cp src/styles/*.css dist/styles/",
     "build:tsc": "tsc",
     "build": "yarn build:tsc && yarn build:copy-assets",
