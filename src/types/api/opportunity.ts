@@ -1,5 +1,6 @@
 import { ApiAgentGet, Id } from "..";
 import { ApiAddressGet } from "./address";
+import { ApiAvailability } from "./time";
 import { ApiComment } from "./coment";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
@@ -100,6 +101,7 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
   activities: OptionById[];
   skills: OptionById[];
   location: OptionById[];
+  availability: ApiAvailability[];
   comments: ApiComment[];
   contact: ApiOpportunityContact;
   agent: ApiOpportunityAgent;
