@@ -1,7 +1,8 @@
-import { ApiAgentGet, Id } from "..";
+import { Id } from "..";
 import { ApiAddressGet } from "./address";
+import { AgentType, ApiAgentGet } from "./agent";
 import { ApiAvailability } from "./time";
-import { ApiComment } from "./coment";
+import { ApiComment } from "./comment";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { PrefferedCommunicationType } from "./person";
@@ -20,6 +21,7 @@ export enum TranslatedIntoType {
 
 export enum OpportunityStatusType {
   NEW = "new",
+  SEARCHING = "searching",
   ACTIVE = "active",
   PAST = "past",
 }
