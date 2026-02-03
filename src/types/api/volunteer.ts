@@ -7,6 +7,7 @@ import {
 } from "./opportunity";
 import { OptionItem } from "./option";
 import { ApiPersonGet, PrefferedCommunicationType } from "./person";
+import { ProfileVolunteeringType } from "./profile";
 import { ApiAvailability, TimedText } from "./time";
 
 export interface Volunteer {
@@ -68,12 +69,8 @@ export enum VolunteerStateAppreciationType {
   TOTE_BAG = "tote-bag",
 }
 
-export enum VolunteerStateTypeType {
-  ACCOMPANYING = "accompanying",
-  REGULAR = "regular",
-  EVENTS = "events",
-  REGULAR_ACCOMPANYING = "regular-accompanying",
-}
+export const VolunteerStateTypeType = ProfileVolunteeringType;
+export type VolunteerStateTypeType = ProfileVolunteeringType;
 
 export enum VolunteerStateCGCType {
   UPLOADED = "uploaded",
