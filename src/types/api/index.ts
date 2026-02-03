@@ -11,6 +11,7 @@ export * from "./new_api";
 export * from "./opportunity";
 export * from "./option";
 export * from "./person";
+export * from "./profile";
 export * from "./testimonial";
 export * from "./time";
 export * from "./user";
