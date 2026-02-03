@@ -1,11 +1,10 @@
 import { Address } from "./location";
 
 export enum PrefferedCommunicationType {
-  CALLED = "called",
-  EMAIL_SENT = "email-sent",
-  BRIEFED = "briefed",
-  TRIED_CALL = "tried-call",
-  NOT_RESPONDING = "not-responding",
+  EMAIL = "email",
+  MOBILE_PHONE = "mobilePhone",
+  WHATSAPP = "whatsapp",
+  TELEGRAM = "telegram",
 }
 
 export interface ApiPersonGet {
