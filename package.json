@@ -24,7 +24,8 @@
     "watch": "tsc --watch --project tsconfig.cjs.json",
     "prepublishOnly": "yarn build",
     "publish": "yarn publish --non-interactive",
-    "create-pr": "./create-pr.sh"
+    "create-pr": "./create-pr.sh",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [
     "sdk",
