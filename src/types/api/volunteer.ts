@@ -143,11 +143,18 @@ export interface ApiVolunteerGet {
 
 export interface VolunteerPatchBodyData extends Partial<ApiVolunteerGet> {}
 
-export interface ApiVolunteerOpportunityGet {
+export interface ApiOpportunityVolunteerGet {
   id: number;
   opportunityId: number;
   volunteerId: number;
   title: string;
   status: OpportunityVolunteerStatusType;
   updatedAt: Date;
+}
+
+export interface ApiVolunteerOpportunityGetList extends ApiOpportunityGetList {
+  languages: ApiLanguage[];
+  activities: OptionById[];
+  location: OptionById[];
+  availability: ApiAvailability[];
 }
