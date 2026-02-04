@@ -1,5 +1,5 @@
 import { DocumentStatusType, Id } from "../core";
-import { OptionId } from "./common";
+import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import {
   ApiOpportunityGetList,
