@@ -6,12 +6,15 @@ import { ApiComment } from "./comment";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { PrefferedCommunicationType } from "./person";
+import { ProfileVolunteeringType } from "./profile";
 import { VolunteerStateTypeType } from "./volunteer";
 
-export enum OpportunityType {
-  GENERAL = "volunteering",
-  ACCOMPANYING = "accompanying",
-}
+export const { REGULAR_ACCOMPANYING, ...OpportunityType } =
+  ProfileVolunteeringType;
+export type OpportunityType = Exclude<
+  ProfileVolunteeringType,
+  ProfileVolunteeringType.REGULAR_ACCOMPANYING
+>;
 
 export enum TranslatedIntoType {
   DEUTSCHE = "deutsche",
@@ -40,7 +43,7 @@ export enum OpportunityVolunteerStatusType {
   PAST = "past",
 }
 
-export interface Opportunity {
+export interface OpportunityFormData {
   title: string;
   rac_email: string;
   rac_full_name: string;
@@ -93,7 +96,7 @@ export interface ApiOpportunityAccompanyingDetails {
 export interface ApiOpportunityGetList {
   id: Id;
   title: string;
-  categoryId: OptionById;
+  category: OptionById;
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
 }
