@@ -97,8 +97,8 @@ export interface ApiOpportunityGetList {
   id: Id;
   title: string;
   category: OptionById;
-  volunteerType: VolunteerStateTypeType;
-  statusOpportunity: OpportunityStatusType;
+  type: VolunteerStateTypeType;
+  status: OpportunityStatusType;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
