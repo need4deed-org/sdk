@@ -18,3 +18,5 @@ export interface ApiPersonGet {
   address: Address;
   preferredComm?: PrefferedCommunicationType;
 }
+
+export type ApiPersonPatch = Partial<ApiPersonGet>;
