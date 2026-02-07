@@ -1,9 +1,13 @@
 import { DocumentStatusType, Id } from "../core";
-import { OptionId } from "./common";
+import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
-import { ApiOpportunityGetList } from "./opportunity";
+import {
+  ApiOpportunityGetList,
+  OpportunityVolunteerStatusType,
+} from "./opportunity";
 import { OptionItem } from "./option";
-import { ApiPersonGet } from "./person";
+import { ApiPersonGet, PrefferedCommunicationType } from "./person";
+import { ProfileVolunteeringType } from "./profile";
 import { ApiAvailability, TimedText } from "./time";
 
 export interface Volunteer {
@@ -65,12 +69,8 @@ export enum VolunteerStateAppreciationType {
   TOTE_BAG = "tote-bag",
 }
 
-export enum VolunteerStateTypeType {
-  ACCOMPANYING = "accompanying",
-  REGULAR = "regular",
-  EVENTS = "events",
-  REGULAR_ACCOMPANYING = "regular-accompanying",
-}
+export const VolunteerStateTypeType = ProfileVolunteeringType;
+export type VolunteerStateTypeType = ProfileVolunteeringType;
 
 export enum VolunteerStateCGCType {
   UPLOADED = "uploaded",
@@ -96,12 +96,8 @@ export enum VolunteerStateMatchType {
   NEEDS_REMATCH = "needs-rematch",
 }
 
-export enum VolunteerCommunicationType {
-  EMAIL = "email",
-  MOBILE_PHONE = "mobilePhone",
-  WHATSAPP = "whatsapp",
-  TELEGRAM = "telegram",
-}
+export const VolunteerCommunicationType = PrefferedCommunicationType;
+export type VolunteerCommunicationType = PrefferedCommunicationType;
 
 export interface ApiVolunteerGetList {
   id: number;
@@ -146,3 +142,19 @@ export interface ApiVolunteerGet {
 }
 
 export interface VolunteerPatchBodyData extends Partial<ApiVolunteerGet> {}
+
+export interface ApiOpportunityVolunteerGet {
+  id: number;
+  opportunityId: number;
+  volunteerId: number;
+  title: string;
+  status: OpportunityVolunteerStatusType;
+  updatedAt: Date;
+}
+
+export interface ApiVolunteerOpportunityGetList extends ApiOpportunityGetList {
+  languages: ApiLanguage[];
+  activities: OptionById[];
+  location: OptionById[];
+  availability: ApiAvailability[];
+}
