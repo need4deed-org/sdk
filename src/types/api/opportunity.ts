@@ -5,7 +5,7 @@ import { ApiAvailability } from "./time";
 import { ApiComment } from "./comment";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
-import { PrefferedCommunicationType } from "./person";
+import { PreferredCommunicationType } from "./person";
 import { ProfileVolunteeringType } from "./profile";
 import { VolunteerStateTypeType } from "./volunteer";
 
@@ -81,7 +81,7 @@ export interface ApiOpportunityContact {
   name: string;
   phone: string;
   email: string;
-  waysToContact: PrefferedCommunicationType[];
+  waysToContact: PreferredCommunicationType[];
 }
 
 export interface ApiOpportunityAccompanyingDetails {
@@ -97,8 +97,8 @@ export interface ApiOpportunityGetList {
   id: Id;
   title: string;
   category: OptionById;
-  type: VolunteerStateTypeType;
-  status: OpportunityStatusType;
+  volunteerType: VolunteerStateTypeType;
+  statusOpportunity: OpportunityStatusType;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {

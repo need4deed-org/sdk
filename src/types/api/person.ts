@@ -1,6 +1,6 @@
 import { Address } from "./location";
 
-export enum PrefferedCommunicationType {
+export enum PreferredCommunicationType {
   EMAIL = "email",
   MOBILE_PHONE = "mobilePhone",
   WHATSAPP = "whatsapp",
@@ -16,5 +16,7 @@ export interface ApiPersonGet {
   phone: string;
   email: string;
   address: Address;
-  preferredComm?: PrefferedCommunicationType;
+  preferredComm?: PreferredCommunicationType;
 }
+
+export type ApiPersonPatch = Partial<ApiPersonGet>;

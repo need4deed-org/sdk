@@ -6,7 +6,7 @@ import {
   OpportunityVolunteerStatusType,
 } from "./opportunity";
 import { OptionItem } from "./option";
-import { ApiPersonGet, PrefferedCommunicationType } from "./person";
+import { ApiPersonGet, PreferredCommunicationType } from "./person";
 import { ProfileVolunteeringType } from "./profile";
 import { ApiAvailability, TimedText } from "./time";
 
@@ -96,8 +96,8 @@ export enum VolunteerStateMatchType {
   NEEDS_REMATCH = "needs-rematch",
 }
 
-export const VolunteerCommunicationType = PrefferedCommunicationType;
-export type VolunteerCommunicationType = PrefferedCommunicationType;
+export const VolunteerCommunicationType = PreferredCommunicationType;
+export type VolunteerCommunicationType = PreferredCommunicationType;
 
 export interface ApiVolunteerGetList {
   id: number;
