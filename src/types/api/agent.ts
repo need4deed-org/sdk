@@ -1,13 +1,106 @@
+import { ApiComment } from "./comment";
+import { OptionById } from "./common";
+import { ApiLanguage } from "./language";
+import { ApiAddress, ApiDistrict } from "./location";
 import { ApiOrganizationGet } from "./organization";
 import { ApiPersonGet } from "./person";
 
 export enum AgentType {
-  RAC = "rac",
-  NGO = "ngo",
+  AE = "AE",
+  GU1 = "GU1",
+  GU2 = "GU2",
+  GU2_PLUS = "GU2+",
+  GU3 = "GU3",
+  NU = "NU",
+  ASOG = "ASOG",
+  COUNSELING_CENTER = "counseling-center",
+  TANDEM = "tandem",
+  MULTIPLE_SOCIAL_SUPPORT = "multiple-social-support",
 }
 
-export interface ApiAgentGet {
+export enum AgentOperatorType {
+  ORGANIZATION = "organization",
+  PERSON = "person",
+}
+
+export enum AgentRoleType {
+  SOCIAL_WORKER = "social-worker",
+  VOLUNTEER_COORDINATOR = "volunteer-coordinator",
+  MANAGER = "manager",
+  PROJECT_COORDINATOR = "project-coordinator",
+  PSYCHOLOGIST = "psychologist",
+  PROJECT_STAFF = "project-staff",
+  CHILDCARE_WORKER = "childcare-worker",
+  OTHER = "other",
+}
+
+export enum AgentEngagementStatusType {
+  NEW = "new",
+  ACTIVE = "active",
+  UNRESPONSIVE = "unresponsive",
+  INACTIVE = "inactive",
+}
+
+export enum AgentVolunteerSearchType {
+  SEARCHING = "searching",
+  NOT_NEEDED = "not-needed",
+  VOLUNTEERS_FOUND = "volunteers-found",
+}
+
+export enum AgentServiceType {
+  CHILDCARE = "childcare",
+  WELFARE = "welfare",
+  CONSULTATION = "consultation",
+  VOLUNTARY_SUPPORT = "voluntary-support",
+  TANDEM = "tandem",
+  SPORT = "sport",
+  TUTORING = "tutoring",
+  REFUGEE_ACCOMMODATION = "refugee-accommodation",
+  JOB_COACHING = "job-coaching",
+  YOUTH = "youth",
+}
+
+export enum AgentTrustType {
+  HIGH = "high",
+  LOW = "low",
+  UNKNOWN = "unknown",
+}
+
+export interface AgentDetails {
+  about: string;
+  website?: string;
+  address: string;
+  organizationType: AgentType;
+  operator: string;
+  services: string;
+  clientLanguages: ApiLanguage[];
+}
+
+export interface ApiRepresentativeGet extends ApiPersonGet {
+  role: AgentRoleType;
+  landline: string;
+}
+
+export interface ApiAgentGetList {
+  id: number;
+  title: string;
   type: AgentType;
-  operator: ApiPersonGet | ApiOrganizationGet;
-  contact: ApiPersonGet;
+  operatorType?: AgentOperatorType;
+  operatorId?: number;
+  address?: ApiAddress;
+  district?: OptionById;
+  activeVolunteers: number;
+}
+
+export interface ApiAgentGet extends ApiAgentGetList {
+  createdAt: Date;
+  updatedAt?: Date;
+  operator?: ApiOrganizationGet;
+  representatives?: ApiRepresentativeGet[];
+  serviceType?: AgentServiceType[];
+  trustLevel: AgentTrustType;
+  statusEngagement: AgentEngagementStatusType;
+  volunteerSearch: AgentVolunteerSearchType;
+  comments: ApiComment[];
+  agentDetails: AgentDetails;
 }
