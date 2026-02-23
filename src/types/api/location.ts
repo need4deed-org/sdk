@@ -4,6 +4,8 @@ export interface Address {
   city: string;
   postcode: Postcode;
 }
+export interface ApiAddress extends Address {}
+export interface ApiAddressGet extends Address {}
 
 export interface Postcode {
   id: number;
@@ -11,6 +13,7 @@ export interface Postcode {
   latitude: number;
   longitude: number;
 }
+export interface ApiPostcode extends Postcode {}
 
 export enum LocationType {
   ADDRESS = "address",
@@ -31,3 +34,4 @@ export interface District {
   title: string;
   postcodes: Postcode[];
 }
+export interface ApiDistrict extends District {}
