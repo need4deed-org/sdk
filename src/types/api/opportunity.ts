@@ -1,10 +1,10 @@
 import { Id } from "..";
-import { ApiAddressGet } from "./address";
 import { AgentType, ApiAgentGet } from "./agent";
 import { ApiAvailability } from "./time";
 import { ApiComment } from "./comment";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
+import { ApiAddressGet } from "./location";
 import { PreferredCommunicationType } from "./person";
 import { ProfileVolunteeringType } from "./profile";
 import { VolunteerStateTypeType } from "./volunteer";
