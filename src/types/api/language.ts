@@ -6,3 +6,5 @@ export interface ApiLanguage {
   proficiency?: LangProficiency;
   purpose?: LangPurpose;
 }
+
+export interface ApiLanguageGet extends ApiLanguage {}
