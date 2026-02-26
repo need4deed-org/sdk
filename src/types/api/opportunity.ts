@@ -99,10 +99,13 @@ export interface ApiOpportunityGetList {
   category: OptionById;
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
+  createdAt: Date;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
   createdAt: Date;
+  numberOfVolunteers: number;
+  description: string;
   languages: ApiLanguage[];
   activities: OptionById[];
   skills: OptionById[];
