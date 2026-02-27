@@ -30,22 +30,23 @@ export interface Volunteer {
 }
 
 export interface VolunteerLegacyFormData {
-    full_name: string;
-    phone: string;
-    email: string;
-    postal_code: number;
-    good_conduct_certificate: "Yes" | "No";
-    if_measles_vaccination: boolean;
-    lead_from: string;
-    schedule: [number, string][];
-    preferred_berlin_locations: string[];
-    activities: string[];
-    skills: string[];
-    native_languages: string[];
-    fluent_languages: string[];
-    intermediate_languages: string[];
-    comments: string;
-    language: string;
+  origin_opportunity?: number;
+  full_name: string;
+  phone: string;
+  email: string;
+  postal_code: number;
+  good_conduct_certificate: "Yes" | "No";
+  if_measles_vaccination: boolean;
+  lead_from: string;
+  schedule: [number, string][];
+  preferred_berlin_locations: string[];
+  activities: string[];
+  skills: string[];
+  native_languages: string[];
+  fluent_languages: string[];
+  intermediate_languages: string[];
+  comments: string;
+  language: string;
 }
 
 export interface VolunteerFormData {
