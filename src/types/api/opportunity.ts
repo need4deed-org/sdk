@@ -1,4 +1,5 @@
 import { Id } from "..";
+import {accompanying: ApiOpportunityAccompanyingDetails;} fromr "./accompanying";
 import { AgentType, ApiAgentGet } from "./agent";
 import { ApiAvailability } from "./time";
 import { ApiComment } from "./comment";
@@ -85,11 +86,11 @@ export interface OpportunityLegacyFormData {
   accomp_phone?: string;
   accomp_information?: string;
   accomp_translation?: `${TranslatedIntoType}`;
-  berlin_locations?: OptionId[];
-  languages: OptionId[];
-  activities: OptionId[];
-  skills: OptionId[];
-  timeslots?: [number, OptionId][];
+  berlin_locations?: string[];
+  languages: string[];
+  activities: string[];
+  skills: string[];
+  timeslots?: [number, string][];
   volunteers_number: number;
   vo_information?: string;
   category: string;
