@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [[ $# -ne 1 ]]; then
+	echo "repo path is missing."
+	exit 1
+fi
+
+repo=$1
+
+cp -r dist/* "$repo/node_modules/need4deed-sdk/dist"
+
