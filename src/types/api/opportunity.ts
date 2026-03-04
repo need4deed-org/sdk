@@ -1,13 +1,12 @@
-import { Id } from "..";
-import {accompanying: ApiOpportunityAccompanyingDetails;} fromr "./accompanying";
-import { AgentType, ApiAgentGet } from "./agent";
-import { ApiAvailability } from "./time";
+import { Id, Lang } from "..";
+import { ApiOpportunityAccompanyingDetails } from "./accompanying";
+import { AgentType } from "./agent";
 import { ApiComment } from "./comment";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
-import { ApiAddressGet } from "./location";
 import { PreferredCommunicationType } from "./person";
 import { ProfileVolunteeringType } from "./profile";
+import { ApiAvailability } from "./time";
 import { VolunteerStateTypeType } from "./volunteer";
 
 export const { REGULAR_ACCOMPANYING, ...OpportunityType } =
