@@ -4,6 +4,7 @@ import { ApiLanguage } from "./language";
 import {
   ApiOpportunityGetList,
   OpportunityVolunteerStatusType,
+  OpportunityVolunteer,
 } from "./opportunity";
 import { OptionItem } from "./option";
 import { ApiPersonGet, PreferredCommunicationType } from "./person";
@@ -163,13 +164,11 @@ export interface ApiVolunteerGet {
 
 export interface VolunteerPatchBodyData extends Partial<ApiVolunteerGet> {}
 
-export interface ApiOpportunityVolunteerGet {
-  id: number;
-  opportunityId: number;
-  volunteerId: number;
-  title: string;
-  status: OpportunityVolunteerStatusType;
-  updatedAt: Date;
+export interface ApiVolunteerOpportunityGet extends OpportunityVolunteer {
+  name: string;
+  avatarUrl: string;
+  volunteeringType: ProfileVolunteeringType;
+  engagement: VolunteerStateEngagementType;
 }
 
 export interface ApiVolunteerOpportunityGetList extends ApiOpportunityGetList {
