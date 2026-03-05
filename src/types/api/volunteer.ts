@@ -169,6 +169,11 @@ export interface ApiVolunteerOpportunityGet extends OpportunityVolunteer {
   avatarUrl: string;
   volunteeringType: ProfileVolunteeringType;
   engagement: VolunteerStateEngagementType;
+  languages: ApiLanguage[];
+  availability: ApiAvailability[];
+  activities: OptionItem[];
+  skills: OptionItem[];
+  locations: OptionItem[];
 }
 
 export interface ApiVolunteerOpportunityGetList extends ApiOpportunityGetList {
