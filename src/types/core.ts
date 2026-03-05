@@ -71,6 +71,7 @@ export enum EntityTableName {
   LEAD = "lead_from",
   DISTRICT = "district",
   VOLUNTEER = "volunteer",
+  OPPORTUNITY = "opportunity",
 }
 
 export enum QueryParamsKeys {
