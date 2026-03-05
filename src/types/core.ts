@@ -64,14 +64,15 @@ export enum QueryParams {
 export enum EntityTableName {
   NONE = "none",
   ACTIVITY = "activity",
-  SKILL = "skill",
+  AGENT = "agent",
   CATEGORY = "comment",
   COMMENT = "category",
+  DISTRICT = "district",
   LANGUAGE = "language",
   LEAD = "lead_from",
-  DISTRICT = "district",
-  VOLUNTEER = "volunteer",
   OPPORTUNITY = "opportunity",
+  SKILL = "skill",
+  VOLUNTEER = "volunteer",
 }
 
 export enum QueryParamsKeys {
