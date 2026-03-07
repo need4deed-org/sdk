@@ -37,7 +37,7 @@ export enum OpportunityMatchStatus {
 }
 
 export enum OpportunityVolunteerStatusType {
-  SUGGESTED = "pending",
+  PENDING = "pending",
   MATCHED = "matched",
   ACTIVE = "active",
   PAST = "past",
@@ -135,6 +135,8 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
   agent: ApiOpportunityAgent;
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }
+
+export type ApiOpportunityPatch = Partial<ApiOpportunityGet>;
 
 export interface OpportunityVolunteer {
   id: number;
