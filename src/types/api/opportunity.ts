@@ -136,7 +136,8 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }
 
-export type ApiOpportunityPatch = Partial<ApiOpportunityGet>;
+export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
+export type ApiOpportunityPatch = Partial<ApiOpportunityLean>;
 
 export interface OpportunityVolunteer {
   id: number;
