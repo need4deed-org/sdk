@@ -137,7 +137,24 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
 }
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
-export type ApiOpportunityPatch = Partial<ApiOpportunityLean>;
+export type ApiOpportunityPatch = Partial<{
+  statusOpportunity: OpportunityStatusType;
+  contact: {
+    name: string;
+    phone: string;
+    email: string;
+    waysToContact: string[];
+  };
+  agent: { name: number; address: number; district: number };
+  accompanyingDetails: {
+    appointmentAddress: string;
+    appointmentDate: string;
+    appointmentTime: string;
+    refugeeNumber: string;
+    refugeeName: string;
+    languagesToTranslate: string[];
+  };
+}>;
 
 export interface OpportunityVolunteer {
   id: number;
