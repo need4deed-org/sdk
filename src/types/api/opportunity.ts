@@ -106,6 +106,7 @@ export interface ApiOpportunityAgent {
 }
 
 export interface ApiOpportunityContact {
+  id: number;
   name: string;
   phone: string;
   email: string;
@@ -137,15 +138,21 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
 }
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
+
 export type ApiOpportunityPatch = Partial<{
   statusOpportunity: OpportunityStatusType;
   contact: {
+    id: number;
     name: string;
     phone: string;
     email: string;
     waysToContact: string[];
   };
-  agent: { name: number; address: number; district: number };
+  agent: {
+    name: number;
+    address: number;
+    district: number;
+  };
   accompanyingDetails: {
     appointmentAddress: string;
     appointmentDate: string;
