@@ -159,7 +159,7 @@ export type ApiOpportunityPatch = Partial<{
     appointmentTime: string;
     refugeeNumber: string;
     refugeeName: string;
-    languagesToTranslate: string[];
+    languagesToTranslate: TranslatedIntoType[];
   };
 }>;
 
