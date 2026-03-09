@@ -146,7 +146,7 @@ export type ApiOpportunityPatch = Partial<{
     name: string;
     phone: string;
     email: string;
-    waysToContact: string[];
+    waysToContact: PreferredCommunicationType[];
   };
   agent: {
     name: number;
