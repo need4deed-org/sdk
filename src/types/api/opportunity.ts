@@ -141,6 +141,8 @@ export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
 
 export type ApiOpportunityPatch = Partial<{
   statusOpportunity: OpportunityStatusType;
+  numberVolunteers: number;
+  description: string;
   contact: {
     id: number;
     name: string;
