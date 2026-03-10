@@ -4,6 +4,7 @@ import { AgentType } from "./agent";
 import { ApiComment } from "./comment";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
+import { OptionItem } from "./option";
 import { PreferredCommunicationType } from "./person";
 import { ProfileVolunteeringType } from "./profile";
 import { ApiAvailability } from "./time";
@@ -146,7 +147,7 @@ export type ApiOpportunityPatch = Partial<{
   languagesMain: OptionItem[];
   languagesResidents: OptionItem[];
   activities: OptionItem[];
-  skils: OptionItem[];
+  skills: OptionItem[];
   schedule: ApiAvailability[];
   contact: {
     id: number;
