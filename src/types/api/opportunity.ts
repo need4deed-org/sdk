@@ -151,9 +151,9 @@ export type ApiOpportunityPatch = Partial<{
     waysToContact: PreferredCommunicationType[];
   };
   agent: {
-    name: number;
-    address: number;
-    district: number;
+    name: string;
+    address: string;
+    district: string;
   };
   accompanyingDetails: {
     appointmentAddress: string;
