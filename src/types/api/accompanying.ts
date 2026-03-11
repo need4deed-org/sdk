@@ -6,5 +6,5 @@ export interface ApiOpportunityAccompanyingDetails {
   appointmentTime?: string;
   refugeeNumber?: string;
   refugeeName?: string;
-  languageToTranslate?: TranslatedIntoType;
+  languageToTranslate?: number;
 }
