@@ -1,12 +1,13 @@
-import { Id } from "..";
-import { AgentType, ApiAgentGet } from "./agent";
-import { ApiAvailability } from "./time";
+import { Id, Lang } from "..";
+import { ApiOpportunityAccompanyingDetails } from "./accompanying";
+import { AgentType } from "./agent";
 import { ApiComment } from "./comment";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
-import { ApiAddressGet } from "./location";
+import { OptionItem } from "./option";
 import { PreferredCommunicationType } from "./person";
 import { ProfileVolunteeringType } from "./profile";
+import { ApiAvailability } from "./time";
 import { VolunteerStateTypeType } from "./volunteer";
 
 export const { REGULAR_ACCOMPANYING, ...OpportunityType } =
@@ -37,7 +38,7 @@ export enum OpportunityMatchStatus {
 }
 
 export enum OpportunityVolunteerStatusType {
-  SUGGESTED = "pending",
+  PENDING = "pending",
   MATCHED = "matched",
   ACTIVE = "active",
   PAST = "past",
@@ -70,6 +71,34 @@ export interface OpportunityFormData {
   last_edited_time_notion?: string;
 }
 
+export interface OpportunityLegacyFormData {
+  title: string;
+  rac_email: string;
+  rac_full_name: string;
+  rac_phone: string;
+  rac_address: string;
+  rac_plz: string;
+  opportunity_type: "accompanying" | "volunteering";
+  accomp_address: string;
+  accomp_postcode: string;
+  accomp_datetime?: string;
+  accomp_name?: string;
+  accomp_phone?: string;
+  accomp_information?: string;
+  accomp_translation?: `${TranslatedIntoType}`;
+  berlin_locations?: string[];
+  languages: string[];
+  activities: string[];
+  skills: string[];
+  timeslots?: [number, string][];
+  volunteers_number: number;
+  vo_information?: string;
+  category: string;
+  category_id: OptionId;
+  last_edited_time_notion?: string;
+  language: `${Lang}`;
+}
+
 export interface ApiOpportunityAgent {
   type: AgentType;
   name: string;
@@ -78,19 +107,11 @@ export interface ApiOpportunityAgent {
 }
 
 export interface ApiOpportunityContact {
+  id: number;
   name: string;
   phone: string;
   email: string;
   waysToContact: PreferredCommunicationType[];
-}
-
-export interface ApiOpportunityAccompanyingDetails {
-  appointmentAddress?: string;
-  appointmentDate?: Date;
-  appointmentTime?: Date;
-  refugeeNumber?: string;
-  refugeeName?: string;
-  languageToTranslate?: TranslatedIntoType;
 }
 
 export interface ApiOpportunityGetList {
@@ -115,4 +136,49 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
   contact: ApiOpportunityContact;
   agent: ApiOpportunityAgent;
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
+}
+
+export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
+
+export type ApiOpportunityPatch = Partial<{
+  statusOpportunity: OpportunityStatusType;
+  numberVolunteers: number;
+  description: string;
+  languagesMain: OptionItem[];
+  languagesResidents: OptionItem[];
+  activities: OptionItem[];
+  skills: OptionItem[];
+  schedule: ApiAvailability[];
+  contact: {
+    id: number;
+    name: string;
+    phone: string;
+    email: string;
+    waysToContact: PreferredCommunicationType[];
+  };
+  agent: {
+    name: string;
+    address: string;
+    district: string;
+  };
+  accompanyingDetails: {
+    appointmentAddress: string;
+    appointmentDate: string;
+    appointmentTime: string;
+    refugeeNumber: string;
+    refugeeName: string;
+    languagesToTranslate: number;
+  };
+}>;
+
+export interface OpportunityVolunteer {
+  id: number;
+  status: OpportunityVolunteerStatusType;
+  opportunityId: number;
+  volunteerId: number;
+  updatedAt: Date;
+}
+
+export interface ApiOpportunityVolunteerGet extends OpportunityVolunteer {
+  title: string;
 }

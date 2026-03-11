@@ -4,6 +4,7 @@ import { ApiLanguage } from "./language";
 import {
   ApiOpportunityGetList,
   OpportunityVolunteerStatusType,
+  OpportunityVolunteer,
 } from "./opportunity";
 import { OptionItem } from "./option";
 import { ApiPersonGet, PreferredCommunicationType } from "./person";
@@ -27,6 +28,26 @@ export interface Volunteer {
   fluentLanguages: OptionId[];
   intermediateLanguages: OptionId[];
   comments: string;
+}
+
+export interface VolunteerLegacyFormData {
+  origin_opportunity?: number;
+  full_name: string;
+  phone: string;
+  email: string;
+  postal_code: number;
+  good_conduct_certificate: "Yes" | "No";
+  if_measles_vaccination: boolean;
+  lead_from: string;
+  schedule: [number, string][];
+  preferred_berlin_locations: string[];
+  activities: string[];
+  skills: string[];
+  native_languages: string[];
+  fluent_languages: string[];
+  intermediate_languages: string[];
+  comments: string;
+  language: string;
 }
 
 export interface VolunteerFormData {
@@ -143,13 +164,16 @@ export interface ApiVolunteerGet {
 
 export interface VolunteerPatchBodyData extends Partial<ApiVolunteerGet> {}
 
-export interface ApiOpportunityVolunteerGet {
-  id: number;
-  opportunityId: number;
-  volunteerId: number;
-  title: string;
-  status: OpportunityVolunteerStatusType;
-  updatedAt: Date;
+export interface ApiVolunteerOpportunityGet extends OpportunityVolunteer {
+  name: string;
+  avatarUrl: string;
+  volunteeringType: ProfileVolunteeringType;
+  engagement: VolunteerStateEngagementType;
+  languages: ApiLanguage[];
+  availability: ApiAvailability[];
+  activities: OptionItem[];
+  skills: OptionItem[];
+  locations: OptionItem[];
 }
 
 export interface ApiVolunteerOpportunityGetList extends ApiOpportunityGetList {
