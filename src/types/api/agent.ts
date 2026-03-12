@@ -2,6 +2,7 @@ import { ApiComment } from "./comment";
 import { OptionById } from "./common";
 import { ApiLanguage } from "./language";
 import { ApiAddress, ApiDistrict } from "./location";
+import { OptionItem } from "./option";
 import { ApiOrganizationGet } from "./organization";
 import { ApiPersonGet } from "./person";
 
@@ -73,7 +74,7 @@ export interface AgentDetails {
   organizationType: AgentType;
   operator: string;
   services: string;
-  clientLanguages: ApiLanguage[];
+  clientLanguages: OptionItem[];
 }
 
 export interface ApiRepresentativeGet extends ApiPersonGet {
@@ -85,9 +86,7 @@ export interface ApiAgentGetList {
   id: number;
   title: string;
   type: AgentType;
-  operatorType?: AgentOperatorType;
-  operatorId?: number;
-  address?: ApiAddress;
+  volunteerSearch: AgentVolunteerSearchType;
   district?: OptionById;
   activeVolunteers: number;
 }
@@ -100,7 +99,6 @@ export interface ApiAgentGet extends ApiAgentGetList {
   serviceType?: AgentServiceType[];
   trustLevel: AgentTrustType;
   statusEngagement: AgentEngagementStatusType;
-  volunteerSearch: AgentVolunteerSearchType;
   comments: ApiComment[];
   agentDetails: AgentDetails;
 }
