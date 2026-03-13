@@ -1,9 +1,6 @@
 import { ApiComment } from "./comment";
 import { OptionById } from "./common";
-import { ApiLanguage } from "./language";
-import { ApiAddress, ApiDistrict } from "./location";
 import { OptionItem } from "./option";
-import { ApiOrganizationGet } from "./organization";
 import { ApiPersonGet } from "./person";
 
 export enum AgentType {
@@ -100,4 +97,5 @@ export interface ApiAgentGet extends ApiAgentGetList {
   trustLevel: AgentTrustType;
   statusEngagement: AgentEngagementStatusType;
   agentDetails: AgentDetails;
+  comments: ApiComment[];
 }
