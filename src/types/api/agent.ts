@@ -76,7 +76,6 @@ export interface AgentDetails {
 
 export interface ApiRepresentativeGet extends ApiPersonGet {
   role: AgentRoleType;
-  landline: string;
 }
 
 export interface ApiAgentGetList {
