@@ -94,7 +94,7 @@ export interface ApiAgentGetList {
 export interface ApiAgentGet extends ApiAgentGetList {
   createdAt: Date;
   updatedAt?: Date;
-  operator?: ApiOrganizationGet;
+  operator?: string;
   representatives?: ApiRepresentativeGet[];
   serviceType?: AgentServiceType[];
   trustLevel: AgentTrustType;
