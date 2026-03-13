@@ -91,7 +91,7 @@ export interface ApiAgentGet extends ApiAgentGetList {
   createdAt: Date;
   updatedAt?: Date;
   operator?: string;
-  representatives?: ApiRepresentativeGet[];
+  representative?: ApiRepresentativeGet;
   serviceType?: AgentServiceType[];
   trustLevel: AgentTrustType;
   statusEngagement: AgentEngagementStatusType;

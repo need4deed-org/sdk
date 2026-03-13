@@ -1,5 +1,5 @@
 export enum ContactType {
-  CALL= "called",
+  CALL = "called",
   TRIED_CALL = "tried-to-call",
   TEXT_EMAIL = "texted-or-emailed",
   OTHER = "other",
@@ -23,17 +23,21 @@ export enum CommunicationType {
   POST_FOLLOWUP = "post-match-followup",
 }
 
-export interface ApiVolunteerCommunicationPost {
+export interface ApiCommunicationPost {
   contactType: ContactType;
   contactMethod: ContactMethodType;
   communicationType: CommunicationType;
   date: Date;
 }
 
-export interface ApiCommunicationGet extends ApiVolunteerCommunicationPost {
+export type ApiCommunicationPatch = Partial<ApiCommunicationPost>;
+
+export interface ApiCommunicationGet extends ApiCommunicationPost {
   id: number;
-  volunteerId: number;
+  volunteerId?: number;
+  agentId?: number;
   userId: number;
 }
 
-export interface ApiVolunteerCommunicationPatch extends ApiVolunteerCommunicationPost {}; 
+export interface ApiVolunteerCommunicationPost extends ApiCommunicationPost {}
+export type ApiVolunteerCommunicationPatch = ApiCommunicationPatch;
