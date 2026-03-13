@@ -14,7 +14,7 @@ export interface ApiPersonGet {
   lastName: string;
   middleName: string;
   phone: string;
-  workPhone: string;
+  landline: string;
   email: string;
   address: Address;
   preferredComm?: PreferredCommunicationType;
