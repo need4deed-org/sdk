@@ -99,6 +99,5 @@ export interface ApiAgentGet extends ApiAgentGetList {
   serviceType?: AgentServiceType[];
   trustLevel: AgentTrustType;
   statusEngagement: AgentEngagementStatusType;
-  comments: ApiComment[];
   agentDetails: AgentDetails;
 }
