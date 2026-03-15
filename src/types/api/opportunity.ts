@@ -24,10 +24,10 @@ export enum TranslatedIntoType {
 }
 
 export enum OpportunityStatusType {
-  NEW = "new",
-  SEARCHING = "searching",
-  ACTIVE = "active",
-  PAST = "past",
+  NEW = "opp-new",
+  SEARCHING = "opp-searching",
+  ACTIVE = "opp-active",
+  PAST = "opp-past",
 }
 
 export enum OpportunityMatchStatus {
