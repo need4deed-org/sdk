@@ -31,17 +31,17 @@ export enum OpportunityStatusType {
 }
 
 export enum OpportunityMatchStatus {
-  PENDING_MATCH = "pending-match",
-  MATCHED = "matched",
-  NEEDS_REMATCH = "needs-rematch",
-  UNMATCHED = "unmatched",
+  PENDING_MATCH = "opp-pending-match",
+  MATCHED = "opp-matched",
+  NEEDS_REMATCH = "opp-needs-rematch",
+  UNMATCHED = "opp-unmatched",
 }
 
 export enum OpportunityVolunteerStatusType {
-  PENDING = "pending",
-  MATCHED = "matched",
-  ACTIVE = "active",
-  PAST = "past",
+  PENDING = "opp-pending",
+  MATCHED = "opp-matched",
+  ACTIVE = "opp-active",
+  PAST = "opp-past",
 }
 
 export interface OpportunityFormData {
