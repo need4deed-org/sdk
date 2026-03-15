@@ -59,9 +59,9 @@ export enum AgentServiceType {
 }
 
 export enum AgentTrustType {
-  HIGH = "high",
-  LOW = "low",
-  UNKNOWN = "unknown",
+  HIGH = "agent-high",
+  LOW = "agent-low",
+  UNKNOWN = "agent-unknown",
 }
 
 export interface AgentDetails {
