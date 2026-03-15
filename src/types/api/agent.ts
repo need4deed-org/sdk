@@ -33,16 +33,16 @@ export enum AgentRoleType {
 }
 
 export enum AgentEngagementStatusType {
-  NEW = "new",
-  ACTIVE = "active",
-  UNRESPONSIVE = "unresponsive",
-  INACTIVE = "inactive",
+  NEW = "agent-new",
+  ACTIVE = "agent-active",
+  UNRESPONSIVE = "agent-unresponsive",
+  INACTIVE = "agent-inactive",
 }
 
 export enum AgentVolunteerSearchType {
-  SEARCHING = "searching",
-  NOT_NEEDED = "not-needed",
-  VOLUNTEERS_FOUND = "volunteers-found",
+  SEARCHING = "agent-searching",
+  NOT_NEEDED = "agent-not-needed",
+  VOLUNTEERS_FOUND = "agent-volunteers-found",
 }
 
 export enum AgentServiceType {
