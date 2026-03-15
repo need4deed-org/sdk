@@ -68,12 +68,12 @@ export interface VolunteerFormData {
 }
 
 export enum VolunteerStateEngagementType {
-  NEW = "new",
-  ACTIVE = "active",
-  AVAILABLE = "available",
-  TEMP_UNAVAILABLE = "temp-unavailable",
-  INACTIVE = "inactive",
-  UNRESPONSIVE = "unresponsive",
+  NEW = "vol-new",
+  ACTIVE = "vol-active",
+  AVAILABLE = "vol-available",
+  TEMP_UNAVAILABLE = "vol-temp-unavailable",
+  INACTIVE = "vol-inactive",
+  UNRESPONSIVE = "vol-unresponsive",
 }
 
 export enum VolunteerStateCommunicationType {
@@ -111,10 +111,10 @@ export enum VolunteerStateType {
 }
 
 export enum VolunteerStateMatchType {
-  NO_MATCHES = "no-matches",
-  PENDING_MATCH = "pending-match",
-  MATCHED = "matched",
-  NEEDS_REMATCH = "needs-rematch",
+  NO_MATCHES = "vol-no-matches",
+  PENDING_MATCH = "vol-pending-match",
+  MATCHED = "vol-matched",
+  NEEDS_REMATCH = "vol-needs-rematch",
 }
 
 export const VolunteerCommunicationType = PreferredCommunicationType;
