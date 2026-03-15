@@ -78,6 +78,8 @@ export interface ApiRepresentativeGet extends ApiPersonGet {
   role: AgentRoleType;
 }
 
+export type ApiRepresentativePatch = Partial<ApiRepresentativeGet>;
+
 export interface ApiAgentGetList {
   id: number;
   title: string;
