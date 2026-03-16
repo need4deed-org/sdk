@@ -17,7 +17,7 @@ export interface ApiPersonGet {
   landline: string;
   email: string;
   address: Address;
-  preferredComm?: PreferredCommunicationType;
+  preferredComm?: PreferredCommunicationType[];
 }
 
 export type ApiPersonPatch = Partial<ApiPersonGet>;
