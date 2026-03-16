@@ -6,3 +6,5 @@ export interface ApiOrganizationGet {
   website: string;
   address: ApiAddress;
 }
+
+export type ApiOrganizationPatch = Partial<ApiOrganizationGet>;
