@@ -100,3 +100,14 @@ export interface ApiAgentGet extends ApiAgentGetList {
   agentDetails: AgentDetails;
   comments: ApiComment[];
 }
+
+export interface ApiAgentPatch {
+  title?: string;
+  type?: AgentType;
+  volunteerSearch?: AgentVolunteerSearchType;
+  trustLevel: AgentTrustType;
+  serviceType?: AgentServiceType[];
+  statusEngagement?: AgentEngagementStatusType;
+  about?: string;
+  website?: string;
+}
