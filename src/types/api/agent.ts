@@ -110,4 +110,6 @@ export interface ApiAgentPatch {
   statusEngagement?: AgentEngagementStatusType;
   about?: string;
   website?: string;
+  statusSearch?: AgentVolunteerSearchType;
+  services?: AgentServiceType[];
 }
