@@ -85,6 +85,7 @@ export interface ApiAgentGetList {
   title: string;
   type: AgentType;
   volunteerSearch: AgentVolunteerSearchType;
+  trustLevel: AgentTrustType;
   district?: OptionById;
   activeVolunteers: number;
 }
@@ -95,7 +96,6 @@ export interface ApiAgentGet extends ApiAgentGetList {
   operator?: string;
   representative?: ApiRepresentativeGet;
   serviceType?: AgentServiceType[];
-  trustLevel: AgentTrustType;
   statusEngagement: AgentEngagementStatusType;
   agentDetails: AgentDetails;
   comments: ApiComment[];
