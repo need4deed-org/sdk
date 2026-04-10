@@ -91,6 +91,7 @@ export interface OpportunityLegacyFormData {
   activities: string[];
   skills: string[];
   timeslots?: [number, string][];
+  onetime_date_time?: string;
   volunteers_number: number;
   vo_information?: string;
   category: string;
