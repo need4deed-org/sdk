@@ -122,17 +122,17 @@ export interface ApiOpportunityGetList {
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
   createdAt: Date;
+  activities: OptionById[];
+  languages: ApiLanguage[];
+  availability: ApiAvailability[];
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
   createdAt: Date;
   numberOfVolunteers: number;
   description: string;
-  languages: ApiLanguage[];
-  activities: OptionById[];
   skills: OptionById[];
   location: OptionById[];
-  availability: ApiAvailability[];
   comments: ApiComment[];
   contact: ApiOpportunityContact;
   agent: ApiOpportunityAgent;
