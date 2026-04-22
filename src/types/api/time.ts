@@ -80,5 +80,5 @@ export enum TimeSlot {
 export interface ApiAvailability {
   id?: number;
   day?: ByDay | Occasionally;
-  daytime?: TimeSlot | OccasionalType;
+  daytime?: TimeSlot | OccasionalType | string;
 }

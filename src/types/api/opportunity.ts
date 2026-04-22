@@ -24,24 +24,24 @@ export enum TranslatedIntoType {
 }
 
 export enum OpportunityStatusType {
-  NEW = "new",
-  SEARCHING = "searching",
-  ACTIVE = "active",
-  PAST = "past",
+  NEW = "opp-new",
+  SEARCHING = "opp-searching",
+  ACTIVE = "opp-active",
+  PAST = "opp-past",
 }
 
 export enum OpportunityMatchStatus {
-  PENDING_MATCH = "pending-match",
-  MATCHED = "matched",
-  NEEDS_REMATCH = "needs-rematch",
-  UNMATCHED = "unmatched",
+  PENDING_MATCH = "opp-pending-match",
+  MATCHED = "opp-matched",
+  NEEDS_REMATCH = "opp-needs-rematch",
+  UNMATCHED = "opp-unmatched",
 }
 
 export enum OpportunityVolunteerStatusType {
-  PENDING = "pending",
-  MATCHED = "matched",
-  ACTIVE = "active",
-  PAST = "past",
+  PENDING = "opp-pending",
+  MATCHED = "opp-matched",
+  ACTIVE = "opp-active",
+  PAST = "opp-past",
 }
 
 export interface OpportunityFormData {
@@ -91,6 +91,7 @@ export interface OpportunityLegacyFormData {
   activities: string[];
   skills: string[];
   timeslots?: [number, string][];
+  onetime_date_time?: string;
   volunteers_number: number;
   vo_information?: string;
   category: string;
@@ -121,17 +122,17 @@ export interface ApiOpportunityGetList {
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
   createdAt: Date;
+  activities: OptionById[];
+  languages: ApiLanguage[];
+  availability: ApiAvailability[];
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
   createdAt: Date;
   numberOfVolunteers: number;
   description: string;
-  languages: ApiLanguage[];
-  activities: OptionById[];
   skills: OptionById[];
   location: OptionById[];
-  availability: ApiAvailability[];
   comments: ApiComment[];
   contact: ApiOpportunityContact;
   agent: ApiOpportunityAgent;

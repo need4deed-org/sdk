@@ -14,9 +14,10 @@ export interface ApiPersonGet {
   lastName: string;
   middleName: string;
   phone: string;
+  landline: string;
   email: string;
   address: Address;
-  preferredComm?: PreferredCommunicationType;
+  preferredComm?: PreferredCommunicationType[];
 }
 
 export type ApiPersonPatch = Partial<ApiPersonGet>;

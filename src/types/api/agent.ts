@@ -1,8 +1,6 @@
 import { ApiComment } from "./comment";
 import { OptionById } from "./common";
-import { ApiLanguage } from "./language";
-import { ApiAddress, ApiDistrict } from "./location";
-import { ApiOrganizationGet } from "./organization";
+import { OptionItem } from "./option";
 import { ApiPersonGet } from "./person";
 
 export enum AgentType {
@@ -35,16 +33,16 @@ export enum AgentRoleType {
 }
 
 export enum AgentEngagementStatusType {
-  NEW = "new",
-  ACTIVE = "active",
-  UNRESPONSIVE = "unresponsive",
-  INACTIVE = "inactive",
+  NEW = "agent-new",
+  ACTIVE = "agent-active",
+  UNRESPONSIVE = "agent-unresponsive",
+  INACTIVE = "agent-inactive",
 }
 
 export enum AgentVolunteerSearchType {
-  SEARCHING = "searching",
-  NOT_NEEDED = "not-needed",
-  VOLUNTEERS_FOUND = "volunteers-found",
+  SEARCHING = "agent-searching",
+  NOT_NEEDED = "agent-not-needed",
+  VOLUNTEERS_FOUND = "agent-volunteers-found",
 }
 
 export enum AgentServiceType {
@@ -61,9 +59,9 @@ export enum AgentServiceType {
 }
 
 export enum AgentTrustType {
-  HIGH = "high",
-  LOW = "low",
-  UNKNOWN = "unknown",
+  HIGH = "agent-high",
+  LOW = "agent-low",
+  UNKNOWN = "agent-unknown",
 }
 
 export interface AgentDetails {
@@ -73,21 +71,21 @@ export interface AgentDetails {
   organizationType: AgentType;
   operator: string;
   services: string;
-  clientLanguages: ApiLanguage[];
+  clientLanguages: OptionItem[];
 }
 
 export interface ApiRepresentativeGet extends ApiPersonGet {
   role: AgentRoleType;
-  landline: string;
 }
+
+export type ApiRepresentativePatch = Partial<ApiRepresentativeGet>;
 
 export interface ApiAgentGetList {
   id: number;
   title: string;
   type: AgentType;
-  operatorType?: AgentOperatorType;
-  operatorId?: number;
-  address?: ApiAddress;
+  volunteerSearch: AgentVolunteerSearchType;
+  trustLevel: AgentTrustType;
   district?: OptionById;
   activeVolunteers: number;
 }
@@ -95,12 +93,23 @@ export interface ApiAgentGetList {
 export interface ApiAgentGet extends ApiAgentGetList {
   createdAt: Date;
   updatedAt?: Date;
-  operator?: ApiOrganizationGet;
-  representatives?: ApiRepresentativeGet[];
+  operator?: string;
+  representative?: ApiRepresentativeGet;
   serviceType?: AgentServiceType[];
-  trustLevel: AgentTrustType;
   statusEngagement: AgentEngagementStatusType;
-  volunteerSearch: AgentVolunteerSearchType;
-  comments: ApiComment[];
   agentDetails: AgentDetails;
+  comments: ApiComment[];
+}
+
+export interface ApiAgentPatch {
+  title?: string;
+  type?: AgentType;
+  volunteerSearch?: AgentVolunteerSearchType;
+  trustLevel: AgentTrustType;
+  serviceType?: AgentServiceType[];
+  statusEngagement?: AgentEngagementStatusType;
+  about?: string;
+  website?: string;
+  statusSearch?: AgentVolunteerSearchType;
+  services?: AgentServiceType[];
 }
