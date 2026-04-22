@@ -125,6 +125,7 @@ export interface ApiOpportunityGetList {
   activities: OptionById[];
   languages: ApiLanguage[];
   availability: ApiAvailability[];
+  accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
@@ -136,7 +137,6 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
   comments: ApiComment[];
   contact: ApiOpportunityContact;
   agent: ApiOpportunityAgent;
-  accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
@@ -162,14 +162,7 @@ export type ApiOpportunityPatch = Partial<{
     address: string;
     district: string;
   };
-  accompanyingDetails: {
-    appointmentAddress: string;
-    appointmentDate: string;
-    appointmentTime: string;
-    refugeeNumber: string;
-    refugeeName: string;
-    languagesToTranslate: number;
-  };
+  accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }>;
 
 export interface OpportunityVolunteer {
