@@ -38,6 +38,13 @@ export enum OpportunityMatchStatus {
   UNMATCHED = "opp-unmatched",
 }
 
+export enum OpportunityMatchStatusType {
+  NO_MATCHES = "vol-no-matches",
+  PENDING_MATCH = "vol-pending-match",
+  MATCHED = "vol-matched",
+  PAST = "vol-past",
+}
+
 export enum OpportunityVolunteerStatusType {
   PENDING = "opp-pending",
   MATCHED = "opp-matched",
@@ -122,6 +129,7 @@ export interface ApiOpportunityGetList {
   category: OptionById;
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
+  statusMatch: OpportunityMatchStatusType;
   createdAt: Date;
   activities: OptionById[];
   languages: ApiLanguage[];
