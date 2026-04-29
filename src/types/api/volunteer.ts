@@ -1,11 +1,7 @@
 import { DocumentStatusType, Id } from "../core";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
-import {
-  ApiOpportunityGetList,
-  OpportunityVolunteerStatusType,
-  OpportunityVolunteer,
-} from "./opportunity";
+import { ApiOpportunityGetList, OpportunityVolunteer } from "./opportunity";
 import { OptionItem } from "./option";
 import { ApiPersonGet, PreferredCommunicationType } from "./person";
 import { ProfileVolunteeringType } from "./profile";
@@ -115,6 +111,7 @@ export enum VolunteerStateMatchType {
   PENDING_MATCH = "vol-pending-match",
   MATCHED = "vol-matched",
   NEEDS_REMATCH = "vol-needs-rematch",
+  PAST = "vol-past",
 }
 
 export const VolunteerCommunicationType = PreferredCommunicationType;
