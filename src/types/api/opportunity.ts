@@ -31,14 +31,16 @@ export enum OpportunityStatusType {
   PAST = "opp-past",
 }
 
-export enum OpportunityMatchStatus {
-  PENDING_MATCH = "opp-pending-match",
-  MATCHED = "opp-matched",
-  NEEDS_REMATCH = "opp-needs-rematch",
-  UNMATCHED = "opp-unmatched",
+export enum OpportunityMatchStatusType {
+  PENDING_MATCH = "opp-vol-pending-match",
+  NO_MATCHES = "opp-vol-no-matches",
+  MATCHED = "opp-vol-matched",
+  NEEDS_REMATCH = "opp-vol-needs-rematch",
+  UNMATCHED = "opp-vol-unmatched",
+  PAST = "opp-vol-past",
 }
 
-export enum OpportunityMatchStatusType {
+export enum OpportunityMatchStatus {
   NO_MATCHES = "vol-no-matches",
   PENDING_MATCH = "vol-pending-match",
   MATCHED = "vol-matched",
