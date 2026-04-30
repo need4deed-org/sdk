@@ -115,6 +115,7 @@ export enum VolunteerStateMatchType {
   PENDING_MATCH = "vol-pending-match",
   MATCHED = "vol-matched",
   NEEDS_REMATCH = "vol-needs-rematch",
+  PAST = "vol-past",
 }
 
 export const VolunteerCommunicationType = PreferredCommunicationType;

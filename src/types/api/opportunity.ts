@@ -8,7 +8,7 @@ import { OptionItem } from "./option";
 import { PreferredCommunicationType } from "./person";
 import { ProfileVolunteeringType } from "./profile";
 import { ApiAvailability } from "./time";
-import { VolunteerStateTypeType } from "./volunteer";
+import { VolunteerStateMatchType, VolunteerStateTypeType } from "./volunteer";
 
 export const { REGULAR_ACCOMPANYING, ...OpportunityType } =
   ProfileVolunteeringType;
@@ -128,7 +128,7 @@ export interface ApiOpportunityGetList {
   category: OptionById;
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
-  statusMatch: OpportunityMatchStatusType;
+  statusMatch: VolunteerStateMatchType;
   createdAt: Date;
   activities: OptionById[];
   languages: ApiLanguage[];
