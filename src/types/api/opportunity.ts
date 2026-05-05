@@ -136,6 +136,7 @@ export interface ApiOpportunityGetList {
   activities: OptionById[];
   languages: ApiLanguage[];
   availability: ApiAvailability[];
+  location: OptionById[];
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }
 
@@ -144,7 +145,6 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
   numberOfVolunteers: number;
   description: string;
   skills: OptionById[];
-  location: OptionById[];
   comments: ApiComment[];
   contact: ApiOpportunityContact;
   agent: ApiOpportunityAgent;
