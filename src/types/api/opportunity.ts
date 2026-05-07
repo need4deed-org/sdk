@@ -129,6 +129,7 @@ export interface ApiOpportunityGetList {
   id: Id;
   title: string;
   category: OptionById;
+  district: OptionById;
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
   statusMatch: OpportunityMatchStatusType;
