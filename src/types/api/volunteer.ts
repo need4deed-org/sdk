@@ -121,6 +121,8 @@ export interface ApiVolunteerGetList {
   id: number;
   statusEngagement: VolunteerStateEngagementType;
   statusType: VolunteerStateTypeType;
+  statusMatch?: VolunteerStateMatchType;
+  statusCommunication?: VolunteerStateCommunicationType;
   name: string;
   avatarUrl: string;
   languages: ApiLanguage[];
