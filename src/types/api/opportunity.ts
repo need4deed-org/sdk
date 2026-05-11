@@ -101,6 +101,7 @@ export interface OpportunityLegacyFormData {
 }
 
 export interface ApiOpportunityAgent {
+  id: number;
   type: AgentType;
   name: string;
   address: string;
@@ -121,6 +122,7 @@ export interface ApiOpportunityGetList {
   category: OptionById;
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
+  statusMatch?: string;
   createdAt: Date;
   activities: OptionById[];
   languages: ApiLanguage[];
