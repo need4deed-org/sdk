@@ -5,6 +5,7 @@ export enum PreferredCommunicationType {
   MOBILE_PHONE = "mobilePhone",
   WHATSAPP = "whatsapp",
   TELEGRAM = "telegram",
+  SMS = "sms",
 }
 
 export interface ApiPersonGet {
