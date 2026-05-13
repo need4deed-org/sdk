@@ -1,3 +1,4 @@
+import { OptionById } from "./common";
 import { TranslatedIntoType } from "./opportunity";
 
 export interface ApiOpportunityAccompanyingDetails {
@@ -6,5 +7,8 @@ export interface ApiOpportunityAccompanyingDetails {
   appointmentTime?: string;
   refugeeNumber?: string;
   refugeeName?: string;
-  languageToTranslate?: string;
+  appointmentLanguage?: TranslatedIntoType;
+  refugeeLanguage?: OptionById[];
+  appointmentPostcode?: OptionById;
+  appointmentDistrict?: OptionById;
 }

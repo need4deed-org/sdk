@@ -27,14 +27,24 @@ export enum OpportunityStatusType {
   NEW = "opp-new",
   SEARCHING = "opp-searching",
   ACTIVE = "opp-active",
+  INACTIVE = "opp-inactive",
   PAST = "opp-past",
 }
 
+export enum OpportunityMatchStatusType {
+  PENDING_MATCH = "opp-vol-pending-match",
+  NO_MATCHES = "opp-vol-no-matches",
+  MATCHED = "opp-vol-matched",
+  NEEDS_REMATCH = "opp-vol-needs-rematch",
+  UNMATCHED = "opp-vol-unmatched",
+  PAST = "opp-vol-past",
+}
+
 export enum OpportunityMatchStatus {
-  PENDING_MATCH = "opp-pending-match",
-  MATCHED = "opp-matched",
-  NEEDS_REMATCH = "opp-needs-rematch",
-  UNMATCHED = "opp-unmatched",
+  NO_MATCHES = "vol-no-matches",
+  PENDING_MATCH = "vol-pending-match",
+  MATCHED = "vol-matched",
+  PAST = "vol-past",
 }
 
 export enum OpportunityVolunteerStatusType {
@@ -119,12 +129,16 @@ export interface ApiOpportunityGetList {
   id: Id;
   title: string;
   category: OptionById;
+  district: OptionById;
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
+  statusMatch: OpportunityMatchStatusType;
   createdAt: Date;
   activities: OptionById[];
   languages: ApiLanguage[];
   availability: ApiAvailability[];
+  location: OptionById[];
+  accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
@@ -132,11 +146,9 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
   numberOfVolunteers: number;
   description: string;
   skills: OptionById[];
-  location: OptionById[];
   comments: ApiComment[];
   contact: ApiOpportunityContact;
   agent: ApiOpportunityAgent;
-  accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
@@ -162,14 +174,7 @@ export type ApiOpportunityPatch = Partial<{
     address: string;
     district: string;
   };
-  accompanyingDetails: {
-    appointmentAddress: string;
-    appointmentDate: string;
-    appointmentTime: string;
-    refugeeNumber: string;
-    refugeeName: string;
-    languagesToTranslate: number;
-  };
+  accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }>;
 
 export interface OpportunityVolunteer {
