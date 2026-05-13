@@ -27,6 +27,7 @@ export enum OpportunityStatusType {
   NEW = "opp-new",
   SEARCHING = "opp-searching",
   ACTIVE = "opp-active",
+  INACTIVE = "opp-inactive",
   PAST = "opp-past",
 }
 
