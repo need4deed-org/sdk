@@ -145,6 +145,9 @@ export interface ApiVolunteerGet {
   updatedAt: Date;
   goodConductCertificate: DocumentStatusType;
   measlesVaccination: DocumentStatusType;
+  statusVaccinationDate: Date | null;
+  statusCGCApplicationDate: Date | null;
+  statusCGCDate: Date | null;
   infoAbout: string;
   infoExperience: string;
   timelineLogs: TimedText[];
