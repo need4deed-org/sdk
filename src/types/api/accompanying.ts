@@ -9,6 +9,6 @@ export interface ApiOpportunityAccompanyingDetails {
   refugeeName?: string;
   appointmentLanguage?: TranslatedIntoType;
   refugeeLanguage?: OptionById[];
-  appointmentPostcode?: OptionById;
+  appointmentPostcode?: string;
   appointmentDistrict?: OptionById;
 }
