@@ -13,6 +13,7 @@ export enum ContactMethodType {
   SIGNAL = "signal",
   SMS = "sms",
   VOICENOTE = "voicenote",
+  VIDEO_CALL = "video-call",
 }
 
 export enum CommunicationType {
