@@ -111,6 +111,7 @@ export interface OpportunityLegacyFormData {
 }
 
 export interface ApiOpportunityAgent {
+  id: number;
   type: AgentType;
   name: string;
   address: string;
