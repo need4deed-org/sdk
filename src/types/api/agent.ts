@@ -1,3 +1,4 @@
+import { VoidableProps } from "../utils";
 import { ApiComment } from "./comment";
 import { OptionById } from "./common";
 import { OptionItem } from "./option";
@@ -101,15 +102,18 @@ export interface ApiAgentGet extends ApiAgentGetList {
   comments: ApiComment[];
 }
 
-export interface ApiAgentPatch {
-  title?: string;
-  type?: AgentType;
-  volunteerSearch?: AgentVolunteerSearchType;
+interface AgentPatch {
+  title: string;
+  type: AgentType;
+  volunteerSearch: AgentVolunteerSearchType;
   trustLevel: AgentTrustType;
-  serviceType?: AgentServiceType[];
-  statusEngagement?: AgentEngagementStatusType;
-  about?: string;
-  website?: string;
-  statusSearch?: AgentVolunteerSearchType;
-  services?: AgentServiceType[];
+  serviceType: AgentServiceType[];
+  statusEngagement: AgentEngagementStatusType;
+  about: string;
+  website: string;
+  addressStreet: string;
+  addressPostcode: string;
+  statusSearch: AgentVolunteerSearchType;
+  services: AgentServiceType[];
 }
+export type ApiAgentPatch = VoidableProps<AgentPatch>;
