@@ -115,5 +115,6 @@ interface AgentPatch {
   addressPostcode: string;
   statusSearch: AgentVolunteerSearchType;
   services: AgentServiceType[];
+  languages: OptionById[];
 }
 export type ApiAgentPatch = VoidableProps<AgentPatch>;
