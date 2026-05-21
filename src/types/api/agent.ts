@@ -1,4 +1,4 @@
-import { VoidableProps } from "../utils";
+import { Voidable, VoidableProps } from "../utils";
 import { ApiComment } from "./comment";
 import { OptionById } from "./common";
 import { OptionItem } from "./option";
@@ -93,10 +93,10 @@ export interface ApiAgentGetList {
 
 export interface ApiAgentGet extends ApiAgentGetList {
   createdAt: Date;
-  updatedAt?: Date;
-  operator?: string;
-  representative?: ApiRepresentativeGet;
-  serviceType?: AgentServiceType[];
+  updatedAt?: Voidable<Date>;
+  operator?: Voidable<string>;
+  representative?: Voidable<ApiRepresentativeGet>;
+  serviceType?: Voidable<AgentServiceType[]>;
   statusEngagement: AgentEngagementStatusType;
   agentDetails: AgentDetails;
   comments: ApiComment[];
@@ -115,5 +115,6 @@ interface AgentPatch {
   addressPostcode: string;
   statusSearch: AgentVolunteerSearchType;
   services: AgentServiceType[];
+  languages: OptionById[];
 }
 export type ApiAgentPatch = VoidableProps<AgentPatch>;
