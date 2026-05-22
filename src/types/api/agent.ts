@@ -1,6 +1,7 @@
-import { Voidable, VoidableProps } from "../utils";
+import { VoidableProps } from "../utils";
 import { ApiComment } from "./comment";
 import { OptionById } from "./common";
+import { ApiLanguage } from "./language";
 import { OptionItem } from "./option";
 import { ApiPersonGet } from "./person";
 
@@ -79,28 +80,34 @@ export interface ApiRepresentativeGet extends ApiPersonGet {
   role: AgentRoleType;
 }
 
-export type ApiRepresentativePatch = Partial<ApiRepresentativeGet>;
+export type ApiRepresentativePatch = VoidableProps<ApiRepresentativeGet>;
 
-export interface ApiAgentGetList {
+interface AgentGetList {
   id: number;
   title: string;
   type: AgentType;
   volunteerSearch: AgentVolunteerSearchType;
   trustLevel: AgentTrustType;
-  district?: OptionById;
+  district: OptionById;
   activeVolunteers: number;
 }
+export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
-export interface ApiAgentGet extends ApiAgentGetList {
+interface AgentGet extends AgentGetList {
   createdAt: Date;
-  updatedAt?: Voidable<Date>;
-  operator?: Voidable<string>;
-  representative?: Voidable<ApiRepresentativeGet>;
-  serviceType?: Voidable<AgentServiceType[]>;
+  updatedAt: Date;
+  operator: string;
+  representative: ApiRepresentativeGet;
+  serviceType: AgentServiceType[];
   statusEngagement: AgentEngagementStatusType;
   agentDetails: AgentDetails;
   comments: ApiComment[];
+  languages: ApiLanguage[];
 }
+export type ApiAgentGet = VoidableProps<
+  AgentGet,
+  "district" | "operator" | "representative" | "serviceType" | "updatedAt"
+>;
 
 interface AgentPatch {
   title: string;
@@ -116,5 +123,6 @@ interface AgentPatch {
   statusSearch: AgentVolunteerSearchType;
   services: AgentServiceType[];
   languages: OptionById[];
+  districtId: number;
 }
 export type ApiAgentPatch = VoidableProps<AgentPatch>;
