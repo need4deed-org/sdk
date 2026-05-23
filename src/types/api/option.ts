@@ -1,5 +1,11 @@
-import { EntityTableName } from "../core"; 
+import { EntityTableName } from "../core";
+import { VoidableProps } from "../utils";
 
-export interface OptionItem { title: string; id: number };
+export interface OptionItem {
+  title: string;
+  id: number;
+}
 
-export type ApiOptionLists = Partial<Record<EntityTableName, OptionItem[]>>;
+export type ApiOptionLists = VoidableProps<
+  Record<EntityTableName, OptionItem[]>
+>;

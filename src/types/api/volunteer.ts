@@ -1,4 +1,5 @@
 import { DocumentStatusType, Id } from "../core";
+import { VoidableProps } from "../utils";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { ApiOpportunityGetList, OpportunityVolunteer } from "./opportunity";
@@ -117,12 +118,12 @@ export enum VolunteerStateMatchType {
 export const VolunteerCommunicationType = PreferredCommunicationType;
 export type VolunteerCommunicationType = PreferredCommunicationType;
 
-export interface ApiVolunteerGetList {
+interface VolunteerGetListProps {
   id: number;
   statusEngagement: VolunteerStateEngagementType;
   statusType: VolunteerStateTypeType;
-  statusMatch?: VolunteerStateMatchType;
-  statusCommunication?: VolunteerStateCommunicationType;
+  statusMatch: VolunteerStateMatchType;
+  statusCommunication: VolunteerStateCommunicationType;
   name: string;
   avatarUrl: string;
   languages: ApiLanguage[];
@@ -131,6 +132,10 @@ export interface ApiVolunteerGetList {
   skills: OptionItem[];
   locations: OptionItem[];
 }
+export type ApiVolunteerGetList = VoidableProps<
+  VolunteerGetListProps,
+  "statusMatch" | "statusCommunication"
+>;
 
 export interface ApiVolunteerGet {
   id: number;
@@ -164,7 +169,7 @@ export interface ApiVolunteerGet {
   locations: OptionItem[];
 }
 
-export interface VolunteerPatchBodyData extends Partial<ApiVolunteerGet> {}
+export type VolunteerPatchBodyData = VoidableProps<ApiVolunteerGet>;
 
 export interface ApiVolunteerOpportunityGet extends OpportunityVolunteer {
   name: string;
