@@ -1,4 +1,4 @@
-import { VoidableProps } from "../utils";
+import { Voidable, VoidableProps } from "../utils";
 import { ApiComment } from "./comment";
 import { OptionById } from "./common";
 import { ApiLanguage } from "./language";
@@ -68,7 +68,7 @@ export enum AgentTrustType {
 
 export interface AgentDetails {
   about: string;
-  website?: string;
+  website?: Voidable<string>;
   address: string;
   organizationType: AgentType;
   operator: string;
@@ -90,6 +90,8 @@ interface AgentGetList {
   trustLevel: AgentTrustType;
   district: OptionById;
   activeVolunteers: number;
+  email: string;
+  numActiveVolunteers: number;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
