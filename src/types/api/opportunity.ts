@@ -1,4 +1,4 @@
-import { Id, Lang } from "..";
+import { Id, Lang, VoidableProps, VoidableUndefined } from "..";
 import { ApiOpportunityAccompanyingDetails } from "./accompanying";
 import { AgentType } from "./agent";
 import { ApiComment } from "./comment";
@@ -81,7 +81,7 @@ export interface OpportunityFormData {
   last_edited_time_notion?: string;
 }
 
-export interface OpportunityLegacyFormData {
+export interface OpportunityLegacyFormDataProps {
   title: string;
   rac_email: string;
   rac_full_name: string;
@@ -109,6 +109,8 @@ export interface OpportunityLegacyFormData {
   last_edited_time_notion?: string;
   language: `${Lang}`;
 }
+export type OpportunityLegacyFormData =
+  VoidableUndefined<OpportunityLegacyFormDataProps>;
 
 export interface ApiOpportunityAgent {
   id: number;
@@ -154,7 +156,7 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
 
-export type ApiOpportunityPatch = Partial<{
+export type ApiOpportunityPatch = VoidableProps<{
   statusOpportunity: OpportunityStatusType;
   numberVolunteers: number;
   description: string;
