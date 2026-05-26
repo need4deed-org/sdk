@@ -18,9 +18,8 @@
   },
   "scripts": {
     "what": "node -e 'console.log(require(\"./package.json\").version)'",
-    "build:copy-assets": "mkdir -p dist/styles && cp src/styles/*.css dist/styles/",
     "build:tsc": "tsc",
-    "build": "yarn build:tsc && yarn build:copy-assets",
+    "build": "yarn build:tsc",
     "watch": "tsc --watch --project tsconfig.cjs.json",
     "prepublishOnly": "yarn build",
     "publish": "yarn publish --non-interactive",
