@@ -1,15 +1,11 @@
 name: Publish on Merge to Main
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     permissions:
       contents: write
       pull-requests: write
