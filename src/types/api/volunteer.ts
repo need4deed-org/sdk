@@ -125,6 +125,7 @@ interface VolunteerGetListProps {
   statusMatch: VolunteerStateMatchType;
   statusCommunication: VolunteerStateCommunicationType;
   name: string;
+  email: string;
   avatarUrl: string;
   languages: ApiLanguage[];
   availability: ApiAvailability[];
