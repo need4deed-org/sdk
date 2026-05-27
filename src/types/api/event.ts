@@ -27,3 +27,5 @@ export interface EventN4D {
   additionalInfo?: string[]; // lineup, content, etc.
   outro?: string;
 }
+
+export interface ApiEventN4DGet extends EventN4D {}
