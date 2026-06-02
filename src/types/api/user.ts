@@ -1,3 +1,5 @@
+import { VoidableProps } from "../utils";
+
 export enum UserRole {
   USER = "user",
   COORDINATOR = "coordinator",
@@ -6,8 +8,9 @@ export enum UserRole {
   ADMIN = "admin",
 }
 
-export interface ApiUserGet {
+interface UserGet {
   id: number;
+  personId: number;
   email: string;
   isActive: boolean;
   role: UserRole;
@@ -17,3 +20,5 @@ export interface ApiUserGet {
   isoCode: string;
   timezone: string;
 }
+
+export type ApiUserGet = VoidableProps<UserGet, "avatarUrl" | "personId">;
