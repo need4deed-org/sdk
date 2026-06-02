@@ -5,4 +5,5 @@ export interface ApiComment {
   entityType?: string;
   authorName: string;
   timestamp: Date;
+  taggedPersonIds: number[];
 }
