@@ -8,7 +8,6 @@ export * from "./document";
 export * from "./event";
 export * from "./language";
 export * from "./location";
-export * from "./new_api";
 export * from "./opportunity";
 export * from "./option";
 export * from "./organization";
