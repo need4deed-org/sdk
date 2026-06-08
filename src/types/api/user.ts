@@ -13,7 +13,7 @@ export interface ApiUserPost {
   email: string;
   password: string;
   role: UserRole;
-  language: Lang;
+  language?: Lang;
   person: {
     id?: number;
     firstName?: string;
