@@ -1,3 +1,4 @@
+import { Lang } from "../core";
 import { VoidableProps } from "../utils";
 
 export enum UserRole {
@@ -6,6 +7,19 @@ export enum UserRole {
   AGENT = "agent",
   VOLUNTEER = "volunteer",
   ADMIN = "admin",
+}
+
+export interface ApiUserPost {
+  email: string;
+  password: string;
+  role: UserRole;
+  language: Lang;
+  person: {
+    id?: number;
+    firstName?: string;
+    middleName?: string;
+    lastName?: string;
+  };
 }
 
 interface UserGet {
