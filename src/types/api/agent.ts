@@ -128,3 +128,56 @@ interface AgentPatch {
   districtId: number;
 }
 export type ApiAgentPatch = VoidableProps<AgentPatch>;
+
+// --- Agent self-registration ---------------------------------------------
+// An authenticated AGENT user (already created + email-verified via POST /user)
+// either JOINs an existing agent or CREATEs a new one through POST /agent/register.
+//
+// NOTE: the write field names below (`info`, `languages: number[]`) follow the
+// registration write contract and intentionally differ from ApiAgentPatch
+// (`about`, `languages: OptionById[]`). Do not "align" them — they map to
+// different backend handlers.
+
+export interface ApiAgentRegisterNew {
+  title: string;
+  type?: AgentType;
+  info?: string;
+  website?: string;
+  services?: AgentServiceType[];
+  addressStreet?: string;
+  addressPostcode?: string;
+  districtId?: number;
+  languages?: number[];
+}
+
+export type ApiAgentRegister =
+  | { agentId: number }
+  | { agent: ApiAgentRegisterNew };
+
+export enum AgentMembershipStatus {
+  ACTIVE = "active",
+  PENDING = "pending",
+}
+
+export interface ApiAgentRegisterResponse {
+  agentId: number;
+  membershipStatus: AgentMembershipStatus;
+}
+
+// Returned with HTTP 409 when CREATE hits the unique-title constraint, so the
+// client can offer to JOIN the existing agent instead of minting a duplicate.
+export interface ApiAgentTitleConflict {
+  conflict: "title";
+  agentId: number;
+}
+
+// A person<->agent membership, surfaced to ADMIN/COORDINATOR for moderating
+// joins that did not pass domain-match (membershipStatus === PENDING).
+export interface ApiAgentMembership {
+  id: number;
+  agentId: number;
+  agentTitle: string;
+  person: ApiPersonGet;
+  role: AgentRoleType;
+  status: AgentMembershipStatus;
+}
