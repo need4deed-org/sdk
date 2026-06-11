@@ -171,6 +171,18 @@ export interface ApiAgentTitleConflict {
   agentId: number;
 }
 
+// Returned with HTTP 409 when CREATE's street+postcode already resolve to an
+// existing agent (same getAgentByAddress matcher as POST /opportunity/legacy),
+// so the client can offer to JOIN it instead of minting a duplicate.
+export interface ApiAgentAddressConflict {
+  conflict: "address";
+  agentId: number;
+}
+
+export type ApiAgentRegisterConflict =
+  | ApiAgentTitleConflict
+  | ApiAgentAddressConflict;
+
 // A person<->agent membership, surfaced to ADMIN/COORDINATOR for moderating
 // joins that did not pass domain-match (membershipStatus === PENDING).
 export interface ApiAgentMembership {
