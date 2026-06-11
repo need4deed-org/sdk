@@ -195,3 +195,30 @@ export interface OpportunityVolunteer {
 export interface ApiOpportunityVolunteerGet extends OpportunityVolunteer {
   title: string;
 }
+
+/**
+ * A volunteer linked to an opportunity, as surfaced on an agent's opportunity
+ * list. Person fields (`name`, `avatarUrl`) are PII-masked per caller role by
+ * the API, so they may be absent or redacted.
+ */
+export interface ApiAgentOpportunityVolunteer {
+  id: number;
+  volunteerId: number;
+  status: OpportunityVolunteerStatusType;
+  name?: string;
+  avatarUrl?: string;
+}
+
+/**
+ * One of an agent's opportunities with the volunteers linked to it. Response
+ * item of `GET /agent/:id/opportunity-linked`.
+ */
+export interface ApiAgentOpportunity {
+  id: Id;
+  title: string;
+  statusOpportunity: OpportunityStatusType;
+  statusMatch: OpportunityMatchStatusType;
+  numberOfVolunteers: number;
+  createdAt: Date;
+  volunteers: ApiAgentOpportunityVolunteer[];
+}
