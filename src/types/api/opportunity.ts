@@ -144,6 +144,11 @@ export interface ApiOpportunityGetList {
   location: OptionById[];
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
   agentTitle: string;
+  // Names of the volunteers matched (m2m) to the opportunity (named
+  // `volunteerNames`, not `volunteers`, to avoid implying volunteer objects).
+  // PII-masked per caller role by the API. Populated on GET /opportunity
+  // (list); optional so the interfaces extending this base needn't supply it.
+  volunteerNames?: string[];
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
