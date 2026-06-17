@@ -83,14 +83,16 @@ export interface OpportunityFormData {
 
 export interface OpportunityLegacyFormDataProps {
   title: string;
-  rac_email: string;
-  rac_full_name: string;
-  rac_phone: string;
-  rac_address: string;
-  rac_plz: string;
+  rac_email?: string;
+  rac_full_name?: string;
+  rac_phone?: string;
+  rac_address?: string;
+  rac_plz?: string;
+  agent_id?: number;
+  submitted_by_id?: number;
   opportunity_type: "accompanying" | "volunteering";
-  accomp_address: string;
-  accomp_postcode: string;
+  accomp_address?: string;
+  accomp_postcode?: string;
   accomp_datetime?: string;
   accomp_name?: string;
   accomp_phone?: string;
@@ -111,6 +113,13 @@ export interface OpportunityLegacyFormDataProps {
 }
 export type OpportunityLegacyFormData =
   VoidableUndefined<OpportunityLegacyFormDataProps>;
+
+export type OpportunityFormDataWithAgentSubmitter = VoidableUndefined<
+  Omit<
+    OpportunityFormData,
+    "rac_email" | "rac_full_name" | "rac_phone" | "rac_address" | "rac_plz"
+  >
+>;
 
 export interface ApiOpportunityAgent {
   id: number;
