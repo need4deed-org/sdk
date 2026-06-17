@@ -116,7 +116,7 @@ export type OpportunityLegacyFormData =
 
 export type OpportunityFormDataWithAgentSubmitter = VoidableUndefined<
   Omit<
-    OpportunityFormData,
+    OpportunityLegacyFormDataProps,
     "rac_email" | "rac_full_name" | "rac_phone" | "rac_address" | "rac_plz"
   >
 >;
