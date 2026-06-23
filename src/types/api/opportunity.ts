@@ -153,7 +153,7 @@ export interface ApiOpportunityGetList {
   location: OptionById[];
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
   agentTitle: string;
-  agentId: number;
+  agentId: number | null;
   // Names of the volunteers matched (m2m) to the opportunity (named
   // `volunteerNames`, not `volunteers`, to avoid implying volunteer objects).
   // PII-masked per caller role by the API. Populated on GET /opportunity
