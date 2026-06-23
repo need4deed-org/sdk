@@ -1,4 +1,5 @@
 export * from "./accompanying";
+export * from "./activity-log";
 export * from "./agent";
 export * from "./appreciation";
 export * from "./comment";

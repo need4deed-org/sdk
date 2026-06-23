@@ -83,14 +83,16 @@ export interface OpportunityFormData {
 
 export interface OpportunityLegacyFormDataProps {
   title: string;
-  rac_email: string;
-  rac_full_name: string;
-  rac_phone: string;
-  rac_address: string;
-  rac_plz: string;
+  rac_email?: string;
+  rac_full_name?: string;
+  rac_phone?: string;
+  rac_address?: string;
+  rac_plz?: string;
+  agent_id?: number;
+  submitted_by_id?: number;
   opportunity_type: "accompanying" | "volunteering";
-  accomp_address: string;
-  accomp_postcode: string;
+  accomp_address?: string;
+  accomp_postcode?: string;
   accomp_datetime?: string;
   accomp_name?: string;
   accomp_phone?: string;
@@ -111,6 +113,13 @@ export interface OpportunityLegacyFormDataProps {
 }
 export type OpportunityLegacyFormData =
   VoidableUndefined<OpportunityLegacyFormDataProps>;
+
+export type OpportunityFormDataWithAgentSubmitter = VoidableUndefined<
+  Omit<
+    OpportunityLegacyFormDataProps,
+    "rac_email" | "rac_full_name" | "rac_phone" | "rac_address" | "rac_plz"
+  >
+>;
 
 export interface ApiOpportunityAgent {
   id: number;
@@ -144,6 +153,11 @@ export interface ApiOpportunityGetList {
   location: OptionById[];
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
   agentTitle: string;
+  // Names of the volunteers matched (m2m) to the opportunity (named
+  // `volunteerNames`, not `volunteers`, to avoid implying volunteer objects).
+  // PII-masked per caller role by the API. Populated on GET /opportunity
+  // (list); optional so the interfaces extending this base needn't supply it.
+  volunteerNames?: string[];
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
