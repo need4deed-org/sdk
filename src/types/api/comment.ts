@@ -1,3 +1,8 @@
+export interface ApiCommentTaggedPerson {
+  id: number;
+  readAt: Date | null;
+}
+
 export interface ApiComment {
   id: number;
   content: string;
@@ -5,5 +10,5 @@ export interface ApiComment {
   entityType?: string;
   authorName: string;
   timestamp: Date;
-  taggedPersonIds: number[];
+  taggedPersons: ApiCommentTaggedPerson[];
 }
