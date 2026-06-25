@@ -33,6 +33,7 @@ interface UserGet {
   avatarUrl: string;
   isoCode: string;
   timezone: string;
+  agentId?: number;
 }
 
 export type ApiUserGet = VoidableProps<UserGet, "avatarUrl" | "personId">;
