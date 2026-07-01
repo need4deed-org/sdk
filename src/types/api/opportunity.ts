@@ -17,6 +17,11 @@ export type OpportunityType = Exclude<
   ProfileVolunteeringType.REGULAR_ACCOMPANYING
 >;
 
+export enum OpportunityLegacyType {
+  VOLUNTEERING = "volunteering",
+  ACCOMPANYING = "accompanying",
+}
+
 export enum TranslatedIntoType {
   DEUTSCHE = "deutsche",
   ENGLISH_OK = "englishOk",
@@ -90,7 +95,7 @@ export interface OpportunityLegacyFormDataProps {
   rac_plz?: string;
   agent_id?: number;
   submitted_by_id?: number;
-  opportunity_type: "accompanying" | "volunteering";
+  opportunity_type: OpportunityLegacyType;
   accomp_address?: string;
   accomp_postcode?: string;
   accomp_datetime?: string;
