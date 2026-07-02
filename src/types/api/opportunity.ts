@@ -158,6 +158,7 @@ export type ApiOpportunityPatch = Partial<{
   statusOpportunity: OpportunityStatusType;
   numberVolunteers: number;
   description: string;
+  volunteerType: VolunteerStateTypeType;
   languagesMain: OptionItem[];
   languagesResidents: OptionItem[];
   activities: OptionItem[];
