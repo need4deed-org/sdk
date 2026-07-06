@@ -11,6 +11,7 @@ export * from "./language";
 export * from "./location";
 export * from "./opportunity";
 export * from "./option";
+export * from "./post";
 export * from "./organization";
 export * from "./person";
 export * from "./profile";
