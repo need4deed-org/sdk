@@ -233,7 +233,15 @@ export interface ApiAgentOpportunityVolunteer {
  * One of an agent's opportunities with the volunteers linked to it. Response
  * item of `GET /agent/:id/opportunity-linked`.
  */
-export interface ApiAgentOpportunity {
+export interface ApiAgentOpportunity extends Pick<
+  ApiOpportunityGetList,
+  | "volunteerType"
+  | "languages"
+  | "activities"
+  | "availability"
+  | "location"
+  | "district"
+> {
   id: Id;
   title: string;
   statusOpportunity: OpportunityStatusType;
