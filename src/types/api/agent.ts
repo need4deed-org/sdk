@@ -92,7 +92,6 @@ interface AgentGetList {
   activeVolunteers: number;
   email: string;
   numOpportunities: number;
-  numActiveVolunteers: number;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
