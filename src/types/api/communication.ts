@@ -22,6 +22,11 @@ export enum CommunicationType {
   OPPORTUNITY_LIST = "opportunity-list-sent",
   STATUS_UPDATE = "status-update",
   POST_FOLLOWUP = "post-match-followup",
+  ACCOMPANYING_MATCHED = "accompanying-matched",
+  MATCHED = "matched",
+  OPPORTUNITY_CONFIRMATION = "opportunity-confirmation",
+  ACCOMPANYING_NOT_FOUND = "accompanying-not-found",
+  OPPORTUNITY_UPDATED = "opportunity-updated",
 }
 
 export interface ApiCommunicationPost {
@@ -37,6 +42,7 @@ export interface ApiCommunicationGet extends ApiCommunicationPost {
   id: number;
   volunteerId?: number;
   agentId?: number;
+  opportunityId?: number;
   userId: number;
 }
 
