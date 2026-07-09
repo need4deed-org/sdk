@@ -177,6 +177,7 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
 
 export type ApiOpportunityPatch = VoidableProps<{
+  title: string;
   statusOpportunity: OpportunityStatusType;
   numberVolunteers: number;
   description: string;
