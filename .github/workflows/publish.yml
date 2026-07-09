@@ -39,7 +39,7 @@ jobs:
 
       - name: Open and merge version bump PR
         env:
-          GH_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           VERSION=$(node -p "require('./package.json').version")
           BRANCH="chore/version-bump-$VERSION"
