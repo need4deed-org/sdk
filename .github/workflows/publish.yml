@@ -38,7 +38,7 @@ jobs:
 
       - name: Open version bump PR
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT }}
         run: |
           VERSION=$(node -p "require('./package.json').version")
           BRANCH="chore/version-bump-$VERSION"
