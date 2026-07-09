@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
 
       - uses: actions/setup-node@v4
         with:
@@ -39,19 +39,27 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Open version bump PR
+      - name: Open and merge version bump PR
         env:
           GH_TOKEN: ${{ secrets.PAT }}
         run: |
           VERSION=$(node -p "require('./package.json').version")
           BRANCH="chore/version-bump-$VERSION"
-          git checkout -b $BRANCH
+
+          # If the branch already exists the version was already published in a
+          # previous run; skip to avoid opening a duplicate PR.
+          if git ls-remote --exit-code origin "refs/heads/$BRANCH" > /dev/null 2>&1; then
+            echo "Branch $BRANCH already exists — skipping PR creation"
+            exit 0
+          fi
+
+          git checkout -b "$BRANCH"
           git add package.json
           git commit -m "chore: bump version to $VERSION [skip ci]"
-          git push origin $BRANCH
+          git push origin "$BRANCH"
           gh pr create \
             --title "chore: bump version to $VERSION" \
             --body "Automated version bump triggered by merge to main." \
             --base main \
-            --head $BRANCH
-          gh pr merge --auto --squash
+            --head "$BRANCH"
+          gh pr merge "$BRANCH" --squash --yes
