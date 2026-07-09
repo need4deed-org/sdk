@@ -1,6 +1,9 @@
 name: Publish on Merge to Main
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
