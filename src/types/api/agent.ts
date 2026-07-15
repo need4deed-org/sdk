@@ -3,7 +3,7 @@ import { ApiComment } from "./comment";
 import { OptionById } from "./common";
 import { ApiLanguage } from "./language";
 import { OptionItem } from "./option";
-import { ApiPersonGet } from "./person";
+import { ApiPersonGet, ApiPersonPatch } from "./person";
 
 export enum AgentType {
   AE = "AE",
@@ -80,7 +80,15 @@ export interface ApiRepresentativeGet extends ApiPersonGet {
   role: AgentRoleType;
 }
 
-export type ApiRepresentativePatch = VoidableProps<ApiRepresentativeGet>;
+// Superset of ApiPersonPatch: editing a person in their capacity as an
+// agent's representative additionally allows setting their role on that
+// membership. agentId disambiguates which AgentPerson row to update for a
+// person who belongs to more than one agent — it cannot be inferred from
+// personId alone.
+export type ApiRepresentativePatch = ApiPersonPatch & {
+  role?: AgentRoleType;
+  agentId?: number;
+};
 
 interface AgentGetList {
   id: number;
