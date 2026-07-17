@@ -119,12 +119,42 @@ export interface OpportunityLegacyFormDataProps {
 export type OpportunityLegacyFormData =
   VoidableUndefined<OpportunityLegacyFormDataProps>;
 
-export type OpportunityFormDataWithAgentSubmitter = VoidableUndefined<
-  Omit<
-    OpportunityLegacyFormDataProps,
-    "rac_email" | "rac_full_name" | "rac_phone" | "rac_address" | "rac_plz"
-  >
->;
+/**
+ * Body for `POST /opportunity` — the dashboard's typed create-opportunity
+ * form. Unlike `OpportunityLegacyFormData` (free-text/ISO-code strings from
+ * the public form, resolved by title lookup), activities/skills/languages/
+ * districts here are numeric option ids from `GET /option/*`, resolved by id.
+ * Deliberately not derived from `OpportunityLegacyFormDataProps`: the two
+ * shapes look similar but mean different things, and overloading one type for
+ * both invites exactly the id-vs-title mismatch this type exists to prevent.
+ */
+export interface OpportunityCreateFormDataProps {
+  title: string;
+  agent_id?: number;
+  submitted_by_id?: number;
+  opportunity_type: OpportunityLegacyType;
+  accomp_address?: string;
+  accomp_postcode?: string;
+  accomp_datetime?: string;
+  accomp_name?: string;
+  accomp_phone?: string;
+  accomp_information?: string;
+  accomp_translation?: `${TranslatedIntoType}`;
+  districtIds?: number[];
+  languageIds: number[];
+  activityIds: number[];
+  skillIds: number[];
+  timeslots?: [number, string][];
+  onetime_date_time?: string;
+  volunteers_number: number;
+  vo_information?: string;
+  category: string;
+  category_id: OptionId;
+  last_edited_time_notion?: string;
+  language: `${Lang}`;
+}
+export type OpportunityFormDataWithAgentSubmitter =
+  VoidableUndefined<OpportunityCreateFormDataProps>;
 
 export interface ApiOpportunityAgent {
   id: number;
