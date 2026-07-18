@@ -211,6 +211,7 @@ export type ApiOpportunityPatch = VoidableProps<{
   statusOpportunity: OpportunityStatusType;
   numberVolunteers: number;
   description: string;
+  volunteerType: VolunteerStateTypeType;
   languagesMain: OptionItem[];
   languagesResidents: OptionItem[];
   activities: OptionItem[];
