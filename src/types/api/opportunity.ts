@@ -217,6 +217,10 @@ export type ApiOpportunityPatch = VoidableProps<{
   skills: OptionItem[];
   schedule: ApiAvailability[];
   opportunity_type: OpportunityType;
+  event: {
+    date: string;
+    time: string;
+  };
   contact: {
     id: number;
     name: string;
