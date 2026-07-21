@@ -90,6 +90,20 @@ export type ApiRepresentativePatch = ApiPersonPatch & {
   agentId?: number;
 };
 
+// Creates a brand-new contact (Person + AgentPerson membership) on an
+// existing agent — distinct from ApiAgentRegister, which always links the
+// *authenticated caller's own* person. A contact created this way need not
+// have a user account of its own. agentId is carried in the URL, not the body.
+export interface ApiAgentContactPost {
+  firstName: string;
+  lastName: string;
+  role: AgentRoleType;
+  email?: string;
+  phone?: string;
+  addressStreet?: string;
+  addressPostcode?: string;
+}
+
 interface AgentGetList {
   id: number;
   title: string;
@@ -108,6 +122,11 @@ interface AgentGet extends AgentGetList {
   updatedAt: Date;
   operator: string;
   representative: ApiRepresentativeGet;
+  // Every AgentPerson membership for this agent (representative included), so
+  // the profile can list all contacts rather than the single collapsed
+  // representative. `representative` is kept for existing consumers that only
+  // need the primary contact.
+  contacts: ApiAgentMembership[];
   serviceType: AgentServiceType[];
   statusEngagement: AgentEngagementStatusType;
   agentDetails: AgentDetails;
