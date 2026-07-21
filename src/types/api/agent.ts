@@ -96,13 +96,23 @@ export type ApiRepresentativePatch = ApiPersonPatch & {
 // have a user account of its own. agentId is carried in the URL, not the body.
 export interface ApiAgentContactPost {
   firstName: string;
+  middleName?: string;
   lastName: string;
   role: AgentRoleType;
   email?: string;
   phone?: string;
+  landline?: string;
   addressStreet?: string;
   addressPostcode?: string;
 }
+
+// Updates an existing contact (Person + AgentPerson membership) on an agent.
+// Every field optional (partial update). agentId + membershipId are carried
+// in the URL, not the body — unlike ApiRepresentativePatch, which patches a
+// person by personId and disambiguates the membership via an agentId field
+// in the body, this targets one membership row directly, so it works for
+// any contact (not just a self-patch or the collapsed representative).
+export type ApiAgentContactPatch = Partial<ApiAgentContactPost>;
 
 interface AgentGetList {
   id: number;
