@@ -15,6 +15,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SDK_PAT }}
 
       - uses: actions/setup-node@v4
         with:
@@ -39,13 +41,11 @@ jobs:
 
       - name: Open and merge version bump PR
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.SDK_PAT }}
         run: |
           VERSION=$(node -p "require('./package.json').version")
           BRANCH="chore/version-bump-$VERSION"
 
-          # If the branch already exists the version was already published in a
-          # previous run; skip to avoid opening a duplicate PR.
           if git ls-remote --exit-code origin "refs/heads/$BRANCH" > /dev/null 2>&1; then
             echo "Branch $BRANCH already exists — skipping PR creation"
             exit 0
