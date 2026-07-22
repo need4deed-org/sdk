@@ -202,6 +202,10 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
   comments: ApiComment[];
   contact: ApiOpportunityContact;
   agent: ApiOpportunityAgent;
+  event?: {
+    date: string;
+    time: string;
+  };
 }
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
