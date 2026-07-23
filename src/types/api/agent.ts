@@ -88,7 +88,7 @@ export interface ApiRepresentativeGet extends ApiPersonGet {
 export type ApiRepresentativePatch = ApiPersonPatch & {
   role?: AgentRoleType;
   agentId?: number;
-}
+};
 
 // Creates a brand-new contact (Person + AgentPerson membership) on an
 // existing agent — distinct from ApiAgentRegister, which always links the
@@ -112,7 +112,7 @@ export interface ApiAgentContactPost {
 // person by personId and disambiguates the membership via an agentId field
 // in the body, this targets one membership row directly, so it works for
 // any contact (not just a self-patch or the collapsed representative).
-export type ApiAgentContactPatch = Partial<ApiAgentContactPost>
+export type ApiAgentContactPatch = Partial<ApiAgentContactPost>;
 
 interface AgentGetList {
   id: number;
@@ -125,7 +125,7 @@ interface AgentGetList {
   email: string;
   numOpportunities: number;
 }
-export type ApiAgentGetList = VoidableProps<AgentGetList, "district">
+export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
 interface AgentGet extends AgentGetList {
   createdAt: Date;
@@ -146,7 +146,7 @@ interface AgentGet extends AgentGetList {
 export type ApiAgentGet = VoidableProps<
   AgentGet,
   "district" | "operator" | "representative" | "serviceType" | "updatedAt"
->
+>;
 
 interface AgentPatch {
   title: string;
@@ -164,7 +164,7 @@ interface AgentPatch {
   languages: OptionById[];
   districtId: number;
 }
-export type ApiAgentPatch = VoidableProps<AgentPatch>
+export type ApiAgentPatch = VoidableProps<AgentPatch>;
 
 // --- Agent self-registration ---------------------------------------------
 // An authenticated AGENT user (already created + email-verified via POST /user)
@@ -189,7 +189,7 @@ export interface ApiAgentRegisterNew {
 
 export type ApiAgentRegister =
   | { agentId: number }
-  | { agent: ApiAgentRegisterNew }
+  | { agent: ApiAgentRegisterNew };
 
 export enum AgentMembershipStatus {
   ACTIVE = "active",
@@ -218,7 +218,7 @@ export interface ApiAgentAddressConflict {
 
 export type ApiAgentRegisterConflict =
   | ApiAgentTitleConflict
-  | ApiAgentAddressConflict
+  | ApiAgentAddressConflict;
 
 // A person<->agent membership, surfaced to ADMIN/COORDINATOR for moderating
 // joins that did not pass domain-match (membershipStatus === PENDING).
