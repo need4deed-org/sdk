@@ -1,6 +1,6 @@
 import { Id, Lang, VoidableProps, VoidableUndefined } from "..";
 import { ApiOpportunityAccompanyingDetails } from "./accompanying";
-import { AgentType } from "./agent";
+import { AgentTypeKey } from "./agent";
 import { ApiComment } from "./comment";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
@@ -158,7 +158,7 @@ export type OpportunityFormDataWithAgentSubmitter =
 
 export interface ApiOpportunityAgent {
   id: number;
-  type: AgentType;
+  type: AgentTypeKey;
   name: string;
   address: string;
   district: OptionById;

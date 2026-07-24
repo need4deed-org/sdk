@@ -5,7 +5,7 @@ import { ApiLanguage } from "./language";
 import { OptionItem } from "./option";
 import { ApiPersonGet, ApiPersonPatch } from "./person";
 
-export enum AgentType {
+export enum AgentTypeKey {
   AE = "AE",
   GU1 = "GU1",
   GU2 = "GU2",
@@ -70,7 +70,7 @@ export interface AgentDetails {
   about: string;
   website?: Voidable<string>;
   address: string;
-  organizationType: AgentType;
+  organizationType: AgentTypeKey;
   operator: string;
   services: string;
   clientLanguages: OptionItem[];
@@ -117,7 +117,7 @@ export type ApiAgentContactPatch = Partial<ApiAgentContactPost>;
 interface AgentGetList {
   id: number;
   title: string;
-  type: AgentType;
+  type: AgentTypeKey;
   volunteerSearch: AgentVolunteerSearchType;
   trustLevel: AgentTrustType;
   district: OptionById;
@@ -150,7 +150,7 @@ export type ApiAgentGet = VoidableProps<
 
 interface AgentPatch {
   title: string;
-  type: AgentType;
+  type: AgentTypeKey;
   volunteerSearch: AgentVolunteerSearchType;
   trustLevel: AgentTrustType;
   serviceType: AgentServiceType[];
@@ -177,7 +177,7 @@ export type ApiAgentPatch = VoidableProps<AgentPatch>;
 
 export interface ApiAgentRegisterNew {
   title: string;
-  type?: AgentType;
+  type?: AgentTypeKey;
   info?: string;
   website?: string;
   services?: AgentServiceType[];
