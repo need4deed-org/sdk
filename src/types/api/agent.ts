@@ -5,6 +5,8 @@ import { ApiLanguage } from "./language";
 import { OptionItem } from "./option";
 import { ApiPersonGet, ApiPersonPatch } from "./person";
 
+// Canonical seed values for the `agent_type` reference table (see AgentType
+// below) — not used directly in any API contract.
 export enum AgentTypeKey {
   AE = "AE",
   GU1 = "GU1",
@@ -47,6 +49,8 @@ export enum AgentVolunteerSearchType {
   VOLUNTEERS_FOUND = "agent-volunteers-found",
 }
 
+// Canonical seed values for the `service` reference table (see Service
+// below) — not used directly in any API contract.
 export enum AgentServiceType {
   CHILDCARE = "childcare",
   WELFARE = "welfare",
@@ -66,13 +70,18 @@ export enum AgentTrustType {
   UNKNOWN = "agent-unknown",
 }
 
+// Translated reference data: an id resolving to an en/de title via
+// field_translation, rather than a bare enum value.
+export type AgentType = OptionById;
+export type Service = OptionById;
+
 export interface AgentDetails {
   about: string;
   website?: Voidable<string>;
   address: string;
-  organizationType: AgentTypeKey;
+  organizationType: AgentType;
   operator: string;
-  services: string;
+  services: Service[];
   clientLanguages: OptionItem[];
 }
 
@@ -117,7 +126,7 @@ export type ApiAgentContactPatch = Partial<ApiAgentContactPost>;
 interface AgentGetList {
   id: number;
   title: string;
-  type: AgentTypeKey;
+  type: AgentType;
   volunteerSearch: AgentVolunteerSearchType;
   trustLevel: AgentTrustType;
   district: OptionById;
@@ -137,7 +146,7 @@ interface AgentGet extends AgentGetList {
   // representative. `representative` is kept for existing consumers that only
   // need the primary contact.
   contacts: ApiAgentMembership[];
-  serviceType: AgentServiceType[];
+  services: Service[];
   statusEngagement: AgentEngagementStatusType;
   agentDetails: AgentDetails;
   comments: ApiComment[];
@@ -145,22 +154,21 @@ interface AgentGet extends AgentGetList {
 }
 export type ApiAgentGet = VoidableProps<
   AgentGet,
-  "district" | "operator" | "representative" | "serviceType" | "updatedAt"
+  "district" | "operator" | "representative" | "services" | "updatedAt"
 >;
 
 interface AgentPatch {
   title: string;
-  type: AgentTypeKey;
+  typeId: number;
   volunteerSearch: AgentVolunteerSearchType;
   trustLevel: AgentTrustType;
-  serviceType: AgentServiceType[];
   statusEngagement: AgentEngagementStatusType;
   about: string;
   website: string;
   addressStreet: string;
   addressPostcode: string;
   statusSearch: AgentVolunteerSearchType;
-  services: AgentServiceType[];
+  serviceIds: number[];
   languages: OptionById[];
   districtId: number;
 }
@@ -177,10 +185,10 @@ export type ApiAgentPatch = VoidableProps<AgentPatch>;
 
 export interface ApiAgentRegisterNew {
   title: string;
-  type?: AgentTypeKey;
+  typeId?: number;
   info?: string;
   website?: string;
-  services?: AgentServiceType[];
+  serviceIds?: number[];
   addressStreet?: string;
   addressPostcode?: string;
   districtId?: number;
