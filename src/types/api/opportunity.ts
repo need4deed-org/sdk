@@ -45,6 +45,11 @@ export enum OpportunityMatchStatusType {
   PAST = "opp-vol-past",
 }
 
+export enum OpportunitySortField {
+  CREATED_AT = "created-at",
+  START_DATE = "start-date",
+}
+
 export enum OpportunityMatchStatus {
   NO_MATCHES = "vol-no-matches",
   PENDING_MATCH = "vol-pending-match",
