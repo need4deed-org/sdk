@@ -231,11 +231,14 @@ export type ApiOpportunityPatch = VoidableProps<{
     time: string;
   };
   contact: {
+    /**
+     * Relinks the opportunity to a different Person already registered as a
+     * contact of the opportunity's agent. `name`/`phone`/`email`/
+     * `waysToContact` are derived from that Person and returned on
+     * `ApiOpportunityContact` — editing them directly goes through the
+     * agent-contact endpoints (`ApiAgentContactPatch`), not this field.
+     */
     id: number;
-    name: string;
-    phone: string;
-    email: string;
-    waysToContact: PreferredCommunicationType[];
   };
   agent: {
     id?: number;
