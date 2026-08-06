@@ -41,6 +41,8 @@ export enum AgentEngagementStatusType {
   ACTIVE = "agent-active",
   UNRESPONSIVE = "agent-unresponsive",
   INACTIVE = "agent-inactive",
+  INCONTACT = "agent-incontact",
+  TRIED_TO_CONTACT = "agent-tried-to-contact",
 }
 
 export enum AgentVolunteerSearchType {
