@@ -74,8 +74,8 @@ export enum AgentTrustType {
 
 // Translated reference data: an id resolving to an en/de title via
 // field_translation, rather than a bare enum value.
-export type AgentType = OptionById
-export type Service = OptionById
+export type AgentType = OptionById;
+export type Service = OptionById;
 
 export interface AgentDetails {
   about: string;
@@ -99,7 +99,7 @@ export interface ApiRepresentativeGet extends ApiPersonGet {
 export type ApiRepresentativePatch = ApiPersonPatch & {
   role?: AgentRoleType;
   agentId?: number;
-}
+};
 
 // Creates a brand-new contact (Person + AgentPerson membership) on an
 // existing agent — distinct from ApiAgentRegister, which always links the
