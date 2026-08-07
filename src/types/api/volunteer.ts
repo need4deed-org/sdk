@@ -85,6 +85,10 @@ export enum VolunteerStateAppreciationType {
   T_SHIRT = "t-shirt",
   BENEFIT_CARD = "benefit-card",
   TOTE_BAG = "tote-bag",
+  NEED4DEED_CERTIFICATE = "need4deed-certificate",
+  CAP = "cap",
+  NOTEBOOK = "notebook",
+  CITY_CERTIFICATE = "city-certificate",
 }
 
 export const VolunteerStateTypeType = ProfileVolunteeringType;

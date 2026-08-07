@@ -45,6 +45,11 @@ export enum OpportunityMatchStatusType {
   PAST = "opp-vol-past",
 }
 
+export enum OpportunitySortField {
+  CREATED_AT = "created-at",
+  START_DATE = "start-date",
+}
+
 export enum OpportunityMatchStatus {
   NO_MATCHES = "vol-no-matches",
   PENDING_MATCH = "vol-pending-match",
@@ -119,12 +124,42 @@ export interface OpportunityLegacyFormDataProps {
 export type OpportunityLegacyFormData =
   VoidableUndefined<OpportunityLegacyFormDataProps>;
 
-export type OpportunityFormDataWithAgentSubmitter = VoidableUndefined<
-  Omit<
-    OpportunityLegacyFormDataProps,
-    "rac_email" | "rac_full_name" | "rac_phone" | "rac_address" | "rac_plz"
-  >
->;
+/**
+ * Body for `POST /opportunity` — the dashboard's typed create-opportunity
+ * form. Unlike `OpportunityLegacyFormData` (free-text/ISO-code strings from
+ * the public form, resolved by title lookup), activities/skills/languages/
+ * districts here are numeric option ids from `GET /option/*`, resolved by id.
+ * Deliberately not derived from `OpportunityLegacyFormDataProps`: the two
+ * shapes look similar but mean different things, and overloading one type for
+ * both invites exactly the id-vs-title mismatch this type exists to prevent.
+ */
+export interface OpportunityCreateFormDataProps {
+  title: string;
+  agent_id?: number;
+  submitted_by_id?: number;
+  opportunity_type: OpportunityLegacyType;
+  accomp_address?: string;
+  accomp_postcode?: string;
+  accomp_datetime?: string;
+  accomp_name?: string;
+  accomp_phone?: string;
+  accomp_information?: string;
+  accomp_translation?: `${TranslatedIntoType}`;
+  districtIds?: number[];
+  languageIds: number[];
+  activityIds: number[];
+  skillIds: number[];
+  timeslots?: [number, string][];
+  onetime_date_time?: string;
+  volunteers_number: number;
+  vo_information?: string;
+  category: string;
+  category_id: OptionId;
+  last_edited_time_notion?: string;
+  language: `${Lang}`;
+}
+export type OpportunityFormDataWithAgentSubmitter =
+  VoidableUndefined<OpportunityCreateFormDataProps>;
 
 export interface ApiOpportunityAgent {
   id: number;
@@ -172,6 +207,10 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
   comments: ApiComment[];
   contact: ApiOpportunityContact;
   agent: ApiOpportunityAgent;
+  event?: {
+    date: string;
+    time: string;
+  };
 }
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
@@ -188,12 +227,19 @@ export type ApiOpportunityPatch = VoidableProps<{
   skills: OptionItem[];
   schedule: ApiAvailability[];
   opportunity_type: OpportunityType;
+  event: {
+    date: string;
+    time: string;
+  };
   contact: {
+    /**
+     * Relinks the opportunity to a different Person already registered as a
+     * contact of the opportunity's agent. `name`/`phone`/`email`/
+     * `waysToContact` are derived from that Person and returned on
+     * `ApiOpportunityContact` — editing them directly goes through the
+     * agent-contact endpoints (`ApiAgentContactPatch`), not this field.
+     */
     id: number;
-    name: string;
-    phone: string;
-    email: string;
-    waysToContact: PreferredCommunicationType[];
   };
   agent: {
     id?: number;
