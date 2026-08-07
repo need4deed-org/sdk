@@ -173,6 +173,7 @@ interface AgentPatch {
   serviceIds: number[];
   languages: OptionById[];
   districtId: number;
+  organizationId: number;
 }
 export type ApiAgentPatch = VoidableProps<AgentPatch>;
 
