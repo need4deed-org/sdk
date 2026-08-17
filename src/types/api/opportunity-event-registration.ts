@@ -18,9 +18,3 @@ export interface ApiOpportunityEventRegistrationGet {
   message: string | null;
   createdAt: Date;
 }
-
-export interface ApiOpportunityEventRegistrationsGet {
-  data: ApiOpportunityEventRegistrationGet[];
-  count: number;
-  totalPeople: number;
-}
