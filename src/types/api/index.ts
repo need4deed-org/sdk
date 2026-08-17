@@ -10,6 +10,7 @@ export * from "./event";
 export * from "./language";
 export * from "./location";
 export * from "./opportunity";
+export * from "./opportunity-event-registration";
 export * from "./option";
 export * from "./post";
 export * from "./organization";
