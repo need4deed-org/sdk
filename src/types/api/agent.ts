@@ -231,6 +231,14 @@ export type ApiAgentRegisterConflict =
   | ApiAgentTitleConflict
   | ApiAgentAddressConflict;
 
+// POST /agent (coordinator/admin-only, fe#911): creates a bare Agent with no
+// linked Person/User, unlike ApiAgentRegister which always links the
+// authenticated caller's own person. Body reuses ApiAgentRegisterNew; title/
+// address conflicts reuse ApiAgentRegisterConflict.
+export interface ApiAgentCreateResponse {
+  agentId: number;
+}
+
 // A person<->agent membership, surfaced to ADMIN/COORDINATOR for moderating
 // joins that did not pass domain-match (membershipStatus === PENDING).
 export interface ApiAgentMembership {
