@@ -16,7 +16,7 @@ export interface EventN4D {
   dateEnd?: Date;
   type: EventN4DType;
   pic?: string; // or standard one depending on type
-  time: string;
+  time?: string;
   address: string; // address
   locationLink?: string; // to google maps
   locationComment?: string; // how to spot
@@ -63,7 +63,7 @@ export interface ApiEventN4DGetList {
 // reserved here for a future single-event detail view.
 export interface ApiEventN4DGet extends ApiEventN4DGetList {
   hostName?: string;
-  time: string;
+  time?: string; // maps to EventTranslation.timeStr, nullable in the DB
   locationLink?: string;
   followUpText?: string;
   followUpLink?: string;
@@ -80,7 +80,7 @@ export interface ApiEventN4DTranslationInput {
   title: string;
   subTitle?: string;
   menuTitle: string;
-  time: string;
+  time?: string;
   locationComment?: string;
   description: string;
   shortDescription: string;
