@@ -30,7 +30,45 @@ export interface EventN4D {
   outro?: string;
 }
 
-export interface ApiEventN4DGet extends EventN4D {}
+// EventN4D above stays as-is for now — it's still used directly by the
+// `website` repo's event components (Event.tsx, UpcomingEventCard.tsx,
+// PastEventCard.tsx). It'll retire once that code moves into `fe`.
+
+// Every field a list/card context actually reads today (cross-checked
+// against website's real, non-legacy event components — EventCard,
+// PastEventCard, UpcomingEventCard, the menuTitle-keyed event strip). There's
+// no separate single-event fetch anywhere yet — even the full-detail-looking
+// UpcomingEventCard renders straight off the list response — so this can't
+// be trimmed to a lean summary the way ApiOpportunityGetList is.
+export interface ApiEventN4DGetList {
+  id: number;
+  active: boolean;
+  title: string;
+  subTitle?: string;
+  menuTitle: string;
+  date: Date;
+  dateEnd?: Date;
+  type: EventN4DType;
+  pic?: string;
+  address: string;
+  locationComment?: string;
+  description: string;
+  shortDescription: string;
+  linkRSVP: string;
+  additionalTitle?: string;
+  additionalInfo?: string[];
+}
+
+// Fields defined on EventN4D that no current component reads anywhere —
+// reserved here for a future single-event detail view.
+export interface ApiEventN4DGet extends ApiEventN4DGetList {
+  hostName?: string;
+  time: string;
+  locationLink?: string;
+  followUpText?: string;
+  followUpLink?: string;
+  outro?: string;
+}
 
 // The per-language translated content of an event (be#458: EventN4D splits
 // structural fields from an EventTranslation row per language). A coordinator
