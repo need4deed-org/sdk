@@ -18,6 +18,7 @@ export interface ApiPostGet {
   agentId: number | null;
   taggedPersons: ApiPostPerson[];
   linkedOpportunities: ApiPostLinkedOpportunity[];
+  replyCount: number;
   createdAt: Date;
 }
 
