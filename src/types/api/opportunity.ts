@@ -194,6 +194,12 @@ export interface ApiOpportunityGetList {
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
   agentTitle: string;
   agentId: number | null;
+  // Single-occurrence start date/time (shared by ACCOMPANYING and EVENTS
+  // types); null when the opportunity has no `onetimer` (REGULAR, or
+  // ACCOMPANYING/EVENTS without a date set yet). Lets the FE calendar pin
+  // list rows to a day without fetching each opportunity individually.
+  appointmentDate: string | null;
+  appointmentTime: string | null;
   // Names of the volunteers matched (m2m) to the opportunity (named
   // `volunteerNames`, not `volunteers`, to avoid implying volunteer objects).
   // PII-masked per caller role by the API. Populated on GET /opportunity
@@ -220,6 +226,7 @@ export type ApiOpportunityPatch = VoidableProps<{
   statusOpportunity: OpportunityStatusType;
   numberVolunteers: number;
   description: string;
+  volunteerType: VolunteerStateTypeType;
   languagesMain: OptionItem[];
   languagesResidents: OptionItem[];
   activities: OptionItem[];
