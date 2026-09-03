@@ -41,6 +41,8 @@ export enum AgentEngagementStatusType {
   ACTIVE = "agent-active",
   UNRESPONSIVE = "agent-unresponsive",
   INACTIVE = "agent-inactive",
+  INCONTACT = "agent-incontact",
+  TRIED_TO_CONTACT = "agent-tried-to-contact",
 }
 
 export enum AgentVolunteerSearchType {
@@ -133,6 +135,11 @@ interface AgentGetList {
   activeVolunteers: number;
   email: string;
   numOpportunities: number;
+  // Coordinator/admin-created agent with no linked Person yet (be-side:
+  // POST /agent). Only ever true for agents a coordinator/admin can see in
+  // the first place — GET /agent and GET /agent/:id exclude it from any
+  // other caller entirely, rather than returning it with this flag set.
+  unclaimed: boolean;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
@@ -171,6 +178,7 @@ interface AgentPatch {
   serviceIds: number[];
   languages: OptionById[];
   districtId: number;
+  organizationId: number;
 }
 export type ApiAgentPatch = VoidableProps<AgentPatch>;
 
@@ -207,6 +215,18 @@ export enum AgentMembershipStatus {
 export interface ApiAgentRegisterResponse {
   agentId: number;
   membershipStatus: AgentMembershipStatus;
+}
+
+// --- Coordinator/admin agent creation ------------------------------------
+// POST /agent (COORDINATOR/ADMIN-only): creates a bare Agent with no linked
+// Person/User at all, for an NGO the coordinator already has details for
+// before it has self-registered. Body reuses ApiAgentRegisterNew (the same
+// create fields as the CREATE branch of self-registration) — there is no
+// phone field here, since a bare agent has no linked Person to attach it to.
+// 409s use the same ApiAgentTitleConflict / ApiAgentAddressConflict shapes
+// as self-registration's CREATE branch.
+export interface ApiAgentCreateResponse {
+  agentId: number;
 }
 
 // Returned with HTTP 409 when CREATE hits the unique-title constraint, so the
