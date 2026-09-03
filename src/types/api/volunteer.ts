@@ -213,6 +213,6 @@ export type ApiVolunteerRegister =
   | { volunteerId: number }
   | { volunteer: ApiVolunteerRegisterNew };
 
-export interface ApiAgentRegisterResponse {
+export interface ApiVolunteerRegisterResponse {
   volunteerId: number;
 }
