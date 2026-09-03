@@ -53,3 +53,12 @@ interface UserGet {
 }
 
 export type ApiUserGet = VoidableProps<UserGet, "avatarUrl" | "personId">;
+
+export interface ApiUserVerifyEmail {
+  message: string;
+  verified: boolean;
+  // Only meaningful for role: VOLUNTEER — true when the Person behind this
+  // account already has a Volunteer profile (e.g. from a legacy record now
+  // linked via email, be#923), so the completion form should be skipped.
+  hasVolunteerProfile?: boolean;
+}
