@@ -195,3 +195,24 @@ export interface ApiVolunteerOpportunityGetList extends ApiOpportunityGetList {
   location: OptionById[];
   availability: ApiAvailability[];
 }
+
+export interface ApiVolunteerRegisterNew {
+  addressPostcode: string;
+  locations: OptionById[];
+  languages: ApiLanguage[];
+  availability: ApiAvailability[];
+  activities: OptionItem[];
+  skills: OptionItem[];
+  leadFrom: OptionItem[];
+  goodConductCertificate: DocumentStatusType;
+  measlesVaccination: DocumentStatusType;
+  comments: string;
+}
+
+export type ApiVolunteerRegister =
+  | { volunteerId: number }
+  | { volunteer: ApiVolunteerRegisterNew };
+
+export interface ApiVolunteerRegisterResponse {
+  volunteerId: number;
+}
