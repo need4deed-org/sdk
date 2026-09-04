@@ -22,6 +22,7 @@ export interface ApiPostGet {
   replyCount: number;
   reactions: ApiPostReactionSummary[];
   myReaction: string | null;
+  bookmarked: boolean;
   createdAt: Date;
 }
 
