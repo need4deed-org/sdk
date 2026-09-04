@@ -13,6 +13,7 @@ export * from "./opportunity";
 export * from "./opportunity-event-registration";
 export * from "./option";
 export * from "./post";
+export * from "./post-reaction";
 export * from "./post-reply";
 export * from "./organization";
 export * from "./person";
