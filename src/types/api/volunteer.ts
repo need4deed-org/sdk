@@ -208,11 +208,3 @@ export interface ApiVolunteerRegisterNew {
   measlesVaccination: DocumentStatusType;
   comments: string;
 }
-
-export type ApiVolunteerRegister =
-  | { volunteerId: number }
-  | { volunteer: ApiVolunteerRegisterNew };
-
-export interface ApiAgentRegisterResponse {
-  volunteerId: number;
-}
