@@ -50,6 +50,11 @@ interface UserGet {
   // All of the caller's active AgentPerson memberships, not just one — a
   // person can belong to more than one agent (be#809).
   agentMemberships?: ApiAgentMembershipSummary[];
+  // The caller's own Volunteer profile id, role: VOLUNTEER only — lets the
+  // frontend resolve "which id is mine" the same way agentId does for
+  // agents (fe#977/be#948). Undefined if this VOLUNTEER hasn't completed
+  // profile registration yet (be#943), not an error.
+  volunteerId?: number;
 }
 
 export type ApiUserGet = VoidableProps<UserGet, "avatarUrl" | "personId">;
