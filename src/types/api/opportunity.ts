@@ -205,6 +205,10 @@ export interface ApiOpportunityGetList {
   // PII-masked per caller role by the API. Populated on GET /opportunity
   // (list); optional so the interfaces extending this base needn't supply it.
   volunteerNames?: string[];
+  // Map-pin coordinates (be#662): the opportunity's agent's address postcode,
+  // falling back to its district's centroid; null when neither is available.
+  lat: number | null;
+  lon: number | null;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
