@@ -255,10 +255,6 @@ export type ApiOpportunityPatch = VoidableProps<{
     id?: number;
     /** @deprecated free-text in-place edit; use `id` to re-link. BE only applies `name`. */
     name?: string;
-    /** @deprecated not persisted by the backend */
-    address?: string;
-    /** @deprecated not persisted by the backend */
-    district?: string;
   };
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }>;
