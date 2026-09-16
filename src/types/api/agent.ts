@@ -140,6 +140,9 @@ interface AgentGetList {
   // the first place — GET /agent and GET /agent/:id exclude it from any
   // other caller entirely, rather than returning it with this flag set.
   unclaimed: boolean;
+  // Added for fe#796: the Agents/NGO list table needs engagement status
+  // visible as a column without a per-row detail fetch.
+  statusEngagement: AgentEngagementStatusType;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
@@ -154,7 +157,6 @@ interface AgentGet extends AgentGetList {
   // need the primary contact.
   contacts: ApiAgentMembership[];
   services: Service[];
-  statusEngagement: AgentEngagementStatusType;
   agentDetails: AgentDetails;
   comments: ApiComment[];
   languages: ApiLanguage[];
