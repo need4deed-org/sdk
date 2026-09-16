@@ -74,9 +74,9 @@ export interface ApiUserVerifyEmail {
 export interface ApiCoordinatorInvitePost {
   email: string;
   person: {
-    firstName?: string;
+    firstName: string;
     middleName?: string;
-    lastName?: string;
+    lastName: string;
   };
 }
 
