@@ -136,6 +136,8 @@ interface VolunteerGetListProps {
   activities: OptionItem[];
   skills: OptionItem[];
   locations: OptionItem[];
+  lat: number | null;
+  lon: number | null;
 }
 export type ApiVolunteerGetList = VoidableProps<
   VolunteerGetListProps,
@@ -194,4 +196,17 @@ export interface ApiVolunteerOpportunityGetList extends ApiOpportunityGetList {
   activities: OptionById[];
   location: OptionById[];
   availability: ApiAvailability[];
+}
+
+export interface ApiVolunteerRegisterNew {
+  addressPostcode: string;
+  locations: OptionById[];
+  languages: ApiLanguage[];
+  availability: ApiAvailability[];
+  activities: OptionItem[];
+  skills: OptionItem[];
+  leadFrom: OptionItem[];
+  goodConductCertificate: DocumentStatusType;
+  measlesVaccination: DocumentStatusType;
+  comments: string;
 }

@@ -194,11 +194,21 @@ export interface ApiOpportunityGetList {
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
   agentTitle: string;
   agentId: number | null;
+  // Single-occurrence start date/time (shared by ACCOMPANYING and EVENTS
+  // types); null when the opportunity has no `onetimer` (REGULAR, or
+  // ACCOMPANYING/EVENTS without a date set yet). Lets the FE calendar pin
+  // list rows to a day without fetching each opportunity individually.
+  appointmentDate: string | null;
+  appointmentTime: string | null;
   // Names of the volunteers matched (m2m) to the opportunity (named
   // `volunteerNames`, not `volunteers`, to avoid implying volunteer objects).
   // PII-masked per caller role by the API. Populated on GET /opportunity
   // (list); optional so the interfaces extending this base needn't supply it.
   volunteerNames?: string[];
+  // Map-pin coordinates (be#662): the opportunity's agent's address postcode,
+  // falling back to its district's centroid; null when neither is available.
+  lat: number | null;
+  lon: number | null;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
@@ -220,6 +230,7 @@ export type ApiOpportunityPatch = VoidableProps<{
   statusOpportunity: OpportunityStatusType;
   numberVolunteers: number;
   description: string;
+  volunteerType: VolunteerStateTypeType;
   languagesMain: OptionItem[];
   languagesResidents: OptionItem[];
   activities: OptionItem[];
@@ -244,10 +255,6 @@ export type ApiOpportunityPatch = VoidableProps<{
     id?: number;
     /** @deprecated free-text in-place edit; use `id` to re-link. BE only applies `name`. */
     name?: string;
-    /** @deprecated not persisted by the backend */
-    address?: string;
-    /** @deprecated not persisted by the backend */
-    district?: string;
   };
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }>;
