@@ -140,6 +140,8 @@ interface AgentGetList {
   // the first place — GET /agent and GET /agent/:id exclude it from any
   // other caller entirely, rather than returning it with this flag set.
   unclaimed: boolean;
+  lat: number | null;
+  lon: number | null;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
