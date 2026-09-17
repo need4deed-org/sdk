@@ -1,9 +1,9 @@
-import { Voidable, VoidableProps } from "../utils";
-import { ApiComment } from "./comment";
-import { OptionById } from "./common";
-import { ApiLanguage } from "./language";
-import { OptionItem } from "./option";
-import { ApiPersonGet, ApiPersonPatch } from "./person";
+import { Voidable, VoidableProps } from "../utils"
+import { ApiComment } from "./comment"
+import { OptionById } from "./common"
+import { ApiLanguage } from "./language"
+import { OptionItem } from "./option"
+import { ApiPersonGet, ApiPersonPatch } from "./person"
 
 // Canonical seed values for the `agent_type` reference table (see AgentType
 // below) — not used directly in any API contract.
@@ -97,7 +97,7 @@ export interface ApiRepresentativeGet extends ApiPersonGet {
 export type ApiRepresentativePatch = ApiPersonPatch & {
   role?: AgentRoleType;
   agentId?: number;
-};
+}
 
 // Creates a brand-new contact (Person + AgentPerson membership) on an
 // existing agent — distinct from ApiAgentRegister, which always links the
@@ -133,6 +133,8 @@ interface AgentGetList {
   activeVolunteers: number;
   email: string;
   numOpportunities: number;
+  lat: number | null;
+  lon: number | null;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
