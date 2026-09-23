@@ -221,6 +221,11 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
     date: string;
     time: string;
   };
+  // The calling VOLUNTEER's own match status on this opportunity (be#1039):
+  // their OpportunityVolunteer row's status, or null when they have none.
+  // Omitted for every other role. RAC (agent) name/address are PII-masked by
+  // the API unless this is MATCHED or ACTIVE, so the FE can hide the section.
+  myMatchStatus?: OpportunityVolunteerStatusType | null;
 }
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
