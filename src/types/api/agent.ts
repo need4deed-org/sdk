@@ -123,6 +123,12 @@ export interface ApiAgentContactPost {
 // any contact (not just a self-patch or the collapsed representative).
 export type ApiAgentContactPatch = Partial<ApiAgentContactPost>;
 
+export interface AgentCoordinates {
+  id: number;
+  lat: number;
+  lon: number;
+}
+
 interface AgentGetList {
   id: number;
   title: string;
@@ -133,8 +139,7 @@ interface AgentGetList {
   activeVolunteers: number;
   email: string;
   numOpportunities: number;
-  lat: number | null;
-  lon: number | null;
+  coordinates: AgentCoordinates[];
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
