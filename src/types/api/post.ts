@@ -1,4 +1,5 @@
 import { VoidableProps } from "../utils";
+import { ApiPostReactionSummary } from "./post-reaction";
 
 export interface ApiPostPerson {
   id: number;
@@ -18,7 +19,18 @@ export interface ApiPostGet {
   agentId: number | null;
   taggedPersons: ApiPostPerson[];
   linkedOpportunities: ApiPostLinkedOpportunity[];
+  replyCount: number;
+  reactions: ApiPostReactionSummary[];
+  myReaction: string | null;
+  bookmarked: boolean;
   createdAt: Date;
+}
+
+export interface ApiPostListQuery {
+  search?: string;
+  authorId?: number;
+  page?: number;
+  limit?: number;
 }
 
 export interface ApiPostPost {
