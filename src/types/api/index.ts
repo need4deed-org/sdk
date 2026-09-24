@@ -23,3 +23,4 @@ export * from "./time";
 export * from "./trusted-domain";
 export * from "./user";
 export * from "./volunteer";
+export * from "./volunteer-audit-log";

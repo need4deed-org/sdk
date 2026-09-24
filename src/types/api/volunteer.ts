@@ -136,6 +136,8 @@ interface VolunteerGetListProps {
   activities: OptionItem[];
   skills: OptionItem[];
   locations: OptionItem[];
+  lat: number | null;
+  lon: number | null;
 }
 export type ApiVolunteerGetList = VoidableProps<
   VolunteerGetListProps,

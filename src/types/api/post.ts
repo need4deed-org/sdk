@@ -26,6 +26,13 @@ export interface ApiPostGet {
   createdAt: Date;
 }
 
+export interface ApiPostListQuery {
+  search?: string;
+  authorId?: number;
+  page?: number;
+  limit?: number;
+}
+
 export interface ApiPostPost {
   text: string;
   taggedPersonIds?: number[];

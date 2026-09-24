@@ -67,3 +67,27 @@ export interface ApiUserVerifyEmail {
   // linked via email, be#923), so the completion form should be skipped.
   hasVolunteerProfile?: boolean;
 }
+
+// Admin generates an invite link for a coordinator account instead of typing
+// the coordinator's password themselves — POST /user/admin/coordinator-invite
+// (be#1008).
+export interface ApiCoordinatorInvitePost {
+  email: string;
+  person: {
+    firstName: string;
+    middleName?: string;
+    lastName: string;
+  };
+}
+
+export interface ApiCoordinatorInviteResponse {
+  token: string;
+  link: string;
+  expiresAt: string; // ISO timestamp
+}
+
+// Invitee sets their own password to activate the COORDINATOR account —
+// POST /user/register-with-invite?token=... (be#1008).
+export interface ApiCoordinatorRegisterWithInvite {
+  password: string;
+}

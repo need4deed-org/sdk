@@ -205,6 +205,10 @@ export interface ApiOpportunityGetList {
   // PII-masked per caller role by the API. Populated on GET /opportunity
   // (list); optional so the interfaces extending this base needn't supply it.
   volunteerNames?: string[];
+  // Map-pin coordinates (be#662): the opportunity's agent's address postcode,
+  // falling back to its district's centroid; null when neither is available.
+  lat: number | null;
+  lon: number | null;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
@@ -217,6 +221,11 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
     date: string;
     time: string;
   };
+  // The calling VOLUNTEER's own match status on this opportunity (be#1039):
+  // their OpportunityVolunteer row's status, or null when they have none.
+  // Omitted for every other role. RAC (agent) name/address are PII-masked by
+  // the API unless this is MATCHED or ACTIVE, so the FE can hide the section.
+  myMatchStatus?: OpportunityVolunteerStatusType | null;
 }
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
@@ -251,10 +260,6 @@ export type ApiOpportunityPatch = VoidableProps<{
     id?: number;
     /** @deprecated free-text in-place edit; use `id` to re-link. BE only applies `name`. */
     name?: string;
-    /** @deprecated not persisted by the backend */
-    address?: string;
-    /** @deprecated not persisted by the backend */
-    district?: string;
   };
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }>;
