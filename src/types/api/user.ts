@@ -22,6 +22,17 @@ export interface ApiUserPost {
   };
 }
 
+// POST /auth/refresh accepts the token in the request body when it is not
+// supplied by the refresh cookie.
+export interface ApiAuthRefreshPost {
+  refresh?: string;
+}
+
+export interface ApiAuthRefreshResponse {
+  access: string;
+  refresh: string;
+}
+
 // Deliberately not ApiAgentMembership (that one embeds a full ApiPersonGet —
 // meant for "who are this agent's contacts", the opposite direction, and
 // would over-expose PII for what /me needs). Not OptionById either — agent
