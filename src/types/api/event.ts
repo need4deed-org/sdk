@@ -55,6 +55,7 @@ export interface ApiEventN4DGetList {
   description: string;
   shortDescription: string;
   linkRSVP: string;
+  hostName?: string; // free-text host shown on Calendar cards (fe#1051)
   additionalTitle?: string;
   additionalInfo?: string[];
 }
@@ -62,7 +63,6 @@ export interface ApiEventN4DGetList {
 // Fields defined on EventN4D that no current component reads anywhere —
 // reserved here for a future single-event detail view.
 export interface ApiEventN4DGet extends ApiEventN4DGetList {
-  hostName?: string;
   time?: string; // maps to EventTranslation.timeStr, nullable in the DB
   locationLink?: string;
   followUpText?: string;
