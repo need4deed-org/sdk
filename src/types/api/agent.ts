@@ -140,6 +140,11 @@ interface AgentGetList {
   // the first place — GET /agent and GET /agent/:id exclude it from any
   // other caller entirely, rather than returning it with this flag set.
   unclaimed: boolean;
+  // Map-pin coordinates (fe#622, be#1083): the agent's address postcode,
+  // falling back to its district's centroid; null when neither is available.
+  // Also carried by ApiAgentGet, which extends this list shape.
+  lat: number | null;
+  lon: number | null;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
