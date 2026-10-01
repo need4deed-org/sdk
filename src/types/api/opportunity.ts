@@ -209,6 +209,12 @@ export interface ApiOpportunityGetList {
   // falling back to its district's centroid; null when neither is available.
   lat: number | null;
   lon: number | null;
+  // The language title/description were typed in (be#1064). Machine
+  // translations exist for the other languages; ?language= picks which one
+  // the API returns. Not to be confused with `languages` (what volunteers
+  // need to speak). Reference titles (activities, skills, ...) are never
+  // machine-translated.
+  originalLanguage?: Lang;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
