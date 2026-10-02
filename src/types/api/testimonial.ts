@@ -1,6 +1,6 @@
 export interface Testimonial {
   name: string;
-  pic: string; // base64 encoded thumb most probably
+  pic: string;
   translated_text: string;
   activities: string[];
 }
