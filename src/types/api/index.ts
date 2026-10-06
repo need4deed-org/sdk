@@ -18,6 +18,7 @@ export * from "./post-reply";
 export * from "./organization";
 export * from "./person";
 export * from "./profile";
+export * from "./statistics";
 export * from "./testimonial";
 export * from "./time";
 export * from "./translation";
