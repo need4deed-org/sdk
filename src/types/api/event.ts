@@ -10,36 +10,26 @@ export interface EventN4D {
   active: boolean;
   title: string;
   subTitle?: string;
-  menuTitle: string; // for the menu
+  menuTitle: string;
   hostName?: string;
   date: Date;
   dateEnd?: Date;
   type: EventN4DType;
-  pic?: string; // or standard one depending on type
+  pic?: string;
   time?: string;
-  address: string; // address
-  locationLink?: string; // to google maps
-  locationComment?: string; // how to spot
+  address: string;
+  locationLink?: string;
+  locationComment?: string;
   description: string;
-  shortDescription: string; // for card view
-  linkRSVP: string; // registration form
+  shortDescription: string;
+  linkRSVP: string;
   followUpText?: string;
-  followUpLink?: string; // the adjacent event
+  followUpLink?: string;
   additionalTitle?: string;
-  additionalInfo?: string[]; // lineup, content, etc.
+  additionalInfo?: string[];
   outro?: string;
 }
 
-// EventN4D above stays as-is for now — it's still used directly by the
-// `website` repo's event components (Event.tsx, UpcomingEventCard.tsx,
-// PastEventCard.tsx). It'll retire once that code moves into `fe`.
-
-// Every field a list/card context actually reads today (cross-checked
-// against website's real, non-legacy event components — EventCard,
-// PastEventCard, UpcomingEventCard, the menuTitle-keyed event strip). There's
-// no separate single-event fetch anywhere yet — even the full-detail-looking
-// UpcomingEventCard renders straight off the list response — so this can't
-// be trimmed to a lean summary the way ApiOpportunityGetList is.
 export interface ApiEventN4DGetList {
   id: number;
   active: boolean;
@@ -55,26 +45,19 @@ export interface ApiEventN4DGetList {
   description: string;
   shortDescription: string;
   linkRSVP: string;
+  hostName?: string;
   additionalTitle?: string;
   additionalInfo?: string[];
 }
 
-// Fields defined on EventN4D that no current component reads anywhere —
-// reserved here for a future single-event detail view.
 export interface ApiEventN4DGet extends ApiEventN4DGetList {
-  hostName?: string;
-  time?: string; // maps to EventTranslation.timeStr, nullable in the DB
+  time?: string;
   locationLink?: string;
   followUpText?: string;
   followUpLink?: string;
   outro?: string;
 }
 
-// The per-language translated content of an event (be#458: EventN4D splits
-// structural fields from an EventTranslation row per language). A coordinator
-// submits one entry per language they've filled in — today's dashboard form
-// only fills one, but this doesn't foreclose adding a second later via the
-// same PATCH.
 export interface ApiEventN4DTranslationInput {
   language: Lang;
   title: string;
