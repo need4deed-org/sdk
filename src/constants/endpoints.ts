@@ -9,4 +9,5 @@ export enum Endpoint {
   // `register(agentRegisterRoutes, { prefix: REGISTER })`). Compose as
   // `Endpoint.AGENT + Endpoint.REGISTER` -> "/agent/register".
   REGISTER = "/register",
+  STATISTICS = "/statistics",
 }
