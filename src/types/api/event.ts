@@ -45,12 +45,12 @@ export interface ApiEventN4DGetList {
   description: string;
   shortDescription: string;
   linkRSVP: string;
+  hostName?: string;
   additionalTitle?: string;
   additionalInfo?: string[];
 }
 
 export interface ApiEventN4DGet extends ApiEventN4DGetList {
-  hostName?: string;
   time?: string;
   locationLink?: string;
   followUpText?: string;
