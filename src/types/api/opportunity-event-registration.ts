@@ -3,9 +3,9 @@ export interface ApiOpportunityEventRegistrationPost {
   fullName: string;
   email: string;
   phone?: string | null;
-  numberOfPeople: number; // default 1
+  numberOfPeople: number;
   languagePreference?: string | null;
-  message?: string | null; // max 500 chars
+  message?: string | null;
 }
 
 export interface ApiOpportunityEventRegistrationGet {
