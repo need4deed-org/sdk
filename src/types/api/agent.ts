@@ -117,6 +117,7 @@ interface AgentGetList {
   unclaimed: boolean;
   lat: number | null;
   lon: number | null;
+  statusEngagement: AgentEngagementStatusType;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 
@@ -127,7 +128,6 @@ interface AgentGet extends AgentGetList {
   representative: ApiRepresentativeGet;
   contacts: ApiAgentMembership[];
   services: Service[];
-  statusEngagement: AgentEngagementStatusType;
   agentDetails: AgentDetails;
   comments: ApiComment[];
   languages: ApiLanguage[];
