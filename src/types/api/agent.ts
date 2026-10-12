@@ -162,8 +162,8 @@ export interface ApiAgentRegisterNew {
   website?: string;
   serviceIds?: number[];
   addressStreet?: string;
+  // No districtId: be derives it from addressPostcode (be#1059).
   addressPostcode?: string;
-  districtId?: number;
   languages?: number[];
 }
 
