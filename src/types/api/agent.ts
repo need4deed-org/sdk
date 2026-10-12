@@ -165,6 +165,7 @@ export interface ApiAgentRegisterNew {
   // No districtId: be derives it from addressPostcode (be#1059).
   addressPostcode?: string;
   languages?: number[];
+  confirmSharedAddress?: boolean;
 }
 
 export type ApiAgentRegister =
