@@ -114,6 +114,7 @@ export interface ApiAgentContactPost {
   phone?: string;
   landline?: string;
   addressStreet?: string;
+  // No districtId: be derives it from addressPostcode (be#1059).
   addressPostcode?: string;
 }
 
@@ -203,8 +204,8 @@ export interface ApiAgentRegisterNew {
   website?: string;
   serviceIds?: number[];
   addressStreet?: string;
+  // No districtId: be derives it from addressPostcode (be#1059).
   addressPostcode?: string;
-  districtId?: number;
   languages?: number[];
 }
 
