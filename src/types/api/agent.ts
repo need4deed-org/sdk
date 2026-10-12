@@ -182,6 +182,13 @@ export interface ApiAgentRegisterResponse {
   membershipStatus: AgentMembershipStatus;
 }
 
+export interface ApiAgentRegisterStatus {
+  registered: boolean;
+  agentId?: number;
+  agentTitle?: string;
+  membershipStatus?: AgentMembershipStatus;
+}
+
 export interface ApiAgentCreateResponse {
   agentId: number;
 }
@@ -196,9 +203,16 @@ export interface ApiAgentAddressConflict {
   agentId: number;
 }
 
+export interface ApiAgentAlreadyRegisteredConflict {
+  conflict: "registered";
+  agentId: number;
+  membershipStatus: AgentMembershipStatus;
+}
+
 export type ApiAgentRegisterConflict =
   | ApiAgentTitleConflict
-  | ApiAgentAddressConflict;
+  | ApiAgentAddressConflict
+  | ApiAgentAlreadyRegisteredConflict;
 
 export interface ApiAgentMembership {
   id: number;
