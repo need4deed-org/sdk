@@ -32,7 +32,18 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Bump patch version
-        run: yarn version --patch --no-git-tag-version
+        run: |
+          PUBLISHED=$(npm view need4deed-sdk version 2>/dev/null || echo "0.0.0")
+          LOCAL=$(node -p "require('./package.json').version")
+          NEXT=$(node -e '
+            const parse = (v) => v.split(".").map(Number);
+            const [a, b] = process.argv.slice(1).map(parse);
+            const cmp = a[0] - b[0] || a[1] - b[1] || a[2] - b[2];
+            const [major, minor, patch] = cmp >= 0 ? a : b;
+            console.log(`${major}.${minor}.${patch + 1}`);
+          ' "$PUBLISHED" "$LOCAL")
+          echo "npm: $PUBLISHED, package.json: $LOCAL -> $NEXT"
+          yarn version --new-version "$NEXT" --no-git-tag-version
 
       - name: Publish to npm
         run: yarn publish --non-interactive
