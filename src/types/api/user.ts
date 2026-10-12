@@ -58,6 +58,7 @@ export interface ApiUserVerifyEmail {
   message: string;
   verified: boolean;
   hasVolunteerProfile?: boolean;
+  hasAgentMembership?: boolean;
 }
 
 export interface ApiCoordinatorInvitePost {
