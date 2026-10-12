@@ -40,7 +40,6 @@ export interface ApiStatisticsGroup {
 }
 
 export interface ApiStatisticsPeriod {
-  // "2026-10", "2026-Q4" or "2026".
   period: string;
   start: Date;
   counts: Record<string, number>;
