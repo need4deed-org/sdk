@@ -6,4 +6,5 @@ export enum Endpoint {
   OPTION = "/option",
   AGENT = "/agent",
   REGISTER = "/register",
+  STATISTICS = "/statistics",
 }
