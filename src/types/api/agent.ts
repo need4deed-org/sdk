@@ -131,6 +131,7 @@ interface AgentGet extends AgentGetList {
   agentDetails: AgentDetails;
   comments: ApiComment[];
   languages: ApiLanguage[];
+  sharesVolunteers: boolean;
 }
 export type ApiAgentGet = VoidableProps<
   AgentGet,
@@ -152,6 +153,7 @@ interface AgentPatch {
   languages: OptionById[];
   districtId: number;
   organizationId: number;
+  sharesVolunteers: boolean;
 }
 export type ApiAgentPatch = VoidableProps<AgentPatch>;
 
