@@ -228,3 +228,9 @@ export interface ApiAgentMembership {
   role: AgentRoleType;
   status: AgentMembershipStatus;
 }
+
+export interface ApiAgentTagCandidate {
+  id: number;
+  title: string;
+  district: OptionById | null;
+}
