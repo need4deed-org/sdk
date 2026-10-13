@@ -168,6 +168,7 @@ export interface ApiAgentRegisterNew {
   addressPostcode?: string;
   languages?: number[];
   confirmSharedAddress?: boolean;
+  organizationId?: number;
 }
 
 export type ApiAgentRegister =
