@@ -75,6 +75,8 @@ export interface AgentDetails {
   about: string;
   website?: Voidable<string>;
   address: string;
+  addressStreet?: Voidable<string>;
+  addressPostcode?: Voidable<string>;
   organizationType: AgentType;
   operator: string;
   services: Service[];
