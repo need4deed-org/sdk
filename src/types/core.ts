@@ -87,6 +87,7 @@ export enum QueryParamsKeys {
   LANGUAGES = "languages",
   LIMIT = "limit",
   ORDER = "order",
+  OWNER_AGENT = "ownerAgent",
   PAGE = "page",
   SEARCH = "search",
 }

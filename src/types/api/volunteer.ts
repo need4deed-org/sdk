@@ -124,6 +124,7 @@ export type VolunteerCommunicationType = PreferredCommunicationType;
 
 interface VolunteerGetListProps {
   id: number;
+  ownerAgentId: number | null;
   statusEngagement: VolunteerStateEngagementType;
   statusType: VolunteerStateTypeType;
   statusMatch: VolunteerStateMatchType;
@@ -146,6 +147,7 @@ export type ApiVolunteerGetList = VoidableProps<
 
 export interface ApiVolunteerGet {
   id: number;
+  ownerAgentId: number | null;
   person: ApiPersonGet;
   statusEngagement: VolunteerStateEngagementType;
   statusCommunication: VolunteerStateCommunicationType;
