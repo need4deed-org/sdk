@@ -190,6 +190,7 @@ export interface ApiOpportunityGetList {
   volunteerNames?: string[];
   lat: number | null;
   lon: number | null;
+  postcode: string | null;
   originalLanguage?: Lang;
 }
 
