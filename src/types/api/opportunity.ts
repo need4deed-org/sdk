@@ -272,3 +272,10 @@ export interface ApiAgentOpportunity extends Pick<
   createdAt: Date;
   volunteers: ApiAgentOpportunityVolunteer[];
 }
+
+export interface ApiOpportunityOtherGetList {
+  id: Id;
+  title: string;
+  district: OptionById | null;
+  createdAt: Date;
+}
