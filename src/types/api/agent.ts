@@ -75,6 +75,8 @@ export interface AgentDetails {
   about: string;
   website?: Voidable<string>;
   address: string;
+  addressStreet?: Voidable<string>;
+  addressPostcode?: Voidable<string>;
   organizationType: AgentType;
   operator: string;
   services: Service[];
@@ -117,6 +119,7 @@ interface AgentGetList {
   unclaimed: boolean;
   lat: number | null;
   lon: number | null;
+  postcode: string | null;
   statusEngagement: AgentEngagementStatusType;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
@@ -168,6 +171,7 @@ export interface ApiAgentRegisterNew {
   addressPostcode?: string;
   languages?: number[];
   confirmSharedAddress?: boolean;
+  organizationId?: number;
 }
 
 export type ApiAgentRegister =
@@ -225,4 +229,10 @@ export interface ApiAgentMembership {
   person: ApiPersonGet;
   role: AgentRoleType;
   status: AgentMembershipStatus;
+}
+
+export interface ApiAgentTagCandidate {
+  id: number;
+  title: string;
+  district: OptionById | null;
 }
