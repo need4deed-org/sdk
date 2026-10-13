@@ -198,11 +198,13 @@ export interface ApiAgentCreateResponse {
 export interface ApiAgentTitleConflict {
   conflict: "title";
   agentId: number;
+  agentTitle?: string;
 }
 
 export interface ApiAgentAddressConflict {
   conflict: "address";
   agentId: number;
+  agentTitle?: string;
 }
 
 export interface ApiAgentAlreadyRegisteredConflict {
