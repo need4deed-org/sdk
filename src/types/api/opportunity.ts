@@ -190,6 +190,7 @@ export interface ApiOpportunityGetList {
   volunteerNames?: string[];
   lat: number | null;
   lon: number | null;
+  postcode: string | null;
   originalLanguage?: Lang;
 }
 
@@ -270,4 +271,11 @@ export interface ApiAgentOpportunity extends Pick<
   numberOfVolunteers: number;
   createdAt: Date;
   volunteers: ApiAgentOpportunityVolunteer[];
+}
+
+export interface ApiOpportunityOtherGetList {
+  id: Id;
+  title: string;
+  district: OptionById | null;
+  createdAt: Date;
 }
