@@ -117,6 +117,7 @@ interface AgentGetList {
   unclaimed: boolean;
   lat: number | null;
   lon: number | null;
+  postcode: string | null;
   statusEngagement: AgentEngagementStatusType;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
