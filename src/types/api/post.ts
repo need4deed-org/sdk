@@ -7,6 +7,11 @@ export interface ApiPostPerson {
   avatarUrl?: string;
 }
 
+export interface ApiPostAgent {
+  id: number;
+  title: string;
+}
+
 export interface ApiPostLinkedOpportunity {
   id: number;
   title: string;
@@ -18,6 +23,7 @@ export interface ApiPostGet {
   author: ApiPostPerson;
   agentId: number | null;
   taggedPersons: ApiPostPerson[];
+  taggedAgents: ApiPostAgent[];
   linkedOpportunities: ApiPostLinkedOpportunity[];
   replyCount: number;
   reactions: ApiPostReactionSummary[];
@@ -36,6 +42,7 @@ export interface ApiPostListQuery {
 export interface ApiPostPost {
   text: string;
   taggedPersonIds?: number[];
+  taggedAgentIds?: number[];
   linkedOpportunityIds?: number[];
 }
 
