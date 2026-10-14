@@ -45,7 +45,7 @@ export interface ApiEventN4DGetList {
   description: string;
   shortDescription: string;
   linkRSVP: string;
-  hostName?: string;
+  hostName?: string | null;
   additionalTitle?: string;
   additionalInfo?: string[];
 }
