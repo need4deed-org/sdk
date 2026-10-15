@@ -18,12 +18,13 @@
   },
   "scripts": {
     "what": "node -e 'console.log(require(\"./package.json\").version)'",
-    "build:tsc": "tsc",
+    "build:tsc": "tsc -p tsconfig.build.json",
     "build": "yarn build:tsc",
     "watch": "tsc --watch --project tsconfig.cjs.json",
     "prepublishOnly": "yarn build",
     "create-pr": "./create-pr.sh",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "keywords": [
     "sdk",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^4.0.18"
   }
 }

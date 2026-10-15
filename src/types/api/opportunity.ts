@@ -176,6 +176,7 @@ export interface ApiOpportunityGetList {
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
   statusMatch: OpportunityMatchStatusType;
+  noMatchFound?: boolean;
   numberOfVolunteers: number;
   createdAt: Date;
   activities: OptionById[];
