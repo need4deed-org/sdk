@@ -18,7 +18,7 @@
   },
   "scripts": {
     "what": "node -e 'console.log(require(\"./package.json\").version)'",
-    "build:tsc": "tsc",
+    "build:tsc": "tsc -p tsconfig.build.json",
     "build": "yarn build:tsc",
     "watch": "tsc --watch --project tsconfig.cjs.json",
     "prepublishOnly": "yarn build",

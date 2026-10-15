@@ -1,10 +1,3 @@
-/**
- * Berlin working-day calendar shared by be and fe.
- *
- * Dates are date-only values: local-midnight `Date`s read with the local
- * getters. Start from `berlinToday()`, never `new Date()`. Holidays are
- * Berlin's public holidays (federal + 8 March); no school holidays.
- */
 function easterSunday(year: number): Date {
   const a = year % 19;
   const b = Math.floor(year / 100);
@@ -27,40 +20,50 @@ function addDays(date: Date, n: number): Date {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate() + n);
 }
 
-function sameDay(a: Date, b: Date): boolean {
-  return (
-    a.getFullYear() === b.getFullYear() &&
-    a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate()
-  );
+function monthDayKey(date: Date): number {
+  return date.getMonth() * 100 + date.getDate();
 }
 
-export function isGermanPublicHoliday(date: Date): boolean {
-  const y = date.getFullYear();
-  const easter = easterSunday(y);
+const holidaysByYear = new Map<number, Set<number>>();
 
-  const holidays = [
-    new Date(y, 0, 1),
-    new Date(y, 2, 8),
-    new Date(y, 4, 1),
-    new Date(y, 9, 3),
-    new Date(y, 11, 25),
-    new Date(y, 11, 26),
-    addDays(easter, -2),
-    addDays(easter, 1),
-    addDays(easter, 39),
-    addDays(easter, 50),
-  ];
+function holidaysOf(year: number): Set<number> {
+  let holidays = holidaysByYear.get(year);
+  if (!holidays) {
+    const easter = easterSunday(year);
+    holidays = new Set(
+      [
+        new Date(year, 0, 1),
+        new Date(year, 2, 8),
+        new Date(year, 4, 1),
+        new Date(year, 9, 3),
+        new Date(year, 11, 25),
+        new Date(year, 11, 26),
+        addDays(easter, -2),
+        addDays(easter, 1),
+        addDays(easter, 39),
+        addDays(easter, 50),
+      ].map(monthDayKey),
+    );
+    holidaysByYear.set(year, holidays);
+  }
+  return holidays;
+}
 
-  return holidays.some((h) => sameDay(h, date));
+export function isBerlinPublicHoliday(date: Date): boolean {
+  return holidaysOf(date.getFullYear()).has(monthDayKey(date));
 }
 
 export function isWorkingDay(date: Date): boolean {
   const dow = date.getDay();
-  return dow !== 0 && dow !== 6 && !isGermanPublicHoliday(date);
+  return dow !== 0 && dow !== 6 && !isBerlinPublicHoliday(date);
 }
 
 export function addWorkingDays(from: Date, days: number): Date {
+  if (!Number.isInteger(days)) {
+    throw new RangeError(
+      `addWorkingDays: days must be an integer, got ${days}`,
+    );
+  }
   let result = new Date(from.getFullYear(), from.getMonth(), from.getDate());
   const direction = days < 0 ? -1 : 1;
   const remaining = Math.abs(days);
@@ -74,10 +77,18 @@ export function addWorkingDays(from: Date, days: number): Date {
   return result;
 }
 
+const berlinDateFormat = new Intl.DateTimeFormat("en-US", {
+  timeZone: "Europe/Berlin",
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+});
+
 export function berlinToday(): Date {
-  const s = new Date().toLocaleDateString("sv-SE", {
-    timeZone: "Europe/Berlin",
-  });
-  const [y, m, d] = s.split("-").map(Number);
-  return new Date(y, m - 1, d);
+  const parts = Object.fromEntries(
+    berlinDateFormat
+      .formatToParts(new Date())
+      .map(({ type, value }) => [type, Number(value)]),
+  );
+  return new Date(parts.year, parts.month - 1, parts.day);
 }
