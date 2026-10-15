@@ -23,6 +23,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Test
+        run: yarn test
+
       - name: Bump patch version
         run: |
           PUBLISHED=$(npm view need4deed-sdk version 2>/dev/null || echo "0.0.0")
