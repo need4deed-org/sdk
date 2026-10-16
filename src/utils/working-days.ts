@@ -77,6 +77,8 @@ export function addWorkingDays(from: Date, days: number): Date {
   return result;
 }
 
+export const MIN_APPOINTMENT_WORKING_DAYS = 7;
+
 const berlinDateFormat = new Intl.DateTimeFormat("en-US", {
   timeZone: "Europe/Berlin",
   year: "numeric",
@@ -91,4 +93,8 @@ export function berlinToday(): Date {
       .map(({ type, value }) => [type, Number(value)]),
   );
   return new Date(parts.year, parts.month - 1, parts.day);
+}
+
+export function minAppointmentDay(today: Date = berlinToday()): Date {
+  return addWorkingDays(today, MIN_APPOINTMENT_WORKING_DAYS);
 }

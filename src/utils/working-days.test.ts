@@ -4,6 +4,8 @@ import {
   berlinToday,
   isBerlinPublicHoliday,
   isWorkingDay,
+  MIN_APPOINTMENT_WORKING_DAYS,
+  minAppointmentDay,
 } from "./working-days";
 
 const d = (y: number, m: number, day: number) => new Date(y, m - 1, day);
@@ -149,5 +151,20 @@ describe("addWorkingDays across the year boundary", () => {
 describe("addWorkingDays argument check", () => {
   it.each([1.5, Infinity, NaN])("throws for %s", (days) => {
     expect(() => addWorkingDays(d(2026, 1, 5), days)).toThrow(RangeError);
+  });
+});
+
+describe("minAppointmentDay", () => {
+  it("is the 7th working day after today", () => {
+    expect(MIN_APPOINTMENT_WORKING_DAYS).toBe(7);
+    expect(minAppointmentDay(d(2026, 4, 1))).toEqual(d(2026, 4, 14));
+    expect(minAppointmentDay(d(2026, 6, 4))).toEqual(d(2026, 6, 15));
+  });
+
+  it("defaults to the Berlin today", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-03-31T22:30:00Z"));
+    expect(minAppointmentDay()).toEqual(d(2026, 4, 14));
+    vi.useRealTimers();
   });
 });
