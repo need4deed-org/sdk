@@ -86,9 +86,9 @@ export enum QueryParamsKeys {
   LANGUAGE = "language",
   LANGUAGES = "languages",
   LIMIT = "limit",
+  MAX_COMMUTE_MINUTES = "max-commute-minutes",
   ORDER = "order",
   OWNER_AGENT = "ownerAgent",
   PAGE = "page",
   SEARCH = "search",
-  MAX_COMMUTE_MINUTES = "max_commute_minutes"
 }
