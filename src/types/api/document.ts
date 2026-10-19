@@ -13,3 +13,7 @@ export interface ApiDocumentGet {
   mimeType: string;
   createdAt: Date;
 }
+
+export interface ApiVolunteerApplicationEmailPost {
+  sentAt: Date;
+}
