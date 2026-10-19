@@ -8,3 +8,5 @@ export interface ApiOrganizationGet {
 }
 
 export type ApiOrganizationPatch = Partial<ApiOrganizationGet>;
+
+export type ApiOrganizationGetList = Pick<ApiOrganizationGet, "id" | "title">;
