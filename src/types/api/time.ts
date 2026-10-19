@@ -82,3 +82,16 @@ export interface ApiAvailability {
   day?: ByDay | Occasionally;
   daytime?: TimeSlot | OccasionalType | string;
 }
+
+export enum AvailabilityFilterGroup {
+  DAYS = "days",
+  TIMES = "times",
+  OCCASIONAL = "occasional",
+}
+
+export const AVAILABILITY_FILTER_SEPARATOR = "~";
+
+export type AvailabilityFilterValue =
+  | `${AvailabilityFilterGroup.DAYS}~${ByDay}`
+  | `${AvailabilityFilterGroup.TIMES}~${TimeSlot}`
+  | `${AvailabilityFilterGroup.OCCASIONAL}~${OccasionalType}`;

@@ -27,6 +27,7 @@ export enum CommunicationType {
   OPPORTUNITY_CONFIRMATION = "opportunity-confirmation",
   ACCOMPANYING_NOT_FOUND = "accompanying-not-found",
   OPPORTUNITY_UPDATED = "opportunity-updated",
+  CGC_APPLICATION_EMAIL = "cgc-application-email",
 }
 
 export interface ApiCommunicationPost {

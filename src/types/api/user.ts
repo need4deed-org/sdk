@@ -22,6 +22,20 @@ export interface ApiUserPost {
   };
 }
 
+export interface ApiAuthRefreshPost {
+  refresh?: string;
+}
+
+export interface ApiAuthRefreshResponse {
+  access: string;
+  refresh: string;
+}
+
+export interface ApiAgentMembershipSummary {
+  agentId: number;
+  agentTitle: string;
+}
+
 interface UserGet {
   id: number;
   personId: number;
@@ -34,6 +48,34 @@ interface UserGet {
   isoCode: string;
   timezone: string;
   agentId?: number;
+  agentMemberships?: ApiAgentMembershipSummary[];
+  volunteerId?: number;
 }
 
 export type ApiUserGet = VoidableProps<UserGet, "avatarUrl" | "personId">;
+
+export interface ApiUserVerifyEmail {
+  message: string;
+  verified: boolean;
+  hasVolunteerProfile?: boolean;
+  hasAgentMembership?: boolean;
+}
+
+export interface ApiCoordinatorInvitePost {
+  email: string;
+  person: {
+    firstName: string;
+    middleName?: string;
+    lastName: string;
+  };
+}
+
+export interface ApiCoordinatorInviteResponse {
+  token: string;
+  link: string;
+  expiresAt: string;
+}
+
+export interface ApiCoordinatorRegisterWithInvite {
+  password: string;
+}
