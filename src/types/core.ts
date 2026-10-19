@@ -89,5 +89,5 @@ export enum QueryParamsKeys {
   ORDER = "order",
   PAGE = "page",
   SEARCH = "search",
-  COMMUTE_TIME = "commute_time"
+  MAX_COMMUTE_MINUTES = "max_commute_minutes"
 }
