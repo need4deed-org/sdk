@@ -248,6 +248,20 @@ export interface ApiOpportunityVolunteerGet extends OpportunityVolunteer {
   title: string;
 }
 
+export const EMAIL_NOTE_MAX_LENGTH = 1000;
+
+export interface ApiOpportunityVolunteerPost {
+  opportunityId: number;
+  volunteerId: number;
+  status: OpportunityVolunteerStatusType;
+  emailNote?: string;
+}
+
+export interface ApiOpportunityVolunteerPatch {
+  status: OpportunityVolunteerStatusType;
+  emailNote?: string;
+}
+
 export interface ApiAgentOpportunityVolunteer {
   id: number;
   volunteerId: number;
