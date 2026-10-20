@@ -124,6 +124,7 @@ export type VolunteerCommunicationType = PreferredCommunicationType;
 
 interface VolunteerGetListProps {
   id: number;
+  ownerAgentId: number | null;
   statusEngagement: VolunteerStateEngagementType;
   statusType: VolunteerStateTypeType;
   statusMatch: VolunteerStateMatchType;
@@ -136,6 +137,8 @@ interface VolunteerGetListProps {
   activities: OptionItem[];
   skills: OptionItem[];
   locations: OptionItem[];
+  lat: number | null;
+  lon: number | null;
 }
 export type ApiVolunteerGetList = VoidableProps<
   VolunteerGetListProps,
@@ -144,6 +147,7 @@ export type ApiVolunteerGetList = VoidableProps<
 
 export interface ApiVolunteerGet {
   id: number;
+  ownerAgentId: number | null;
   person: ApiPersonGet;
   statusEngagement: VolunteerStateEngagementType;
   statusCommunication: VolunteerStateCommunicationType;
@@ -194,4 +198,17 @@ export interface ApiVolunteerOpportunityGetList extends ApiOpportunityGetList {
   activities: OptionById[];
   location: OptionById[];
   availability: ApiAvailability[];
+}
+
+export interface ApiVolunteerRegisterNew {
+  addressPostcode: string;
+  locations: OptionById[];
+  languages: ApiLanguage[];
+  availability: ApiAvailability[];
+  activities: OptionItem[];
+  skills: OptionItem[];
+  leadFrom: OptionItem[];
+  goodConductCertificate: DocumentStatusType;
+  measlesVaccination: DocumentStatusType;
+  comments: string;
 }

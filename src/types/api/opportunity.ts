@@ -124,15 +124,6 @@ export interface OpportunityLegacyFormDataProps {
 export type OpportunityLegacyFormData =
   VoidableUndefined<OpportunityLegacyFormDataProps>;
 
-/**
- * Body for `POST /opportunity` — the dashboard's typed create-opportunity
- * form. Unlike `OpportunityLegacyFormData` (free-text/ISO-code strings from
- * the public form, resolved by title lookup), activities/skills/languages/
- * districts here are numeric option ids from `GET /option/*`, resolved by id.
- * Deliberately not derived from `OpportunityLegacyFormDataProps`: the two
- * shapes look similar but mean different things, and overloading one type for
- * both invites exactly the id-vs-title mismatch this type exists to prevent.
- */
 export interface OpportunityCreateFormDataProps {
   title: string;
   agent_id?: number;
@@ -185,6 +176,7 @@ export interface ApiOpportunityGetList {
   volunteerType: VolunteerStateTypeType;
   statusOpportunity: OpportunityStatusType;
   statusMatch: OpportunityMatchStatusType;
+  noMatchFound?: boolean;
   numberOfVolunteers: number;
   createdAt: Date;
   activities: OptionById[];
@@ -194,11 +186,13 @@ export interface ApiOpportunityGetList {
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
   agentTitle: string;
   agentId: number | null;
-  // Names of the volunteers matched (m2m) to the opportunity (named
-  // `volunteerNames`, not `volunteers`, to avoid implying volunteer objects).
-  // PII-masked per caller role by the API. Populated on GET /opportunity
-  // (list); optional so the interfaces extending this base needn't supply it.
+  appointmentDate: string | null;
+  appointmentTime: string | null;
   volunteerNames?: string[];
+  lat: number | null;
+  lon: number | null;
+  postcode: string | null;
+  originalLanguage?: Lang;
 }
 
 export interface ApiOpportunityGet extends ApiOpportunityGetList {
@@ -211,6 +205,7 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
     date: string;
     time: string;
   };
+  myMatchStatus?: OpportunityVolunteerStatusType | null;
 }
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
@@ -220,6 +215,7 @@ export type ApiOpportunityPatch = VoidableProps<{
   statusOpportunity: OpportunityStatusType;
   numberVolunteers: number;
   description: string;
+  volunteerType: VolunteerStateTypeType;
   languagesMain: OptionItem[];
   languagesResidents: OptionItem[];
   activities: OptionItem[];
@@ -231,23 +227,11 @@ export type ApiOpportunityPatch = VoidableProps<{
     time: string;
   };
   contact: {
-    /**
-     * Relinks the opportunity to a different Person already registered as a
-     * contact of the opportunity's agent. `name`/`phone`/`email`/
-     * `waysToContact` are derived from that Person and returned on
-     * `ApiOpportunityContact` — editing them directly goes through the
-     * agent-contact endpoints (`ApiAgentContactPatch`), not this field.
-     */
     id: number;
   };
   agent: {
     id?: number;
-    /** @deprecated free-text in-place edit; use `id` to re-link. BE only applies `name`. */
     name?: string;
-    /** @deprecated not persisted by the backend */
-    address?: string;
-    /** @deprecated not persisted by the backend */
-    district?: string;
   };
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
 }>;
@@ -264,11 +248,6 @@ export interface ApiOpportunityVolunteerGet extends OpportunityVolunteer {
   title: string;
 }
 
-/**
- * A volunteer linked to an opportunity, as surfaced on an agent's opportunity
- * list. Person fields (`name`, `avatarUrl`) are PII-masked per caller role by
- * the API, so they may be absent or redacted.
- */
 export interface ApiAgentOpportunityVolunteer {
   id: number;
   volunteerId: number;
@@ -277,10 +256,6 @@ export interface ApiAgentOpportunityVolunteer {
   avatarUrl?: string;
 }
 
-/**
- * One of an agent's opportunities with the volunteers linked to it. Response
- * item of `GET /agent/:id/opportunity-linked`.
- */
 export interface ApiAgentOpportunity extends Pick<
   ApiOpportunityGetList,
   | "volunteerType"
@@ -297,4 +272,11 @@ export interface ApiAgentOpportunity extends Pick<
   numberOfVolunteers: number;
   createdAt: Date;
   volunteers: ApiAgentOpportunityVolunteer[];
+}
+
+export interface ApiOpportunityOtherGetList {
+  id: Id;
+  title: string;
+  district: OptionById | null;
+  createdAt: Date;
 }

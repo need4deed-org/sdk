@@ -1,3 +1,5 @@
+import { Lang, VoidableProps } from "..";
+
 export enum EventN4DType {
   PARTY = "party",
   WORKSHOP = "workshop",
@@ -8,24 +10,85 @@ export interface EventN4D {
   active: boolean;
   title: string;
   subTitle?: string;
-  menuTitle: string; // for the menu
+  menuTitle: string;
   hostName?: string;
   date: Date;
   dateEnd?: Date;
   type: EventN4DType;
-  pic?: string; // or standard one depending on type
-  time: string;
-  address: string; // address
-  locationLink?: string; // to google maps
-  locationComment?: string; // how to spot
+  pic?: string;
+  time?: string;
+  address: string;
+  locationLink?: string;
+  locationComment?: string;
   description: string;
-  shortDescription: string; // for card view
-  linkRSVP: string; // registration form
+  shortDescription: string;
+  linkRSVP: string;
   followUpText?: string;
-  followUpLink?: string; // the adjacent event
+  followUpLink?: string;
   additionalTitle?: string;
-  additionalInfo?: string[]; // lineup, content, etc.
+  additionalInfo?: string[];
   outro?: string;
 }
 
-export interface ApiEventN4DGet extends EventN4D {}
+export interface ApiEventN4DGetList {
+  id: number;
+  active: boolean;
+  title: string;
+  subTitle?: string;
+  menuTitle: string;
+  date: Date;
+  dateEnd?: Date;
+  type: EventN4DType;
+  pic?: string;
+  address: string;
+  locationComment?: string;
+  description: string;
+  shortDescription: string;
+  linkRSVP: string;
+  hostName?: string | null;
+  additionalTitle?: string;
+  additionalInfo?: string[];
+}
+
+export interface ApiEventN4DGet extends ApiEventN4DGetList {
+  time?: string;
+  locationLink?: string;
+  followUpText?: string;
+  followUpLink?: string;
+  outro?: string;
+}
+
+export interface ApiEventN4DTranslationInput {
+  language: Lang;
+  title: string;
+  subTitle?: string;
+  menuTitle: string;
+  time?: string;
+  locationComment?: string;
+  description: string;
+  shortDescription: string;
+  additionalTitle?: string;
+  additionalInfo?: string[];
+  outro?: string;
+  followUpText?: string;
+}
+
+export interface ApiEventN4DCreate {
+  date: Date;
+  dateEnd?: Date;
+  type: EventN4DType;
+  pic?: string;
+  locationLink?: string;
+  linkRSVP: string;
+  followUpLink?: string;
+  address: string;
+  hostName?: string;
+  active?: boolean;
+  translations: ApiEventN4DTranslationInput[];
+}
+
+export type ApiEventN4DPatch = VoidableProps<
+  Omit<ApiEventN4DCreate, "translations">
+> & {
+  translations?: ApiEventN4DTranslationInput[];
+};
