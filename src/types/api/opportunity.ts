@@ -254,11 +254,13 @@ export interface ApiOpportunityVolunteerPost {
   opportunityId: number;
   volunteerId: number;
   status: OpportunityVolunteerStatusType;
+  /** Volunteer-facing: never in NGO-only emails, but in the joint introduction. */
   emailNote?: string;
 }
 
 export interface ApiOpportunityVolunteerPatch {
   status: OpportunityVolunteerStatusType;
+  /** Volunteer-facing: never in NGO-only emails, but in the joint introduction. */
   emailNote?: string;
 }
 
