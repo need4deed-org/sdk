@@ -21,6 +21,7 @@ export interface ApiVolunteerApplicationEmailPost {
 export type ApplicationEmailFailureReason =
   | "attachment-unavailable"
   | "email-invalid"
+  | "render-failed"
   | "send-failed";
 
 export interface ApiVolunteerApplicationEmailError {
