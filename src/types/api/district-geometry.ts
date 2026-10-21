@@ -21,4 +21,3 @@ export type ApiDistrictGeometryCollection = FeatureCollection<
   ApiDistrictGeometry,
   ApiDistrictGeometryProperties
 >;
-
