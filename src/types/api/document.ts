@@ -17,3 +17,14 @@ export interface ApiDocumentGet {
 export interface ApiVolunteerApplicationEmailPost {
   sentAt: Date;
 }
+
+export type ApplicationEmailFailureReason =
+  | "attachment-unavailable"
+  | "email-invalid"
+  | "send-failed";
+
+export interface ApiVolunteerApplicationEmailError {
+  error: string;
+  message: string;
+  reason: ApplicationEmailFailureReason;
+}
