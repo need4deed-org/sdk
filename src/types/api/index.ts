@@ -5,6 +5,7 @@ export * from "./appreciation";
 export * from "./comment";
 export * from "./common";
 export * from "./communication";
+export * from "./district-geometry";
 export * from "./document";
 export * from "./event";
 export * from "./language";
