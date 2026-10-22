@@ -254,11 +254,13 @@ export interface ApiOpportunityVolunteerPost {
   opportunityId: number;
   volunteerId: number;
   status: OpportunityVolunteerStatusType;
+  /** Suggestion: to the volunteer. Introduction: to the volunteer and the NGO contact. Accompanying match: to the agent only. */
   emailNote?: string;
 }
 
 export interface ApiOpportunityVolunteerPatch {
   status: OpportunityVolunteerStatusType;
+  /** Suggestion: to the volunteer. Introduction: to the volunteer and the NGO contact. Accompanying match: to the agent only. */
   emailNote?: string;
 }
 
