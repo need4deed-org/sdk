@@ -1,4 +1,4 @@
-import { Lang } from "..";
+import { EntityTableName, Lang } from "..";
 
 export enum TranslationOrigin {
   REFERENCE = "reference",
@@ -39,4 +39,16 @@ export interface ApiFieldTranslationGet {
 
 export interface ApiOriginalLanguagePut {
   language: Lang;
+}
+
+export interface ApiFieldTranslationPost {
+  entityType: EntityTableName;
+  entityId: number;
+  fieldName: string;
+  language: Lang;
+  text: string;
+}
+
+export interface ApiFieldTranslationPatch {
+  text: string;
 }

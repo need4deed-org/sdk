@@ -234,7 +234,9 @@ export type ApiOpportunityPatch = VoidableProps<{
     name?: string;
   };
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
-}>;
+}> & {
+  originalLanguage?: Lang;
+};
 
 export interface OpportunityVolunteer {
   id: number;
