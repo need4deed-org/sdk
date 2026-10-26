@@ -1,21 +1,22 @@
+import { Id } from "../core";
+
 export type ApiDistrictMarker = {
   lat: number;
   lon: number;
   label: string;
-  children: Array<{ title: string; id: string; language: string; availability: string }>;
+  children: Array<{ id: Id; title: string; language?: string; availability?: string; type?: string; avatarUrl?: string; }>;
   entity: "agent" | "volunteer" | "opportunity";
-  avatarUrl?: string;
 };
 
 export type ApiSingleDistrictMarker = {
+  id: Id;
   lat: number;
   lon: number;
   label: string;
   title: string;
-  link: string;
   language: string;
   availability: string;
-  entity: "agent" | "volunteer" | "opportunity";
+  entity: "volunteer" | "opportunity";
   avatarUrl?: string;
 };
 
