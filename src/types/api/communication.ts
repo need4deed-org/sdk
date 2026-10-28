@@ -35,7 +35,7 @@ export enum CommunicationType {
 export interface ApiCommunicationPost {
   contactType: ContactType;
   contactMethod: ContactMethodType;
-  communicationType: CommunicationType;
+  communicationType?: CommunicationType;
   date: Date;
 }
 
