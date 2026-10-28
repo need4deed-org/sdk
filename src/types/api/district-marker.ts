@@ -22,7 +22,7 @@ export type ApiDistrictMarkerFilters = Partial<
   >
 >;
 
-// entity-specific routes determine the entity type. (e.g. /volunteer/districts)
+// entity-specific routes determine the entity type. (e.g. /volunteer/map)
 export type ApiDistrictMarkerQuery = {
   district?: number;
   // Uses the same filter keys and values as the corresponding profile list endpoint.
