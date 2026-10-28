@@ -37,7 +37,12 @@ export interface ApiCommunicationPost {
   date: Date;
 }
 
-export type ApiCommunicationPatch = Partial<ApiCommunicationPost>;
+// `communicationType: null` clears the type; omitting it keeps the stored one.
+export type ApiCommunicationPatch = Partial<
+  Omit<ApiCommunicationPost, "communicationType">
+> & {
+  communicationType?: CommunicationType | null;
+};
 
 export interface ApiCommunicationGet extends ApiCommunicationPost {
   id: number;
