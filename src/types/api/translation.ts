@@ -1,4 +1,4 @@
-import { Lang } from "..";
+import { EntityTableName, Lang } from "..";
 
 export enum TranslationOrigin {
   REFERENCE = "reference",
@@ -37,6 +37,34 @@ export interface ApiFieldTranslationGet {
   translations: Partial<Record<Lang, ApiFieldTranslation>>;
 }
 
+/** @deprecated Use ApiOpportunityPatch.originalLanguage when the backend replacement is available. */
 export interface ApiOriginalLanguagePut {
   language: Lang;
+}
+
+type TranslationFieldsByEntity = {
+  [EntityTableName.OPPORTUNITY]: "title" | "info";
+  [EntityTableName.LANGUAGE]: "title";
+  [EntityTableName.CATEGORY]: "title" | "description";
+  [EntityTableName.ACTIVITY]: "title";
+  [EntityTableName.SKILL]: "title";
+  [EntityTableName.AGENT_TYPE]: "title";
+  [EntityTableName.SERVICE]: "title";
+  [EntityTableName.LEAD]: "title";
+};
+
+export type TranslatedEntityType = keyof TranslationFieldsByEntity;
+
+export type ApiFieldTranslationPost = {
+  [Entity in TranslatedEntityType]: {
+    entityType: Entity;
+    entityId: number;
+    fieldName: TranslationFieldsByEntity[Entity];
+    language: Lang;
+    text: string;
+  };
+}[TranslatedEntityType];
+
+export interface ApiFieldTranslationPatch {
+  text: string;
 }
