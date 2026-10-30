@@ -80,7 +80,7 @@ export enum EntityTableName {
 export enum QueryParamsKeys {
   ACCOMPANYING = "accompanying",
   AVAILABILITY = "availability",
-  COMMUTE_POSTCODE = "commute-postcode",
+  COMMUTE_ENTITY_ID = "commute-entity-id",
   DISTRICT = "district",
   ENGAGEMENT = "engagement",
   GERMAN = "german",
