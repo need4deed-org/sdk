@@ -47,14 +47,14 @@ export enum TimedTextType {
   MATCHING = "matching",
 }
 
-export type Id = string | number
+export type Id = string | number;
 
 export enum SortOrder {
   NewToOld = "new-old",
   OldToNew = "old-new",
 }
 
-export type SomeType = "some" | "type"
+export type SomeType = "some" | "type";
 
 export enum QueryParams {
   Language = "language",
