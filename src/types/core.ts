@@ -47,14 +47,14 @@ export enum TimedTextType {
   MATCHING = "matching",
 }
 
-export type Id = string | number;
+export type Id = string | number
 
 export enum SortOrder {
   NewToOld = "new-old",
   OldToNew = "old-new",
 }
 
-export type SomeType = "some" | "type";
+export type SomeType = "some" | "type"
 
 export enum QueryParams {
   Language = "language",
@@ -80,7 +80,7 @@ export enum EntityTableName {
 export enum QueryParamsKeys {
   ACCOMPANYING = "accompanying",
   AVAILABILITY = "availability",
-  COMMUTE_POSTCODE = "commute-postcode",
+  COMMUTE_ENTITY_ID = "commute-entity-id",
   DISTRICT = "district",
   ENGAGEMENT = "engagement",
   GERMAN = "german",
