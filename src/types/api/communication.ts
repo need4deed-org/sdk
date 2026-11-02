@@ -1,3 +1,5 @@
+import { VoidableProps } from "../utils";
+
 export enum ContactType {
   CALL = "called",
   TRIED_CALL = "tried-to-call",
@@ -27,16 +29,20 @@ export enum CommunicationType {
   OPPORTUNITY_CONFIRMATION = "opportunity-confirmation",
   ACCOMPANYING_NOT_FOUND = "accompanying-not-found",
   OPPORTUNITY_UPDATED = "opportunity-updated",
+  CGC_APPLICATION_EMAIL = "cgc-application-email",
 }
 
 export interface ApiCommunicationPost {
   contactType: ContactType;
   contactMethod: ContactMethodType;
-  communicationType: CommunicationType;
+  communicationType?: CommunicationType;
   date: Date;
 }
 
-export type ApiCommunicationPatch = Partial<ApiCommunicationPost>;
+// `communicationType: null` clears the type; omitting it keeps the stored one.
+export type ApiCommunicationPatch = Partial<
+  VoidableProps<ApiCommunicationPost, "communicationType">
+>;
 
 export interface ApiCommunicationGet extends ApiCommunicationPost {
   id: number;

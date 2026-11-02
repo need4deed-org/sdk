@@ -1,12 +1,12 @@
 export enum Endpoint {
   OPPORTUNITY = "/opportunity",
+  OPPORTUNITY_OTHER = "/opportunity/other",
   EVENT = "/event",
   TESTIMONIAL = "/testimonial",
   VOLUNTEER = "/volunteer",
   OPTION = "/option",
   AGENT = "/agent",
-  // Sub-path prefix, mounted under AGENT (mirrors the backend's
-  // `register(agentRegisterRoutes, { prefix: REGISTER })`). Compose as
-  // `Endpoint.AGENT + Endpoint.REGISTER` -> "/agent/register".
+  AGENT_TAG_CANDIDATES = "/agent/tag-candidates",
   REGISTER = "/register",
+  STATISTICS = "/statistics",
 }

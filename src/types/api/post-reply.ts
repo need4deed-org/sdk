@@ -1,5 +1,6 @@
 import { VoidableProps } from "../utils";
 import { ApiPostPerson } from "./post";
+import { ApiPostReactionSummary } from "./post-reaction";
 
 export interface ApiPostReplyGet {
   id: number;
@@ -7,6 +8,8 @@ export interface ApiPostReplyGet {
   author: ApiPostPerson;
   postId: number;
   parentReplyId: number | null;
+  reactions: ApiPostReactionSummary[];
+  myReaction: string | null;
   createdAt: Date;
 }
 

@@ -13,3 +13,19 @@ export interface ApiDocumentGet {
   mimeType: string;
   createdAt: Date;
 }
+
+export interface ApiVolunteerApplicationEmailPost {
+  sentAt: Date;
+}
+
+export type ApplicationEmailFailureReason =
+  | "attachment-unavailable"
+  | "email-invalid"
+  | "render-failed"
+  | "send-failed";
+
+export interface ApiVolunteerApplicationEmailError {
+  error: string;
+  message: string;
+  reason: ApplicationEmailFailureReason;
+}

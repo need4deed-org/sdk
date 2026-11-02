@@ -10,54 +10,38 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.SDK_PAT }}
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
+          cache: yarn
           registry-url: "https://registry.npmjs.org/"
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Configure git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Test
+        run: yarn test
 
       - name: Bump patch version
-        run: yarn version --patch --no-git-tag-version
+        run: |
+          PUBLISHED=$(npm view need4deed-sdk version 2>/dev/null || echo "0.0.0")
+          LOCAL=$(node -p "require('./package.json').version")
+          NEXT=$(node -e '
+            const parse = (v) => v.split(".").map(Number);
+            const [a, b] = process.argv.slice(1).map(parse);
+            const cmp = a[0] - b[0] || a[1] - b[1] || a[2] - b[2];
+            const [major, minor, patch] = cmp >= 0 ? a : b;
+            console.log(`${major}.${minor}.${patch + 1}`);
+          ' "$PUBLISHED" "$LOCAL")
+          echo "npm: $PUBLISHED, package.json: $LOCAL -> $NEXT"
+          yarn version --new-version "$NEXT" --no-git-tag-version
 
       - name: Publish to npm
         run: yarn publish --non-interactive
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Open and merge version bump PR
-        env:
-          GH_TOKEN: ${{ secrets.SDK_PAT }}
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          BRANCH="chore/version-bump-$VERSION"
-
-          if git ls-remote --exit-code origin "refs/heads/$BRANCH" > /dev/null 2>&1; then
-            echo "Branch $BRANCH already exists — skipping PR creation"
-            exit 0
-          fi
-
-          git checkout -b "$BRANCH"
-          git add package.json
-          git commit -m "chore: bump version to $VERSION [skip ci]"
-          git push origin "$BRANCH"
-          gh pr create \
-            --title "chore: bump version to $VERSION" \
-            --body "Automated version bump triggered by merge to main." \
-            --base main \
-            --head "$BRANCH"
-          gh pr merge "$BRANCH" --squash

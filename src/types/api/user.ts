@@ -22,11 +22,15 @@ export interface ApiUserPost {
   };
 }
 
-// Deliberately not ApiAgentMembership (that one embeds a full ApiPersonGet —
-// meant for "who are this agent's contacts", the opposite direction, and
-// would over-expose PII for what /me needs). Not OptionById either — agent
-// titles are a plain string, not the per-locale OptionTitle map that type
-// expects. be#809.
+export interface ApiAuthRefreshPost {
+  refresh?: string;
+}
+
+export interface ApiAuthRefreshResponse {
+  access: string;
+  refresh: string;
+}
+
 export interface ApiAgentMembershipSummary {
   agentId: number;
   agentTitle: string;
@@ -43,13 +47,9 @@ interface UserGet {
   avatarUrl: string;
   isoCode: string;
   timezone: string;
-  // Single "primary" active agent membership — kept for backward
-  // compatibility with existing single-agent consumers. See
-  // agentMemberships for the full list (be#809).
   agentId?: number;
-  // All of the caller's active AgentPerson memberships, not just one — a
-  // person can belong to more than one agent (be#809).
   agentMemberships?: ApiAgentMembershipSummary[];
+  volunteerId?: number;
 }
 
 export type ApiUserGet = VoidableProps<UserGet, "avatarUrl" | "personId">;
@@ -57,8 +57,25 @@ export type ApiUserGet = VoidableProps<UserGet, "avatarUrl" | "personId">;
 export interface ApiUserVerifyEmail {
   message: string;
   verified: boolean;
-  // Only meaningful for role: VOLUNTEER — true when the Person behind this
-  // account already has a Volunteer profile (e.g. from a legacy record now
-  // linked via email, be#923), so the completion form should be skipped.
   hasVolunteerProfile?: boolean;
+  hasAgentMembership?: boolean;
+}
+
+export interface ApiCoordinatorInvitePost {
+  email: string;
+  person: {
+    firstName: string;
+    middleName?: string;
+    lastName: string;
+  };
+}
+
+export interface ApiCoordinatorInviteResponse {
+  token: string;
+  link: string;
+  expiresAt: string;
+}
+
+export interface ApiCoordinatorRegisterWithInvite {
+  password: string;
 }

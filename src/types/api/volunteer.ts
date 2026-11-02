@@ -2,7 +2,11 @@ import { DocumentStatusType, Id } from "../core";
 import { VoidableProps } from "../utils";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
-import { ApiOpportunityGetList, OpportunityVolunteer } from "./opportunity";
+import {
+  ApiOpportunityGetList,
+  OpportunityType,
+  OpportunityVolunteer,
+} from "./opportunity";
 import { OptionItem } from "./option";
 import { ApiPersonGet, PreferredCommunicationType } from "./person";
 import { ProfileVolunteeringType } from "./profile";
@@ -94,6 +98,8 @@ export enum VolunteerStateAppreciationType {
 export const VolunteerStateTypeType = ProfileVolunteeringType;
 export type VolunteerStateTypeType = ProfileVolunteeringType;
 
+export type VolunteerType = OpportunityType;
+
 export enum VolunteerStateCGCType {
   UPLOADED = "uploaded",
   MISSING = "missing",
@@ -124,8 +130,11 @@ export type VolunteerCommunicationType = PreferredCommunicationType;
 
 interface VolunteerGetListProps {
   id: number;
+  ownerAgentId: number | null;
   statusEngagement: VolunteerStateEngagementType;
+  /** @deprecated use statusTypes */
   statusType: VolunteerStateTypeType;
+  statusTypes: VolunteerType[];
   statusMatch: VolunteerStateMatchType;
   statusCommunication: VolunteerStateCommunicationType;
   name: string;
@@ -136,6 +145,8 @@ interface VolunteerGetListProps {
   activities: OptionItem[];
   skills: OptionItem[];
   locations: OptionItem[];
+  lat: number | null;
+  lon: number | null;
 }
 export type ApiVolunteerGetList = VoidableProps<
   VolunteerGetListProps,
@@ -144,11 +155,14 @@ export type ApiVolunteerGetList = VoidableProps<
 
 export interface ApiVolunteerGet {
   id: number;
+  ownerAgentId: number | null;
   person: ApiPersonGet;
   statusEngagement: VolunteerStateEngagementType;
   statusCommunication: VolunteerStateCommunicationType;
   statusAppreciation: VolunteerStateAppreciationType;
+  /** @deprecated use statusTypes */
   statusType: VolunteerStateTypeType;
+  statusTypes: VolunteerType[];
   statusMatch: VolunteerStateMatchType;
   statusCgcProcess: VolunteerStateCGCType;
   dateReturn: Date | null;
@@ -179,7 +193,9 @@ export type VolunteerPatchBodyData = VoidableProps<ApiVolunteerGet>;
 export interface ApiVolunteerOpportunityGet extends OpportunityVolunteer {
   name: string;
   avatarUrl: string;
+  /** @deprecated use volunteeringTypes */
   volunteeringType: ProfileVolunteeringType;
+  volunteeringTypes: VolunteerType[];
   engagement: VolunteerStateEngagementType;
   communication: VolunteerStateCommunicationType;
   languages: ApiLanguage[];
@@ -208,3 +224,4 @@ export interface ApiVolunteerRegisterNew {
   measlesVaccination: DocumentStatusType;
   comments: string;
 }
+

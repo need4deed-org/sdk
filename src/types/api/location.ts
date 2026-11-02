@@ -10,8 +10,8 @@ export interface ApiAddressGet extends Address {}
 export interface Postcode {
   id: number;
   code: string;
-  latitude: number;
-  longitude: number;
+  latitude: number | null;
+  longitude: number | null;
 }
 export interface ApiPostcode extends Postcode {}
 
