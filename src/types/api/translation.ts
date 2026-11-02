@@ -37,12 +37,11 @@ export interface ApiFieldTranslationGet {
   translations: Partial<Record<Lang, ApiFieldTranslation>>;
 }
 
-/** @deprecated Use ApiOpportunityPatch.originalLanguage when the backend replacement is available. */
 export interface ApiOriginalLanguagePut {
   language: Lang;
 }
 
-type TranslationFieldsByEntity = {
+export type TranslationFieldsByEntity = {
   [EntityTableName.OPPORTUNITY]: "title" | "info";
   [EntityTableName.LANGUAGE]: "title";
   [EntityTableName.CATEGORY]: "title" | "description";

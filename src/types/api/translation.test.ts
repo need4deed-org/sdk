@@ -7,6 +7,7 @@ import type {
   EntityTableName,
   Lang,
   TranslatedEntityType,
+  TranslationFieldsByEntity,
 } from "../..";
 
 describe("translation request contracts", () => {
@@ -41,24 +42,31 @@ describe("translation request contracts", () => {
     >().toEqualTypeOf<"title">();
   });
 
+  it("exports the field map for shared backend validation", () => {
+    expectTypeOf<keyof TranslationFieldsByEntity>().toEqualTypeOf<TranslatedEntityType>();
+    expectTypeOf<TranslationFieldsByEntity[EntityTableName.OPPORTUNITY]>().toEqualTypeOf<"title" | "info">();
+    expectTypeOf<TranslationFieldsByEntity[EntityTableName.CATEGORY]>().toEqualTypeOf<"title" | "description">();
+    expectTypeOf<TranslationFieldsByEntity[EntityTableName.SKILL]>().toEqualTypeOf<"title">();
+  });
+
   it("rejects unsupported entities and mismatched fields", () => {
-    expectTypeOf<EntityTableName.NONE>().not.toMatchTypeOf<TranslatedEntityType>();
-    expectTypeOf<EntityTableName.DISTRICT>().not.toMatchTypeOf<TranslatedEntityType>();
-    expectTypeOf<EntityTableName.COMMENT>().not.toMatchTypeOf<TranslatedEntityType>();
+    expectTypeOf<EntityTableName.NONE>().not.toExtend<TranslatedEntityType>();
+    expectTypeOf<EntityTableName.DISTRICT>().not.toExtend<TranslatedEntityType>();
+    expectTypeOf<EntityTableName.COMMENT>().not.toExtend<TranslatedEntityType>();
     expectTypeOf<{
       entityType: EntityTableName.OPPORTUNITY;
       entityId: number;
       fieldName: "description";
       language: Lang;
       text: string;
-    }>().not.toMatchTypeOf<ApiFieldTranslationPost>();
+    }>().not.toExtend<ApiFieldTranslationPost>();
     expectTypeOf<{
       entityType: EntityTableName.SKILL;
       entityId: number;
       fieldName: "info";
       language: Lang;
       text: string;
-    }>().not.toMatchTypeOf<ApiFieldTranslationPost>();
+    }>().not.toExtend<ApiFieldTranslationPost>();
   });
 
   it("exports the update request with required text", () => {
