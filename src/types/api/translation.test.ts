@@ -20,6 +20,7 @@ describe("translation request contracts", () => {
       fieldName: "title" | "info";
       language: Lang;
       text: string;
+      original: string;
     }>();
   });
 
@@ -59,6 +60,7 @@ describe("translation request contracts", () => {
       fieldName: "description";
       language: Lang;
       text: string;
+      original: string;
     }>().not.toExtend<ApiFieldTranslationPost>();
     expectTypeOf<{
       entityType: EntityTableName.SKILL;
@@ -66,11 +68,26 @@ describe("translation request contracts", () => {
       fieldName: "info";
       language: Lang;
       text: string;
+      original: string;
     }>().not.toExtend<ApiFieldTranslationPost>();
   });
 
-  it("exports the update request with required text", () => {
-    expectTypeOf<ApiFieldTranslationPatch>().toEqualTypeOf<{ text: string }>();
+  it("exports the update request with required text and original", () => {
+    expectTypeOf<ApiFieldTranslationPatch>().toEqualTypeOf<{
+      text: string;
+      original: string;
+    }>();
+  });
+
+  it("requires the original the translation was written against", () => {
+    expectTypeOf<{ text: string }>().not.toExtend<ApiFieldTranslationPatch>();
+    expectTypeOf<{
+      entityType: EntityTableName.OPPORTUNITY;
+      entityId: number;
+      fieldName: "title";
+      language: Lang;
+      text: string;
+    }>().not.toExtend<ApiFieldTranslationPost>();
   });
 
   it("preserves the original-language request contract", () => {

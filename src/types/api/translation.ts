@@ -61,9 +61,11 @@ export type ApiFieldTranslationPost = {
     fieldName: TranslationFieldsByEntity[Entity];
     language: Lang;
     text: string;
+    original: string;
   };
 }[TranslatedEntityType];
 
 export interface ApiFieldTranslationPatch {
   text: string;
+  original: string;
 }
