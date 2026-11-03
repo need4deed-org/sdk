@@ -30,13 +30,6 @@ export interface ApiFieldTranslation {
   lastErrorCode?: TranslationErrorCode;
 }
 
-export interface ApiFieldTranslationGet {
-  fieldName: string;
-  original: string;
-  originalLanguage?: Lang;
-  translations: Partial<Record<Lang, ApiFieldTranslation>>;
-}
-
 export interface ApiOriginalLanguagePut {
   language: Lang;
 }
@@ -53,6 +46,15 @@ export type TranslationFieldsByEntity = {
 };
 
 export type TranslatedEntityType = keyof TranslationFieldsByEntity;
+
+export interface ApiFieldTranslationGet<
+  Entity extends TranslatedEntityType = TranslatedEntityType,
+> {
+  fieldName: TranslationFieldsByEntity[Entity];
+  original: string;
+  originalLanguage?: Lang;
+  translations: Partial<Record<Lang, ApiFieldTranslation>>;
+}
 
 export type ApiFieldTranslationPost = {
   [Entity in TranslatedEntityType]: {
