@@ -1,8 +1,10 @@
-import { EntityTableName, Id, Lang, QueryParamsKeys } from "../core";
+import { EntityTableName, Id, Lang } from "../core";
 import { AgentType } from "./agent";
 import { ApiLanguage } from "./language";
 import { District } from "./location";
+import { OpportunityType } from "./opportunity";
 import { ApiAvailability } from "./time";
+import { VolunteerType } from "./volunteer";
 
 export const apiDistrictMarkerMaxEntities = 500;
 
@@ -12,31 +14,62 @@ export type ApiDistrictMarkerFilterValue =
   | boolean
   | Array<string | number>;
 
-export type ApiDistrictMarkerFilters = Partial<
+export type ApiAgentDistrictFilters = Partial<
   Record<
-    Exclude<
-      QueryParamsKeys,
-      QueryParamsKeys.LIMIT | QueryParamsKeys.ORDER | QueryParamsKeys.PAGE | QueryParamsKeys.LANGUAGE
-    >,
+    "type" | "status" | "engagementStatus" | "services" | "volunteerSearch",
     ApiDistrictMarkerFilterValue
   >
 >;
 
-// entity-specific routes determine the entity type. (e.g. /volunteer/map)
-export type ApiDistrictMarkerQuery = {
-  districtId?: number;
-  // Uses the same filter keys and values as the corresponding profile list endpoint.
-  filter?: ApiDistrictMarkerFilters;
+export type ApiOpportunityDistrictFilters = Partial<
+  Record<
+    "type" | "status" | "activity" | "skill" | "match" | "agentId",
+    ApiDistrictMarkerFilterValue
+  >
+>;
+
+export type ApiVolunteerDistrictFilters = Partial<
+  Record<
+    | "type"
+    | "status"
+    | "activity"
+    | "skill"
+    | "match"
+    | "engagementStatus"
+    | "services"
+    | "volunteerSearch",
+    ApiDistrictMarkerFilterValue
+  >
+>;
+
+export type ApiDistrictMarkerFilters =
+  | ApiAgentDistrictFilters
+  | ApiOpportunityDistrictFilters
+  | ApiVolunteerDistrictFilters;
+
+export type ApiDistrictMarkerQuery<TFilters = ApiDistrictMarkerFilters> = {
+  districtId: number;
+  language: Lang;
+  filter?: TFilters;
 };
+
+export type ApiAgentDistrictMarkerQuery =
+  ApiDistrictMarkerQuery<ApiAgentDistrictFilters>;
+
+export type ApiOpportunityDistrictMarkerQuery =
+  ApiDistrictMarkerQuery<ApiOpportunityDistrictFilters>;
+
+export type ApiVolunteerDistrictMarkerQuery =
+  ApiDistrictMarkerQuery<ApiVolunteerDistrictFilters>;
 
 export type ApiDistrictMarkerChild = {
   id: Id;
   title: string;
-  language?: ApiLanguage[];
+  languages?: ApiLanguage[];
   availability?: ApiAvailability[];
-  type?: AgentType["title"];
-  district?: District["title"];
-  avatarUrl?: string;
+  type?: AgentType | OpportunityType;
+  statusTypes?: VolunteerType[];
+  district?: District;
 };
 
 export type ApiDistrictMarker = {
@@ -51,6 +84,6 @@ export type ApiDistrictMarkerGet = {
   markers: ApiDistrictMarker[];
   // Matching entity count before applying the response cap.
   total: number;
-  // True when total exceeds apiDistrictMarkerMaxEntities.
-  truncated: boolean;
+  // The server trims children at this limit and omits markers with no children.
+  maxEntities: number;
 };
