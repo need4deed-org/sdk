@@ -2,7 +2,6 @@ import { EntityTableName, Id, Lang } from "../core";
 import { AgentType } from "./agent";
 import { ApiLanguage } from "./language";
 import { District } from "./location";
-import { OpportunityType } from "./opportunity";
 import { ApiAvailability } from "./time";
 import { VolunteerType } from "./volunteer";
 
@@ -67,7 +66,7 @@ export type ApiDistrictMarkerChild = {
   title: string;
   languages?: ApiLanguage[];
   availability?: ApiAvailability[];
-  type?: AgentType | OpportunityType;
+  type?: AgentType;
   statusTypes?: VolunteerType[];
   district?: District;
 };
