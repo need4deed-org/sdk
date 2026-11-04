@@ -76,7 +76,10 @@ export type ApiDistrictMarker = {
   lon: number | null;
   districtId: number;
   children: Array<ApiDistrictMarkerChild>;
-  entity: EntityTableName.AGENT | EntityTableName.OPPORTUNITY | EntityTableName.VOLUNTEER;
+  entity: 
+  EntityTableName.AGENT | 
+  EntityTableName.OPPORTUNITY | 
+  EntityTableName.VOLUNTEER;
 };
 
 export type ApiDistrictMarkerGet = {
