@@ -11,8 +11,7 @@ Opportunity translation endpoints use `info` for the field exposed as `descripti
 ## District aggregate contract
 
 District aggregate responses include every configured district, including
-districts with a count of zero. Volunteer counts are based on preferred
-districts, so one volunteer may be counted in multiple districts; district
-counts do not represent unique volunteers and should not be summed to calculate
-a unique volunteer total. Aggregate requests use the same profile-specific
-`filter` types as district marker requests.
+districts with a count of zero. Volunteers are placed and counted in the
+district of their home postcode, not their preferred districts. Each volunteer
+is counted once. Aggregate requests use the same profile-specific `filter`
+types as district marker requests.

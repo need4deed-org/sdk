@@ -22,7 +22,14 @@ export type ApiAgentDistrictFilters = Partial<
 
 export type ApiOpportunityDistrictFilters = Partial<
   Record<
-    "type" | "status" | "activity" | "skill" | "match" | "agentId",
+    | "type"
+    | "status"
+    | "activity"
+    | "skill"
+    | "match"
+    | "agentId"
+    | "language"
+    | "availability",
     ApiDistrictMarkerFilterValue
   >
 >;
@@ -30,13 +37,12 @@ export type ApiOpportunityDistrictFilters = Partial<
 export type ApiVolunteerDistrictFilters = Partial<
   Record<
     | "type"
-    | "status"
+    | "language"
     | "activity"
     | "skill"
-    | "match"
-    | "engagementStatus"
-    | "services"
-    | "volunteerSearch",
+    | "availability"
+    | "engagement"
+    | "match",
     ApiDistrictMarkerFilterValue
   >
 >;
@@ -76,10 +82,7 @@ export type ApiDistrictMarker = {
   lon: number | null;
   districtId: number;
   children: Array<ApiDistrictMarkerChild>;
-  entity: 
-  EntityTableName.AGENT | 
-  EntityTableName.OPPORTUNITY | 
-  EntityTableName.VOLUNTEER;
+  entity: EntityTableName.AGENT | EntityTableName.OPPORTUNITY | EntityTableName.VOLUNTEER;
 };
 
 export type ApiDistrictMarkerGet = {
