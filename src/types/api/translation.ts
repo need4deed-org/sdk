@@ -36,10 +36,6 @@ export interface ApiFieldTranslation {
   lastErrorCode?: TranslationErrorCode;
 }
 
-export interface ApiOriginalLanguagePut {
-  language: Lang;
-}
-
 export type TranslationFieldsByEntity = {
   [EntityTableName.OPPORTUNITY]: "title" | "info";
   [EntityTableName.LANGUAGE]: "title";
