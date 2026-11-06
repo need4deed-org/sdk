@@ -138,6 +138,7 @@ export interface OpportunityCreateFormDataProps {
   accomp_information?: string;
   accomp_translation?: `${TranslatedIntoType}`;
   districtIds?: number[];
+  address?: ApiOpportunityAddress;
   languageIds: number[];
   activityIds: number[];
   skillIds: number[];
@@ -152,6 +153,12 @@ export interface OpportunityCreateFormDataProps {
 }
 export type OpportunityFormDataWithAgentSubmitter =
   VoidableUndefined<OpportunityCreateFormDataProps>;
+
+export interface ApiOpportunityAddress {
+  street: string;
+  postcode: string;
+  city: string;
+}
 
 export interface ApiOpportunityAgent {
   id: number;
@@ -207,6 +214,7 @@ export interface ApiOpportunityGet extends ApiOpportunityGetList {
     time: string;
   };
   myMatchStatus?: OpportunityVolunteerStatusType | null;
+  address?: ApiOpportunityAddress | null;
 }
 
 export type ApiOpportunityLean = Omit<ApiOpportunityGet, "comments">;
@@ -235,6 +243,7 @@ export type ApiOpportunityPatch = VoidableProps<{
     name?: string;
   };
   accompanyingDetails: ApiOpportunityAccompanyingDetails;
+  address: ApiOpportunityAddress;
 }> & {
   originalLanguage?: Lang;
 };
