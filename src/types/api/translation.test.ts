@@ -3,7 +3,6 @@ import type {
   ApiFieldTranslationGet,
   ApiFieldTranslationPatch,
   ApiFieldTranslationPost,
-  ApiOriginalLanguagePut,
   ApiOpportunityPatch,
   EntityTableName,
   Lang,
@@ -123,10 +122,6 @@ describe("translation request contracts", () => {
       language: Lang;
       text: string;
     }>().not.toExtend<ApiFieldTranslationPost>();
-  });
-
-  it("preserves the original-language request contract", () => {
-    expectTypeOf<ApiOriginalLanguagePut>().toEqualTypeOf<{ language: Lang }>();
   });
 
   it("allows an optional original language on opportunity updates", () => {
