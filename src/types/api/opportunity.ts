@@ -2,6 +2,7 @@ import { Id, Lang, VoidableProps, VoidableUndefined } from "..";
 import { ApiOpportunityAccompanyingDetails } from "./accompanying";
 import { AgentType } from "./agent";
 import { ApiComment } from "./comment";
+import { ApiCommuteRange } from "./commute";
 import { OptionById, OptionId } from "./common";
 import { ApiLanguage } from "./language";
 import { OptionItem } from "./option";
@@ -248,6 +249,7 @@ export interface OpportunityVolunteer {
 
 export interface ApiOpportunityVolunteerGet extends OpportunityVolunteer {
   title: string;
+  commute?: ApiCommuteRange | null;
 }
 
 export const EMAIL_NOTE_MAX_LENGTH = 1000;

@@ -1,6 +1,7 @@
 import { DocumentStatusType, Id } from "../core";
 import { VoidableProps } from "../utils";
 import { OptionById, OptionId } from "./common";
+import { ApiCommuteRange } from "./commute";
 import { ApiLanguage } from "./language";
 import {
   ApiOpportunityGetList,
@@ -203,6 +204,7 @@ export interface ApiVolunteerOpportunityGet extends OpportunityVolunteer {
   activities: OptionItem[];
   skills: OptionItem[];
   locations: OptionItem[];
+  commute?: ApiCommuteRange | null;
 }
 
 export interface ApiVolunteerOpportunityGetList extends ApiOpportunityGetList {
