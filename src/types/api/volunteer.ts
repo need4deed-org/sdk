@@ -133,6 +133,7 @@ interface VolunteerGetListProps {
   id: number;
   ownerAgentId: number | null;
   statusEngagement: VolunteerStateEngagementType;
+  activeFromOnetimer?: boolean;
   /** @deprecated use statusTypes */
   statusType: VolunteerStateTypeType;
   statusTypes: VolunteerType[];
@@ -159,6 +160,7 @@ export interface ApiVolunteerGet {
   ownerAgentId: number | null;
   person: ApiPersonGet;
   statusEngagement: VolunteerStateEngagementType;
+  activeFromOnetimer?: boolean;
   statusCommunication: VolunteerStateCommunicationType;
   statusAppreciation: VolunteerStateAppreciationType;
   /** @deprecated use statusTypes */
