@@ -230,3 +230,44 @@ export interface ApiVolunteerRegisterNew {
 export interface ApiVolunteerSuggestionRequestPost {
   opportunityId: number;
 }
+
+export const VOLUNTEER_IMPORT_MAX_ROWS = 500;
+
+export interface ApiVolunteerImportRow {
+  firstName: string;
+  lastName?: string;
+  email: string;
+  phone?: string;
+  postcode: string;
+}
+
+/** POST /agent/:id/volunteer-import (admin): the NGO's existing volunteers, created owned by that NGO. Any invalid row rejects the whole import; dryRun reports without writing. */
+export interface ApiVolunteerImportPost {
+  rows: ApiVolunteerImportRow[];
+  dryRun?: boolean;
+}
+
+export type VolunteerImportOutcome = "created" | "skipped" | "invalid";
+
+export type VolunteerImportSkipReason =
+  | "already-volunteer"
+  | "duplicate-in-import";
+
+export interface ApiVolunteerImportRowResult {
+  /** 0-based index into rows */
+  row: number;
+  email: string;
+  outcome: VolunteerImportOutcome;
+  skipReason?: VolunteerImportSkipReason;
+  errors?: string[];
+  /** set once written; absent on a dry run */
+  volunteerId?: number;
+}
+
+export interface ApiVolunteerImportResult {
+  dryRun: boolean;
+  created: number;
+  skipped: number;
+  invalid: number;
+  rows: ApiVolunteerImportRowResult[];
+}
