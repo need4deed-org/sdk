@@ -20,6 +20,8 @@ export interface ApiUserPost {
     middleName?: string;
     lastName?: string;
   };
+  /** Volunteer sign-up through an NGO's registration link: the signed token from that link; the volunteer is created owned by the NGO. */
+  ngoToken?: string;
 }
 
 export interface ApiAuthRefreshPost {
@@ -70,11 +72,16 @@ export interface ApiCoordinatorInvitePost {
   };
 }
 
-export interface ApiCoordinatorInviteResponse {
+export interface ApiSignedLinkResponse {
   token: string;
   link: string;
   expiresAt: string;
 }
+
+export type ApiCoordinatorInviteResponse = ApiSignedLinkResponse;
+
+/** POST /agent/:id/registration-link (admin): a signed volunteer registration link for that NGO, valid 90 days. */
+export type ApiAgentRegistrationLinkResponse = ApiSignedLinkResponse;
 
 export interface ApiCoordinatorRegisterWithInvite {
   password: string;
