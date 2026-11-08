@@ -226,3 +226,7 @@ export interface ApiVolunteerRegisterNew {
   measlesVaccination: DocumentStatusType;
   comments: string;
 }
+/** POST /volunteer/:id/suggestion-request: an NGO asks the NGO that owns the volunteer to suggest them for one of its own open opportunities. */
+export interface ApiVolunteerSuggestionRequestPost {
+  opportunityId: number;
+}
