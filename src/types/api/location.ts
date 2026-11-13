@@ -15,6 +15,12 @@ export interface Postcode {
 }
 export interface ApiPostcode extends Postcode {}
 
+/** GET /postcode/check?code= (public): whether a German PLZ is in be's reference list. `code` comes back normalized (`1067` → `01067`). */
+export interface ApiPostcodeCheck {
+  code: string;
+  known: boolean;
+}
+
 export enum LocationType {
   ADDRESS = "address",
   DISTRICT = "district",
