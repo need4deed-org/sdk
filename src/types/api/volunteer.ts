@@ -189,7 +189,7 @@ export interface ApiVolunteerGet {
   activities: OptionItem[];
   skills: OptionItem[];
   locations: OptionItem[];
-  leadFrom: OptionId[];
+  leadFrom: OptionItem[];
 }
 
 export type VolunteerPatchBodyData = VoidableProps<ApiVolunteerGet>;
