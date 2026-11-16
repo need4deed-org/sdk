@@ -24,6 +24,24 @@ export interface ApiUserPost {
   ngoToken?: string;
 }
 
+export const ADMIN_MANAGEABLE_ROLES = [
+  UserRole.COORDINATOR,
+  UserRole.AGENT,
+  UserRole.ADMIN,
+] as const;
+
+export type AdminManageableRole = (typeof ADMIN_MANAGEABLE_ROLES)[number];
+
+export interface ApiAdminUserRolePatch {
+  role: AdminManageableRole;
+}
+
+export function isAdminManageableRole(
+  role: UserRole | undefined,
+): role is AdminManageableRole {
+  return ADMIN_MANAGEABLE_ROLES.some((manageable) => manageable === role);
+}
+
 export interface ApiAuthRefreshPost {
   refresh?: string;
 }
