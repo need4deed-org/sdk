@@ -192,7 +192,7 @@ export interface ApiVolunteerGet {
   leadFrom?: OptionItem[];
 }
 
-export type VolunteerPatchBodyData = VoidableProps<ApiVolunteerGet>;
+export type VolunteerPatchBodyData = VoidableProps<Omit<ApiVolunteerGet, 'leadFrom'>>;
 
 export interface ApiVolunteerOpportunityGet extends OpportunityVolunteer {
   name: string;
