@@ -1,27 +1,39 @@
 import { ApiAddress } from "./location";
-import { ApiAgentMembership, Service } from "./agent";
-import { OptionById } from "./common";
+import { ApiAgentTagCandidate, Service } from "./agent";
+import { Voidable, VoidableProps } from "../utils";
+import { ApiPersonGet } from "./person";
 
-export interface ApiOrganizationAgent {
+export interface OrganizationContact {
   id: number;
-  title: string;
-  district: OptionById;
+  person: ApiPersonGet;
 }
 
 export interface ApiOrganizationGet {
   id: number;
   title: string;
-  website: string;
-  address: ApiAddress;
-  about?: string;
+  website: Voidable<string>;
+  address: Voidable<ApiAddress>;
+  about?: Voidable<string>;
   email?: string;
   phone?: string;
   landline?: string;
   services?: Service[];
-  contacts: ApiAgentMembership[];
-  agents: ApiOrganizationAgent[];
+  contacts: OrganizationContact[];
+  agents: ApiAgentTagCandidate[];
 }
 
-export type ApiOrganizationPatch = Partial<ApiOrganizationGet>;
+interface OrganizationPatch {
+  title: string;
+  website: string;
+  address: ApiAddress;
+  about: string;
+  email: string;
+  phone: string;
+  serviceIds: number[]; 
+  contactIds: number[];
+  agentIds: number[];
+};
+
+export type ApiOrganizationPatch = VoidableProps<OrganizationPatch>;
 
 export type ApiOrganizationGetList = Pick<ApiOrganizationGet, "id" | "title">;
