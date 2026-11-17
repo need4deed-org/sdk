@@ -16,7 +16,6 @@ export interface ApiOrganizationGet {
   about?: Voidable<string>;
   email?: string;
   phone?: string;
-  landline?: string;
   services?: Service[];
   contacts: OrganizationContact[];
   agents: ApiAgentTagCandidate[];
