@@ -26,6 +26,7 @@ export * from "./recommended-matches";
 export * from "./statistics";
 export * from "./testimonial";
 export * from "./time";
+export * from "./search";
 export * from "./translation";
 export * from "./trusted-domain";
 export * from "./user";

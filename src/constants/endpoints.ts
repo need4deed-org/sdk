@@ -9,4 +9,5 @@ export enum Endpoint {
   AGENT_TAG_CANDIDATES = "/agent/tag-candidates",
   REGISTER = "/register",
   STATISTICS = "/statistics",
+  SEARCH_SUGGEST = "/search/suggest",
 }
