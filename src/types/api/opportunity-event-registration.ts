@@ -1,3 +1,9 @@
+export interface ApiOpportunityEventSummaryGet {
+  id: number;
+  title: string;
+  date: Date;
+}
+
 export interface ApiOpportunityEventRegistrationPost {
   opportunityId: number;
   fullName: string;
