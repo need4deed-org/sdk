@@ -106,6 +106,11 @@ export interface ApiAgentContactPost {
 
 export type ApiAgentContactPatch = Partial<ApiAgentContactPost>;
 
+export interface ApiAgentOrganization {
+  id: number;
+  title: string;
+}
+
 interface AgentGetList {
   id: number;
   title: string;
@@ -121,6 +126,7 @@ interface AgentGetList {
   lon: number | null;
   postcode: string | null;
   statusEngagement: AgentEngagementStatusType;
+  organization: ApiAgentOrganization | null;
 }
 export type ApiAgentGetList = VoidableProps<AgentGetList, "district">;
 

@@ -26,17 +26,16 @@ export interface ApiOrganizationGet {
 interface OrganizationPatch {
   title: string;
   website: string;
-  address: ApiAddress;
-  about: string;
   email: string;
   phone: string;
-  serviceIds: number[];
+  addressStreet: string;
+  addressPostcode: string;
 }
 
 export type ApiOrganizationPatch = Partial<
   VoidableProps<
     OrganizationPatch,
-    "website" | "address" | "about" | "email" | "phone"
+    "website" | "email" | "phone" | "addressStreet" | "addressPostcode"
   >
 >;
 
