@@ -1,4 +1,5 @@
 import { EntityTableName } from "../core";
+import { VolunteerAuditLogType } from "./volunteer-audit-log";
 
 export enum MyActivityKind {
   COMMENT = "comment",
@@ -18,6 +19,7 @@ export interface ApiMyActivityItem {
   entityId: number;
   entityTitle: string;
   text: string;
+  changeType?: VolunteerAuditLogType;
 }
 
 export interface ApiMyActivityQuery {
