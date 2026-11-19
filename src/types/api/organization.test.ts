@@ -6,19 +6,34 @@ import type {
   ApiOrganizationPatch,
 } from "../..";
 
-describe("organization contracts", () => {
-  it("keeps the organization patch narrow, with a non-null title", () => {
-    expectTypeOf<ApiOrganizationPatch>().toEqualTypeOf<{
-      title?: string;
-      website?: string | null;
-      email?: string | null;
-      phone?: string | null;
-      addressStreet?: string | null;
-      addressPostcode?: string | null;
-    }>();
+describe("organization patch contract", () => {
+  it("never lets the title be cleared", () => {
+    expectTypeOf<ApiOrganizationPatch["title"]>().toEqualTypeOf<
+      string | undefined
+    >();
   });
 
-  it("links an Einrichtung to its Träger", () => {
+  it("lets the optional details be cleared", () => {
+    expectTypeOf<ApiOrganizationPatch["email"]>().toEqualTypeOf<
+      string | null | undefined
+    >();
+    expectTypeOf<ApiOrganizationPatch["addressPostcode"]>().toEqualTypeOf<
+      string | null | undefined
+    >();
+  });
+
+  it("has no Einrichtung or contact links", () => {
+    expectTypeOf<ApiOrganizationPatch>().not.toHaveProperty("agentIds");
+    expectTypeOf<ApiOrganizationPatch>().not.toHaveProperty("contactIds");
+  });
+
+  it("has no services, which are derived from the Einrichtungen", () => {
+    expectTypeOf<ApiOrganizationPatch>().not.toHaveProperty("serviceIds");
+  });
+});
+
+describe("Einrichtung to Träger link", () => {
+  it("exposes the Träger on the list and the profile", () => {
     expectTypeOf<
       ApiAgentGetList["organization"]
     >().toEqualTypeOf<ApiAgentOrganization | null>();

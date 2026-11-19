@@ -3,8 +3,9 @@ import { ApiAgentTagCandidate, Service } from "./agent";
 import { Voidable, VoidableProps } from "../utils";
 
 export interface ApiOrganizationContact {
-  id: number;
-  name: string;
+  personId: number;
+  firstName: string;
+  lastName: Voidable<string>;
   email: Voidable<string>;
   phone: Voidable<string>;
 }
@@ -14,7 +15,7 @@ export interface ApiOrganizationGet {
   title: string;
   website: Voidable<string>;
   address: Voidable<ApiAddress>;
-  about?: Voidable<string>;
+  about: Voidable<string>;
   email: Voidable<string>;
   phone: Voidable<string>;
   services: Service[];
