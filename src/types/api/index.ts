@@ -24,6 +24,7 @@ export * from "./organization";
 export * from "./person";
 export * from "./profile";
 export * from "./recommended-matches";
+export * from "./search";
 export * from "./statistics";
 export * from "./testimonial";
 export * from "./time";
