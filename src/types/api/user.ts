@@ -24,6 +24,32 @@ export interface ApiUserPost {
   ngoToken?: string;
 }
 
+export type AdminManageableRole =
+  | UserRole.COORDINATOR
+  | UserRole.AGENT
+  | UserRole.ADMIN;
+
+export type AdminAssignableRole = UserRole.COORDINATOR | UserRole.ADMIN;
+
+export interface ApiAdminUserRolePatch {
+  role: AdminAssignableRole;
+}
+
+export type ApiAdminUserActionResponse = ApiUserGet;
+
+export type AdminUserActionErrorCode =
+  | "self"
+  | "last_admin"
+  | "not_manageable"
+  | "role_not_assignable"
+  | "erased"
+  | "not_deactivated";
+
+export interface ApiAdminUserActionError {
+  message: string;
+  code: AdminUserActionErrorCode;
+}
+
 export interface ApiAuthRefreshPost {
   refresh?: string;
 }
