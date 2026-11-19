@@ -49,8 +49,6 @@ export type TranslationFieldsByEntity = {
 
 export type TranslatedEntityType = keyof TranslationFieldsByEntity;
 
-// Translations run longer than their source, and prod already holds
-// descriptions written before the 500-character source limit (fe#1291).
 export const OPPORTUNITY_TRANSLATION_MAX_LENGTH = {
   title: 300,
   info: 2000,

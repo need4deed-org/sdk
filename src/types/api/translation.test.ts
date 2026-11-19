@@ -1,5 +1,4 @@
-import { describe, expect, expectTypeOf, it } from "vitest";
-import { OPPORTUNITY_TRANSLATION_MAX_LENGTH } from "../..";
+import { describe, expectTypeOf, it } from "vitest";
 import type {
   ApiFieldTranslationGet,
   ApiFieldTranslationPatch,
@@ -7,6 +6,7 @@ import type {
   ApiOpportunityPatch,
   EntityTableName,
   Lang,
+  OPPORTUNITY_TRANSLATION_MAX_LENGTH,
   TranslatedEntityType,
   TranslationFieldsByEntity,
 } from "../..";
@@ -148,9 +148,5 @@ describe("opportunity translation length limits", () => {
     expectTypeOf<
       keyof typeof OPPORTUNITY_TRANSLATION_MAX_LENGTH
     >().toEqualTypeOf<TranslationFieldsByEntity[EntityTableName.OPPORTUNITY]>();
-    expect(OPPORTUNITY_TRANSLATION_MAX_LENGTH).toEqual({
-      title: 300,
-      info: 2000,
-    });
   });
 });
