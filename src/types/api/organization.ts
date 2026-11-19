@@ -1,6 +1,6 @@
 import { ApiAddress } from "./location";
 import { ApiAgentTagCandidate, Service } from "./agent";
-import { Voidable } from "../utils";
+import { Voidable, VoidableProps } from "../utils";
 
 export interface ApiOrganizationContact {
   id: number;
@@ -17,20 +17,25 @@ export interface ApiOrganizationGet {
   about?: Voidable<string>;
   email: Voidable<string>;
   phone: Voidable<string>;
-  services?: Service[];
+  services: Service[];
   contacts: ApiOrganizationContact[];
   agents: ApiAgentTagCandidate[];
 }
 
-// Einrichtungen and contacts follow the email domain; a site that changes Träger gets a new Einrichtung.
-export interface ApiOrganizationPatch {
-  title?: string;
-  website?: string | null;
-  address?: ApiAddress | null;
-  about?: string | null;
-  email?: string | null;
-  phone?: string | null;
-  serviceIds?: number[];
+interface OrganizationPatch {
+  title: string;
+  website: string;
+  email: string;
+  phone: string;
+  addressStreet: string;
+  addressPostcode: string;
 }
+
+export type ApiOrganizationPatch = Partial<
+  VoidableProps<
+    OrganizationPatch,
+    "website" | "email" | "phone" | "addressStreet" | "addressPostcode"
+  >
+>;
 
 export type ApiOrganizationGetList = Pick<ApiOrganizationGet, "id" | "title">;
