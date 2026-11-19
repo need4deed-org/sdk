@@ -22,7 +22,7 @@ export interface EventN4D {
   locationComment?: string;
   description: string;
   shortDescription: string;
-  linkRSVP: string;
+  linkRSVP?: string | null;
   followUpText?: string;
   followUpLink?: string;
   additionalTitle?: string;
@@ -44,7 +44,7 @@ export interface ApiEventN4DGetList {
   locationComment?: string;
   description: string;
   shortDescription: string;
-  linkRSVP: string;
+  linkRSVP?: string | null;
   hostName?: string | null;
   additionalTitle?: string;
   additionalInfo?: string[];
@@ -79,7 +79,7 @@ export interface ApiEventN4DCreate {
   type: EventN4DType;
   pic?: string;
   locationLink?: string;
-  linkRSVP: string;
+  linkRSVP?: string | null;
   followUpLink?: string;
   address: string;
   hostName?: string;
