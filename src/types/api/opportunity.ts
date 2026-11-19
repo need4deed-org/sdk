@@ -263,6 +263,9 @@ export interface ApiOpportunityVolunteerGet extends OpportunityVolunteer {
 
 export const EMAIL_NOTE_MAX_LENGTH = 1000;
 
+export const OPPORTUNITY_TITLE_MAX_LENGTH = 150;
+export const OPPORTUNITY_DESCRIPTION_MAX_LENGTH = 500;
+
 export interface ApiOpportunityVolunteerPost {
   opportunityId: number;
   volunteerId: number;

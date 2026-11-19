@@ -49,6 +49,14 @@ export type TranslationFieldsByEntity = {
 
 export type TranslatedEntityType = keyof TranslationFieldsByEntity;
 
+export const OPPORTUNITY_TRANSLATION_MAX_LENGTH = {
+  title: 300,
+  info: 2000,
+} as const satisfies Record<
+  TranslationFieldsByEntity[EntityTableName.OPPORTUNITY],
+  number
+>;
+
 export interface ApiFieldTranslationGet<
   Entity extends TranslatedEntityType = TranslatedEntityType,
 > {
