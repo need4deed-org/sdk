@@ -7,6 +7,11 @@ export enum StatisticsMetric {
   REQUESTS = "requests",
   // Counts ticked answers: one volunteer can tick several.
   LEAD_FROM = "lead-from",
+  // Matched, active and past matches, in the month the match was created.
+  MATCHED_VOLUNTEERS = "matched-volunteers",
+  MATCHED_OPPORTUNITIES = "matched-opportunities",
+  // Created in the period and never matched.
+  UNMATCHED_OPPORTUNITIES = "unmatched-opportunities",
 }
 
 export enum StatisticsGranularity {
