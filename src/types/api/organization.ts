@@ -1,11 +1,13 @@
 import { ApiAddress } from "./location";
 import { ApiAgentTagCandidate, Service } from "./agent";
 import { Voidable, VoidableProps } from "../utils";
-import { ApiPersonGet } from "./person";
 
-export interface OrganizationContact {
-  id: number;
-  person: ApiPersonGet;
+export interface ApiOrganizationContact {
+  personId: number;
+  firstName: string;
+  lastName: Voidable<string>;
+  email: Voidable<string>;
+  phone: Voidable<string>;
 }
 
 export interface ApiOrganizationGet {
@@ -13,11 +15,11 @@ export interface ApiOrganizationGet {
   title: string;
   website: Voidable<string>;
   address: Voidable<ApiAddress>;
-  about?: Voidable<string>;
-  email?: string;
-  phone?: string;
-  services?: Service[];
-  contacts: OrganizationContact[];
+  about: Voidable<string>;
+  email: Voidable<string>;
+  phone: Voidable<string>;
+  services: Service[];
+  contacts: ApiOrganizationContact[];
   agents: ApiAgentTagCandidate[];
 }
 
@@ -28,11 +30,14 @@ interface OrganizationPatch {
   about: string;
   email: string;
   phone: string;
-  serviceIds: number[]; 
-  contactIds: number[];
-  agentIds: number[];
-};
+  serviceIds: number[];
+}
 
-export type ApiOrganizationPatch = VoidableProps<OrganizationPatch>;
+export type ApiOrganizationPatch = Partial<
+  VoidableProps<
+    OrganizationPatch,
+    "website" | "address" | "about" | "email" | "phone"
+  >
+>;
 
 export type ApiOrganizationGetList = Pick<ApiOrganizationGet, "id" | "title">;
