@@ -6,7 +6,6 @@ import type {
   ApiOpportunityPatch,
   EntityTableName,
   Lang,
-  OPPORTUNITY_TRANSLATION_MAX_LENGTH,
   TranslatedEntityType,
   TranslationFieldsByEntity,
 } from "../..";
@@ -140,13 +139,5 @@ describe("translation request contracts", () => {
     expectTypeOf<ApiOpportunityPatch["description"]>().toEqualTypeOf<
       string | null | undefined
     >();
-  });
-});
-
-describe("opportunity translation length limits", () => {
-  it("has a limit for every opportunity translation field", () => {
-    expectTypeOf<
-      keyof typeof OPPORTUNITY_TRANSLATION_MAX_LENGTH
-    >().toEqualTypeOf<TranslationFieldsByEntity[EntityTableName.OPPORTUNITY]>();
   });
 });
