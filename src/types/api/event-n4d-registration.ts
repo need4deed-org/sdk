@@ -4,9 +4,8 @@ export interface ApiEventN4DRegistrationPost {
   eventId: number;
   fullName: string;
   email: string;
-  phone?: string | null;
   numberOfPeople: number;
-  languagePreference?: string | null;
+  signUpAnswer?: string | null;
   message?: string | null;
   isVolunteer?: boolean;
   volunteerTypes?: VolunteerType[];
@@ -16,9 +15,8 @@ export interface ApiEventN4DRegistrationGet {
   id: number;
   fullName: string;
   email: string;
-  phone: string | null;
   numberOfPeople: number;
-  languagePreference: string | null;
+  signUpAnswer: string | null;
   message: string | null;
   createdAt: Date;
   isVolunteer: boolean;

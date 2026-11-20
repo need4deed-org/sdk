@@ -46,6 +46,7 @@ export interface ApiEventN4DGetList {
   shortDescription: string;
   linkRSVP: string | null;
   hostName?: string | null;
+  signUpQuestion?: string | null;
   additionalTitle?: string;
   additionalInfo?: string[];
 }
@@ -80,6 +81,7 @@ export interface ApiEventN4DCreate {
   pic?: string;
   locationLink?: string;
   linkRSVP?: string | null;
+  signUpQuestion?: string | null;
   followUpLink?: string;
   address: string;
   hostName?: string;
