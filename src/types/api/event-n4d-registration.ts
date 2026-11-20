@@ -1,12 +1,14 @@
 import { VolunteerType } from "./volunteer";
 
+export const EVENT_SIGN_UP_QUESTION_MAX_LENGTH = 200;
+export const EVENT_SIGN_UP_ANSWER_MAX_LENGTH = 500;
+
 export interface ApiEventN4DRegistrationPost {
   eventId: number;
   fullName: string;
   email: string;
-  phone?: string | null;
   numberOfPeople: number;
-  languagePreference?: string | null;
+  signUpAnswer?: string | null;
   message?: string | null;
   isVolunteer?: boolean;
   volunteerTypes?: VolunteerType[];
@@ -16,9 +18,8 @@ export interface ApiEventN4DRegistrationGet {
   id: number;
   fullName: string;
   email: string;
-  phone: string | null;
   numberOfPeople: number;
-  languagePreference: string | null;
+  signUpAnswer: string | null;
   message: string | null;
   createdAt: Date;
   isVolunteer: boolean;
