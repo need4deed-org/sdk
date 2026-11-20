@@ -1,5 +1,8 @@
 import { VolunteerType } from "./volunteer";
 
+export const EVENT_SIGN_UP_QUESTION_MAX_LENGTH = 200;
+export const EVENT_SIGN_UP_ANSWER_MAX_LENGTH = 500;
+
 export interface ApiEventN4DRegistrationPost {
   eventId: number;
   fullName: string;
