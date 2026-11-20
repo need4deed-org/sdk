@@ -23,8 +23,11 @@ export interface ApiOrganizationGet {
   agents: ApiAgentTagCandidate[];
 }
 
+export const ORGANIZATION_ABOUT_MAX_LENGTH = 2000;
+
 interface OrganizationPatch {
   title: string;
+  about: string;
   website: string;
   email: string;
   phone: string;
@@ -35,7 +38,12 @@ interface OrganizationPatch {
 export type ApiOrganizationPatch = Partial<
   VoidableProps<
     OrganizationPatch,
-    "website" | "email" | "phone" | "addressStreet" | "addressPostcode"
+    | "about"
+    | "website"
+    | "email"
+    | "phone"
+    | "addressStreet"
+    | "addressPostcode"
   >
 >;
 
