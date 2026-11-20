@@ -37,6 +37,7 @@ describe("translation request contracts", () => {
       | EntityTableName.AGENT_TYPE
       | EntityTableName.SERVICE
       | EntityTableName.LEAD
+      | EntityTableName.ORGANIZATION
     >();
     expectTypeOf<
       Extract<
@@ -94,7 +95,7 @@ describe("translation request contracts", () => {
       ApiFieldTranslationGet<EntityTableName.OPPORTUNITY>["fieldName"]
     >().toEqualTypeOf<"title" | "info">();
     expectTypeOf<ApiFieldTranslationGet["fieldName"]>().toEqualTypeOf<
-      "title" | "info" | "description"
+      "title" | "info" | "description" | "about"
     >();
     expectTypeOf<
       ApiFieldTranslationGet<EntityTableName.OPPORTUNITY>["fieldName"]

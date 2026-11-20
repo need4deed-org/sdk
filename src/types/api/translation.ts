@@ -45,6 +45,7 @@ export type TranslationFieldsByEntity = {
   [EntityTableName.AGENT_TYPE]: "title";
   [EntityTableName.SERVICE]: "title";
   [EntityTableName.LEAD]: "title";
+  [EntityTableName.ORGANIZATION]: "about";
 };
 
 export type TranslatedEntityType = keyof TranslationFieldsByEntity;

@@ -72,6 +72,7 @@ export enum EntityTableName {
   LANGUAGE = "language",
   LEAD = "lead_from",
   OPPORTUNITY = "opportunity",
+  ORGANIZATION = "organization",
   SERVICE = "service",
   SKILL = "skill",
   VOLUNTEER = "volunteer",
