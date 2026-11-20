@@ -1,5 +1,6 @@
 import { ApiAddress } from "./location";
 import { ApiAgentTagCandidate, Service } from "./agent";
+import { Lang } from "../core";
 import { Voidable, VoidableProps } from "../utils";
 
 export interface ApiOrganizationContact {
@@ -21,6 +22,7 @@ export interface ApiOrganizationGet {
   services: Service[];
   contacts: ApiOrganizationContact[];
   agents: ApiAgentTagCandidate[];
+  originalLanguage?: Lang;
 }
 
 export const ORGANIZATION_ABOUT_MAX_LENGTH = 2000;
@@ -33,6 +35,7 @@ interface OrganizationPatch {
   phone: string;
   addressStreet: string;
   addressPostcode: string;
+  originalLanguage: Lang;
 }
 
 export type ApiOrganizationPatch = Partial<
