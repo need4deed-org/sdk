@@ -78,6 +78,7 @@ interface UserGet {
   agentId?: number;
   agentMemberships?: ApiAgentMembershipSummary[];
   volunteerId?: number;
+  deactivatedAt?: Date | null;
 }
 
 export type ApiUserGet = VoidableProps<UserGet, "avatarUrl" | "personId">;
