@@ -9,10 +9,6 @@ export interface ApiLanguage {
 
 export interface ApiLanguageGet extends ApiLanguage {}
 
-/**
- * `filter[languageMatch]` on `GET /volunteer`: how the selected
- * `filter[language]` ids combine. Default `ANY`.
- */
 export enum LanguageMatch {
   ALL = "all",
   ANY = "any",
