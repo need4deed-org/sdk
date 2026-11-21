@@ -1,5 +1,7 @@
 import { describe, expectTypeOf, it } from "vitest";
 import type {
+  Address,
+  PreferredCommunicationType,
   ApiActivityLogPatch,
   ApiAgentContactPatch,
   AgentRoleType,
@@ -21,7 +23,7 @@ describe("PATCH types allow null only on nullable columns", () => {
       Clearable<Date>
     >();
     expectTypeOf<ApiAppreciationPatch["opportunityId"]>().toEqualTypeOf<
-      Clearable<number>
+      number | undefined
     >();
     expectTypeOf<ApiAppreciationPatch["status"]>().toEqualTypeOf<
       AppreciationStatusType | undefined
@@ -53,9 +55,21 @@ describe("PATCH types allow null only on nullable columns", () => {
     expectTypeOf<ApiPersonPatch["lastName"]>().toEqualTypeOf<
       string | undefined
     >();
+    expectTypeOf<ApiPersonPatch["address"]>().toEqualTypeOf<
+      Address | undefined
+    >();
+    expectTypeOf<ApiPersonPatch["preferredComm"]>().toEqualTypeOf<
+      PreferredCommunicationType[] | undefined
+    >();
     expectTypeOf<ApiPersonPatch>().not.toHaveProperty("id");
     expectTypeOf<ApiRepresentativePatch["phone"]>().toEqualTypeOf<
       Clearable<string>
+    >();
+    expectTypeOf<ApiRepresentativePatch["role"]>().toEqualTypeOf<
+      AgentRoleType | undefined
+    >();
+    expectTypeOf<ApiRepresentativePatch["agentId"]>().toEqualTypeOf<
+      number | undefined
     >();
     expectTypeOf<ApiRepresentativePatch>().not.toHaveProperty("id");
   });

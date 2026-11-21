@@ -104,7 +104,6 @@ export interface ApiAgentContactPost {
   addressPostcode?: string;
 }
 
-// Optional fields may be cleared with `null`; name and role may only be changed.
 export type ApiAgentContactPatch = Partial<
   VoidableProps<
     ApiAgentContactPost,
