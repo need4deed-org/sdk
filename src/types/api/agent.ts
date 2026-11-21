@@ -104,7 +104,17 @@ export interface ApiAgentContactPost {
   addressPostcode?: string;
 }
 
-export type ApiAgentContactPatch = Partial<ApiAgentContactPost>;
+export type ApiAgentContactPatch = Partial<
+  VoidableProps<
+    ApiAgentContactPost,
+    | "middleName"
+    | "email"
+    | "phone"
+    | "landline"
+    | "addressStreet"
+    | "addressPostcode"
+  >
+>;
 
 export interface ApiAgentOrganization {
   id: number;

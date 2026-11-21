@@ -1,3 +1,4 @@
+import { VoidableProps } from "../utils";
 import { Address } from "./location";
 
 export enum PreferredCommunicationType {
@@ -21,4 +22,9 @@ export interface ApiPersonGet {
   preferredComm?: PreferredCommunicationType[];
 }
 
-export type ApiPersonPatch = Partial<ApiPersonGet>;
+export type ApiPersonPatch = Partial<
+  VoidableProps<
+    Omit<ApiPersonGet, "id">,
+    "avatarUrl" | "middleName" | "phone" | "landline" | "email"
+  >
+>;
