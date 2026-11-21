@@ -1,3 +1,4 @@
+import { VoidableProps } from "../utils";
 import { VolunteerStateAppreciationType } from "./volunteer";
 
 export enum AppreciationStatusType {
@@ -17,7 +18,15 @@ export interface ApiAppreciationGet {
   dateDelivery?: Date | null;
 }
 
-export interface ApiAppreciationPost
-  extends Omit<ApiAppreciationGet, "id" | "userId" | "volunteerId"> {}
+export interface ApiAppreciationPost extends Omit<
+  ApiAppreciationGet,
+  "id" | "userId" | "volunteerId"
+> {}
 
-export type ApiAppreciationPatch = Partial<ApiAppreciationPost>;
+// Nullable columns may be cleared with `null`; title/status may only be changed.
+export type ApiAppreciationPatch = Partial<
+  VoidableProps<
+    ApiAppreciationPost,
+    "opportunityId" | "dateDue" | "dateDelivery"
+  >
+>;

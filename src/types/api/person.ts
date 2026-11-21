@@ -1,3 +1,4 @@
+import { VoidableProps } from "../utils";
 import { Address } from "./location";
 
 export enum PreferredCommunicationType {
@@ -21,4 +22,10 @@ export interface ApiPersonGet {
   preferredComm?: PreferredCommunicationType[];
 }
 
-export type ApiPersonPatch = Partial<ApiPersonGet>;
+// Nullable columns may be cleared with `null`; firstName may only be changed.
+export type ApiPersonPatch = Partial<
+  VoidableProps<
+    ApiPersonGet,
+    "avatarUrl" | "middleName" | "lastName" | "phone" | "landline" | "email"
+  >
+>;

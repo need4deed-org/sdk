@@ -104,7 +104,18 @@ export interface ApiAgentContactPost {
   addressPostcode?: string;
 }
 
-export type ApiAgentContactPatch = Partial<ApiAgentContactPost>;
+// Optional fields may be cleared with `null`; name and role may only be changed.
+export type ApiAgentContactPatch = Partial<
+  VoidableProps<
+    ApiAgentContactPost,
+    | "middleName"
+    | "email"
+    | "phone"
+    | "landline"
+    | "addressStreet"
+    | "addressPostcode"
+  >
+>;
 
 export interface ApiAgentOrganization {
   id: number;
@@ -181,8 +192,7 @@ export interface ApiAgentRegisterNew {
 }
 
 export type ApiAgentRegister =
-  | { agentId: number }
-  | { agent: ApiAgentRegisterNew };
+  { agentId: number } | { agent: ApiAgentRegisterNew };
 
 export enum AgentMembershipStatus {
   ACTIVE = "active",
@@ -218,8 +228,7 @@ export interface ApiAgentAlreadyRegisteredConflict {
 }
 
 export type ApiAgentRegisterConflict =
-  | ApiAgentAddressConflict
-  | ApiAgentAlreadyRegisteredConflict;
+  ApiAgentAddressConflict | ApiAgentAlreadyRegisteredConflict;
 
 export interface ApiAgentMembership {
   id: number;
