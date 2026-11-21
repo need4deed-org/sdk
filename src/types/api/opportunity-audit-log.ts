@@ -1,9 +1,9 @@
 export enum OpportunityAuditLogType {
-  STATUS_CHANGED = "status_changed",
-  DETAILS_CHANGED = "details_changed",
-  CONTACT_CHANGED = "contact_changed",
-  NGO_CHANGED = "ngo_changed",
-  MATCH_CHANGED = "match_changed",
+  STATUS_CHANGED = "status-changed",
+  DETAILS_CHANGED = "details-changed",
+  CONTACT_CHANGED = "contact-changed",
+  NGO_CHANGED = "ngo-changed",
+  MATCH_CHANGED = "match-changed",
 }
 
 export interface ApiOpportunityAuditLogGet {
