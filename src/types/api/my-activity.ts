@@ -1,4 +1,5 @@
 import { EntityTableName } from "../core";
+import { OpportunityAuditLogType } from "./opportunity-audit-log";
 import { VolunteerAuditLogType } from "./volunteer-audit-log";
 
 export enum MyActivityKind {
@@ -19,7 +20,7 @@ export interface ApiMyActivityItem {
   entityId: number;
   entityTitle: string;
   text: string;
-  changeType?: VolunteerAuditLogType;
+  changeType?: OpportunityAuditLogType | VolunteerAuditLogType;
 }
 
 export interface ApiMyActivityQuery {
