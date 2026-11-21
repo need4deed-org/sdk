@@ -43,7 +43,9 @@ export type AdminUserActionErrorCode =
   | "not_manageable"
   | "role_not_assignable"
   | "erased"
-  | "not_deactivated";
+  | "not_deactivated"
+  | "not_verified"
+  | "deactivated";
 
 export interface ApiAdminUserActionError {
   message: string;

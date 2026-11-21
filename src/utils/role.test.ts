@@ -51,6 +51,8 @@ describe("admin account roles", () => {
       | "role_not_assignable"
       | "erased"
       | "not_deactivated"
+      | "not_verified"
+      | "deactivated"
     >();
   });
 });
