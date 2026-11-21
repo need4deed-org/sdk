@@ -8,3 +8,8 @@ export interface ApiLanguage {
 }
 
 export interface ApiLanguageGet extends ApiLanguage {}
+
+export enum LanguageMatch {
+  ALL = "all",
+  ANY = "any",
+}
