@@ -192,7 +192,8 @@ export interface ApiAgentRegisterNew {
 }
 
 export type ApiAgentRegister =
-  { agentId: number } | { agent: ApiAgentRegisterNew };
+  | { agentId: number }
+  | { agent: ApiAgentRegisterNew };
 
 export enum AgentMembershipStatus {
   ACTIVE = "active",
@@ -228,7 +229,8 @@ export interface ApiAgentAlreadyRegisteredConflict {
 }
 
 export type ApiAgentRegisterConflict =
-  ApiAgentAddressConflict | ApiAgentAlreadyRegisteredConflict;
+  | ApiAgentAddressConflict
+  | ApiAgentAlreadyRegisteredConflict;
 
 export interface ApiAgentMembership {
   id: number;

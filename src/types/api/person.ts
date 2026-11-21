@@ -22,10 +22,11 @@ export interface ApiPersonGet {
   preferredComm?: PreferredCommunicationType[];
 }
 
-// Nullable columns may be cleared with `null`; firstName may only be changed.
+// Nullable columns may be cleared with `null`; names may only be changed.
+// `id` is the route param, never part of the body.
 export type ApiPersonPatch = Partial<
   VoidableProps<
-    ApiPersonGet,
-    "avatarUrl" | "middleName" | "lastName" | "phone" | "landline" | "email"
+    Omit<ApiPersonGet, "id">,
+    "avatarUrl" | "middleName" | "phone" | "landline" | "email"
   >
 >;

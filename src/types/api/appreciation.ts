@@ -18,10 +18,8 @@ export interface ApiAppreciationGet {
   dateDelivery?: Date | null;
 }
 
-export interface ApiAppreciationPost extends Omit<
-  ApiAppreciationGet,
-  "id" | "userId" | "volunteerId"
-> {}
+export interface ApiAppreciationPost
+  extends Omit<ApiAppreciationGet, "id" | "userId" | "volunteerId"> {}
 
 // Nullable columns may be cleared with `null`; title/status may only be changed.
 export type ApiAppreciationPatch = Partial<
