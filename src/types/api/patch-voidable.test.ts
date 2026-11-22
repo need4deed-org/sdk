@@ -6,6 +6,7 @@ import type {
   ApiAgentContactPatch,
   AgentRoleType,
   ApiAppreciationPatch,
+  ApiPersonGet,
   ApiPersonPatch,
   ApiRepresentativePatch,
   AppreciationStatusType,
@@ -55,9 +56,9 @@ describe("PATCH types allow null only on nullable columns", () => {
     expectTypeOf<ApiPersonPatch["lastName"]>().toEqualTypeOf<
       string | undefined
     >();
-    expectTypeOf<ApiPersonPatch["address"]>().toEqualTypeOf<
-      Address | undefined
-    >();
+    expectTypeOf<
+      NonNullable<ApiPersonPatch["address"]>["postcode"]
+    >().toEqualTypeOf<Address["postcode"] | undefined>();
     expectTypeOf<ApiPersonPatch["preferredComm"]>().toEqualTypeOf<
       PreferredCommunicationType[] | undefined
     >();
@@ -111,5 +112,30 @@ describe("PATCH types allow null only on nullable columns", () => {
     expectTypeOf<ApiActivityLogPatch["hours"]>().toEqualTypeOf<
       number | undefined
     >();
+  });
+});
+
+describe("ApiPersonGet returns NULL columns as null", () => {
+  it("nullable columns", () => {
+    expectTypeOf<ApiPersonGet["email"]>().toEqualTypeOf<string | null>();
+    expectTypeOf<ApiPersonGet["phone"]>().toEqualTypeOf<string | null>();
+    expectTypeOf<ApiPersonGet["landline"]>().toEqualTypeOf<string | null>();
+    expectTypeOf<ApiPersonGet["middleName"]>().toEqualTypeOf<string | null>();
+    expectTypeOf<ApiPersonGet["lastName"]>().toEqualTypeOf<string | null>();
+    expectTypeOf<ApiPersonGet["avatarUrl"]>().toEqualTypeOf<string | null>();
+  });
+
+  it("person PATCH can clear address street and city", () => {
+    expectTypeOf<
+      NonNullable<ApiPersonPatch["address"]>["street"]
+    >().toEqualTypeOf<string | null | undefined>();
+    expectTypeOf<
+      NonNullable<ApiPersonPatch["address"]>["city"]
+    >().toEqualTypeOf<string | null | undefined>();
+  });
+
+  it("required columns", () => {
+    expectTypeOf<ApiPersonGet["id"]>().toEqualTypeOf<number>();
+    expectTypeOf<ApiPersonGet["firstName"]>().toEqualTypeOf<string>();
   });
 });
