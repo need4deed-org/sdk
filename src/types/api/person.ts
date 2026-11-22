@@ -36,6 +36,6 @@ export type ApiPersonGet = Omit<PersonFields, NullablePersonColumn> & {
 export type ApiPersonPatch = Partial<
   VoidableProps<
     Omit<PersonFields, "address">,
-    "avatarUrl" | "middleName" | "phone" | "landline" | "email"
+    Exclude<NullablePersonColumn, "lastName">
   > & { address: Partial<VoidableProps<Address, "street" | "city">> }
 >;
