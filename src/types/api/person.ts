@@ -9,8 +9,7 @@ export enum PreferredCommunicationType {
   SMS = "sms",
 }
 
-export interface ApiPersonGet {
-  id: number;
+interface PersonFields {
   avatarUrl: string;
   firstName: string;
   lastName: string;
@@ -22,9 +21,21 @@ export interface ApiPersonGet {
   preferredComm?: PreferredCommunicationType[];
 }
 
+type NullablePersonColumn =
+  | "avatarUrl"
+  | "lastName"
+  | "middleName"
+  | "phone"
+  | "landline"
+  | "email";
+
+export type ApiPersonGet = Omit<PersonFields, NullablePersonColumn> & {
+  [K in NullablePersonColumn]: PersonFields[K] | null;
+} & { id: number };
+
 export type ApiPersonPatch = Partial<
   VoidableProps<
-    Omit<ApiPersonGet, "id">,
-    "avatarUrl" | "middleName" | "phone" | "landline" | "email"
-  >
+    Omit<PersonFields, "address">,
+    Exclude<NullablePersonColumn, "lastName">
+  > & { address: Partial<VoidableProps<Address, "street" | "city">> }
 >;
