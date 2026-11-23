@@ -32,7 +32,7 @@ describe("unlisted events contract", () => {
     expectTypeOf<ApiEventN4DGet["listed"]>().toEqualTypeOf<boolean>();
   });
 
-  it("is optional on create and patch", () => {
+  it("is optional on create", () => {
     expectTypeOf<ApiEventN4DCreate["listed"]>().toEqualTypeOf<
       boolean | undefined
     >();
