@@ -10,6 +10,7 @@ import type {
   ApiPersonPatch,
   ApiRepresentativePatch,
   AppreciationStatusType,
+  VolunteerPatchBodyData,
   VolunteerStateAppreciationType,
 } from "../..";
 
@@ -112,6 +113,22 @@ describe("PATCH types allow null only on nullable columns", () => {
     expectTypeOf<ApiActivityLogPatch["hours"]>().toEqualTypeOf<
       number | undefined
     >();
+  });
+});
+
+describe("Volunteer PATCH lead-from changes", () => {
+  it("accepts additions and explicitly identifies the answer to correct", () => {
+    expectTypeOf<VolunteerPatchBodyData["leadFromChanges"]>().toEqualTypeOf<
+      | Array<
+          | { action: "add"; optionId: number }
+          | { action: "correct"; previousOptionId: number; optionId: number }
+        >
+      | undefined
+    >();
+  });
+
+  it("keeps the detail response field out of the write request", () => {
+    expectTypeOf<VolunteerPatchBodyData>().not.toHaveProperty("leadFrom");
   });
 });
 

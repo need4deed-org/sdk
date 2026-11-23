@@ -192,7 +192,19 @@ export interface ApiVolunteerGet {
   leadFrom?: OptionItem[];
 }
 
-export type VolunteerPatchBodyData = VoidableProps<Omit<ApiVolunteerGet, 'leadFrom'>>;
+export type VolunteerLeadFromChange =
+  | { action: "add"; optionId: OptionItem["id"] }
+  | {
+      action: "correct";
+      previousOptionId: OptionItem["id"];
+      optionId: OptionItem["id"];
+    };
+
+export type VolunteerPatchBodyData = VoidableProps<
+  Omit<ApiVolunteerGet, "leadFrom">
+> & {
+  leadFromChanges?: VolunteerLeadFromChange[];
+};
 
 export interface ApiVolunteerOpportunityGet extends OpportunityVolunteer {
   name: string;
