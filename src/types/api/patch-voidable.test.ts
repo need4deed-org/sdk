@@ -117,11 +117,12 @@ describe("PATCH types allow null only on nullable columns", () => {
 });
 
 describe("Volunteer PATCH lead-from changes", () => {
-  it("accepts additions and explicitly identifies the answer to correct", () => {
+  it("accepts additions, removals and explicitly identifies the answer to correct", () => {
     expectTypeOf<VolunteerPatchBodyData["leadFromChanges"]>().toEqualTypeOf<
       | Array<
           | { action: "add"; optionId: number }
           | { action: "correct"; previousOptionId: number; optionId: number }
+          | { action: "remove"; optionId: number }
         >
       | undefined
     >();

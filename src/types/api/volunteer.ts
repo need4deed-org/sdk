@@ -198,7 +198,8 @@ export type VolunteerLeadFromChange =
       action: "correct";
       previousOptionId: OptionItem["id"];
       optionId: OptionItem["id"];
-    };
+    }
+  | { action: "remove"; optionId: OptionItem["id"] };
 
 export type VolunteerPatchBodyData = VoidableProps<
   Omit<ApiVolunteerGet, "leadFrom">
