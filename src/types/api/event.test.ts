@@ -25,3 +25,16 @@ describe("event registration link contract", () => {
     >();
   });
 });
+
+describe("unlisted events contract", () => {
+  it("always says whether an event is on the public list", () => {
+    expectTypeOf<ApiEventN4DGetList["listed"]>().toEqualTypeOf<boolean>();
+    expectTypeOf<ApiEventN4DGet["listed"]>().toEqualTypeOf<boolean>();
+  });
+
+  it("is optional on create and patch", () => {
+    expectTypeOf<ApiEventN4DCreate["listed"]>().toEqualTypeOf<
+      boolean | undefined
+    >();
+  });
+});
