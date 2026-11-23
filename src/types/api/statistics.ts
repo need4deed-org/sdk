@@ -12,12 +12,12 @@ export enum StatisticsMetric {
   MATCHED_OPPORTUNITIES = "matched-opportunities",
   // Created in the period and never matched.
   UNMATCHED_OPPORTUNITIES = "unmatched-opportunities",
-  // Opportunity metrics group by opportunity type and district.
+  // Created in the period.
   NEW_OPPORTUNITIES = "new-opportunities",
   // In the month the opportunity first entered that status.
   PAST_OPPORTUNITIES = "past-opportunities",
   VALIDATED_OPPORTUNITIES = "validated-opportunities",
-  // Snapshot at month end; volunteer metrics group by volunteer type and district.
+  // Volunteers in that status at the end of the month.
   ACTIVE_VOLUNTEERS = "active-volunteers",
   AVAILABLE_VOLUNTEERS = "available-volunteers",
 }
