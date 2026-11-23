@@ -33,6 +33,7 @@ export interface EventN4D {
 export interface ApiEventN4DGetList {
   id: number;
   active: boolean;
+  listed: boolean;
   title: string;
   subTitle?: string;
   menuTitle: string;
@@ -86,6 +87,7 @@ export interface ApiEventN4DCreate {
   address: string;
   hostName?: string;
   active?: boolean;
+  listed?: boolean;
   translations: ApiEventN4DTranslationInput[];
 }
 
