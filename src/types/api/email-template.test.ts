@@ -2,6 +2,8 @@ import { describe, expectTypeOf, it } from "vitest";
 import type {
   ApiEmailTemplateContent,
   ApiEmailTemplateGet,
+  ApiEmailTemplateLayouts,
+  ApiEmailTemplateListItem,
   ApiEmailTemplatePut,
   ApiEmailTemplateSaveError,
   ApiEmailTemplateText,
@@ -30,9 +32,13 @@ describe("email template contract", () => {
   });
 
   it("tells which layouts a template may be saved in", () => {
-    expectTypeOf<ApiEmailTemplateGet["allowedLayouts"]>().toEqualTypeOf<
-      EmailTemplateLayout[]
-    >();
+    expectTypeOf<
+      ApiEmailTemplateGet["allowedLayouts"]
+    >().toEqualTypeOf<ApiEmailTemplateLayouts>();
+    expectTypeOf<
+      ApiEmailTemplateListItem["allowedLayouts"]
+    >().toEqualTypeOf<ApiEmailTemplateLayouts>();
+    expectTypeOf<[]>().not.toExtend<ApiEmailTemplateLayouts>();
   });
 
   it("sends back the version it was read at", () => {
