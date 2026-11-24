@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -41,7 +45,21 @@ jobs:
           echo "npm: $PUBLISHED, package.json: $LOCAL -> $NEXT"
           yarn version --new-version "$NEXT" --no-git-tag-version
 
+      # npm view lags behind a fresh publish, so the bumped version may already be taken
       - name: Publish to npm
-        run: yarn publish --non-interactive
+        run: |
+          set -o pipefail
+          for attempt in 1 2 3 4 5; do
+            if yarn publish --non-interactive 2>&1 | tee "$RUNNER_TEMP/publish.log"; then
+              exit 0
+            fi
+            if ! grep -qiE "cannot publish over|E409|409 Conflict" "$RUNNER_TEMP/publish.log"; then
+              exit 1
+            fi
+            echo "version is taken or npm is busy (attempt $attempt), retrying with the next patch"
+            sleep 10
+            yarn version --patch --no-git-tag-version
+          done
+          exit 1
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
