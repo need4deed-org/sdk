@@ -3,6 +3,7 @@ import type {
   ApiEmailTemplateContent,
   ApiEmailTemplateGet,
   ApiEmailTemplatePut,
+  ApiEmailTemplateSaveError,
   ApiEmailTemplateText,
   EmailTemplateSaveErrorCode,
 } from "../..";
@@ -34,9 +35,23 @@ describe("email template contract", () => {
     >();
   });
 
-  it("names the save errors fe shows inline", () => {
-    expectTypeOf<
-      "missing_placeholder" | "unknown_placeholder" | "version_conflict"
-    >().toExtend<EmailTemplateSaveErrorCode>();
+  it("has exactly these save error codes", () => {
+    expectTypeOf<EmailTemplateSaveErrorCode>().toEqualTypeOf<
+      | "not_editable"
+      | "version_conflict"
+      | "missing_placeholder"
+      | "unknown_placeholder"
+      | "blank_field"
+      | "unknown_label"
+    >();
+  });
+
+  it("points errors at subject, text or one label", () => {
+    expectTypeOf<"labels">().not.toExtend<
+      NonNullable<ApiEmailTemplateSaveError["fields"]>[number]
+    >();
+    expectTypeOf<"labels.someone">().toExtend<
+      NonNullable<ApiEmailTemplateSaveError["fields"]>[number]
+    >();
   });
 });

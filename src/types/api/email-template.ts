@@ -91,5 +91,7 @@ export interface ApiEmailTemplateSaveError {
   code: EmailTemplateSaveErrorCode;
   lang?: Lang;
   placeholders?: string[];
-  fields?: (keyof ApiEmailTemplateText | `labels.${string}`)[];
+  fields?: (
+    Exclude<keyof ApiEmailTemplateText, "labels"> | `labels.${string}`
+  )[];
 }
