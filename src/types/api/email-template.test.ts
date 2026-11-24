@@ -29,6 +29,12 @@ describe("email template contract", () => {
     expectTypeOf<ApiEmailTemplateText>().not.toHaveProperty("html");
   });
 
+  it("tells which layouts a template may be saved in", () => {
+    expectTypeOf<ApiEmailTemplateGet["allowedLayouts"]>().toEqualTypeOf<
+      EmailTemplateLayout[]
+    >();
+  });
+
   it("sends back the version it was read at", () => {
     expectTypeOf<ApiEmailTemplatePut["version"]>().toEqualTypeOf<
       ApiEmailTemplateGet["version"]
@@ -39,6 +45,7 @@ describe("email template contract", () => {
     expectTypeOf<EmailTemplateSaveErrorCode>().toEqualTypeOf<
       | "not_editable"
       | "version_conflict"
+      | "layout_not_allowed"
       | "missing_placeholder"
       | "unknown_placeholder"
       | "blank_field"

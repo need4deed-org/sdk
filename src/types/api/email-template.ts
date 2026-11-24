@@ -52,6 +52,7 @@ export interface ApiEmailTemplatePlaceholder {
 export interface ApiEmailTemplateListItem {
   name: EmailTemplateName;
   layout: EmailTemplateLayout;
+  allowedLayouts: EmailTemplateLayout[];
 }
 
 export interface ApiEmailTemplateList {
@@ -64,6 +65,7 @@ export interface ApiEmailTemplateGet {
   editable: boolean;
   version: string;
   template: ApiEmailTemplateContent;
+  allowedLayouts: EmailTemplateLayout[];
   placeholders: ApiEmailTemplatePlaceholder[];
   labelKeys: string[];
   hasHtml: boolean;
@@ -81,6 +83,7 @@ export interface ApiEmailTemplatePutResponse extends ApiEmailTemplateGet {
 export type EmailTemplateSaveErrorCode =
   | "not_editable"
   | "version_conflict"
+  | "layout_not_allowed"
   | "missing_placeholder"
   | "unknown_placeholder"
   | "blank_field"
