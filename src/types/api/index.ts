@@ -10,6 +10,7 @@ export * from "./district-aggregate";
 export * from "./district-geometry";
 export * from "./district-marker";
 export * from "./document";
+export * from "./email-template";
 export * from "./event";
 export * from "./event-n4d-registration";
 export * from "./language";
