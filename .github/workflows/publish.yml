@@ -48,19 +48,17 @@ jobs:
       # npm view lags behind a fresh publish, so the bumped version may already be taken
       - name: Publish to npm
         run: |
+          set -o pipefail
           for attempt in 1 2 3 4 5; do
-            if out=$(yarn publish --non-interactive 2>&1); then
-              echo "$out"
+            if yarn publish --non-interactive 2>&1 | tee "$RUNNER_TEMP/publish.log"; then
               exit 0
             fi
-            echo "$out"
-            if ! grep -qi "cannot publish over" <<<"$out"; then
+            if ! grep -qiE "cannot publish over|E409|409 Conflict" "$RUNNER_TEMP/publish.log"; then
               exit 1
             fi
-            CUR=$(node -p "require('./package.json').version")
-            NEXT=$(node -p "const [a, b, c] = '$CUR'.split('.').map(Number); [a, b, c + 1].join('.')")
-            echo "version $CUR is taken (attempt $attempt), retrying as $NEXT"
-            yarn version --new-version "$NEXT" --no-git-tag-version
+            echo "version is taken or npm is busy (attempt $attempt), retrying with the next patch"
+            sleep 10
+            yarn version --patch --no-git-tag-version
           done
           exit 1
         env:
