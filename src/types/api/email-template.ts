@@ -49,9 +49,14 @@ export interface ApiEmailTemplatePlaceholder {
   required: boolean;
 }
 
+export type ApiEmailTemplateLayouts =
+  | [EmailTemplateLayout.SINGLE]
+  | [EmailTemplateLayout.SINGLE, EmailTemplateLayout.PER_LANGUAGE];
+
 export interface ApiEmailTemplateListItem {
   name: EmailTemplateName;
   layout: EmailTemplateLayout;
+  allowedLayouts: ApiEmailTemplateLayouts;
 }
 
 export interface ApiEmailTemplateList {
@@ -64,6 +69,7 @@ export interface ApiEmailTemplateGet {
   editable: boolean;
   version: string;
   template: ApiEmailTemplateContent;
+  allowedLayouts: ApiEmailTemplateLayouts;
   placeholders: ApiEmailTemplatePlaceholder[];
   labelKeys: string[];
   hasHtml: boolean;
@@ -81,6 +87,7 @@ export interface ApiEmailTemplatePutResponse extends ApiEmailTemplateGet {
 export type EmailTemplateSaveErrorCode =
   | "not_editable"
   | "version_conflict"
+  | "layout_not_allowed"
   | "missing_placeholder"
   | "unknown_placeholder"
   | "blank_field"
@@ -90,6 +97,7 @@ export interface ApiEmailTemplateSaveError {
   message: string;
   code: EmailTemplateSaveErrorCode;
   lang?: Lang;
+  allowedLayouts?: ApiEmailTemplateLayouts;
   placeholders?: string[];
   fields?: (
     Exclude<keyof ApiEmailTemplateText, "labels"> | `labels.${string}`

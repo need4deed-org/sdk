@@ -2,6 +2,8 @@ import { describe, expectTypeOf, it } from "vitest";
 import type {
   ApiEmailTemplateContent,
   ApiEmailTemplateGet,
+  ApiEmailTemplateLayouts,
+  ApiEmailTemplateListItem,
   ApiEmailTemplatePut,
   ApiEmailTemplateSaveError,
   ApiEmailTemplateText,
@@ -29,6 +31,22 @@ describe("email template contract", () => {
     expectTypeOf<ApiEmailTemplateText>().not.toHaveProperty("html");
   });
 
+  it("tells which layouts a template may be saved in", () => {
+    expectTypeOf<
+      ApiEmailTemplateGet["allowedLayouts"]
+    >().toEqualTypeOf<ApiEmailTemplateLayouts>();
+    expectTypeOf<
+      ApiEmailTemplateListItem["allowedLayouts"]
+    >().toEqualTypeOf<ApiEmailTemplateLayouts>();
+    expectTypeOf<[]>().not.toExtend<ApiEmailTemplateLayouts>();
+    expectTypeOf<
+      [EmailTemplateLayout.PER_LANGUAGE]
+    >().not.toExtend<ApiEmailTemplateLayouts>();
+    expectTypeOf<ApiEmailTemplateSaveError["allowedLayouts"]>().toEqualTypeOf<
+      ApiEmailTemplateLayouts | undefined
+    >();
+  });
+
   it("sends back the version it was read at", () => {
     expectTypeOf<ApiEmailTemplatePut["version"]>().toEqualTypeOf<
       ApiEmailTemplateGet["version"]
@@ -39,6 +57,7 @@ describe("email template contract", () => {
     expectTypeOf<EmailTemplateSaveErrorCode>().toEqualTypeOf<
       | "not_editable"
       | "version_conflict"
+      | "layout_not_allowed"
       | "missing_placeholder"
       | "unknown_placeholder"
       | "blank_field"
