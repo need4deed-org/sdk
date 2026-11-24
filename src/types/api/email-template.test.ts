@@ -21,7 +21,7 @@ describe("email template contract", () => {
     expectTypeOf<{
       layout: EmailTemplateLayout.PER_LANGUAGE;
       content: { de: ApiEmailTemplateText };
-    }>().not.toMatchTypeOf<ApiEmailTemplateContent>();
+    }>().not.toExtend<ApiEmailTemplateContent>();
   });
 
   it("stores plain text only", () => {
@@ -37,6 +37,6 @@ describe("email template contract", () => {
   it("names the save errors fe shows inline", () => {
     expectTypeOf<
       "missing_placeholder" | "unknown_placeholder" | "version_conflict"
-    >().toMatchTypeOf<EmailTemplateSaveErrorCode>();
+    >().toExtend<EmailTemplateSaveErrorCode>();
   });
 });

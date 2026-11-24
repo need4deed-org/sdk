@@ -55,7 +55,6 @@ export interface ApiEmailTemplateListItem {
 }
 
 export interface ApiEmailTemplateList {
-  // False where be has no write access to the CDN (e.g. dev).
   editable: boolean;
   templates: ApiEmailTemplateListItem[];
 }
@@ -63,12 +62,10 @@ export interface ApiEmailTemplateList {
 export interface ApiEmailTemplateGet {
   name: EmailTemplateName;
   editable: boolean;
-  // Opaque; send it back on PUT so a concurrent edit is refused, not overwritten.
   version: string;
   template: ApiEmailTemplateContent;
   placeholders: ApiEmailTemplatePlaceholder[];
   labelKeys: string[];
-  // Saving stores plain text only and drops the stored HTML version.
   hasHtml: boolean;
 }
 
