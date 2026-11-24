@@ -39,7 +39,6 @@ export interface ApiFieldTranslation {
 export type TranslationFieldsByEntity = {
   [EntityTableName.OPPORTUNITY]: "title" | "info";
   [EntityTableName.LANGUAGE]: "title";
-  [EntityTableName.CATEGORY]: "title" | "description";
   [EntityTableName.ACTIVITY]: "title";
   [EntityTableName.SKILL]: "title";
   [EntityTableName.AGENT_TYPE]: "title";
