@@ -49,10 +49,9 @@ export interface ApiEmailTemplatePlaceholder {
   required: boolean;
 }
 
-export type ApiEmailTemplateLayouts = [
-  EmailTemplateLayout,
-  ...EmailTemplateLayout[],
-];
+export type ApiEmailTemplateLayouts =
+  | [EmailTemplateLayout.SINGLE]
+  | [EmailTemplateLayout.SINGLE, EmailTemplateLayout.PER_LANGUAGE];
 
 export interface ApiEmailTemplateListItem {
   name: EmailTemplateName;

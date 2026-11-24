@@ -39,6 +39,12 @@ describe("email template contract", () => {
       ApiEmailTemplateListItem["allowedLayouts"]
     >().toEqualTypeOf<ApiEmailTemplateLayouts>();
     expectTypeOf<[]>().not.toExtend<ApiEmailTemplateLayouts>();
+    expectTypeOf<
+      [EmailTemplateLayout.PER_LANGUAGE]
+    >().not.toExtend<ApiEmailTemplateLayouts>();
+    expectTypeOf<ApiEmailTemplateSaveError["allowedLayouts"]>().toEqualTypeOf<
+      ApiEmailTemplateLayouts | undefined
+    >();
   });
 
   it("sends back the version it was read at", () => {
