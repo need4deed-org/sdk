@@ -1,9 +1,15 @@
 import { describe, expectTypeOf, it } from "vitest";
 import type {
+  AgentMembershipStatus,
+  AgentRoleType,
   ApiAgentGet,
   ApiAgentGetList,
   ApiAgentOrganization,
+  ApiOrganizationMember,
+  ApiOrganizationMemberPost,
+  ApiOrganizationMembershipSummary,
   ApiOrganizationPatch,
+  ApiUserGet,
 } from "../..";
 
 describe("organization patch contract", () => {
@@ -40,5 +46,22 @@ describe("Einrichtung to Träger link", () => {
     expectTypeOf<
       ApiAgentGet["organization"]
     >().toEqualTypeOf<ApiAgentOrganization | null>();
+  });
+});
+
+describe("Träger members", () => {
+  it("lists the caller's Träger memberships separately from NGO memberships", () => {
+    expectTypeOf<ApiUserGet["organizationMemberships"]>().toEqualTypeOf<
+      ApiOrganizationMembershipSummary[] | undefined
+    >();
+    expectTypeOf<ApiOrganizationMembershipSummary["role"]>().toEqualTypeOf<AgentRoleType>();
+  });
+
+  it("adds a member by email with a role", () => {
+    expectTypeOf<ApiOrganizationMemberPost>().toEqualTypeOf<{
+      email: string;
+      role: AgentRoleType;
+    }>();
+    expectTypeOf<ApiOrganizationMember["status"]>().toEqualTypeOf<AgentMembershipStatus>();
   });
 });

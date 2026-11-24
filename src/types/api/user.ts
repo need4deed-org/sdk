@@ -1,3 +1,4 @@
+import { AgentRoleType } from "./agent";
 import { Lang } from "../core";
 import { VoidableProps } from "../utils";
 
@@ -66,6 +67,12 @@ export interface ApiAgentMembershipSummary {
   agentTitle: string;
 }
 
+export interface ApiOrganizationMembershipSummary {
+  organizationId: number;
+  organizationTitle: string;
+  role: AgentRoleType;
+}
+
 interface UserGet {
   id: number;
   personId: number;
@@ -79,6 +86,7 @@ interface UserGet {
   timezone: string;
   agentId?: number;
   agentMemberships?: ApiAgentMembershipSummary[];
+  organizationMemberships?: ApiOrganizationMembershipSummary[];
   volunteerId?: number;
   deactivatedAt?: Date | null;
 }
