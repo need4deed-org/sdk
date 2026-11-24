@@ -31,7 +31,6 @@ describe("translation request contracts", () => {
     expectTypeOf<TranslatedEntityType>().toEqualTypeOf<
       | EntityTableName.OPPORTUNITY
       | EntityTableName.LANGUAGE
-      | EntityTableName.CATEGORY
       | EntityTableName.ACTIVITY
       | EntityTableName.SKILL
       | EntityTableName.AGENT_TYPE
@@ -42,9 +41,9 @@ describe("translation request contracts", () => {
     expectTypeOf<
       Extract<
         ApiFieldTranslationPost,
-        { entityType: EntityTableName.CATEGORY }
+        { entityType: EntityTableName.ORGANIZATION }
       >["fieldName"]
-    >().toEqualTypeOf<"title" | "description">();
+    >().toEqualTypeOf<"about">();
     expectTypeOf<
       Extract<
         ApiFieldTranslationPost,
@@ -61,8 +60,8 @@ describe("translation request contracts", () => {
       TranslationFieldsByEntity[EntityTableName.OPPORTUNITY]
     >().toEqualTypeOf<"title" | "info">();
     expectTypeOf<
-      TranslationFieldsByEntity[EntityTableName.CATEGORY]
-    >().toEqualTypeOf<"title" | "description">();
+      TranslationFieldsByEntity[EntityTableName.LANGUAGE]
+    >().toEqualTypeOf<"title">();
     expectTypeOf<
       TranslationFieldsByEntity[EntityTableName.SKILL]
     >().toEqualTypeOf<"title">();
@@ -72,6 +71,7 @@ describe("translation request contracts", () => {
     expectTypeOf<EntityTableName.NONE>().not.toExtend<TranslatedEntityType>();
     expectTypeOf<EntityTableName.DISTRICT>().not.toExtend<TranslatedEntityType>();
     expectTypeOf<EntityTableName.COMMENT>().not.toExtend<TranslatedEntityType>();
+    expectTypeOf<EntityTableName.CATEGORY>().not.toExtend<TranslatedEntityType>();
     expectTypeOf<{
       entityType: EntityTableName.OPPORTUNITY;
       entityId: number;
@@ -95,7 +95,7 @@ describe("translation request contracts", () => {
       ApiFieldTranslationGet<EntityTableName.OPPORTUNITY>["fieldName"]
     >().toEqualTypeOf<"title" | "info">();
     expectTypeOf<ApiFieldTranslationGet["fieldName"]>().toEqualTypeOf<
-      "title" | "info" | "description" | "about"
+      "title" | "info" | "about"
     >();
     expectTypeOf<
       ApiFieldTranslationGet<EntityTableName.OPPORTUNITY>["fieldName"]
