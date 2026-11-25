@@ -46,8 +46,22 @@ const escapePairName = (name: string) =>
     .split(CSV_PAIR_SEPARATOR)
     .join(CSV_ESCAPE + CSV_PAIR_SEPARATOR);
 
-const unescapePairName = (name: string) =>
-  name.replace(/\\([\\:])/g, "$1").trim();
+const unescapePairName = (name: string) => {
+  let result = "";
+  for (let i = 0; i < name.length; i++) {
+    const next = name[i + 1];
+    if (
+      name[i] === CSV_ESCAPE &&
+      (next === CSV_ESCAPE || next === CSV_PAIR_SEPARATOR)
+    ) {
+      result += next;
+      i++;
+    } else {
+      result += name[i];
+    }
+  }
+  return result.trim();
+};
 
 const lastUnescapedPairSeparator = (item: string) => {
   for (let at = item.length - 1; at >= 0; at--) {
@@ -74,6 +88,9 @@ export const splitCsvPair = <TValue extends string>(
     .trim()
     .toLowerCase();
   const value = values.find((known) => known.toLowerCase() === wanted);
+  if (at !== -1 && !wanted) {
+    return [unescapePairName(item.slice(0, at)), undefined];
+  }
   if (at === -1 || value === undefined) {
     return [unescapePairName(item), undefined];
   }
@@ -115,9 +132,9 @@ export const csvColumnFromHeader = <TColumn extends string>(
 const FORMULA_TRIGGER = /^[=+\-@\t\r]/;
 const FORMULA_GUARD = "'";
 
-const needsFormulaGuard = (value: string) =>
+const needsFormulaGuard = (value: string): boolean =>
   FORMULA_TRIGGER.test(value) ||
-  (value.startsWith(FORMULA_GUARD) && FORMULA_TRIGGER.test(value.slice(1)));
+  (value.startsWith(FORMULA_GUARD) && needsFormulaGuard(value.slice(1)));
 
 export const toCsvCell = (value: string): string =>
   needsFormulaGuard(value) ? FORMULA_GUARD + value : value;
