@@ -1,5 +1,10 @@
 import { ApiAddress } from "./location";
-import { AgentMembershipStatus, AgentRoleType, ApiAgentTagCandidate, Service } from "./agent";
+import {
+  AgentMembershipStatus,
+  AgentRoleType,
+  ApiAgentTagCandidate,
+  Service,
+} from "./agent";
 import { Lang } from "../core";
 import { Voidable, VoidableProps } from "../utils";
 

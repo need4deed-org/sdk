@@ -54,7 +54,9 @@ describe("Träger members", () => {
     expectTypeOf<ApiUserGet["organizationMemberships"]>().toEqualTypeOf<
       ApiOrganizationMembershipSummary[] | undefined
     >();
-    expectTypeOf<ApiOrganizationMembershipSummary["role"]>().toEqualTypeOf<AgentRoleType>();
+    expectTypeOf<
+      ApiOrganizationMembershipSummary["role"]
+    >().toEqualTypeOf<AgentRoleType>();
   });
 
   it("adds a member by email with a role", () => {
@@ -62,6 +64,8 @@ describe("Träger members", () => {
       email: string;
       role: AgentRoleType;
     }>();
-    expectTypeOf<ApiOrganizationMember["status"]>().toEqualTypeOf<AgentMembershipStatus>();
+    expectTypeOf<
+      ApiOrganizationMember["status"]
+    >().toEqualTypeOf<AgentMembershipStatus>();
   });
 });
