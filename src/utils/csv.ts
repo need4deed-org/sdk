@@ -39,21 +39,45 @@ export const splitCsvList = (cell: string): string[] => {
   return items.map((item) => item.trim()).filter(Boolean);
 };
 
+const escapePairName = (name: string) =>
+  name
+    .split(CSV_ESCAPE)
+    .join(CSV_ESCAPE + CSV_ESCAPE)
+    .split(CSV_PAIR_SEPARATOR)
+    .join(CSV_ESCAPE + CSV_PAIR_SEPARATOR);
+
+const unescapePairName = (name: string) =>
+  name.replace(/\\([\\:])/g, "$1").trim();
+
+const lastUnescapedPairSeparator = (item: string) => {
+  for (let at = item.length - 1; at >= 0; at--) {
+    if (item[at] !== CSV_PAIR_SEPARATOR) continue;
+    let escapes = 0;
+    while (item[at - 1 - escapes] === CSV_ESCAPE) escapes++;
+    if (escapes % 2 === 0) return at;
+  }
+  return -1;
+};
+
 export const joinCsvPair = (name: string, value?: string): string =>
-  value ? `${name}${CSV_PAIR_SEPARATOR}${value}` : name;
+  value
+    ? `${escapePairName(name)}${CSV_PAIR_SEPARATOR}${value}`
+    : escapePairName(name);
 
 export const splitCsvPair = <TValue extends string>(
   item: string,
   values: readonly TValue[],
 ): [string, TValue | undefined] => {
-  const at = item.lastIndexOf(CSV_PAIR_SEPARATOR);
+  const at = lastUnescapedPairSeparator(item);
   const wanted = item
     .slice(at + 1)
     .trim()
     .toLowerCase();
   const value = values.find((known) => known.toLowerCase() === wanted);
-  if (at === -1 || value === undefined) return [item.trim(), undefined];
-  return [item.slice(0, at).trim(), value];
+  if (at === -1 || value === undefined) {
+    return [unescapePairName(item), undefined];
+  }
+  return [unescapePairName(item.slice(0, at)), value];
 };
 
 const normalizeHeader = (header: string) =>
@@ -91,10 +115,14 @@ export const csvColumnFromHeader = <TColumn extends string>(
 const FORMULA_TRIGGER = /^[=+\-@\t\r]/;
 const FORMULA_GUARD = "'";
 
+const needsFormulaGuard = (value: string) =>
+  FORMULA_TRIGGER.test(value) ||
+  (value.startsWith(FORMULA_GUARD) && FORMULA_TRIGGER.test(value.slice(1)));
+
 export const toCsvCell = (value: string): string =>
-  FORMULA_TRIGGER.test(value) ? FORMULA_GUARD + value : value;
+  needsFormulaGuard(value) ? FORMULA_GUARD + value : value;
 
 export const fromCsvCell = (cell: string): string =>
-  cell.startsWith(FORMULA_GUARD) && FORMULA_TRIGGER.test(cell.slice(1))
+  cell.startsWith(FORMULA_GUARD) && needsFormulaGuard(cell.slice(1))
     ? cell.slice(1)
     : cell;

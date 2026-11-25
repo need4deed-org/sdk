@@ -49,6 +49,20 @@ describe("csv list cells", () => {
     ).toEqual(["Deutsch", LangProficiency.NATIVE]);
   });
 
+  it("round-trips names containing the pair separator", () => {
+    const proficiencies = Object.values(LangProficiency);
+    for (const [name, value] of [
+      ["Sprachcafé: Native", undefined],
+      ["Sprachcafé: Native", LangProficiency.FLUENT],
+      ["a\\:b", LangProficiency.NATIVE],
+    ] as const) {
+      expect(splitCsvPair(joinCsvPair(name, value), proficiencies)).toEqual([
+        name,
+        value,
+      ]);
+    }
+  });
+
   it("writes a pair without a value as the bare name", () => {
     expect(joinCsvPair("Kurs", undefined)).toBe("Kurs");
     expect(joinCsvPair("Kurs", "")).toBe("Kurs");
@@ -63,6 +77,10 @@ describe("csv formula guard", () => {
       expect(fromCsvCell(toCsvCell(value))).toBe(value);
     },
   );
+
+  it("keeps a real leading apostrophe before a formula character", () => {
+    expect(fromCsvCell(toCsvCell("'-ich helfe gern"))).toBe("'-ich helfe gern");
+  });
 
   it("leaves plain values and plain apostrophes alone", () => {
     expect(toCsvCell("Ada")).toBe("Ada");

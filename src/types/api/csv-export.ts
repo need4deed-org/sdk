@@ -1,4 +1,5 @@
 import { Lang, QueryParamsKeys, SortOrder } from "../core";
+import { LanguageMatch } from "./language";
 import {
   ApiOpportunityGet,
   OpportunitySortField,
@@ -185,6 +186,7 @@ export interface ApiVolunteerListFilter {
   [QueryParamsKeys.OWNER_AGENT]?: OwnerAgentFilter | OwnerAgentFilter[];
   engagement?: FilterValue;
   match?: FilterValue;
+  [QueryParamsKeys.LANGUAGE_MATCH]?: LanguageMatch;
   [QueryParamsKeys.COMMUTE_OPPORTUNITY_ID]?: number;
   [QueryParamsKeys.MAX_COMMUTE_MINUTES]?: number;
 }
@@ -193,12 +195,12 @@ export interface ApiOpportunityListFilter {
   search?: string;
   activity?: FilterValue;
   skill?: FilterValue;
-  language?: string[];
-  district?: string[];
+  language?: FilterValue;
+  district?: FilterValue;
   availability?: FilterValue;
-  type?: OpportunityType[];
+  type?: OpportunityType | OpportunityType[];
   agentId?: number | number[];
-  status?: OpportunityStatusType[];
+  status?: OpportunityStatusType | OpportunityStatusType[];
   match?: FilterValue;
   [QueryParamsKeys.COMMUTE_VOLUNTEER_ID]?: number;
   [QueryParamsKeys.MAX_COMMUTE_MINUTES]?: number;
