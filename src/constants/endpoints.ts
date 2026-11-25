@@ -6,6 +6,8 @@ export enum Endpoint {
   VOLUNTEER = "/volunteer",
   OPTION = "/option",
   AGENT = "/agent",
+  AGENT_VOLUNTEER_EXPORT = "/agent/:id/volunteer/export",
+  AGENT_OPPORTUNITY_EXPORT = "/agent/:id/opportunity/export",
   AGENT_TAG_CANDIDATES = "/agent/tag-candidates",
   REGISTER = "/register",
   STATISTICS = "/statistics",

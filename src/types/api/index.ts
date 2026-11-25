@@ -6,6 +6,7 @@ export * from "./comment";
 export * from "./common";
 export * from "./communication";
 export * from "./commute";
+export * from "./csv-export";
 export * from "./district-aggregate";
 export * from "./district-geometry";
 export * from "./district-marker";
