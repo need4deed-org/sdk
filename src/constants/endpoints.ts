@@ -13,3 +13,9 @@ export enum Endpoint {
   ADMIN_EMAIL_TEMPLATE = "/admin/email-template",
   GROUP = "/group",
 }
+
+export const agentVolunteerExportPath = (agentId: number) =>
+  `${Endpoint.AGENT}/${agentId}/volunteer/export`;
+
+export const agentOpportunityExportPath = (agentId: number) =>
+  `${Endpoint.AGENT}/${agentId}/opportunity/export`;

@@ -272,6 +272,11 @@ export type VolunteerImportOpportunityStatus =
   | OpportunityVolunteerStatusType.MATCHED
   | OpportunityVolunteerStatusType.ACTIVE;
 
+export const VOLUNTEER_IMPORT_OPPORTUNITY_STATUSES = [
+  OpportunityVolunteerStatusType.MATCHED,
+  OpportunityVolunteerStatusType.ACTIVE,
+] as const satisfies readonly VolunteerImportOpportunityStatus[];
+
 export interface ApiVolunteerImportOpportunity {
   title: string;
   status: VolunteerImportOpportunityStatus;
