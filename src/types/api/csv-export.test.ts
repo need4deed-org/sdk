@@ -6,7 +6,6 @@ import type {
   VolunteerCsvColumn,
 } from "../..";
 import {
-  Endpoint,
   Lang,
   OPPORTUNITY_EXPORT_CSV_COLUMNS,
   OPPORTUNITY_EXPORT_CSV_HEADERS,
@@ -47,10 +46,18 @@ describe("csv export contract", () => {
   });
 
   it("takes the list filters and a header language", () => {
-    expectTypeOf({
+    const volunteerQuery: ApiAgentVolunteerExportQuery = {
       language: Lang.DE,
-      filter: { language: ["de"], ownerAgent: "12", match: "matched" },
-    }).toExtend<ApiAgentVolunteerExportQuery>();
+      filter: {
+        language: ["de"],
+        ownerAgent: ["12", "none"],
+        match: "matched",
+      },
+    };
+    expect(volunteerQuery.filter?.ownerAgent).toEqual(["12", "none"]);
+    expectTypeOf<{
+      filter: { ownerAgent: "acme" };
+    }>().not.toExtend<ApiAgentVolunteerExportQuery>();
     const opportunityQuery: ApiAgentOpportunityExportQuery = {
       language: Lang.EN,
       filter: {
@@ -60,12 +67,5 @@ describe("csv export contract", () => {
       },
     };
     expect(opportunityQuery.filter?.agentId).toEqual([3, 4]);
-  });
-
-  it("exposes the export paths", () => {
-    expect(Endpoint.AGENT_VOLUNTEER_EXPORT).toBe("/agent/:id/volunteer/export");
-    expect(Endpoint.AGENT_OPPORTUNITY_EXPORT).toBe(
-      "/agent/:id/opportunity/export",
-    );
   });
 });

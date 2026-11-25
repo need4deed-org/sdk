@@ -6,8 +6,6 @@ export enum Endpoint {
   VOLUNTEER = "/volunteer",
   OPTION = "/option",
   AGENT = "/agent",
-  AGENT_VOLUNTEER_EXPORT = "/agent/:id/volunteer/export",
-  AGENT_OPPORTUNITY_EXPORT = "/agent/:id/opportunity/export",
   AGENT_TAG_CANDIDATES = "/agent/tag-candidates",
   REGISTER = "/register",
   STATISTICS = "/statistics",
@@ -15,3 +13,9 @@ export enum Endpoint {
   ADMIN_EMAIL_TEMPLATE = "/admin/email-template",
   GROUP = "/group",
 }
+
+export const agentVolunteerExportPath = (agentId: number) =>
+  `${Endpoint.AGENT}/${agentId}/volunteer/export`;
+
+export const agentOpportunityExportPath = (agentId: number) =>
+  `${Endpoint.AGENT}/${agentId}/opportunity/export`;

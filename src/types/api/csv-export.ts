@@ -7,8 +7,11 @@ import {
 } from "./opportunity";
 import { ApiVolunteerImportRow } from "./volunteer";
 
-export const CSV_EXPORT_CONTENT_TYPE = "text/csv";
+export const CSV_EXPORT_CONTENT_TYPE = "text/csv; charset=utf-8";
+export const CSV_UTF8_BOM = "\uFEFF";
 export const CSV_LIST_SEPARATOR = "|";
+export const CSV_PAIR_SEPARATOR = ":";
+export const CSV_ESCAPE = "\\";
 
 export const VOLUNTEER_CSV_COLUMNS = [
   "firstName",
@@ -169,6 +172,8 @@ export const OPPORTUNITY_EXPORT_CSV_HEADERS: Record<
 
 type FilterValue = string | string[];
 
+type OwnerAgentFilter = "none" | `${number}`;
+
 export interface ApiVolunteerListFilter {
   type?: FilterValue;
   search?: string;
@@ -177,7 +182,7 @@ export interface ApiVolunteerListFilter {
   skill?: FilterValue;
   availability?: FilterValue;
   district?: FilterValue;
-  [QueryParamsKeys.OWNER_AGENT]?: FilterValue;
+  [QueryParamsKeys.OWNER_AGENT]?: OwnerAgentFilter | OwnerAgentFilter[];
   engagement?: FilterValue;
   match?: FilterValue;
   [QueryParamsKeys.COMMUTE_OPPORTUNITY_ID]?: number;
@@ -185,6 +190,9 @@ export interface ApiVolunteerListFilter {
 }
 
 export interface ApiOpportunityListFilter {
+  search?: string;
+  activity?: FilterValue;
+  skill?: FilterValue;
   language?: string[];
   district?: string[];
   availability?: FilterValue;
