@@ -11,4 +11,5 @@ export enum Endpoint {
   STATISTICS = "/statistics",
   SEARCH_SUGGEST = "/search/suggest",
   ADMIN_EMAIL_TEMPLATE = "/admin/email-template",
+  GROUP = "/group",
 }
