@@ -7,6 +7,8 @@ export type OptionTitle = Partial<{
 
 export type OptionId = string | number;
 
+export type BerlinDate = string;
+
 export interface Option {
   id: OptionId;
   title: OptionTitle;

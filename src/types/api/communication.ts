@@ -1,6 +1,5 @@
 import { VoidableProps } from "../utils";
-
-export type BerlinDate = string;
+import { BerlinDate } from "./common";
 
 export enum ContactType {
   CALL = "called",
