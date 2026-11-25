@@ -1,4 +1,4 @@
-import { DocumentStatusType, Id } from "../core";
+import { DocumentStatusType, Id, LangProficiency } from "../core";
 import { VoidableProps } from "../utils";
 import { OptionById, OptionId } from "./common";
 import { ApiCommuteRange } from "./commute";
@@ -7,6 +7,7 @@ import {
   ApiOpportunityGetList,
   OpportunityType,
   OpportunityVolunteer,
+  OpportunityVolunteerStatusType,
 } from "./opportunity";
 import { OptionItem } from "./option";
 import { ApiPersonGet, PreferredCommunicationType } from "./person";
@@ -190,6 +191,7 @@ export interface ApiVolunteerGet {
   skills: OptionItem[];
   locations: OptionItem[];
   leadFrom?: OptionItem[];
+  linkedAgents: OptionItem[];
 }
 
 export type VolunteerLeadFromChange =
@@ -202,7 +204,7 @@ export type VolunteerLeadFromChange =
   | { action: "remove"; optionId: OptionItem["id"] };
 
 export type VolunteerPatchBodyData = VoidableProps<
-  Omit<ApiVolunteerGet, "leadFrom">
+  Omit<ApiVolunteerGet, "leadFrom" | "linkedAgents">
 > & {
   leadFromChanges?: VolunteerLeadFromChange[];
 };
@@ -249,15 +251,40 @@ export interface ApiVolunteerSuggestionRequestPost {
 
 export const VOLUNTEER_IMPORT_MAX_ROWS = 500;
 
+export interface ApiVolunteerImportLanguage {
+  title: string;
+  proficiency?: LangProficiency;
+}
+
+export type VolunteerImportOpportunityStatus =
+  | OpportunityVolunteerStatusType.MATCHED
+  | OpportunityVolunteerStatusType.ACTIVE;
+
+export interface ApiVolunteerImportOpportunity {
+  title: string;
+  status: VolunteerImportOpportunityStatus;
+}
+
 export interface ApiVolunteerImportRow {
   firstName: string;
   lastName?: string;
   email: string;
   phone?: string;
-  postcode: string;
+  postcode?: string;
+  languages?: ApiVolunteerImportLanguage[];
+  activities?: string[];
+  skills?: string[];
+  districts?: string[];
+  availability?: Omit<ApiAvailability, "id">[];
+  volunteerType?: VolunteerType[];
+  engagementStatus?: VolunteerStateEngagementType;
+  goodConductCertificate?: DocumentStatusType;
+  measlesVaccination?: DocumentStatusType;
+  infoAbout?: string;
+  infoExperience?: string;
+  opportunities?: ApiVolunteerImportOpportunity[];
 }
 
-/** POST /agent/:id/volunteer-import (admin): the NGO's existing volunteers, created owned by that NGO. Any invalid row rejects the whole import; dryRun reports without writing. */
 export interface ApiVolunteerImportPost {
   rows: ApiVolunteerImportRow[];
   dryRun?: boolean;
@@ -266,17 +293,15 @@ export interface ApiVolunteerImportPost {
 export type VolunteerImportOutcome = "created" | "skipped" | "invalid";
 
 export type VolunteerImportSkipReason =
-  | "already-volunteer"
-  | "duplicate-in-import";
+  "email-in-use" | "connected-existing" | "duplicate-in-import";
 
 export interface ApiVolunteerImportRowResult {
-  /** 0-based index into rows */
   row: number;
   email: string;
   outcome: VolunteerImportOutcome;
   skipReason?: VolunteerImportSkipReason;
   errors?: string[];
-  /** set once written; absent on a dry run */
+  warnings?: string[];
   volunteerId?: number;
 }
 
