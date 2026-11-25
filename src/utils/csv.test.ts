@@ -4,6 +4,9 @@ import {
   agentVolunteerExportPath,
   CSV_UTF8_BOM,
   csvColumnFromHeader,
+  fromCsvCell,
+  LangProficiency,
+  toCsvCell,
   joinCsvList,
   joinCsvPair,
   OPPORTUNITY_EXPORT_CSV_HEADERS,
@@ -38,6 +41,32 @@ describe("csv list cells", () => {
       undefined,
     ]);
     expect(splitCsvPair("Deutsch", statuses)).toEqual(["Deutsch", undefined]);
+  });
+
+  it("matches a pair value case-insensitively and returns it canonical", () => {
+    expect(
+      splitCsvPair("Deutsch:Native", Object.values(LangProficiency)),
+    ).toEqual(["Deutsch", LangProficiency.NATIVE]);
+  });
+
+  it("writes a pair without a value as the bare name", () => {
+    expect(joinCsvPair("Kurs", undefined)).toBe("Kurs");
+    expect(joinCsvPair("Kurs", "")).toBe("Kurs");
+  });
+});
+
+describe("csv formula guard", () => {
+  it.each(["=HYPERLINK(1)", "+4930123", "-1", "@SUM(A1)", "\tx"])(
+    "guards %s and restores it",
+    (value) => {
+      expect(toCsvCell(value)).toBe("'" + value);
+      expect(fromCsvCell(toCsvCell(value))).toBe(value);
+    },
+  );
+
+  it("leaves plain values and plain apostrophes alone", () => {
+    expect(toCsvCell("Ada")).toBe("Ada");
+    expect(fromCsvCell("'s Gravenhage")).toBe("'s Gravenhage");
   });
 });
 

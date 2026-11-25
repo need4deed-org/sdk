@@ -39,19 +39,21 @@ export const splitCsvList = (cell: string): string[] => {
   return items.map((item) => item.trim()).filter(Boolean);
 };
 
-export const joinCsvPair = (name: string, value: string): string =>
-  `${name}${CSV_PAIR_SEPARATOR}${value}`;
+export const joinCsvPair = (name: string, value?: string): string =>
+  value ? `${name}${CSV_PAIR_SEPARATOR}${value}` : name;
 
 export const splitCsvPair = <TValue extends string>(
   item: string,
   values: readonly TValue[],
 ): [string, TValue | undefined] => {
   const at = item.lastIndexOf(CSV_PAIR_SEPARATOR);
-  const value = item.slice(at + 1).trim();
-  if (at === -1 || !values.includes(value as TValue)) {
-    return [item.trim(), undefined];
-  }
-  return [item.slice(0, at).trim(), value as TValue];
+  const wanted = item
+    .slice(at + 1)
+    .trim()
+    .toLowerCase();
+  const value = values.find((known) => known.toLowerCase() === wanted);
+  if (at === -1 || value === undefined) return [item.trim(), undefined];
+  return [item.slice(0, at).trim(), value];
 };
 
 const normalizeHeader = (header: string) =>
@@ -85,3 +87,14 @@ export const csvColumnFromHeader = <TColumn extends string>(
   }
   return undefined;
 };
+
+const FORMULA_TRIGGER = /^[=+\-@\t\r]/;
+const FORMULA_GUARD = "'";
+
+export const toCsvCell = (value: string): string =>
+  FORMULA_TRIGGER.test(value) ? FORMULA_GUARD + value : value;
+
+export const fromCsvCell = (cell: string): string =>
+  cell.startsWith(FORMULA_GUARD) && FORMULA_TRIGGER.test(cell.slice(1))
+    ? cell.slice(1)
+    : cell;
