@@ -1,6 +1,6 @@
-import { EntityTableName, Id, Lang } from "../core";
+import { EntityTableName, Id, Lang, QueryParamsKeys } from "../core";
 import { AgentType } from "./agent";
-import { ApiLanguage } from "./language";
+import { ApiLanguage, LanguageMatch } from "./language";
 import { District } from "./location";
 import { ApiAvailability } from "./time";
 import { VolunteerType } from "./volunteer";
@@ -44,7 +44,7 @@ export type ApiVolunteerDistrictFilters = Partial<
     | "engagement"
     | "match",
     ApiDistrictMarkerFilterValue
-  >
+  > & { [QueryParamsKeys.LANGUAGE_MATCH]: LanguageMatch }
 >;
 
 export type ApiDistrictMarkerFilters =
