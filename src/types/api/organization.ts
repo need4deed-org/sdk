@@ -1,5 +1,10 @@
 import { ApiAddress } from "./location";
-import { ApiAgentTagCandidate, Service } from "./agent";
+import {
+  AgentMembershipStatus,
+  AgentRoleType,
+  ApiAgentTagCandidate,
+  Service,
+} from "./agent";
 import { Lang } from "../core";
 import { Voidable, VoidableProps } from "../utils";
 
@@ -51,3 +56,15 @@ export type ApiOrganizationPatch = Partial<
 >;
 
 export type ApiOrganizationGetList = Pick<ApiOrganizationGet, "id" | "title">;
+
+export interface ApiOrganizationMemberPost {
+  email: string;
+  role: AgentRoleType;
+}
+
+export interface ApiOrganizationMember {
+  organizationId: number;
+  personId: number;
+  role: AgentRoleType;
+  status: AgentMembershipStatus;
+}
