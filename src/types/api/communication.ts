@@ -1,5 +1,7 @@
 import { VoidableProps } from "../utils";
 
+export type BerlinDate = string;
+
 export enum ContactType {
   CALL = "called",
   TRIED_CALL = "tried-to-call",
@@ -37,22 +39,23 @@ export interface ApiCommunicationPost {
   contactMethod: ContactMethodType;
   communicationType?: CommunicationType;
   date: Date;
-  // Europe/Berlin calendar date (YYYY-MM-DD); set means planned, not done yet.
-  remindOn?: string;
+  remindOn?: BerlinDate;
 }
 
-// `null` clears the field; omitting it keeps the stored one.
 export type ApiCommunicationPatch = Partial<
   VoidableProps<ApiCommunicationPost, "communicationType" | "remindOn">
 >;
 
-export interface ApiCommunicationGet extends ApiCommunicationPost {
+export interface ApiCommunicationGet extends Omit<
+  ApiCommunicationPost,
+  "remindOn"
+> {
   id: number;
   volunteerId?: number;
   agentId?: number;
   opportunityId?: number;
   userId: number;
-  isPlanned: boolean;
+  remindOn: BerlinDate | null;
 }
 
 export interface ApiVolunteerCommunicationPost extends ApiCommunicationPost {}

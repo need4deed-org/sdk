@@ -26,10 +26,9 @@ describe("planned communication contract", () => {
     >();
   });
 
-  it("tells whether a got entry is still planned", () => {
-    expectTypeOf<ApiCommunicationGet["isPlanned"]>().toEqualTypeOf<boolean>();
+  it("returns an open plan as remindOn and a logged contact as null", () => {
     expectTypeOf<ApiCommunicationGet["remindOn"]>().toEqualTypeOf<
-      string | undefined
+      string | null
     >();
   });
 });
