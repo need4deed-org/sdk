@@ -2,6 +2,7 @@ import {
   CSV_ESCAPE,
   CSV_LIST_SEPARATOR,
   CSV_PAIR_SEPARATOR,
+  CSV_UTF8_BOM,
 } from "../types/api/csv-export";
 import { Lang } from "../types/core";
 
@@ -20,8 +21,13 @@ export const splitCsvList = (cell: string): string[] => {
   let current = "";
   for (let i = 0; i < cell.length; i++) {
     const char = cell[i];
-    if (char === CSV_ESCAPE && i + 1 < cell.length) {
-      current += cell[++i];
+    const next = cell[i + 1];
+    if (
+      char === CSV_ESCAPE &&
+      (next === CSV_ESCAPE || next === CSV_LIST_SEPARATOR)
+    ) {
+      current += next;
+      i++;
     } else if (char === CSV_LIST_SEPARATOR) {
       items.push(current);
       current = "";
@@ -36,18 +42,28 @@ export const splitCsvList = (cell: string): string[] => {
 export const joinCsvPair = (name: string, value: string): string =>
   `${name}${CSV_PAIR_SEPARATOR}${value}`;
 
-export const splitCsvPair = (item: string): [string, string | undefined] => {
+export const splitCsvPair = <TValue extends string>(
+  item: string,
+  values: readonly TValue[],
+): [string, TValue | undefined] => {
   const at = item.lastIndexOf(CSV_PAIR_SEPARATOR);
-  if (at === -1) return [item.trim(), undefined];
-  return [item.slice(0, at).trim(), item.slice(at + 1).trim() || undefined];
+  const value = item.slice(at + 1).trim();
+  if (at === -1 || !values.includes(value as TValue)) {
+    return [item.trim(), undefined];
+  }
+  return [item.slice(0, at).trim(), value as TValue];
 };
 
 const normalizeHeader = (header: string) =>
-  header.toLowerCase().replace(/[\s_-]/g, "");
+  header
+    .replace(CSV_UTF8_BOM, "")
+    .toLowerCase()
+    .replace(/[\s_-]/g, "");
 
 export const csvColumnFromHeader = <TColumn extends string>(
   header: string,
   headersByLang: Record<Lang, Record<TColumn, string>>,
+  columns?: readonly TColumn[],
 ): TColumn | undefined => {
   const wanted = normalizeHeader(header);
   for (const headers of Object.values(headersByLang) as Record<
@@ -58,6 +74,7 @@ export const csvColumnFromHeader = <TColumn extends string>(
       TColumn,
       string,
     ][]) {
+      if (columns && !columns.includes(column)) continue;
       if (
         normalizeHeader(column) === wanted ||
         normalizeHeader(label) === wanted
