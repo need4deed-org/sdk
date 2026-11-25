@@ -63,6 +63,13 @@ describe("csv list cells", () => {
     }
   });
 
+  it("keeps an item with an empty name whole", () => {
+    expect(splitCsvPair(":native", Object.values(LangProficiency))).toEqual([
+      ":native",
+      undefined,
+    ]);
+  });
+
   it("drops a trailing pair separator", () => {
     expect(splitCsvPair("Deutsch: ", Object.values(LangProficiency))).toEqual([
       "Deutsch",
@@ -89,6 +96,11 @@ describe("csv formula guard", () => {
     for (const value of ["'-ich helfe gern", "''=)"]) {
       expect(fromCsvCell(toCsvCell(value))).toBe(value);
     }
+  });
+
+  it("handles long apostrophe runs without recursion", () => {
+    const value = "'".repeat(20000) + "=";
+    expect(fromCsvCell(toCsvCell(value))).toBe(value);
   });
 
   it("leaves plain values and plain apostrophes alone", () => {

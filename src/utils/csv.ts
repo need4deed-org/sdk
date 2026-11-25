@@ -91,10 +91,11 @@ export const splitCsvPair = <TValue extends string>(
   if (at !== -1 && !wanted) {
     return [unescapePairName(item.slice(0, at)), undefined];
   }
-  if (at === -1 || value === undefined) {
+  const name = unescapePairName(item.slice(0, at));
+  if (at === -1 || value === undefined || !name) {
     return [unescapePairName(item), undefined];
   }
-  return [unescapePairName(item.slice(0, at)), value];
+  return [name, value];
 };
 
 const normalizeHeader = (header: string) =>
@@ -129,12 +130,10 @@ export const csvColumnFromHeader = <TColumn extends string>(
   return undefined;
 };
 
-const FORMULA_TRIGGER = /^[=+\-@\t\r]/;
 const FORMULA_GUARD = "'";
+const GUARDED_FORMULA = /^'*[=+\-@\t\r]/;
 
-const needsFormulaGuard = (value: string): boolean =>
-  FORMULA_TRIGGER.test(value) ||
-  (value.startsWith(FORMULA_GUARD) && needsFormulaGuard(value.slice(1)));
+const needsFormulaGuard = (value: string) => GUARDED_FORMULA.test(value);
 
 export const toCsvCell = (value: string): string =>
   needsFormulaGuard(value) ? FORMULA_GUARD + value : value;
