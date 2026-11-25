@@ -37,11 +37,13 @@ export interface ApiCommunicationPost {
   contactMethod: ContactMethodType;
   communicationType?: CommunicationType;
   date: Date;
+  // Europe/Berlin calendar date (YYYY-MM-DD); set means planned, not done yet.
+  remindOn?: string;
 }
 
-// `communicationType: null` clears the type; omitting it keeps the stored one.
+// `null` clears the field; omitting it keeps the stored one.
 export type ApiCommunicationPatch = Partial<
-  VoidableProps<ApiCommunicationPost, "communicationType">
+  VoidableProps<ApiCommunicationPost, "communicationType" | "remindOn">
 >;
 
 export interface ApiCommunicationGet extends ApiCommunicationPost {
@@ -50,6 +52,7 @@ export interface ApiCommunicationGet extends ApiCommunicationPost {
   agentId?: number;
   opportunityId?: number;
   userId: number;
+  isPlanned: boolean;
 }
 
 export interface ApiVolunteerCommunicationPost extends ApiCommunicationPost {}
