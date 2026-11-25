@@ -1,4 +1,5 @@
 import { VoidableProps } from "../utils";
+import { BerlinDate } from "./common";
 
 export enum ContactType {
   CALL = "called",
@@ -37,19 +38,23 @@ export interface ApiCommunicationPost {
   contactMethod: ContactMethodType;
   communicationType?: CommunicationType;
   date: Date;
+  remindOn?: BerlinDate;
 }
 
-// `communicationType: null` clears the type; omitting it keeps the stored one.
 export type ApiCommunicationPatch = Partial<
-  VoidableProps<ApiCommunicationPost, "communicationType">
+  VoidableProps<ApiCommunicationPost, "communicationType" | "remindOn">
 >;
 
-export interface ApiCommunicationGet extends ApiCommunicationPost {
+export interface ApiCommunicationGet extends Omit<
+  ApiCommunicationPost,
+  "remindOn"
+> {
   id: number;
   volunteerId?: number;
   agentId?: number;
   opportunityId?: number;
   userId: number;
+  remindOn: BerlinDate | null;
 }
 
 export interface ApiVolunteerCommunicationPost extends ApiCommunicationPost {}
