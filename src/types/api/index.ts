@@ -18,6 +18,7 @@ export * from "./language";
 export * from "./location";
 export * from "./my-activity";
 export * from "./opportunity";
+export * from "./opportunity-feedback";
 export * from "./opportunity-audit-log";
 export * from "./option";
 export * from "./post";
