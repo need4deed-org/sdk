@@ -1,4 +1,4 @@
-import { DocumentStatusType, Id, LangProficiency } from "../core";
+import { DocumentStatusType, Id } from "../core";
 import { VoidableProps } from "../utils";
 import { OptionById, OptionId } from "./common";
 import { ApiCommuteRange } from "./commute";
@@ -12,7 +12,14 @@ import {
 import { OptionItem } from "./option";
 import { ApiPersonGet, PreferredCommunicationType } from "./person";
 import { ProfileVolunteeringType } from "./profile";
-import { ApiAvailability, TimedText } from "./time";
+import {
+  ApiAvailability,
+  ByDay,
+  Occasionally,
+  OccasionalType,
+  TimedText,
+  TimeSlot,
+} from "./time";
 
 export interface Volunteer {
   origin_opportunity: number | undefined;
@@ -251,9 +258,14 @@ export interface ApiVolunteerSuggestionRequestPost {
 
 export const VOLUNTEER_IMPORT_MAX_ROWS = 500;
 
-export interface ApiVolunteerImportLanguage {
-  title: string;
-  proficiency?: LangProficiency;
+export type ApiVolunteerImportLanguage = Pick<
+  ApiLanguage,
+  "title" | "proficiency"
+>;
+
+export interface ApiVolunteerImportAvailability {
+  day: ByDay | Occasionally;
+  daytime: TimeSlot | OccasionalType;
 }
 
 export type VolunteerImportOpportunityStatus =
@@ -275,9 +287,9 @@ export interface ApiVolunteerImportRow {
   activities?: string[];
   skills?: string[];
   districts?: string[];
-  availability?: Omit<ApiAvailability, "id">[];
-  volunteerType?: VolunteerType[];
-  engagementStatus?: VolunteerStateEngagementType;
+  availability?: ApiVolunteerImportAvailability[];
+  statusTypes?: VolunteerType[];
+  statusEngagement?: VolunteerStateEngagementType;
   goodConductCertificate?: DocumentStatusType;
   measlesVaccination?: DocumentStatusType;
   infoAbout?: string;

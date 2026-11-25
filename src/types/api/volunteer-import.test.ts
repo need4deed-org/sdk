@@ -8,12 +8,12 @@ import type {
   VolunteerPatchBodyData,
 } from "../..";
 import {
+  ByDay,
   DocumentStatusType,
   LangProficiency,
   OpportunityType,
   OpportunityVolunteerStatusType,
   TimeSlot,
-  ByDay,
   VolunteerStateEngagementType,
 } from "../..";
 
@@ -22,7 +22,7 @@ describe("volunteer import contract", () => {
     expectTypeOf({
       firstName: "Ada",
       email: "ada@example.org",
-    }).toMatchTypeOf<ApiVolunteerImportRow>();
+    }).toExtend<ApiVolunteerImportRow>();
   });
 
   it("accepts the full profile and NGO opportunities", () => {
@@ -35,8 +35,8 @@ describe("volunteer import contract", () => {
       skills: ["Cooking"],
       districts: ["Mitte"],
       availability: [{ day: ByDay.MO, daytime: TimeSlot.morning }],
-      volunteerType: [OpportunityType.REGULAR],
-      engagementStatus: VolunteerStateEngagementType.ACTIVE,
+      statusTypes: [OpportunityType.REGULAR],
+      statusEngagement: VolunteerStateEngagementType.ACTIVE,
       goodConductCertificate: DocumentStatusType.YES,
       measlesVaccination: DocumentStatusType.NO,
       infoAbout: "about",
@@ -48,7 +48,13 @@ describe("volunteer import contract", () => {
         },
       ],
     };
-    expectTypeOf(row).toMatchTypeOf<ApiVolunteerImportRow>();
+    expectTypeOf(row).toExtend<ApiVolunteerImportRow>();
+  });
+
+  it("requires day and daytime per availability entry", () => {
+    expectTypeOf<{}>().not.toExtend<
+      NonNullable<ApiVolunteerImportRow["availability"]>[number]
+    >();
   });
 
   it("links opportunities only as matched or active", () => {
