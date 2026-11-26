@@ -19,3 +19,8 @@ export const agentVolunteerExportPath = (agentId: number) =>
 
 export const agentOpportunityExportPath = (agentId: number) =>
   `${Endpoint.AGENT}/${agentId}/opportunity/export`;
+
+export const volunteerLinkedAgentPath = (
+  volunteerId: number,
+  agentId: number,
+) => `${Endpoint.VOLUNTEER}/${volunteerId}/linked-agent/${agentId}`;
