@@ -5,6 +5,8 @@ export enum VolunteerAuditLogType {
   AVAILABILITY_CHANGED = "availability_changed",
   OPPORTUNITY_STATUS_CHANGED = "opportunity_status_changed",
   OWNER_CHANGED = "owner_changed",
+  AGENT_LINKED = "agent_linked",
+  AGENT_UNLINKED = "agent_unlinked",
 }
 
 export interface ApiVolunteerAuditLogGet {
