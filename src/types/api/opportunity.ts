@@ -151,8 +151,10 @@ export interface OpportunityCreateFormDataProps {
   last_edited_time_notion?: string;
   language: `${Lang}`;
 }
-export type OpportunityFormDataWithAgentSubmitter =
-  VoidableUndefined<OpportunityCreateFormDataProps>;
+export type OpportunityFormDataWithAgentSubmitter = VoidableProps<
+  OpportunityCreateFormDataProps,
+  "submitted_by_id" | "timeslots"
+>;
 
 export interface ApiOpportunityAddress {
   street: string;
