@@ -15,6 +15,7 @@ export * from "./email-template";
 export * from "./event";
 export * from "./event-n4d-registration";
 export * from "./group";
+export * from "./help";
 export * from "./language";
 export * from "./location";
 export * from "./my-activity";

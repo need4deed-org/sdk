@@ -1,3 +1,5 @@
+import { HelpAudience } from "../types/api/help";
+
 export enum Endpoint {
   OPPORTUNITY = "/opportunity",
   OPPORTUNITY_OTHER = "/opportunity/other",
@@ -12,6 +14,7 @@ export enum Endpoint {
   SEARCH_SUGGEST = "/search/suggest",
   ADMIN_EMAIL_TEMPLATE = "/admin/email-template",
   GROUP = "/group",
+  HELP = "/help",
 }
 
 export const agentVolunteerExportPath = (agentId: number) =>
@@ -24,3 +27,6 @@ export const volunteerLinkedAgentPath = (
   volunteerId: number,
   agentId: number,
 ) => `${Endpoint.VOLUNTEER}/${volunteerId}/linked-agent/${agentId}`;
+
+export const helpPath = (audience: HelpAudience) =>
+  `${Endpoint.HELP}/${audience}`;
