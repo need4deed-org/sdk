@@ -1,7 +1,9 @@
 import { describe, expectTypeOf, it } from "vitest";
 import {
   ApiHelpBlock,
+  ApiHelpContent,
   ApiHelpGet,
+  ApiHelpPageText,
   ApiHelpNode,
   ApiHelpPut,
   ApiHelpPutResponse,
@@ -27,9 +29,16 @@ describe("help contract", () => {
     expectTypeOf<{ html: string }>().not.toExtend<ApiHelpBlock>();
   });
 
-  it("returns null nodes until something is saved, never after a save", () => {
-    expectTypeOf<ApiHelpGet["nodes"]>().toEqualTypeOf<ApiHelpNode[] | null>();
-    expectTypeOf<ApiHelpPutResponse["nodes"]>().toEqualTypeOf<ApiHelpNode[]>();
+  it("makes the page title, question and contact line editable per language", () => {
+    expectTypeOf<ApiHelpContent["page"]>().toEqualTypeOf<
+      Record<Lang, ApiHelpPageText>
+    >();
+    expectTypeOf<ApiHelpPageText>().toHaveProperty("contact");
+  });
+
+  it("returns null content until something is saved, never after a save", () => {
+    expectTypeOf<ApiHelpGet["content"]>().toEqualTypeOf<ApiHelpContent | null>();
+    expectTypeOf<ApiHelpPutResponse["content"]>().toEqualTypeOf<ApiHelpContent>();
     expectTypeOf<ApiHelpPut["version"]>().toEqualTypeOf<ApiHelpGet["version"]>();
   });
 
@@ -39,6 +48,7 @@ describe("help contract", () => {
       | "version_conflict"
       | "duplicate_id"
       | "unknown_related"
+      | "blank_page_text"
       | "blank_title"
       | "blank_block"
       | "too_deep"

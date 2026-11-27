@@ -24,20 +24,31 @@ export interface ApiHelpNode {
   children: ApiHelpNode[];
 }
 
+export interface ApiHelpPageText {
+  title: string;
+  question: string;
+  contact: string;
+}
+
+export interface ApiHelpContent {
+  page: Record<Lang, ApiHelpPageText>;
+  nodes: ApiHelpNode[];
+}
+
 export interface ApiHelpGet {
   audience: HelpAudience;
   editable: boolean;
   version: string;
-  nodes: ApiHelpNode[] | null;
+  content: ApiHelpContent | null;
 }
 
 export interface ApiHelpPut {
   version: string;
-  nodes: ApiHelpNode[];
+  content: ApiHelpContent;
 }
 
 export interface ApiHelpPutResponse extends ApiHelpGet {
-  nodes: ApiHelpNode[];
+  content: ApiHelpContent;
   cdnCacheSeconds: number;
 }
 
@@ -46,6 +57,7 @@ export type HelpSaveErrorCode =
   | "version_conflict"
   | "duplicate_id"
   | "unknown_related"
+  | "blank_page_text"
   | "blank_title"
   | "blank_block"
   | "too_deep";
@@ -54,5 +66,6 @@ export interface ApiHelpSaveError {
   message: string;
   code: HelpSaveErrorCode;
   nodeId?: string;
+  field?: keyof ApiHelpPageText;
   lang?: Lang;
 }
