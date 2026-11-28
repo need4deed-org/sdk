@@ -93,6 +93,11 @@ interface UserGet {
 
 export type ApiUserGet = VoidableProps<UserGet, "avatarUrl" | "personId">;
 
+export interface ApiUserPostReply {
+  id: number;
+  isActive: boolean;
+}
+
 export interface ApiUserVerifyEmail {
   message: string;
   verified: boolean;
