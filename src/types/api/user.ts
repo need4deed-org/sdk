@@ -98,6 +98,10 @@ export interface ApiUserVerifyEmail {
   verified: boolean;
   hasVolunteerProfile?: boolean;
   hasAgentMembership?: boolean;
+  // set when verification linked a pre-existing Person: the registration
+  // password is discarded and the user must set one via the reset-password page
+  setPassword?: boolean;
+  resetToken?: string;
 }
 
 export interface ApiCoordinatorInvitePost {
